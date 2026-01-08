@@ -146,6 +146,19 @@
             background-color: #020617;
         }
 
+        .dark #mobile-menu {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        .dark #mobile-menu a span {
+            color: #e2e8f0 !important;
+        }
+
+        .dark #mobile-menu a:hover {
+            background-color: #334155 !important;
+        }
+
         .tab-btn {
             transition: all 0.3s ease;
         }
@@ -266,6 +279,43 @@
                         <i id="theme-icon" class="fas fa-moon text-slate-600"></i>
                     </button>
                 </div>
+
+                <!-- Mobile Icons -->
+                <div class="flex md:hidden items-center gap-2">
+                    <button onclick="toggleTheme()"
+                        class="theme-toggle p-2.5 hover:bg-slate-100 rounded-lg transition-colors">
+                        <i id="theme-icon-mobile" class="fas fa-moon text-slate-600 text-lg"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="p-2.5 hover:bg-slate-100 rounded-lg transition-colors">
+                        <i id="menu-icon" class="fas fa-bars text-slate-600 text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-4 py-4 space-y-3">
+                <a href="mailto:qutibax2@gmail.com"
+                    class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                    <i class="fas fa-envelope text-royal-blue w-5"></i>
+                    <span class="text-slate-700 font-medium">qutibax2@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
+                    class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                    <i class="fab fa-linkedin text-royal-blue w-5"></i>
+                    <span class="text-slate-700 font-medium">LinkedIn Profile</span>
+                </a>
+                <a href="https://github.com/qutiba-W" target="_blank"
+                    class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                    <i class="fab fa-github text-royal-blue w-5"></i>
+                    <span class="text-slate-700 font-medium">GitHub Profile</span>
+                </a>
+                <a href="tel:+9647761522183"
+                    class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                    <i class="fas fa-phone text-royal-blue w-5"></i>
+                    <span class="text-slate-700 font-medium">+964-776-152-2183</span>
+                </a>
             </div>
         </div>
     </header>
@@ -860,18 +910,19 @@
         function toggleTheme() {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
 
             if (html.classList.contains('light')) {
                 html.classList.remove('light');
                 html.classList.add('dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+                if (iconMobile) { iconMobile.classList.remove('fa-moon'); iconMobile.classList.add('fa-sun'); }
                 localStorage.setItem('theme', 'dark');
             } else {
                 html.classList.remove('dark');
                 html.classList.add('light');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+                if (iconMobile) { iconMobile.classList.remove('fa-sun'); iconMobile.classList.add('fa-moon'); }
                 localStorage.setItem('theme', 'light');
             }
         }
@@ -881,15 +932,32 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
 
             html.classList.remove('light', 'dark');
             html.classList.add(savedTheme);
 
-            if (savedTheme === 'dark' && icon) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+            if (savedTheme === 'dark') {
+                if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+                if (iconMobile) { iconMobile.classList.remove('fa-moon'); iconMobile.classList.add('fa-sun'); }
             }
         })();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
 
         // Tab Navigation
         function showTab(tabId) {
