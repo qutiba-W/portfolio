@@ -76,6 +76,16 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
+        /* Hide scrollbar on tabs */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
         .card {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -223,7 +233,7 @@
     <!-- Tab Navigation -->
     <nav class="bg-white border-b border-slate-200 sticky top-[73px] z-40">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex gap-2 py-3 overflow-x-auto">
+            <div class="flex gap-2 py-3 overflow-x-auto hide-scrollbar">
                 <button onclick="showTab('about')"
                     class="tab-btn active px-5 py-2.5 rounded-xl font-medium text-sm whitespace-nowrap">
                     <i class="fas fa-user mr-2"></i>About
@@ -500,6 +510,46 @@
                             Laser</span>
                         <span
                             class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Fabrication</span>
+                    </div>
+                </div>
+
+                <!-- HR Analytics Project -->
+                <div class="card bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl overflow-hidden border-rose-200">
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-chart-bar text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">HR Employee Attrition Analysis</h3>
+                                <p class="text-rose-600 font-medium text-sm">Data Analytics with Excel</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-4">Comprehensive analysis of employee attrition data using Excel
+                            pivot tables and interactive dashboard with slicers for filtering by department, gender,
+                            overtime, and marital status.</p>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <img src="assets/project-hr-data.png" alt="Raw Data"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="assets/project-hr-analysis.png" alt="Pivot Table Analysis"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="assets/project-hr-dashboard.png" alt="Dashboard"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-medium">Excel</span>
+                            <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-medium">Pivot
+                                Tables</span>
+                            <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-medium">Data
+                                Visualization</span>
+                            <span
+                                class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-medium">Dashboard</span>
+                        </div>
                     </div>
                 </div>
             </div>
