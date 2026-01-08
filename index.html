@@ -188,6 +188,46 @@
         .theme-toggle:hover {
             transform: rotate(15deg);
         }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .clickable-img {
+            cursor: zoom-in;
+        }
     </style>
 </head>
 
@@ -461,7 +501,8 @@
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="bg-white p-4 flex items-center justify-center">
                             <img src="assets/project-cone-pulley.png" alt="Cone Pulley CAD Drawing"
-                                class="w-full h-auto rounded-lg shadow-md">
+                                onclick="openLightbox(this.src)"
+                                class="w-full h-auto rounded-lg shadow-md clickable-img">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-3 mb-4">
@@ -532,12 +573,13 @@
 
                         <!-- Image Gallery -->
                         <div class="grid grid-cols-3 gap-2 mb-4">
-                            <img src="assets/project-hr-data.png" alt="Raw Data"
-                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="assets/project-hr-data.png" alt="Raw Data" onclick="openLightbox(this.src)"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow clickable-img">
                             <img src="assets/project-hr-analysis.png" alt="Pivot Table Analysis"
-                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-                            <img src="assets/project-hr-dashboard.png" alt="Dashboard"
-                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                                onclick="openLightbox(this.src)"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow clickable-img">
+                            <img src="assets/project-hr-dashboard.png" alt="Dashboard" onclick="openLightbox(this.src)"
+                                class="rounded-lg shadow-sm hover:shadow-md transition-shadow clickable-img">
                         </div>
 
                         <div class="flex flex-wrap gap-2">
@@ -863,7 +905,25 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Fullscreen Image">
+    </div>
 </body>
 
 </html>
