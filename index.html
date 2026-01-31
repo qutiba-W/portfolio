@@ -504,414 +504,314 @@
                     <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
                 </div>
 
-                <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10">
-                    <!-- Avatar Section -->
-                    <div class="flex-shrink-0">
-                        <div class="relative">
-                            <div
-                                class="w-40 h-40 md:w-48 md:h-48 bg-gradient-to-br from-royal-blue via-blue-500 to-purple-600 rounded-full p-1 shadow-2xl">
-                                <div
-                                    class="w-full h-full bg-gradient-to-br from-slate-100 to-white rounded-full flex items-center justify-center">
-                                    <i class="fas fa-user-tie text-6xl md:text-7xl text-slate-400"></i>
-                                </div>
-                            </div>
-                            <!-- Status badge -->
-                            <div
-                                class="absolute bottom-2 right-2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                                Open to Work
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hero Content -->
+                <div class="relative z-10 flex flex-col-reverse lg:flex-row items-center gap-10">
+                    <!-- Hero Content (Left) -->
                     <div class="flex-1 text-center lg:text-left">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3">
-                            <span
-                                class="bg-gradient-to-r from-royal-blue via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                Qutaiba Mantfaji
-                            </span>
+                        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-3 text-slate-900 tracking-tight">
+                            Qutaiba Mantfaji
                         </h1>
-                        <p class="text-xl md:text-2xl text-slate-600 font-medium mb-2">
+                        <p class="text-xl md:text-2xl text-slate-600 font-medium mb-6">
                             Mechanical Engineer & <span class="text-royal-blue font-bold">AI Leader</span>
-                        </p>
-                        <p class="text-slate-500 max-w-lg mx-auto lg:mx-0 mb-6">
-                            Bridging the gap between Physical Manufacturing and Generative Intelligence
                         </p>
 
                         <!-- CTA Buttons -->
-                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
                             <a href="mailto:qutibax2@gmail.com"
-                                class="px-6 py-3 bg-gradient-to-r from-royal-blue to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2 hover:scale-105">
+                                class="px-6 py-2.5 bg-royal-blue hover:bg-royal-blue-dark text-white font-medium rounded-full shadow-lg shadow-blue-500/20 transition-all flex items-center gap-2">
                                 <i class="fas fa-envelope"></i> Get in Touch
                             </a>
                             <a href="#projects" onclick="showTab('projects')"
-                                class="px-6 py-3 border-2 border-royal-blue text-royal-blue font-semibold rounded-xl hover:bg-royal-blue hover:text-white transition-all flex items-center gap-2">
-                                <i class="fas fa-cube"></i> View Projects
+                                class="px-6 py-2.5 border border-slate-300 hover:border-royal-blue text-slate-700 hover:text-royal-blue font-medium rounded-full bg-white transition-all flex items-center gap-2">
+                                View Projects
                             </a>
                         </div>
+
+                        <!-- Pill Tags -->
+                        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
+                            <span
+                                class="px-4 py-1.5 bg-slate-200/50 text-slate-600 rounded-full text-sm font-medium">SolidWorks</span>
+                            <span
+                                class="px-4 py-1.5 bg-slate-200/50 text-slate-600 rounded-full text-sm font-medium">Generative
+                                AI</span>
+                            <span class="px-4 py-1.5 bg-slate-200/50 text-slate-600 rounded-full text-sm font-medium">3D
+                                Printing</span>
+                            <span
+                                class="px-4 py-1.5 bg-slate-200/50 text-slate-600 rounded-full text-sm font-medium">Firebase</span>
+                        </div>
                     </div>
 
-                    <!-- Floating Tech Badges -->
-                    <div class="hidden lg:flex flex-col gap-3 w-48">
+                    <!-- Avatar Section (Right) -->
+                    <div class="flex-shrink-0 relative">
                         <div
-                            class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-lg border border-slate-200 hover:scale-105 transition-transform cursor-default">
-                            <i class="fas fa-cube text-purple-500"></i>
-                            <span class="text-sm font-medium text-slate-700">SolidWorks</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-lg border border-slate-200 hover:scale-105 transition-transform cursor-default ml-4">
-                            <i class="fas fa-print text-green-500"></i>
-                            <span class="text-sm font-medium text-slate-700">3D Printing</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-lg border border-slate-200 hover:scale-105 transition-transform cursor-default">
-                            <i class="fas fa-brain text-blue-500"></i>
-                            <span class="text-sm font-medium text-slate-700">Generative AI</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-lg border border-slate-200 hover:scale-105 transition-transform cursor-default ml-4">
-                            <i class="fas fa-fire text-yellow-500"></i>
-                            <span class="text-sm font-medium text-slate-700">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Tech Badges -->
-                <div class="lg:hidden flex flex-wrap justify-center gap-2 mt-6">
-                    <span
-                        class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow text-sm border border-slate-200">
-                        <i class="fas fa-cube text-purple-500"></i> SolidWorks
-                    </span>
-                    <span
-                        class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow text-sm border border-slate-200">
-                        <i class="fas fa-print text-green-500"></i> 3D Printing
-                    </span>
-                    <span
-                        class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow text-sm border border-slate-200">
-                        <i class="fas fa-brain text-blue-500"></i> Gen AI
-                    </span>
-                    <span
-                        class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow text-sm border border-slate-200">
-                        <i class="fas fa-fire text-yellow-500"></i> Firebase
-                    </span>
-                </div>
-            </div>
-
-            <!-- Quick Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div
-                    class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div
-                        class="text-3xl font-bold bg-gradient-to-r from-royal-blue to-purple-600 bg-clip-text text-transparent">
-                        9+</div>
-                    <div class="text-sm text-slate-500 mt-1">Certifications</div>
-                </div>
-                <div
-                    class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div
-                        class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
-                        3+</div>
-                    <div class="text-sm text-slate-500 mt-1">Projects</div>
-                </div>
-                <div
-                    class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div
-                        class="text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
-                        1</div>
-                    <div class="text-sm text-slate-500 mt-1">Internship</div>
-                </div>
-                <div
-                    class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div
-                        class="text-3xl font-bold bg-gradient-to-r from-rose-500 to-pink-600 bg-clip-text text-transparent">
-                        5+</div>
-                    <div class="text-sm text-slate-500 mt-1">Volunteer Roles</div>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Profile Info Card -->
-                <div class="lg:col-span-1">
-                    <div class="card bg-white rounded-2xl p-6 sticky top-36">
-                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <i class="fas fa-id-card text-royal-blue"></i> About Me
-                        </h3>
-
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3 text-sm">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-graduation-cap text-royal-blue"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-slate-800">Education</p>
-                                    <p class="text-slate-500 text-xs">AUIS • Class of 2028</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-location-dot text-green-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-slate-800">Location</p>
-                                    <p class="text-slate-500 text-xs">Sulaymaniyah, Iraq</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-language text-amber-600"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-slate-800">Languages</p>
-                                    <p class="text-slate-500 text-xs">Arabic, English (Native)</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Social Links -->
-                        <div class="mt-6 pt-4 border-t border-slate-100">
-                            <p class="text-xs text-slate-400 mb-3 uppercase tracking-wider">Connect</p>
-                            <div class="flex gap-2">
-                                <a href="mailto:qutibax2@gmail.com"
-                                    class="flex-1 p-3 bg-slate-50 hover:bg-royal-blue hover:text-white rounded-xl text-center transition-colors text-slate-600">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
-                                    class="flex-1 p-3 bg-slate-50 hover:bg-blue-600 hover:text-white rounded-xl text-center transition-colors text-slate-600">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://github.com/qutiba-W" target="_blank"
-                                    class="flex-1 p-3 bg-slate-50 hover:bg-slate-800 hover:text-white rounded-xl text-center transition-colors text-slate-600">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bio & Human Side -->
-                <div class="lg:col-span-2 space-y-6">
-                    <!-- My Story Card -->
-                    <div class="card bg-white rounded-2xl p-6">
-                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <i class="fas fa-quote-left text-royal-blue"></i> My Story
-                        </h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            As a <strong>Mechanical Engineering</strong> student at <strong>AUIS</strong>, I discovered
-                            that the most impactful engineering solutions come from <span
-                                class="text-royal-blue font-semibold">data-driven decisions</span>.
-                        </p>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            This realization led me to combine my engineering expertise with <span
-                                class="text-royal-blue font-semibold">data analytics</span> and <span
-                                class="text-royal-blue font-semibold">Generative AI</span>, creating a unique skillset
-                            that bridges physical systems and digital insights.
-                        </p>
-                        <p class="text-slate-600 leading-relaxed">
-                            Whether I'm designing precision components in <strong>SolidWorks</strong>, building
-                            dashboards in <strong>Excel</strong>, or prototyping with <strong>3D printing</strong>, I
-                            bring the same approach: <em>understand the problem deeply, then engineer a solution that
-                                works.</em>
-                        </p>
-                    </div>
-
-                    <!-- Beyond the Resume (Human Side) -->
-                    <div
-                        class="card bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200">
-                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <i class="fas fa-heart text-amber-500"></i> Beyond the Resume
-                        </h3>
-                        <p class="text-slate-700 leading-relaxed">
-                            Beyond the technical world, I am deeply invested in understanding the human condition
-                            through classic literature. Dostoevsky's <em class="text-amber-700 font-medium">'A Faint
-                                Heart'</em> is a personal favorite for its psychological depth. I also use writing as a
-                            tool for resilience; it is how I restructure chaos and find clarity when life feels
-                            overwhelming. Additionally, I am passionate about the <span
-                                class="text-amber-700 font-semibold">culinary arts</span> and <span
-                                class="text-amber-700 font-semibold">coffee brewing</span>, drawn to the discipline
-                            because it is one of the few pursuits where the value of the outcome is directly
-                            proportional to the effort invested.
-                        </p>
-                    </div>
-
-                    <!-- Philosophy Quote Card -->
-                    <div
-                        class="card bg-gradient-to-r from-royal-blue to-blue-500 rounded-2xl p-6 relative overflow-hidden">
-                        <div class="absolute top-4 right-4 text-white/20 text-6xl">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="relative z-10">
-                            <h3
-                                class="text-sm font-semibold text-blue-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                                <i class="fas fa-lightbulb"></i> My Philosophy
-                            </h3>
-                            <p class="text-white text-lg leading-relaxed font-medium italic">
-                                "I hold the perspective that nothing is truly 'hard,' only time-intensive. Engineering
-                                has instilled in me the discipline to deconstruct even the most complex problems into
-                                smaller, manageable segments, solving them piece by piece until the complete solution
-                                comes into focus."
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="card bg-white rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-royal-blue">9+</div>
-                            <div class="text-xs text-slate-500">Certifications</div>
-                        </div>
-                        <div class="card bg-white rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-royal-blue">3+</div>
-                            <div class="text-xs text-slate-500">Projects</div>
-                        </div>
-                        <div class="card bg-white rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-royal-blue">1</div>
-                            <div class="text-xs text-slate-500">Internship</div>
-                        </div>
-                        <div class="card bg-white rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-royal-blue">5+</div>
-                            <div class="text-xs text-slate-500">Volunteer Roles</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Professional Vision Section -->
-            <div class="mt-8">
-                <div
-                    class="card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-200">
-                    <div class="max-w-4xl mx-auto">
-                        <div class="flex items-center gap-3 mb-6">
+                            class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-white shadow-2xl overflow-hidden relative z-10">
+                            <!-- Placeholder for user photo - using default avatar if no image provided, but user has uploaded one in previous turns? No, just use existing or generic. 
+                                 Using existing icon style but larger/cleaner as per new design. -->
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
-                                <i class="fas fa-bullseye text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800">My Mission</h3>
-                                <p class="text-emerald-600 font-medium text-sm">Professional Vision</p>
+                                class="w-full h-full bg-slate-100 flex items-center justify-center overflow-hidden rounded-full">
+                                <i class="fas fa-user-tie text-9xl text-slate-300"></i>
+                                <!-- Ideally verify if user has a photo. If not, this placeholder is fine. -->
                             </div>
                         </div>
-                        <p class="text-slate-700 leading-relaxed text-lg mb-6">
-                            My goal is to <span class="text-emerald-700 font-semibold">catalyze the growth of local
-                                businesses</span> by applying a multidisciplinary approach that merges engineering logic
-                            with creative strategy, spanning <strong>marketing</strong>, <strong>HR management</strong>,
-                            and <strong>content creation</strong>.
-                        </p>
-                        <p class="text-slate-700 leading-relaxed text-lg mb-6">
-                            I am defined by a <span class="text-emerald-700 font-semibold">relentless drive to expand my
-                                capabilities</span>; I view every challenge as an opportunity to master a new skill.
-                        </p>
-                        <div class="bg-white/60 rounded-xl p-5 border-l-4 border-emerald-500">
-                            <p class="text-slate-700 leading-relaxed font-medium">
-                                <i class="fas fa-users text-emerald-500 mr-2"></i>
-                                More importantly, I am committed to a philosophy of <span
-                                    class="text-emerald-700 font-bold">collective elevation</span>: ensuring that as I
-                                grow, I actively share knowledge and foster an environment where my team and partners
-                                evolve alongside me.
+
+                        <!-- Open to Work Badge -->
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+                            <span
+                                class="bg-green-100 text-green-700 border border-green-200 px-4 py-1.5 rounded-full text-sm font-bold shadow-sm whitespace-nowrap">
+                                Open to Work
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unified Stats Row -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-bold public-sans text-royal-blue mb-1">9+</div>
+                        <div class="text-sm text-slate-500 font-medium">Certifications</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-bold public-sans text-royal-blue mb-1">3+</div>
+                        <div class="text-sm text-slate-500 font-medium">Projects</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-bold public-sans text-royal-blue mb-1">1</div>
+                        <div class="text-sm text-slate-500 font-medium">Internship</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-bold public-sans text-royal-blue mb-1">5+</div>
+                        <div class="text-sm text-slate-500 font-medium">Volunteering</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Column Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Col 1: About Details -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm h-full">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">ABOUT ME</h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg mb-1">Education</h4>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-graduation-cap text-slate-400 mt-1"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-slate-700">Mechanical Engineer</p>
+                                        <p class="text-xs text-slate-500">University, Marhmster (AUIS)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg mb-1">Location</h4>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-map-marker-alt text-slate-400 mt-1"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-slate-700">Sulaymaniyah, Iraq</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg mb-1">Languages</h4>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-language text-slate-400 mt-1"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-slate-700">English, Arabic</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2 (Span 2): My Story -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm h-full">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-6">My Story</h3>
+                        <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4">
+                            <p>
+                                My story is defined by a curiosity for how things work—whether it's the mechanical gears
+                                of a machine or the neural networks of an AI. As a <strong>Mechanical
+                                    Engineering</strong> student at <strong>AUIS</strong>, I discovered that the most
+                                impactful solutions often lie at the intersection of disciplines.
+                            </p>
+                            <p>
+                                This realization led me to combine my engineering expertise with <strong>data
+                                    analytics</strong> and <strong>Generative AI</strong>. I don't just design physical
+                                parts; I design workflows, systems, and intelligent solutions that bridge the gap
+                                between the physical and digital worlds.
+                            </p>
+                            <p>
+                                Beyond the technical, I am driven by a philosophy of continuous learning. "An expert is
+                                someone who understands with continuous and creative innovation." This mindset fuels my
+                                passion for everything from 3D printing complex prototypes to brewing the perfect cup of
+                                coffee—precision and creativity are universal languages I speak fluently.
                             </p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Col 3: Philosophy & Mission -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Philosophy -->
+                    <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100 h-1/2 flex flex-col justify-center">
+                        <i class="fas fa-quote-left text-blue-200 text-3xl mb-4"></i>
+                        <h3 class="font-bold text-slate-800 mb-2">My Philosophy</h3>
+                        <p class="text-sm text-slate-600 italic">
+                            "I hold the perspective that nothing is truly 'hard,' only time-intensive. Deconstruct
+                            complex problems into manageable segments."
+                        </p>
+                    </div>
+
+                    <!-- Mission -->
+                    <div
+                        class="bg-green-50 rounded-2xl p-6 border border-green-100 h-[48%] flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-rocket text-green-500"></i>
+                            <h3 class="font-bold text-slate-800">My Mission</h3>
+                        </div>
+                        <p class="text-sm text-slate-600">
+                            To make professional capabilities strive, and even revolutionize standard operating
+                            practices through AI and engineering.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- EXPERIENCE TAB -->
+        <!-- EXPERIENCE TAB - Redesigned -->
         <div id="experience" class="tab-content">
-            <div class="space-y-6">
-                <!-- Work Experience -->
-                <div class="card bg-white rounded-2xl p-6">
-                    <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <i class="fas fa-briefcase text-royal-blue"></i> Work Experience
-                    </h3>
-
-                    <div class="border-l-2 border-royal-blue pl-6 relative">
-                        <div class="absolute w-4 h-4 bg-royal-blue rounded-full -left-[9px] top-0"></div>
-                        <div class="mb-2">
-                            <span
-                                class="bg-royal-blue/10 text-royal-blue text-xs font-semibold px-3 py-1 rounded-full">Jul
-                                2024 - Sep 2024</span>
-                        </div>
-                        <h4 class="text-xl font-bold text-slate-800">Product Designer</h4>
-                        <p class="text-royal-blue font-semibold mb-3">Makers of Baghdad • Internship</p>
-                        <ul class="space-y-2 text-slate-600">
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Designed
-                                and managed cost-efficient products, including medals, games, and material usage</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Operated
-                                CNC Laser Machines for cutting and engraving various materials</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Provided
-                                technical assistance and maintenance support in the fabrication lab</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> Operated
-                                Faber Laser machines for precision cutting and design tasks</li>
-                        </ul>
-                    </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Work Experience</h2>
+                    <p class="text-slate-500">A timeline of professional contributions, spanning product design,
+                        manufacturing, and data-driven problem solving.</p>
                 </div>
 
-                <!-- Productivity & Management -->
-                <div class="card bg-white rounded-2xl p-6 border-l-4 border-amber-500">
-                    <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <i class="fas fa-chart-line text-amber-500"></i> Productivity & Management
-                    </h3>
-                    <div class="grid sm:grid-cols-2 gap-3">
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Project Management</p>
-                            <p class="text-sm text-slate-500">Agile, Scrum, Kanban</p>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Data Analysis</p>
-                            <p class="text-sm text-slate-500">Excel, Power BI, SQL</p>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Content Creation</p>
-                            <p class="text-sm text-slate-500">Copywriting, Technical Writing</p>
-                        </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">HR Management</p>
-                            <p class="text-sm text-slate-500">Recruitment, Training, Performance</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div class="card bg-white rounded-2xl p-6">
-                    <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <i class="fas fa-graduation-cap text-royal-blue"></i> Education
-                    </h3>
-
-                    <div class="flex items-start gap-4">
+                <!-- Makers of Baghdad Card -->
+                <div
+                    class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow mb-10">
+                    <div class="flex items-start gap-4 mb-6">
                         <div
-                            class="w-14 h-14 bg-royal-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-university text-royal-blue text-xl"></i>
+                            class="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center flex-shrink-0 text-white font-bold text-2xl">
+                            MB
                         </div>
                         <div>
-                            <h4 class="text-lg font-bold text-slate-800">B.Sc. Mechanical Engineering</h4>
-                            <p class="text-royal-blue font-semibold">American University of Iraq, Sulaimani (AUIS)</p>
-                            <p class="text-slate-500 text-sm">Feb 2024 - Present</p>
-                            <p class="text-slate-600 mt-2">Focus on materials science, machinery design, and
-                                manufacturing technologies.</p>
+                            <h3 class="text-xl font-bold text-slate-900">Makers of Baghdad</h3>
+                            <div class="flex items-center gap-2 text-royal-blue font-medium mt-1">
+                                <span>Product Designer</span>
+                                <span class="text-slate-300">•</span>
+                                <span>Internship</span>
+                            </div>
+                            <div class="text-slate-500 text-sm mt-1">Jul 2024 - Sep 2024 | Baghdad, Iraq</div>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        During my internship, I was integral to the product lifecycle, from conceptual design to final
+                        fabrication. I bridged the gap between digital designs and physical products, ensuring
+                        cost-efficiency and precision.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <div class="mt-1 w-6 flex-shrink-0 flex justify-center"><i
+                                    class="fas fa-pencil-alt text-royal-blue"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-800">design_services</span> -
+                                <span class="text-slate-600">Designed and managed the production of cost-efficient
+                                    products, including custom medals and educational games.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="mt-1 w-6 flex-shrink-0 flex justify-center"><i
+                                    class="fas fa-crosshairs text-royal-blue"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-800">precision_manufacturing</span> -
+                                <span class="text-slate-600">Operated and maintained CNC Laser and Faber Laser machines
+                                    for precision cutting and engraving.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="mt-1 w-6 flex-shrink-0 flex justify-center"><i
+                                    class="fas fa-wrench text-royal-blue"></i></div>
+                            <div>
+                                <span class="font-bold text-slate-800">build</span> -
+                                <span class="text-slate-600">Provided technical assistance and maintenance support
+                                    within the fabrication lab, ensuring smooth operations.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills & Expertise -->
+                <div class="mb-10">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Skills & Expertise</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wide">Manufacturing
+                                & Design</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">3D
+                                    Printing</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">CNC
+                                    Laser Cutting</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">SolidWorks</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Product
+                                    Design</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wide">Data &
+                                Management</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Excel</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Power
+                                    BI</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Agile</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Scrum</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors cursor-default">Project
+                                    Management</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Volunteering -->
-                <div class="card bg-white rounded-2xl p-6">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <i class="fas fa-hands-helping text-royal-blue"></i> Volunteering
-                    </h3>
-                    <div class="grid sm:grid-cols-2 gap-3">
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Mentor</p>
-                            <p class="text-sm text-slate-500">MENA Learning • 2025</p>
+                <div class="mb-10">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Volunteering & Community</h3>
+                    <div class="bg-slate-50 rounded-2xl p-6 space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-medium text-slate-800">Mentor at MENA Learning</span>
+                            <span class="text-slate-500">(2025)</span>
                         </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Operator & Copywriter</p>
-                            <p class="text-sm text-slate-500">ETC • 2023</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-medium text-slate-800">Operator & Copywriter at ETC</span>
+                            <span class="text-slate-500">(2023)</span>
                         </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Copywriting Mentor</p>
-                            <p class="text-sm text-slate-500">S.A.V.I • 2023</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-medium text-slate-800">Copywriting Mentor at S.A.V.I</span>
+                            <span class="text-slate-500">(2023)</span>
                         </div>
-                        <div class="bg-slate-50 rounded-xl p-4">
-                            <p class="font-semibold text-slate-800">Copywriter</p>
-                            <p class="text-sm text-slate-500">Baghdad Kite Carnival & Book Fair • 2022</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-medium text-slate-800">Copywriter at Baghdad Kite Carnival & Book
+                                Fair</span>
+                            <span class="text-slate-500">(2022)</span>
                         </div>
                     </div>
                 </div>
@@ -927,12 +827,14 @@
                     <div class="p-6">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                             <div class="flex items-center gap-4">
+                                <!-- Replaced Icon with Logo Image -->
                                 <div
-                                    class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-tree text-white text-xl"></i>
+                                    class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm overflow-hidden">
+                                    <img src="assets/habit-forest-logo.png" alt="Habit Forest Logo"
+                                        class="w-full h-full object-contain" />
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-extrabold text-green-800">🌳 Habit Forest
+                                    <h3 class="text-xl font-extrabold text-green-800">Habit Forest
                                     </h3>
                                     <p class="text-green-600 font-medium text-sm">Gamified Productivity Web App</p>
                                 </div>
@@ -942,6 +844,7 @@
                                 <i class="fab fa-github"></i> View on GitHub
                             </a>
                         </div>
+
                         <p class="text-slate-600 mb-4">A gamified habit tracking app that visualizes progress as a
                             growing tree with analytics, wellness tracking, and social features.</p>
                         <div class="flex flex-wrap gap-2">
@@ -1185,12 +1088,11 @@
                     <div class="p-6">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                             <div class="flex items-center gap-4">
-                                <div
-                                    class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-robot text-white text-xl"></i>
+                                <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm overflow-hidden">
+                                    <img src="assets/project-ai-workflow.png" alt="AI Workflow Logo" class="w-full h-full object-contain" />
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-extrabold text-cyan-800">🤖 AI-Driven Design Workflow
+                                    <h3 class="text-xl font-extrabold text-cyan-800">AI-Driven Design
                                     </h3>
                                     <p class="text-cyan-600 font-medium text-sm">GenAI + Engineering Integration</p>
                                 </div>
