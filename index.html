@@ -233,13 +233,16 @@
     class="bg-background dark:bg-[#0A0A0A] text-text-main dark:text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
     <div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern bg-[size:40px_40px] opacity-[0.6] dark:opacity-0">
     </div>
+    <!-- Top-Left Orb -->
     <div
-        class="fixed top-0 left-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] pointer-events-none z-0 dark:hidden">
+        class="fixed top-0 left-0 sm:left-1/4 w-64 h-64 sm:w-[800px] sm:h-[800px] bg-primary/10 sm:bg-primary/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
     </div>
+    <!-- Bottom-Right Orb -->
     <div
-        class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none z-0 dark:hidden">
+        class="fixed bottom-0 right-0 sm:right-1/4 w-64 h-64 sm:w-[600px] sm:h-[600px] bg-blue-500/10 sm:bg-blue-500/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
     </div>
-    <div class="fixed inset-0 z-0 pointer-events-none bg-noise opacity-50 mix-blend-overlay hidden dark:block"></div>
+    <!-- Noise Texture -->
+    <div class="fixed inset-0 z-0 pointer-events-none bg-noise opacity-50 mix-blend-overlay block"></div>
 
     <div class="relative z-10 flex flex-col min-h-screen">
         <!-- Navbar -->
@@ -577,9 +580,12 @@
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
 
                     <!-- 1. NeuroForge (AI) -->
-                    <a href="https://neuroforge-brain.web.app/" target="_blank"
-                        class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block"
-                        data-category="ai">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="ai" data-title="NeuroForge"
+                        data-description="Cognitive Conditioning Platform. A 'Gym for the Brain' designed to quantify and improve cognitive throughput using n-back tasks and reaction time analytics."
+                        data-image="assets/neuroforge-live.png" data-category-display="AI / Software"
+                        data-tags="JavaScript, Firebase, PWA" data-link="https://neuroforge-brain.web.app/"
+                        onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
                                 style="background-image: url('assets/neuroforge-live.png');">
@@ -597,22 +603,30 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Cognitive Conditioning Platform. A "Gym
                                     for the Brain" designed to quantify and improve cognitive throughput.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">JavaScript</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Firebase</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">PWA</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">JavaScript</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Firebase</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 2. Habit Forest (AI) -->
-                    <a href="https://github.com/qutiba-W/habit-tracker-app" target="_blank"
-                        class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block"
-                        data-category="ai">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="ai" data-title="Habit Forest"
+                        data-description="Behavioral Systems Architecture. A 'Second Brain' ecosystem treating productivity as a manufacturing system with gamified growth mechanics."
+                        data-image="assets/habit-forest-live.png" data-category-display="AI / Software"
+                        data-tags="Next.js, TypeScript, Gamification"
+                        data-link="https://github.com/qutiba-W/habit-tracker-app"
+                        onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
                                 style="background-image: url('assets/habit-forest-live.png');">
@@ -630,21 +644,30 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Behavioral Systems Architecture. A
                                     "Second Brain" ecosystem treating productivity as a manufacturing system.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Next.js</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">TypeScript</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Next.js</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">TypeScript</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 3. Parametric Auger (Engineering) -->
-                    <a href="https://drive.google.com/file/d/1BcrLz3X9cIWiGws55rqZvrZFxHXh5_UD/view?usp=drive_link"
-                        target="_blank"
-                        class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block"
-                        data-category="engineering">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="engineering" data-title="Parametric Auger"
+                        data-description="Complex 3D Modeling and Technical Documentation of an Earth Auger Drill Bit. Designed with parametric equations for scalable manufacturing."
+                        data-image="assets/parametric_auger.png" data-category-display="Engineering"
+                        data-tags="SolidWorks, Sheet Metal, Parametric Design"
+                        data-link="https://drive.google.com/file/d/1BcrLz3X9cIWiGws55rqZvrZFxHXh5_UD/view?usp=drive_link"
+                        onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#1a1a1a] z-0">
                             <div class="w-full h-full bg-contain bg-center bg-no-repeat opacity-90 group-hover:opacity-75 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
                                 style="background-image: url('assets/parametric_auger.png');">
@@ -663,22 +686,31 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Complex 3D Modeling and Technical
                                     Documentation of an Earth Auger Drill Bit.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">SolidWorks</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Sheet
-                                        Metal</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">SolidWorks</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Sheet
+                                            Metal</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 4. M12 Hex Nut (Engineering) -->
-                    <a href="https://drive.google.com/file/d/1z_IFcjM8nZKCfw88P00bVm7R3KMSFLmf/view?usp=drive_link"
-                        target="_blank"
-                        class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block"
-                        data-category="engineering">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="engineering" data-title="Standard M12 Nut"
+                        data-description="ISO metric screw thread M12x1.6H modeled with precise tolerances and GD&T standards for additive manufacturing verification."
+                        data-image="assets/m12_nut.png" data-category-display="Engineering"
+                        data-tags="SolidWorks, Standardization, GD&T"
+                        data-link="https://drive.google.com/file/d/1z_IFcjM8nZKCfw88P00bVm7R3KMSFLmf/view?usp=drive_link"
+                        onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div class="w-full h-full bg-cover bg-[center_30%] opacity-80 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
                                 style="background-image: url('assets/m12_nut.png');">
@@ -697,15 +729,21 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">ISO metric screw thread M12x1.6H modeled
                                     with precise tolerances and GD&T.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">SolidWorks</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Standardization</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">SolidWorks</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Standardization</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 5. Parametric Gear System (Engineering) -->
                     <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px]"
@@ -740,10 +778,13 @@
                     </div>
 
                     <!-- 6. Industrial Product Design (Engineering) -->
-                    <a href="https://drive.google.com/file/d/1d5A2F0mBj0nwoA0HoyLPSlaUg9KbE00y/view?usp=drive_link"
-                        target="_blank"
-                        class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block"
-                        data-category="engineering">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="engineering" data-title="Industrial Product Design"
+                        data-description="Product design and fabrication workflows designed in Fusion 360, verified with CNC Laser manufacturing processes."
+                        data-image="assets/industrial-design.jpg" data-category-display="Engineering"
+                        data-tags="Fusion 360, CNC Laser, CAD/CAM"
+                        data-link="https://drive.google.com/file/d/1d5A2F0mBj0nwoA0HoyLPSlaUg9KbE00y/view?usp=drive_link"
+                        onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div class="w-full h-full bg-cover bg-[center_top] opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
                                 style="background-image: url('assets/industrial-design.jpg');">
@@ -762,20 +803,29 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Product design and fabrication workflows
                                     designed in Fusion 360.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">CNC
-                                        Laser</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">CAD/CAM</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">CNC
+                                            Laser</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">CAD/CAM</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 7. AI-Driven Design Pipeline (AI) -->
-                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px]"
-                        data-category="ai">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="ai" data-title="AI-Driven Design Pipeline"
+                        data-description="Framework integrating LLM Agents to parse technical requirements and streamline design-to-prototype workflows, reducing iteration time by 40%."
+                        data-image="" data-category-display="AI / Software" data-tags="GenAI, LLMs, Automation"
+                        data-link="#" onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div
                                 class="w-full h-full bg-gradient-to-br from-cyan-900 to-blue-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
@@ -793,19 +843,28 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Framework integrating LLM Agents to parse
                                     technical requirements and streamline design-to-prototype.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">GenAI</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">LLMs</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">GenAI</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">LLMs</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 8. HR Analytics (Analytics) -->
-                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px]"
-                        data-category="analytics">
+                    <div class="project-card show-filter glass-card rounded-2xl p-1 relative group overflow-hidden h-[350px] block cursor-pointer"
+                        data-category="analytics" data-title="HR Analytics"
+                        data-description="Random Forest algorithms predicting employee retention with 95% accuracy. Analyzed key turnover factors and provided actionable retention strategies."
+                        data-image="" data-category-display="Analytics" data-tags="Python, Scikit-Learn, Pandas"
+                        data-link="#" onclick="window.openProjectModal(this)">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div
                                 class="w-full h-full bg-gradient-to-br from-rose-900 to-pink-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
@@ -823,11 +882,17 @@
                                 <p class="text-gray-300 max-w-md line-clamp-2">Random Forest algorithms predicting
                                     employee retention with 95% accuracy.</p>
                                 <div
-                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Python</span>
-                                    <span
-                                        class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Scikit-Learn</span>
+                                    class="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Python</span>
+                                        <span
+                                            class="px-3 py-1 text-xs border border-white/20 rounded-full text-white/80">Scikit-Learn</span>
+                                    </div>
+                                    <button
+                                        class="px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition-colors">
+                                        View Details
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1454,32 +1519,181 @@
         });
 
         // Project Filter Logic
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300"
+        aria-hidden="true">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+
+        <!-- Modal Content -->
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-[#111] border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300"
+                id="modal-panel">
+                <div class="relative">
+                    <!-- Close Button -->
+                    <button id="modal-close"
+                        class="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+
+                    <!-- Image -->
+                    <div class="h-64 sm:h-80 w-full bg-cover bg-center" id="modal-image"></div>
+
+                    <!-- Content -->
+                    <div class="p-6 sm:p-10">
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <span id="modal-category"
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 text-white/80"></span>
+                            <div class="flex gap-2" id="modal-tags">
+                                <!-- Tags injected via JS -->
+                            </div>
+                        </div>
+
+                        <h2 id="modal-title" class="text-3xl sm:text-4xl font-bold text-white mb-4 font-display"></h2>
+                        
+                        <div class="prose prose-invert max-w-none mb-8 text-gray-300">
+                            <p id="modal-description" class="text-lg leading-relaxed"></p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a id="modal-link" href="#" target="_blank"
+                                class="inline-flex items-center justify-center h-12 px-6 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-colors gap-2">
+                                <span class="material-symbols-outlined">open_in_new</span>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // Filter Logic
         const filterTabs = document.querySelectorAll('.filter-tab');
         const projectCards = document.querySelectorAll('.project-card');
 
         filterTabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // Update active tab
+                // Remove active class from all tabs
                 filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
                 tab.classList.add('active');
 
-                const filter = tab.getAttribute('data-filter');
+                const filter = tab.dataset.filter;
 
-                // Filter projects with animation
                 projectCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-
+                    const category = card.dataset.category;
+                    
                     if (filter === 'all' || category === filter) {
                         card.classList.remove('hidden-filter');
                         card.classList.add('show-filter');
-                        card.style.position = '';
-                        card.style.visibility = '';
+                        card.style.display = 'block'; 
                     } else {
-                        card.classList.remove('show-filter');
                         card.classList.add('hidden-filter');
+                        card.classList.remove('show-filter');
+                        setTimeout(() => {
+                            if(card.classList.contains('hidden-filter')) {
+                                card.style.display = 'none';
+                            }
+                        }, 400); 
                     }
                 });
             });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('project-modal');
+        const modalPanel = document.getElementById('modal-panel');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalClose = document.getElementById('modal-close');
+        
+        // Elements to populate
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-description');
+        const modalCat = document.getElementById('modal-category');
+        const modalTags = document.getElementById('modal-tags');
+        const modalLink = document.getElementById('modal-link');
+
+        function openModal(data) {
+            modalImage.style.backgroundImage = `url('${data.image}')`;
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.description;
+            modalCat.textContent = data.category;
+            modalLink.href = data.link;
+            
+            // Clear and add tags
+            modalTags.innerHTML = '';
+            if(data.tags) {
+                data.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'px-2 py-1 bg-white/10 rounded text-xs text-gray-300';
+                    span.textContent = tag.trim();
+                    modalTags.appendChild(span);
+                });
+            }
+
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalPanel.classList.remove('scale-95');
+            modalPanel.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalPanel.classList.remove('scale-100');
+            modalPanel.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Expose openModal to global scope
+        window.openProjectModal = function(btn) {
+            if(event) event.preventDefault();
+            const card = btn.closest('.project-card');
+            
+            const data = {
+                title: card.dataset.title,
+                description: card.dataset.description,
+                image: card.dataset.image,
+                category: card.dataset.categoryDisplay,
+                link: card.dataset.link,
+                tags: card.dataset.tags ? card.dataset.tags.split(',') : []
+            };
+            openModal(data);
+        };
+
+        modalClose.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
