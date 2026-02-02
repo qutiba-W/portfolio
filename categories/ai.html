@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AI & Software Projects - Qutaiba W. Mantfaji</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#DC2626",
+                        "primary-dark": "#B91C1C",
+                        "primary-light": "#F87171",
+                        "primary-glow": "#EF4444",
+                        "background": "#F9FAFB",
+                        "background-dark": "#0A0A0A",
+                        "surface": "#FFFFFF",
+                        "surface-dark": "#121212",
+                        "text-main": "#111827",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(220, 38, 38, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern bg-[size:40px_40px] opacity-[0.2]"></div>
+    <div
+        class="fixed top-0 left-0 sm:left-1/4 w-64 h-64 sm:w-[800px] sm:h-[800px] bg-primary/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
+    </div>
+    <div
+        class="fixed bottom-0 right-0 sm:right-1/4 w-64 h-64 sm:w-[600px] sm:h-[600px] bg-blue-500/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
+    </div>
+    <div class="fixed inset-0 z-0 pointer-events-none bg-noise opacity-50 mix-blend-overlay block"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+        <!-- Navbar -->
+        <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0A0A]/80 backdrop-blur-md">
+            <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                <a href="../index.html" class=" group flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
+                        <span class="font-display font-bold text-xl text-primary">Q</span>
+                    </div>
+                    <div>
+                        <span
+                            class="font-display font-bold text-lg tracking-tight block leading-none group-hover:text-primary transition-colors">Qutaiba</span>
+                        <span
+                            class="text-[10px] text-gray-500 font-medium uppercase tracking-widest group-hover:text-gray-400 transition-colors">AI
+                            & Software</span>
+                    </div>
+                </a>
+                <nav class="hidden md:flex gap-8">
+                    <a href="../index.html"
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="../index.html#projects"
+                        class="text-sm font-medium text-white transition-colors">Projects</a>
+                    <a href="../index.html#skills"
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Skills</a>
+                    <a href="../index.html#contact"
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Category Hero -->
+        <main class="flex-grow pt-20 pb-20 px-4 sm:px-6">
+            <div class="max-w-[1200px] mx-auto">
+                <div class="mb-16">
+                    <a href="../index.html"
+                        class="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Home
+                    </a>
+                    <h1 class="text-5xl md:text-7xl font-bold font-display mb-6"><span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Artificial</span><br>Intelligence
+                    </h1>
+                    <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
+                        Explorations in cognitive architecture, generative AI, and full-stack software development.
+                        Building systems that think, adapt, and enhance human potential through gamification and
+                        automated workflows.
+                    </p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- NeuroForge -->
+                    <a href="../projects/neuroforge.html"
+                        class="glass-card rounded-2xl p-1 relative group overflow-hidden h-[400px] block cursor-pointer">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('../assets/neuroforge-live.png');">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-8 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span
+                                class="inline-flex items-center gap-1 text-xs font-bold text-primary mb-2 uppercase tracking-wider">
+                                <span class="material-symbols-outlined text-sm">psychology</span> AI / Software
+                            </span>
+                            <h3 class="text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                NeuroForge</h3>
+                            <p class="text-gray-300 line-clamp-2 mb-4">Cognitive Conditioning Platform. A "Gym for the
+                                Brain" designed to quantify and improve cognitive throughput using n-back tasks.</p>
+                            <span class="inline-flex items-center gap-1 text-sm font-bold text-primary">View Case Study
+                                <span
+                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+                        </div>
+                    </a>
+
+                    <!-- Habit Forest -->
+                    <a href="../projects/habit-forest.html"
+                        class="glass-card rounded-2xl p-1 relative group overflow-hidden h-[400px] block cursor-pointer">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('../assets/habit-forest-live.png');">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-8 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span
+                                class="inline-flex items-center gap-1 text-xs font-bold text-primary mb-2 uppercase tracking-wider">
+                                <span class="material-symbols-outlined text-sm">psychology</span> AI / Software
+                            </span>
+                            <h3 class="text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                Habit Forest</h3>
+                            <p class="text-gray-300 line-clamp-2 mb-4">Behavioral Systems Architecture. A "Second Brain"
+                                ecosystem treating productivity as a manufacturing system with gamified growth.</p>
+                            <span class="inline-flex items-center gap-1 text-sm font-bold text-primary">View Case Study
+                                <span
+                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+                        </div>
+                    </a>
+
+                    <!-- AI Design Pipeline -->
+                    <a href="../projects/ai-design-pipeline.html"
+                        class="glass-card rounded-2xl p-1 relative group overflow-hidden h-[400px] block cursor-pointer">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-cyan-900 to-blue-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-8 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span
+                                class="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 mb-2 uppercase tracking-wider">
+                                <span class="material-symbols-outlined text-sm">psychology</span> AI / Software
+                            </span>
+                            <h3 class="text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">AI
+                                Design Pipeline</h3>
+                            <p class="text-gray-300 line-clamp-2 mb-4">Framework integrating LLM Agents to parse
+                                technical requirements and streamline design-to-prototype workflows.</p>
+                            <span class="inline-flex items-center gap-1 text-sm font-bold text-primary">View Case Study
+                                <span
+                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#0A0A0A] py-12 px-4 border-t border-white/5">
+            <div class="max-w-[1200px] mx-auto text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Qutaiba W. Mantfaji. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
