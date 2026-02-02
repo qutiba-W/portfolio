@@ -278,7 +278,7 @@
                         </button>
                         <a href="https://drive.google.com/file/d/1eOEJMOLhcq6eyjTCDoCTagktEe0ueXmd/view?usp=drive_link"
                             target="_blank"
-                            class="hidden sm:flex items-center justify-center h-10 px-6 rounded-full border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 text-sm font-bold">Resume</a>
+                            class="flex items-center justify-center h-10 px-4 sm:px-6 rounded-full border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 text-sm font-bold">Resume</a>
                         <a href="mailto:qutibax2@gmail.com"
                             class="hidden sm:flex items-center justify-center h-10 px-6 rounded-full bg-primary text-white hover:bg-primary-dark transition-all duration-300 text-sm font-bold">Contact</a>
                     </div>
@@ -1260,6 +1260,21 @@
                 localStorage.theme = 'dark';
             }
         });
+    </script>
+    <script>
+        // Force scroll to top on load
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        } else {
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            }
+        }
+        window.onload = function () {
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+            }, 10);
+        };
     </script>
 </body>
 
