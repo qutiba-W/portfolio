@@ -198,25 +198,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Marquee Animation */
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .animate-scroll {
-            animation: scroll 30s linear infinite;
-        }
-
-        .pause:hover {
-            animation-play-state: paused;
-        }
-
         /* Hide Scrollbar */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
@@ -896,25 +877,25 @@
                                 <div>
                                     <div class="flex justify-between mb-2 text-sm"><span
                                             class="text-gray-600 dark:text-gray-300">Prompt Engineering</span><span
-                                            class="text-primary font-bold">95%</span></div>
-                                    <div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
-                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-2 text-sm"><span
-                                            class="text-gray-600 dark:text-gray-300">GenAI Strategy</span><span
-                                            class="text-primary font-bold">90%</span></div>
-                                    <div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
-                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-2 text-sm"><span
-                                            class="text-gray-600 dark:text-gray-300">Business Agents</span><span
                                             class="text-primary font-bold">85%</span></div>
                                     <div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
                                         <div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm"><span
+                                            class="text-gray-600 dark:text-gray-300">AI Integration Strategy</span><span
+                                            class="text-primary font-bold">80%</span></div>
+                                    <div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2 text-sm"><span
+                                            class="text-gray-600 dark:text-gray-300">Python Automation</span><span
+                                            class="text-primary font-bold">75%</span></div>
+                                    <div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 75%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1019,8 +1000,7 @@
                             target="_blank"
                             class="cert-card glass-card rounded-2xl p-6 flex items-center gap-6 border-l-4 border-l-amber-500">
                             <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 shrink-0">
-                                <img src="assets/logo-google-cloud.png" class="w-full h-full object-contain"
-                                    loading="lazy">
+                                <img src="assets/logo-google-cloud.png" class="w-full h-full object-contain">
                             </div>
                             <div class="flex-grow">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">Generative AI Leader</h3>
@@ -1033,7 +1013,7 @@
                             target="_blank"
                             class="cert-card glass-card rounded-2xl p-6 flex items-center gap-6 border-l-4 border-l-blue-600">
                             <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 shrink-0">
-                                <img src="assets/logo-asu.png" class="w-full h-full object-contain" loading="lazy">
+                                <img src="assets/logo-asu.png" class="w-full h-full object-contain">
                             </div>
                             <div class="flex-grow">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">Rapid Prototyping Using 3D
@@ -1047,7 +1027,7 @@
                                 target="_blank" class="cert-card glass-card rounded-2xl p-4 flex items-center gap-4">
                                 <div
                                     class="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 shrink-0">
-                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain" loading="lazy">
+                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-900 dark:text-white text-sm">GenAI: Introduction &
@@ -1059,7 +1039,7 @@
                                 target="_blank" class="cert-card glass-card rounded-2xl p-4 flex items-center gap-4">
                                 <div
                                     class="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 shrink-0">
-                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain" loading="lazy">
+                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-900 dark:text-white text-sm">GenAI: Prompt
@@ -1077,8 +1057,7 @@
                                     class="glass-card p-4 rounded-xl border border-gray-200 dark:border-white/5 flex items-center gap-4">
                                     <div
                                         class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shrink-0">
-                                        <img src="assets/logo-multisoft.png" class="w-8 h-8 object-contain"
-                                            loading="lazy">
+                                        <img src="assets/logo-multisoft.png" class="w-8 h-8 object-contain">
                                     </div>
                                     <div>
                                         <h4 class="text-gray-900 dark:text-white font-bold text-sm">Human Resources
@@ -1091,7 +1070,7 @@
                                     class="glass-card p-4 rounded-xl border border-gray-200 dark:border-white/5 flex items-center gap-4">
                                     <div
                                         class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shrink-0">
-                                        <img src="assets/logo-iosh.png" class="w-8 h-8 object-contain" loading="lazy">
+                                        <img src="assets/logo-iosh.png" class="w-8 h-8 object-contain">
                                     </div>
                                     <div>
                                         <h4 class="text-gray-900 dark:text-white font-bold text-sm">IOSH Working Safely
@@ -1248,110 +1227,22 @@
                                 certification in Generative AI strategy, agents, and business transformation."</p>
                         </div>
                     </div>
-                    <div class="mt-16 overflow-hidden relative w-full group">
-                        <!-- Fade Edges -->
-                        <div
-                            class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F9FAFB] dark:from-[#0A0A0A] to-transparent z-10">
+                    <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-40 grayscale mt-16">
+                        <div class="flex items-center gap-2 text-gray-900 dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">view_in_ar</span>
+                            <span class="text-lg font-bold">SolidWorks</span>
                         </div>
-                        <div
-                            class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#F9FAFB] dark:from-[#0A0A0A] to-transparent z-10">
+                        <div class="flex items-center gap-2 text-gray-900 dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">terminal</span>
+                            <span class="text-lg font-bold">Python</span>
                         </div>
-
-                        <!-- Marquee Container -->
-                        <div class="flex gap-16 animate-scroll w-max pause">
-                            <!-- Set 1 -->
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">psychology</span><span
-                                    class="text-lg font-bold">Generative AI</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">terminal</span><span
-                                    class="text-lg font-bold">Prompt Engineering</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">precision_manufacturing</span><span
-                                    class="text-lg font-bold">Rapid Prototyping</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">view_in_ar</span><span
-                                    class="text-lg font-bold">SolidWorks</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">architecture</span><span
-                                    class="text-lg font-bold">Fusion 360</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">functions</span><span
-                                    class="text-lg font-bold">MATLAB</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">print</span><span
-                                    class="text-lg font-bold">3D Printing</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">factory</span><span
-                                    class="text-lg font-bold">CNC Laser</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">safety_check</span><span
-                                    class="text-lg font-bold">Product Design</span>
-                            </div>
-
-                            <!-- Set 2 (Duplicate) -->
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">psychology</span><span
-                                    class="text-lg font-bold">Generative AI</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">terminal</span><span
-                                    class="text-lg font-bold">Prompt Engineering</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">precision_manufacturing</span><span
-                                    class="text-lg font-bold">Rapid Prototyping</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">view_in_ar</span><span
-                                    class="text-lg font-bold">SolidWorks</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">architecture</span><span
-                                    class="text-lg font-bold">Fusion 360</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">functions</span><span
-                                    class="text-lg font-bold">MATLAB</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">print</span><span
-                                    class="text-lg font-bold">3D Printing</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">factory</span><span
-                                    class="text-lg font-bold">CNC Laser</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">safety_check</span><span
-                                    class="text-lg font-bold">Product Design</span>
-                            </div>
+                        <div class="flex items-center gap-2 text-gray-900 dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">neurology</span>
+                            <span class="text-lg font-bold">TensorFlow</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-900 dark:text-white">
+                            <span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+                            <span class="text-lg font-bold">3D Printing</span>
                         </div>
                     </div>
                 </div>
