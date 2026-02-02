@@ -909,33 +909,35 @@
                             Reality</h2>
                     </div>
                     <div class="relative">
-                        <!-- Central Timeline Line -->
+                        <!-- Central Timeline Line (visible on all screens) -->
                         <div
-                            class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent -translate-x-1/2">
+                            class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent md:-translate-x-1/2">
                         </div>
                         <div class="space-y-12 relative z-10">
                             <!-- Step 1: Discovery -->
-                            <div class="flex flex-col md:flex-row items-center gap-8 group">
-                                <div class="w-full md:w-1/2 md:text-right">
+                            <div
+                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0">
+                                <div
+                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
+                                    <span class="material-symbols-outlined text-primary text-xl">search</span>
+                                </div>
+                                <div class="w-full md:w-1/2 md:text-right md:order-first">
                                     <h3
                                         class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                                         01. Discovery</h3>
                                     <p class="text-gray-500 dark:text-gray-400 mt-2">Analyzing requirements and
                                         constraints. Defining the physics of the problem space.</p>
                                 </div>
-                                <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,150,105,0.2)]">
-                                    <span class="material-symbols-outlined text-primary text-xl">search</span>
-                                </div>
                                 <div class="w-full md:w-1/2 hidden md:block"></div>
                             </div>
                             <!-- Step 2: Simulation -->
-                            <div class="flex flex-col md:flex-row items-center gap-8 group">
-                                <div class="w-full md:w-1/2 hidden md:block"></div>
+                            <div
+                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
                                 <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,150,105,0.2)]">
+                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
                                     <span class="material-symbols-outlined text-primary text-xl">deployed_code</span>
                                 </div>
+                                <div class="w-full md:w-1/2 hidden md:block md:order-first"></div>
                                 <div class="w-full md:w-1/2">
                                     <h3
                                         class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
@@ -945,28 +947,30 @@
                                 </div>
                             </div>
                             <!-- Step 3: Fabrication -->
-                            <div class="flex flex-col md:flex-row items-center gap-8 group">
-                                <div class="w-full md:w-1/2 md:text-right">
+                            <div
+                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
+                                <div
+                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl">precision_manufacturing</span>
+                                </div>
+                                <div class="w-full md:w-1/2 md:text-right md:order-first">
                                     <h3
                                         class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                                         03. Fabrication</h3>
                                     <p class="text-gray-500 dark:text-gray-400 mt-2">Rapid prototyping via additive
                                         manufacturing and CNC machining.</p>
                                 </div>
-                                <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,150,105,0.2)]">
-                                    <span
-                                        class="material-symbols-outlined text-primary text-xl">precision_manufacturing</span>
-                                </div>
                                 <div class="w-full md:w-1/2 hidden md:block"></div>
                             </div>
                             <!-- Step 4: Deployment -->
-                            <div class="flex flex-col md:flex-row items-center gap-8 group">
-                                <div class="w-full md:w-1/2 hidden md:block"></div>
+                            <div
+                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
                                 <div
-                                    class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,150,105,0.2)]">
+                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
                                     <span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
                                 </div>
+                                <div class="w-full md:w-1/2 hidden md:block md:order-first"></div>
                                 <div class="w-full md:w-1/2">
                                     <h3
                                         class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
