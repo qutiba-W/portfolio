@@ -717,85 +717,194 @@
 
             <!-- Selected Works -->
             <!-- Selected Works -->
+            <!-- Selected Works Section (Tabbed) -->
             <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto" id="work">
                 <div class="text-center mb-10 reveal">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm">Portfolio</span>
                     <h2 class="text-4xl font-bold mt-2 text-gray-900 dark:text-white">Selected Works</h2>
                     <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Explore my multidisciplinary projects across
-                        engineering,
-                        artificial intelligence, and data analytics.</p>
+                        engineering, AI, and analytics.</p>
                 </div>
 
-                <!-- Category Cards Grid -->
-                <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12" id="work-tabs">
+                    <button
+                        class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 bg-primary text-white shadow-lg shadow-primary/25 ring-2 ring-primary/50"
+                        data-filter="all">ALL</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5 hover:border-white/10"
+                        data-filter="engineering">ENGINEERING</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5 hover:border-white/10"
+                        data-filter="ai">AI & SOFTWARE</button>
+                    <button
+                        class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5 hover:border-white/10"
+                        data-filter="analytics">ANALYTICS</button>
+                </div>
 
-                    <!-- Engineering Card -->
-                    <a href="categories/engineering.html"
-                        class="glass-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[400px] hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 reveal reveal-delay-100">
+                <!-- Projects Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+
+                    <!-- [AI] NeuroForge -->
+                    <a href="projects/neuroforge.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="ai">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
-                            <div class="w-full h-full bg-cover bg-center opacity-70 group-hover:opacity-50 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
-                                style="background-image: url('assets/parametric_auger.png');">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500">
-                            </div>
+                            <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/neuroforge-live.png');"></div>
                         </div>
-                        <div class="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
-                            <span
-                                class="material-symbols-outlined text-6xl text-orange-400 mb-6 group-hover:scale-110 transition-transform duration-300">precision_manufacturing</span>
-                            <h3 class="text-3xl font-bold text-white mb-2 font-display">Engineering</h3>
-                            <p class="text-gray-300 mb-6 max-w-xs">Mechanical Systems, Parametric Design, and Industrial
-                                Fabrication.</p>
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 border border-white/20 rounded-full text-white text-sm font-bold group-hover:bg-white/10 transition-colors">
-                                View Projects <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </span>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span class="text-xs font-bold text-primary mb-2 uppercase tracking-wider">AI /
+                                Software</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">NeuroForge</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Cognitive Conditioning Platform. A "Gym
+                                for the Brain" using n-back tasks.</p>
                         </div>
                     </a>
 
-                    <!-- AI & Software Card -->
-                    <a href="categories/ai.html"
-                        class="glass-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[400px] hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 reveal reveal-delay-200">
+                    <!-- [AI] Habit Forest -->
+                    <a href="projects/habit-forest.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="ai">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
-                            <div class="w-full h-full bg-cover bg-center opacity-70 group-hover:opacity-50 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
-                                style="background-image: url('assets/neuroforge-live.png');">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500">
-                            </div>
+                            <div class="w-full h-full bg-cover bg-top opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/habit-forest-live.png');"></div>
                         </div>
-                        <div class="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
-                            <span
-                                class="material-symbols-outlined text-6xl text-primary mb-6 group-hover:scale-110 transition-transform duration-300">psychology</span>
-                            <h3 class="text-3xl font-bold text-white mb-2 font-display">AI & Software</h3>
-                            <p class="text-gray-300 mb-6 max-w-xs">Cognitive Architectures, LLM Agents, and Full-Stack
-                                Development.
-                            </p>
-                            <span
-                                class="inline-flex items-center gap-2 px-6 py-2 border border-white/20 rounded-full text-white text-sm font-bold group-hover:bg-white/10 transition-colors">
-                                View Projects <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </span>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span class="text-xs font-bold text-primary mb-2 uppercase tracking-wider">AI /
+                                Software</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Habit Forest</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Gamified productivity ecosystem treating
+                                habits as a manufacturing system.</p>
                         </div>
                     </a>
 
-                    <!-- Analytics Card -->
-                    <a href="categories/analytics.html"
-                        class="glass-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[400px] hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 reveal reveal-delay-300">
+                    <!-- [ENG] Parametric Auger -->
+                    <a href="projects/parametric-auger.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="engineering">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-contain bg-center bg-no-repeat opacity-90 group-hover:opacity-75 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/parametric_auger.png');"></div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span
+                                class="text-xs font-bold text-orange-400 mb-2 uppercase tracking-wider">Engineering</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Parametric Auger</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Scalable Earth Auger Drill Bit designed
+                                with parametric equations.</p>
+                        </div>
+                    </a>
+
+                    <!-- [ENG] M12 Nut -->
+                    <a href="projects/m12-nut.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="engineering">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-cover bg-[center_30%] opacity-80 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/m12_nut.png');"></div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span
+                                class="text-xs font-bold text-orange-400 mb-2 uppercase tracking-wider">Engineering</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Standard M12 Nut</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">ISO metric screw thread modeled with
+                                precise tolerances and GD&T.</p>
+                        </div>
+                    </a>
+
+                    <!-- [DATA] HR Analytics -->
+                    <a href="projects/hr-analytics.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="analytics">
                         <div class="absolute inset-0 bg-[#0A0A0A] z-0">
                             <div
-                                class="w-full h-full bg-gradient-to-br from-rose-900 via-pink-900 to-purple-900 opacity-80 group-hover:opacity-60 transition-opacity duration-500">
+                                class="w-full h-full bg-gradient-to-br from-rose-900 to-pink-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
                             </div>
                         </div>
-                        <div class="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span class="text-xs font-bold text-rose-400 mb-2 uppercase tracking-wider">Analytics</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">HR Analytics</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Random Forest algorithms predicting
+                                employee retention with 95% accuracy.</p>
+                        </div>
+                    </a>
+
+                    <!-- [ENG] Parametric Gear -->
+                    <a href="projects/parametric-gear.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="engineering">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-orange-900 to-amber-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                             <span
-                                class="material-symbols-outlined text-6xl text-rose-400 mb-6 group-hover:scale-110 transition-transform duration-300">analytics</span>
-                            <h3 class="text-3xl font-bold text-white mb-2 font-display">Analytics</h3>
-                            <p class="text-gray-300 mb-6 max-w-xs">Data Science, Predictive Modeling, and Business
-                                Intelligence.</p>
+                                class="text-xs font-bold text-orange-400 mb-2 uppercase tracking-wider">Engineering</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Parametric Gear</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Print-in-place mechanical assembly with
+                                0.2mm tolerance.</p>
+                        </div>
+                    </a>
+
+                    <!-- [AI] AI Design Pipeline -->
+                    <a href="projects/ai-design-pipeline.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="ai">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-cyan-900 to-blue-900 opacity-50 group-hover:opacity-30 transition-all duration-500">
+                            </div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span class="text-xs font-bold text-cyan-400 mb-2 uppercase tracking-wider">AI /
+                                Software</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">AI Design Pipeline</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Integrating LLM Agents to parse technical
+                                requirements for design.</p>
+                        </div>
+                    </a>
+
+                    <!-- [ENG] Industrial Design -->
+                    <a href="projects/industrial-design.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="engineering">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-cover bg-[center_top] opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/industrial-design.jpg');"></div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
+                            <span class="text-xs font-bold text-blue-400 mb-2 uppercase tracking-wider">Design</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Industrial Design</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">Aesthetic and functional 3D modeling
+                                using Fusion 360.</p>
+                        </div>
+                    </a>
+
+                    <!-- [ENG] Product Design -->
+                    <a href="projects/product-design.html"
+                        class="glass-card project-card rounded-2xl p-1 relative group overflow-hidden block cursor-pointer h-[350px]"
+                        data-category="engineering">
+                        <div class="absolute inset-0 bg-[#0A0A0A] z-0">
+                            <div class="w-full h-full bg-cover bg-center opacity-60 group-hover:opacity-40 transition-opacity duration-500 scale-100 group-hover:scale-105 transition-transform"
+                                style="background-image: url('assets/laser-tokens-acrylic.png');"></div>
+                        </div>
+                        <div
+                            class="relative z-10 h-full flex flex-col justify-end p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                             <span
-                                class="inline-flex items-center gap-2 px-6 py-2 border border-white/20 rounded-full text-white text-sm font-bold group-hover:bg-white/10 transition-colors">
-                                View Projects <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </span>
+                                class="text-xs font-bold text-blue-400 mb-2 uppercase tracking-wider">Manufacturing</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Fabrication</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-4">CNC Laser manufacturing workflows and
+                                prototyping.</p>
                         </div>
                     </a>
 
@@ -1444,6 +1553,43 @@
 
         document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
+        });
+
+        // 4. Tab Filtering Logic
+        const tabs = document.querySelectorAll('#work-tabs button');
+        const cards = document.querySelectorAll('.project-card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update Tab Styles
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/25', 'ring-2', 'ring-primary/50');
+                    t.classList.add('bg-white/5', 'text-gray-400', 'border', 'border-white/5');
+                });
+
+                tab.classList.remove('bg-white/5', 'text-gray-400', 'border', 'border-white/5');
+                tab.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/25', 'ring-2', 'ring-primary/50');
+
+                // Filter Projects
+                const filter = tab.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        // Small delay to allow display:block to apply before opacity transition
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
         });
     </script>
 </body>
