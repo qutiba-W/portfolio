@@ -47,6 +47,47 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            /* Needed for pseudo-elements */
+        }
+
+        /* Tech Corners (Engineering Aesthetic) */
+        .glass-card::before,
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            opacity: 0;
+            /* Hidden by default */
+            z-index: 20;
+            /* Ensure on top of background images */
+        }
+
+        /* Top Left & Top Right */
+        .glass-card::before {
+            top: -1px;
+            left: -1px;
+            border-top: 2px solid #DC2626;
+            border-left: 2px solid #DC2626;
+        }
+
+        .glass-card::after {
+            bottom: -1px;
+            right: -1px;
+            border-bottom: 2px solid #DC2626;
+            border-right: 2px solid #DC2626;
+        }
+
+        /* Show corners on hover */
+        .glass-card:hover::before,
+        .glass-card:hover::after {
+            opacity: 1;
+            width: 100%;
+            /* Expands to full border on hover */
+            height: 100%;
         }
 
         .glass-card:hover {
