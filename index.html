@@ -77,6 +77,45 @@
             border: 1px solid #E5E7EB;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            /* Needed for pseudo-elements */
+        }
+
+        /* Tech Corners (Engineering Aesthetic) */
+        .glass-card::before,
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            opacity: 0;
+            /* Hidden by default, shown on hover/dark mode or always if desired */
+        }
+
+        /* Top Left & Top Right */
+        .glass-card::before {
+            top: -1px;
+            left: -1px;
+            border-top: 2px solid #DC2626;
+            border-left: 2px solid #DC2626;
+        }
+
+        .glass-card::after {
+            bottom: -1px;
+            right: -1px;
+            border-bottom: 2px solid #DC2626;
+            border-right: 2px solid #DC2626;
+        }
+
+        /* Show corners on hover */
+        .glass-card:hover::before,
+        .glass-card:hover::after {
+            opacity: 1;
+            width: 100%;
+            /* Expands to full border on hover */
+            height: 100%;
         }
 
         .dark .glass-card {
@@ -777,6 +816,96 @@
                     <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Selected Works</h2>
                 </div>
             </section>
+
+            <!-- Tech Stack Marquee (Restored & Infinite) -->
+            <div class="py-10 bg-black border-y border-white/5 overflow-hidden relative group">
+                <!-- Fade Edges -->
+                <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
+
+                <div class="flex gap-16 animate-scroll w-max">
+                    <!-- Set 1 -->
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
+                    </div>
+
+                    <!-- Set 2 (Duplicate) -->
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
+                    </div>
+
+                    <!-- Set 3 (Triple for safety on wide screens) -->
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
+                    </div>
+                    <div class="flex items-center gap-4 group/item">
+                        <span
+                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
+                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
+                    </div>
+                </div>
+            </div>
 
 
 
