@@ -407,8 +407,17 @@
             class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-[#0A0A0A]/80 backdrop-blur-md">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-20">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary text-3xl">hexagon</span>
+                    <div class="flex items-center gap-2 group">
+                        <!-- Animated Gear Icon -->
+                        <svg class="w-8 h-8 text-primary animate-[spin_10s_linear_infinite] group-hover:animate-[spin_2s_linear_infinite]"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                fill="currentColor" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M19.3541 15.6888L21.3788 15.3514C21.8596 15.2713 22.1818 14.7797 22.0292 14.3069C21.8606 13.7844 21.6163 12.9238 21.6163 12C21.6163 11.0762 21.8606 10.2156 22.0292 9.69314C22.1818 9.22026 21.8596 8.72873 21.3788 8.64861L19.3541 8.31119C19.242 7.74906 19.0346 7.21855 18.751 6.72704L19.7891 5.01186C20.0355 4.60477 19.8665 4.07223 19.4533 3.86873C18.9967 3.64382 18.232 3.28448 17.432 3.07014C16.632 2.8558 15.8291 2.76662 15.341 2.75624C14.8992 2.74684 14.5085 2.99623 14.3204 3.40798L13.528 5.14207C13.0336 5.07409 12.5226 5.03906 12 5.03906C11.4774 5.03906 10.9664 5.07409 10.472 5.14207L9.67956 3.40798C9.49149 2.99623 9.10081 2.74684 8.65899 2.75624C8.17095 2.76662 7.368 2.8558 6.56801 3.07014C5.76802 3.28448 5.00327 3.64382 4.54674 3.86873C4.13348 4.07223 3.96451 4.60477 4.2109 5.01186L5.24903 6.72704C4.96542 7.21855 4.75797 7.74906 4.64593 8.31119L2.62121 8.64861C2.14039 8.72873 1.81816 9.22026 1.97082 9.69314C2.13941 10.2156 2.38372 11.0762 2.38372 12C2.38372 12.9238 2.13941 13.7844 1.97082 14.3069C1.81816 14.7797 2.14039 15.2713 2.62121 15.3514L4.64593 15.6888C4.75797 16.2509 4.96542 16.7814 5.24903 17.273L4.2109 19.0573C3.96451 19.4644 4.13348 19.9969 4.54674 20.2004C5.00327 20.4253 5.76802 20.7846 6.56801 20.999C7.368 21.2133 8.17095 21.3025 8.65899 21.3129C9.10081 21.3223 9.49149 21.0729 9.67956 20.6612L10.472 18.9271C10.9664 18.9951 11.4774 19.0301 12 19.0301C12.5226 19.0301 13.0336 18.9951 13.528 18.9271L14.3204 20.6612C14.5085 21.0729 14.8992 21.3223 15.341 21.3129C15.8291 21.3025 16.632 21.2133 17.432 20.999C18.232 20.7846 18.9967 20.4253 19.4533 20.2004C19.8665 19.9969 20.0355 19.4644 19.7891 19.0573L18.751 17.273C19.0346 16.7814 19.242 16.2509 19.3541 15.6888Z"
+                                fill="currentColor" />
+                        </svg>
                         <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Qutaiba W. Mantfaji
                         </h1>
                     </div>
@@ -417,8 +426,6 @@
                             href="#work">Work</a>
                         <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
                             href="#process">Process</a>
-                        <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-                            href="#skills">Skills</a>
                         <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
                             href="#certifications">Certifications</a>
                         <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
@@ -442,7 +449,7 @@
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="relative min-h-[80vh] flex items-center justify-center pt-24 pb-20 px-4 overflow-hidden">
+            <section class="relative min-h-[60vh] flex items-center justify-center pt-12 pb-10 px-4 overflow-hidden">
                 <!-- Ambient Glow Orbs -->
                 <div
                     class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse">
@@ -486,18 +493,8 @@
                         ENGINEERING<br />INTELLIGENCE</h1>
                     <div
                         class="text-lg sm:text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto tracking-wide flex flex-col md:block gap-4 items-center">
-                        <div class="mech-dimension mb-4 md:mb-0 relative inline-block px-4">
-                            <span class="relative z-10">Qutaiba W. Mantfaji</span>
-                            <span class="mech-tag">SCALE 1:1</span>
-                            <!-- Animated SVG Dimension Line -->
-                            <svg class="mech-svg" viewBox="0 0 100 15" preserveAspectRatio="none">
-                                <!-- Horizontal Line -->
-                                <line x1="0" y1="10" x2="100" y2="10" />
-                                <!-- Left Tick -->
-                                <line x1="0" y1="2" x2="0" y2="18" />
-                                <!-- Right Tick -->
-                                <line x1="100" y1="2" x2="100" y2="18" />
-                            </svg>
+                        <div class="mb-4 md:mb-0 relative inline-block px-4">
+                            <span class="relative z-10 text-primary font-bold">Qutaiba W. Mantfaji</span>
                         </div>
                         <span class="hidden md:inline mx-2">—</span>
                         <span id="typewriter-text" class="text-primary font-medium"></span><span
@@ -724,7 +721,7 @@
             <!-- Selected Works Section (Tabbed) -->
             <!-- Selected Works Section (Gear Navigation) -->
             <section
-                class="py-24 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-[600px] flex flex-col items-center justify-center relative"
+                class="py-10 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-[600px] flex flex-col items-center justify-center relative"
                 id="work">
 
                 <!-- Advanced Rotating Gear Button -->
@@ -819,105 +816,7 @@
                 </div>
             </div>
 
-            <!-- Skills Section -->
-            <section class="py-16 bg-background-light dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5"
-                id="skills">
-                <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
-                    <div class="text-center mb-10 reveal">
-                        <span class="text-primary font-bold tracking-widest uppercase text-sm">Capabilities</span>
-                        <h2 class="text-4xl font-bold mt-2 text-gray-900 dark:text-white">Technical Arsenal</h2>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="glass-card rounded-2xl p-8 reveal reveal-delay-100">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                                <span
-                                    class="material-symbols-outlined text-blue-500">precision_manufacturing</span>Advanced
-                                Manufacturing
-                            </h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-sm">Rapid
-                                    Prototyping</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-sm">3D
-                                    Printing / Additive</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-sm">CNC
-                                    Laser Fabrication</span>
-                            </div>
-                        </div>
-                        <div class="glass-card rounded-2xl p-8 reveal reveal-delay-200">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-green-500">psychology</span>Generative AI &
-                                Logic
-                            </h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 font-bold text-sm">Prompt
-                                    Engineering</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 font-bold text-sm">GenAI
-                                    Strategy</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 font-bold text-sm">Business
-                                    Agents</span>
-                            </div>
-                        </div>
-                        <div class="glass-card rounded-2xl p-8 reveal reveal-delay-100">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-purple-500">architecture</span>Engineering
-                                Design (CAD)
-                            </h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 font-bold text-sm">Laser
-                                    CAM Software</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 font-bold text-sm">CAD
-                                    Tools (SolidWorks/Fusion)</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400 font-bold text-sm">Engineering
-                                    Analysis</span>
-                            </div>
-                        </div>
-                        <div class="glass-card rounded-2xl p-8 reveal reveal-delay-200">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-orange-500">engineering</span>Management &
-                                Safety
-                            </h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 font-bold text-sm">Industrial
-                                    Safety - HSE</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 font-bold text-sm">Project
-                                    Management</span>
-                                <span
-                                    class="px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 font-bold text-sm">Business
-                                    Strategy</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-16">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"><span
-                                class="material-symbols-outlined text-primary">book</span>Relevant Courses</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span
-                                class="px-4 py-2 rounded-full bg-white/5 border border-gray-200 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300">Principles
-                                of Project Management</span>
-                            <span
-                                class="px-4 py-2 rounded-full bg-white/5 border border-gray-200 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300">MATLAB
-                                for Numerical Analysis</span>
-                            <span
-                                class="px-4 py-2 rounded-full bg-white/5 border border-gray-200 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300">Excel
-                                for Engineering Statistics</span>
-                            <span
-                                class="px-4 py-2 rounded-full bg-white/5 border border-gray-200 dark:border-white/10 text-sm text-gray-600 dark:text-gray-300">Creative
-                                Thinking</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
 
             <!-- Certifications -->
             <section class="py-20 bg-background-light dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5"
@@ -1107,7 +1006,7 @@
 
             <!-- Partnerships & Testimonials Section -->
             <section
-                class="py-24 bg-gray-50 dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5 overflow-hidden">
+                class="py-10 bg-gray-50 dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5 overflow-hidden">
                 <div class="max-w-[1400px] mx-auto px-4">
                     <div class="text-center mb-16">
                         <span class="text-primary font-bold tracking-widest uppercase text-sm">Collaborations</span>
