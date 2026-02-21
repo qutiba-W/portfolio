@@ -19,53 +19,82 @@
 
 ### SUNDAY
 - 08:00 - ENGR 358: Mechanics of Materials
-- 09:00 - CIV 203: Ancient World (All)
-- 10:00 - GOLDEN GAP: Library Mode
+- 09:00 - RETENTION PROTOCOL: 358 Review
+- 10:00 - PROBLEM SETS: Mechanics & Math
+- 12:00 - REFUEL: Analog Mode (No Phone)
+- 01:00 - ACTIVE RECALL: Circuits Prep
 - 02:00 - ENGR 390: Circuits
-- 03:00 - PRE-DYNAMICS: Formula Review
-- 05:00 - ENGR 348: Mechanics II
-- 08:00 PM - DEEP WORK: Dynamics Mastery
+- 03:00 - TACTICAL PAUSE: NSDR / Horizon Gaze
+- 04:00 - ENGR 348: Mechanics II (Dynamics)
+- 05:00 - DINNER & DECOMPRESS: Social/Silence
+- 07:00 PM - DEEP WORK: Dynamics Mastery
+- 11:00 PM - SYSTEM SHUTDOWN: Prepare for Tomorrow
 
 ### MONDAY
-- 10:00 - Measurements Lab
-- 12:00 - THE GAP: Lunch + Review
-- 02:00 - MTH 332: ODEs
+- 08:00 - PRE-LAB: Procedure Visualization
+- 09:00 - ENGR 313: Measurements Lab
+- 11:00 - DATA PROCESSING: Lab Reports (Immediate)
+- 12:00 - REFUEL: Analog Mode (No Phone)
+- 01:00 - MATH DRILLS: ODE Practice
+- 02:00 - MATH 332: Ordinary Differential Equations
+- 03:00 - TRANSITION: Gym Prep + Horizon Gaze
 - 04:00 - GYM SESSION: Legs (Volume) | 4:00-6:00
+- 06:00 - POST-WORKOUT: Nutrition
+- 07:00 PM - DEEP WORK: Dynamics Mastery
+- 11:00 PM - SYSTEM SHUTDOWN: Prepare for Tomorrow
 
 ### TUESDAY
-- 08:00 - ENGR 358
-- 09:00 - CIV 203
-- 12:00 - GOLDEN GAP: Library Mode
-- 02:00 - ENGR 390
-- 03:00 - PRE-DYNAMICS
-- 05:00 - ENGR 348
-- 09:00 PM - DEEP WORK: Dynamics Mastery
+- 08:00 - ENGR 358: Mechanics of Materials
+- 09:00 - RETENTION PROTOCOL: 358 Review
+- 10:00 - PROBLEM SETS: Mechanics & Math
+- 12:00 - REFUEL: Analog Mode (No Phone)
+- 01:00 - ACTIVE RECALL: Circuits Prep
+- 02:00 - ENGR 390: Circuits
+- 03:00 - TACTICAL PAUSE: NSDR / Horizon Gaze
+- 04:00 - ENGR 348: Mechanics II (Dynamics)
+- 05:00 - DINNER & DECOMPRESS: Social/Silence
+- 07:00 PM - DEEP WORK: Dynamics Mastery
+- 11:00 PM - SYSTEM SHUTDOWN: Prepare for Tomorrow
 
 ### WEDNESDAY
-- 10:00 - Measurements
-- 12:00 - THE GAP: Lunch + Review
-- 02:00 - MTH 332: ODEs
+- 08:00 - PRE-LAB: Procedure Visualization
+- 09:00 - ENGR 313: Measurements Lab
+- 11:00 - DATA PROCESSING: Lab Reports (Immediate)
+- 12:00 - REFUEL: Analog Mode (No Phone)
+- 01:00 - MATH DRILLS: ODE Practice
+- 02:00 - MATH 332: Ordinary Differential Equations
+- 03:00 - TRANSITION: Gym Prep + Horizon Gaze
 - 04:00 - GYM SESSION: Legs (Speed/Flow) | 4:00-6:00
-- 09:00 PM - DEEP WORK: Circuits & ODEs
+- 06:00 - POST-WORKOUT: Nutrition
+- 07:00 PM - DEEP WORK: Circuits & ODEs
+- 11:00 PM - SYSTEM SHUTDOWN: Prepare for Tomorrow
 
 ### THURSDAY
-- 08:00 - ENGR 358
-- 09:00 - CIV 203
-- 12:00 - GOLDEN GAP: Library Mode
-- 02:00 - ENGR 390
-- 03:00 - PRE-DYNAMICS
-- 05:00 - ENGR 348
-- 08:00 PM - DEEP WORK: Dynamics Mastery
+- 08:00 - ENGR 358: Mechanics of Materials
+- 09:00 - RETENTION PROTOCOL: 358 Review
+- 10:00 - PROBLEM SETS: Mechanics & Math
+- 12:00 - REFUEL: Analog Mode (No Phone)
+- 01:00 - ACTIVE RECALL: Circuits Prep
+- 02:00 - ENGR 390: Circuits
+- 03:00 - TACTICAL PAUSE: NSDR / Horizon Gaze
+- 04:00 - ENGR 348: Mechanics II (Dynamics)
+- 05:00 - DINNER & DECOMPRESS: Social/Silence
+- 07:00 PM - DEEP WORK: Dynamics Mastery
+- 11:00 PM - SYSTEM SHUTDOWN: Prepare for Tomorrow
 
-### FRIDAY
-- 08:00 - SLEEP RECOVERY: Wake Naturally | 8:00 AM - 11:00 AM
-- 04:00 - GYM SESSION: Legs (Hypertrophy) | 4:00-6:00
-- 08:00 PM - DEEP WORK: Python/AI
+### FRIDAY (The Reset Day)
+- 09:00 - SLEEP IN: Recovery Mode
+- 11:30 - JUMU'AH & LUNCH: Prayer + Family (Non-negotiable) | 11:30-1:30
+- 02:00 - ARCHITECT'S TIME: Portfolio/AI Coding (Creative Flow)
+- 04:00 - GYM SESSION: Active Recovery / Upper Body (Light)
+- 06:00 - SOCIAL / FREE: Brain Off. No Work.
 
-### SATURDAY
-- 08:00 - SLEEP RECOVERY: Wake Naturally | 8:00 AM - 11:00 AM
-- 04:00 - GYM SESSION: Legs (Hypertrophy) | 4:00-6:00
-- 08:00 PM - DEEP WORK: Weekly Review
+### SATURDAY (The Systems Day)
+- 09:00 - SYSTEMS CHECK: Weekly Review & Logistics
+- 10:00 - DEEP WORK: Project Overflow (Catch-up)
+- 01:00 - REFUEL: Lunch
+- 04:00 - GYM SESSION: LEGS (Heavy) | 4:00-6:00
+- 08:00 PM - PLANNING: Strategy for Next Week
 
 ---
 

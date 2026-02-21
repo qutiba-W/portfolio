@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Qutaiba W. Mantfaji - Engineering Intelligence</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
@@ -18,24 +18,33 @@
             theme: {
                 extend: {
                     colors: {
+                        /* Cyber-Physical Systems Theme */
+                        "sys-black": "#09090b",       /* Deep Background */
+                        "sys-surface": "#18181b",     /* Card Background */
+                        "sys-primary": "#DC2626",     /* Engineering Red */
+                        "sys-cyan": "#22d3ee",        /* Laser Blue (Hardware) */
+                        "sys-text": "#e4e4e7",        /* High Contrast Text */
+                        "sys-dim": "#a1a1aa",         /* Secondary Text */
+                        /* Legacy colors for compatibility */
                         "primary": "#DC2626",
                         "primary-dark": "#B91C1C",
                         "primary-light": "#F87171",
                         "primary-glow": "#EF4444",
                         "background": "#F9FAFB",
-                        "background-dark": "#0A0A0A",
+                        "background-dark": "#09090b",
                         "surface": "#FFFFFF",
-                        "surface-dark": "#121212",
+                        "surface-dark": "#18181b",
                         "surface-secondary": "#F3F4F6",
                         "text-main": "#111827",
                         "text-muted": "#4B5563",
                     },
                     fontFamily: {
                         "display": ["Space Grotesk", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"]
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"], /* For Skills/Tags */
                     },
                     backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
+                        'grid-pattern': "linear-gradient(to right, #18181b 1px, transparent 1px), linear-gradient(to bottom, #18181b 1px, transparent 1px)",
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
                     }
                 },
@@ -148,7 +157,7 @@
 
         /* Gradient Text */
         .gradient-text {
-            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            background: linear-gradient(135deg, #DC2626 0%, #22d3ee 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -545,7 +554,7 @@
                                 <line x1="100" y1="2" x2="100" y2="18" />
                             </svg>
                         </div>
-                        <span class="hidden md:inline mx-2">—</span>
+                        <span class="hidden md:inline mx-2 text-primary/30">|</span>
                         <span id="typewriter-text" class="text-primary font-medium"></span><span
                             class="cursor-blink"></span>
                     </div>
@@ -577,7 +586,7 @@
                                 <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Certifications</p>
                             </div>
                             <div class="text-center">
-                                <h3 class="text-3xl font-black text-primary">3+</h3>
+                                <h3 class="text-3xl font-black text-primary">4+</h3>
                                 <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Projects</p>
                             </div>
                             <div class="text-center">
@@ -712,10 +721,10 @@
                         <div class="p-4 group">
                             <div
                                 class="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                                10+</div>
+                                4+</div>
                             <div
                                 class="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                                Prototypes Built</div>
+                                Projects Developed</div>
                         </div>
                     </div>
                 </div>
