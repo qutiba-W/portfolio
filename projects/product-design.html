@@ -1,243 +1,195 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Product Design - Engineering Project</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Design & Fabrication — Qutaiba Mantfaji</title>
+    <meta name="description" content="CNC laser fabrication workflow — acrylic and wood prototypes cut from Fusion 360 models, toolpaths generated in LightBurn." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <meta property="og:title" content="Product Design & Fabrication — Qutaiba Mantfaji" />
+    <meta property="og:description" content="CNC laser fabrication workflow — acrylic and wood prototypes cut from Fusion 360 models, toolpaths generated in LightBurn." />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#fbf8f2" />
     <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/theme.css?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#3B82F6", /* Blue for Design focus */
-                        "primary-dark": "#2563EB",
-                        "primary-light": "#60A5FA",
-                        "background": "#F9FAFB",
-                        "background-dark": "#0A0A0A",
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"]
+                        heading: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+                        body: ['DM Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
-                    }
                 },
             },
         }
     </script>
-    <style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-        }
-    </style>
 </head>
 
-<body class="bg-background-dark text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern bg-[size:40px_40px] opacity-[0.2]"></div>
-    <div
-        class="fixed top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none z-0">
-    </div>
+<body class="bg-bg text-ink font-body">
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="../index.html" class="font-heading font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">Qutaiba W. Mantfaji</a>
+            <nav class="flex items-center gap-6" aria-label="Main">
+                <a href="../index.html#projects" class="text-sm text-dim hover:text-accent-ink transition-colors">Projects</a>
+                <a href="../index.html#contact" class="text-sm text-dim hover:text-accent-ink transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="relative z-10 flex flex-col min-h-screen">
-        <!-- Navbar -->
-        <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0A0A]/80 backdrop-blur-md">
-            <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-                <a href="../index.html" class=" group flex items-center gap-3">
-                    <div
-                        class="relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
-                        <span class="font-display font-bold text-xl text-primary">Q</span>
-                    </div>
-                </a>
-                <nav class="hidden md:flex gap-8">
-                    <a href="../categories/engineering.html"
-                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Back to
-                        Engineering</a>
-                </nav>
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 py-14">
+        <nav class="font-mono text-xs text-dim mb-10" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-accent-ink">Home</a>
+            <span aria-hidden="true"> / </span>
+            <a href="../categories/engineering.html" class="hover:text-accent-ink">Engineering</a>
+            <span aria-hidden="true"> / </span>
+            <span class="text-ink">Product Design</span>
+        </nav>
+
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="badge badge-archive">Archive</span>
+                <span class="cat-tag">Fabrication</span>
             </div>
-        </header>
+            <h1 class="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-5">Product Design & Fabrication</h1>
+            <p class="text-dim text-lg max-w-[680px]">
+                CNC laser fabrication workflow — acrylic and wood prototypes cut directly from
+                Fusion 360 models, toolpaths generated in LightBurn and verified in simulation before cutting.
+            </p>
+        </div>
 
-        <main class="flex-grow pt-12 pb-20 px-4 sm:px-6">
-            <div class="max-w-4xl mx-auto">
-                <!-- Breadcrumb -->
-                <div class="flex items-center gap-2 text-sm text-gray-500 mb-8">
-                    <a href="../index.html" class="hover:text-white transition-colors">Home</a>
-                    <span class="material-symbols-outlined text-xs">chevron_right</span>
-                    <a href="../categories/engineering.html" class="hover:text-white transition-colors">Engineering</a>
-                    <span class="material-symbols-outlined text-xs">chevron_right</span>
-                    <span class="text-primary">Product Design</span>
-                </div>
-
-                <!-- Project Header -->
-                <div class="mb-12">
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-500/30 text-blue-400 bg-blue-500/10">Manufacturing</span>
-                        <div class="flex gap-2 text-gray-400 text-sm">
-                            <span>CNC Laser</span> • <span>Rapid Prototyping</span> • <span>CAM</span>
-                        </div>
-                    </div>
-                    <h1 class="text-4xl md:text-6xl font-bold font-display text-white mb-6">Product Design
-                    </h1>
-                    <p class="text-xl text-gray-300 leading-relaxed">
-                        Moving beyond digital models to physical reality. Executing precision manufacturing workflows
-                        using CNC Laser systems to produce functional, tangible prototypes.
+        <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
+            <article class="space-y-12">
+                <section>
+                    <h2 class="section-label mb-4">The Process</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px]">
+                        A complete CAD-to-cut workflow: designs modeled in Fusion 360, DXF profiles exported,
+                        toolpaths generated and simulated in LightBurn before touching material, then cut on
+                        a CO₂ laser. The focus was kerf compensation — accounting for the material removed
+                        during cutting so parts fit together as designed, not as-cut.
                     </p>
-                </div>
+                </section>
 
-                <!-- Main Image -->
-                <div
-                    class="w-full h-[400px] md:h-[500px] bg-black/50 rounded-3xl overflow-hidden border border-white/10 mb-16 shadow-2xl">
-                    <img src="../assets/laser-tokens-acrylic.png" alt="Product Design Prototypes"
-                        class="w-full h-full object-cover object-center">
-                </div>
-
-                <!-- Content Sections -->
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="md:col-span-2 space-y-12">
-                        <!-- Problem -->
-                        <section>
-                            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">precision_manufacturing</span>
-                                CAD-to-CAM Workflow
-                            </h2>
-                            <p class="text-gray-400 leading-relaxed">
-                                The bridge between a digital design and a physical object is the manufacturing strategy.
-                                This project highlights the use of CNC Laser cutters to process various materials
-                                including acrylic, wood, and MDF.
+                <section>
+                    <h2 class="section-label mb-4">Workflow</h2>
+                    <div class="space-y-5 max-w-[680px]">
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Kerf-compensated DXF profiles</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                Fusion 360 profiles were offset by half the measured kerf width before export
+                                so that tabs, slots, and press-fit joints land on nominal dimensions after cutting —
+                                not the design dimensions minus the material the laser removed.
                             </p>
-                        </section>
-
-                        <!-- Solution -->
-                        <section>
-                            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">analytics</span> Fabrication &
-                                Assembly
-                            </h2>
-                            <p class="text-gray-400 leading-relaxed mb-4">
-                                Manufacturing constraints dictate design decisions.
+                        </div>
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">LightBurn simulation before cut</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                Every job was simulated in LightBurn to verify cut order and travel moves.
+                                Cutting inner geometry before outer profiles prevents parts from shifting
+                                mid-cut when the outer contour releases them from the sheet.
                             </p>
-                            <ul class="space-y-3 text-gray-400">
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span><strong>Material Science:</strong> Selecting appropriate settings
-                                        (speed/power) for cutting Acrylic vs. Engraving Wood to achieve optimal edge
-                                        quality.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span><strong>Tolerance & Fit:</strong> Accounting for laser kerf (0.1mm - 0.3mm) to
-                                        ensure snap-fit joints and precise assembly of multi-part mechanisms.</span>
-                                </li>
-                            </ul>
-                        </section>
-
-
-
-                        <!-- Prototype Gallery -->
-                        <section>
-                            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">gallery_thumbnail</span> Fabricated
-                                Prototypes
-                            </h2>
-                            <p class="text-gray-400 mb-6">
-                                A collection of functional prototypes designed and manufactured using CNC laser systems.
+                        </div>
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Materials: acrylic and wood</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                Power/speed profiles were calibrated per-material with test cuts before running
+                                full jobs. Acrylic required lower speed and higher air-assist pressure than
+                                wood to avoid melted edges and char buildup.
                             </p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div
-                                    class="group relative aspect-video bg-black/20 rounded-xl overflow-hidden border border-white/5">
-                                    <img src="../assets/laser-tokens-acrylic.png" alt="Acrylic Tokens"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                        <p class="text-white text-sm font-bold">Acrylic Tokens</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="group relative aspect-video bg-black/20 rounded-xl overflow-hidden border border-white/5">
-                                    <img src="../assets/laser-board-game.jpg" alt="Wooden Board Game"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                        <p class="text-white text-sm font-bold">Wooden Strategy Board</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="group relative aspect-video bg-black/20 rounded-xl overflow-hidden border border-white/5">
-                                    <img src="../assets/laser-clock.jpg" alt="Laser Cut Clock"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                        <p class="text-white text-sm font-bold">Custom Clock Interface</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="group relative aspect-video bg-black/20 rounded-xl overflow-hidden border border-white/5">
-                                    <img src="../assets/laser-tokens-wood.jpg" alt="Wood Engraved Tokens"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                        <p class="text-white text-sm font-bold">Engraved Wood Tokens</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="group relative aspect-video bg-black/20 rounded-xl overflow-hidden border border-white/5 md:col-span-2">
-                                    <img src="../assets/laser-tictactoe.png" alt="Tic Tac Toe Set"
-                                        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                        <p class="text-white text-sm font-bold">Interactive Tic-Tac-Toe Set</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-
-                    <!-- Sidebar Info -->
-                    <div class="glass-panel rounded-2xl p-6 h-fit sticky top-24">
-                        <h3
-                            class="text-sm font-bold text-white uppercase tracking-wider mb-6 pb-4 border-b border-white/10">
-                            Project Details</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-bold mb-1">Tools Used</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300">Fusion 360</span>
-                                    <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300">LightBurn</span>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-bold mb-1">Links</p>
-                                <a href="https://drive.google.com/file/d/1d5A2F0mBj0nwoA0HoyLPSlaUg9KbE00y/view?usp=drive_link"
-                                    target="_blank"
-                                    class="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors text-sm font-bold">
-                                    View Design <span class="material-symbols-outlined text-sm">open_in_new</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">Gallery</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/laser-tokens-acrylic.png" alt="Acrylic tokens laser cut"
+                                class="w-full h-48 object-cover" loading="lazy" />
+                        </div>
+                        <div class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/laser-board-game.jpg" alt="Wooden board laser cut"
+                                class="w-full h-48 object-cover" loading="lazy" />
+                        </div>
+                        <div class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/laser-clock.jpg" alt="Laser cut clock face"
+                                class="w-full h-48 object-cover" loading="lazy" />
+                        </div>
+                        <div class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/laser-tokens-wood.jpg" alt="Engraved wood tokens"
+                                class="w-full h-48 object-cover" loading="lazy" />
+                        </div>
+                        <div class="rounded-md overflow-hidden border border-line sm:col-span-2">
+                            <img src="../assets/laser-tictactoe.png" alt="Tic-tac-toe board laser cut"
+                                class="w-full h-48 object-cover" loading="lazy" />
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <aside class="card p-6">
+                <h2 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Specifications</h2>
+                <dl>
+                    <div class="spec-row">
+                        <dt>Status</dt>
+                        <dd>Archive</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>CAD</dt>
+                        <dd>Fusion 360</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>CAM</dt>
+                        <dd>LightBurn</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Machine</dt>
+                        <dd>CO₂ laser cutter</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Materials</dt>
+                        <dd>Acrylic / Wood</dd>
+                    </div>
+                </dl>
+                <div class="flex flex-wrap gap-1.5 mt-5">
+                    <span class="tag">Fusion 360</span><span class="tag">LightBurn</span><span class="tag">CNC Laser</span><span class="tag">Rapid Prototyping</span>
                 </div>
+                <a href="https://drive.google.com/drive/folders/1DpMKHX07n0oaHNrW_VDpgGX_VqHKyFJy?usp=drive_link"
+                    target="_blank" rel="noopener"
+                    class="inline-block mt-5 text-sm font-mono text-accent-ink hover:underline">→ View Files</a>
+            </aside>
+        </div>
 
-            </div>
-        </main>
+        <hr class="divider my-14" />
+        <a href="../index.html#projects" class="text-sm font-mono text-dim hover:text-accent-ink transition-colors">← Back to all projects</a>
+    </main>
 
-        <footer class="bg-[#0A0A0A] py-12 px-4 border-t border-white/5">
-            <div class="max-w-[1200px] mx-auto text-center text-gray-500 text-sm">
-                <p>&copy; 2026 Qutaiba W. Mantfaji. All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="border-t border-line px-4 sm:px-6 py-8">
+        <div class="max-w-[1100px] mx-auto text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+        </div>
+    </footer>
 </body>
 
 </html>

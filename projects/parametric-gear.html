@@ -1,193 +1,173 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Parametric Gear System - Engineering Project</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parametric Gear System — Qutaiba Mantfaji</title>
+    <meta name="description" content="Print-in-place gear train with 0.2mm clearance — designed for FDM PLA, breaks free and rotates immediately off the build plate." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <meta property="og:title" content="Parametric Gear System — Qutaiba Mantfaji" />
+    <meta property="og:description" content="Print-in-place gear train with 0.2mm clearance — designed for FDM PLA, breaks free and rotates immediately off the build plate." />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#fbf8f2" />
     <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/theme.css?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#DC2626",
-                        "primary-dark": "#B91C1C",
-                        "primary-light": "#F87171",
-                        "primary-glow": "#EF4444",
-                        "background": "#F9FAFB",
-                        "background-dark": "#0A0A0A",
-                        "surface": "#FFFFFF",
-                        "surface-dark": "#121212",
-                        "text-main": "#111827",
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"]
+                        heading: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+                        body: ['DM Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
-                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
-                    }
                 },
             },
         }
     </script>
-    <style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-        }
-    </style>
 </head>
 
-<body class="bg-background-dark text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
-    <!-- Background Elements -->
-    <div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern bg-[size:40px_40px] opacity-[0.2]"></div>
-    <div
-        class="fixed top-0 left-0 sm:left-1/4 w-64 h-64 sm:w-[800px] sm:h-[800px] bg-primary/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
-    </div>
-    <div
-        class="fixed bottom-0 right-0 sm:right-1/4 w-64 h-64 sm:w-[600px] sm:h-[600px] bg-blue-500/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
-    </div>
-    <div class="fixed inset-0 z-0 pointer-events-none bg-noise opacity-50 mix-blend-overlay block"></div>
+<body class="bg-bg text-ink font-body">
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="../index.html" class="font-heading font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">Qutaiba W. Mantfaji</a>
+            <nav class="flex items-center gap-6" aria-label="Main">
+                <a href="../index.html#projects" class="text-sm text-dim hover:text-accent-ink transition-colors">Projects</a>
+                <a href="../index.html#contact" class="text-sm text-dim hover:text-accent-ink transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="relative z-10 flex flex-col min-h-screen">
-        <!-- Navbar -->
-        <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0A0A0A]/80 backdrop-blur-md">
-            <div class="max-w-[1200px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-                <a href="../index.html" class=" group flex items-center gap-3">
-                    <div
-                        class="relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-primary/50 transition-all duration-300">
-                        <span class="font-display font-bold text-xl text-primary">Q</span>
-                    </div>
-                    <div>
-                        <span
-                            class="font-display font-bold text-lg tracking-tight block leading-none group-hover:text-primary transition-colors">Qutaiba</span>
-                        <span
-                            class="text-[10px] text-gray-500 font-medium uppercase tracking-widest group-hover:text-gray-400 transition-colors">Project
-                            View</span>
-                    </div>
-                </a>
-                <nav class="hidden md:flex gap-8">
-                    <a href="../categories/engineering.html"
-                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Back to
-                        Engineering</a>
-                </nav>
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 py-14">
+        <nav class="font-mono text-xs text-dim mb-10" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-accent-ink">Home</a>
+            <span aria-hidden="true"> / </span>
+            <a href="../categories/engineering.html" class="hover:text-accent-ink">Engineering</a>
+            <span aria-hidden="true"> / </span>
+            <span class="text-ink">Parametric Gear</span>
+        </nav>
+
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="badge badge-archive">Archive</span>
+                <span class="cat-tag">Manufacturing</span>
             </div>
-        </header>
+            <h1 class="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-5">Parametric Gear System</h1>
+            <p class="text-dim text-lg max-w-[680px]">
+                Print-in-place gear train with <span class="font-mono text-accent-ink">0.2 mm</span> clearance —
+                designed for FDM PLA, breaks free and rotates immediately off the build plate without post-processing.
+            </p>
+        </div>
 
-        <main class="flex-grow pt-12 pb-20 px-4 sm:px-6">
-            <div class="max-w-4xl mx-auto">
-                <!-- Breadcrumb -->
-                <div class="flex items-center gap-2 text-sm text-gray-500 mb-8">
-                    <a href="../index.html" class="hover:text-white transition-colors">Home</a>
-                    <span class="material-symbols-outlined text-xs">chevron_right</span>
-                    <a href="../categories/engineering.html" class="hover:text-white transition-colors">Engineering</a>
-                    <span class="material-symbols-outlined text-xs">chevron_right</span>
-                    <span class="text-primary">Parametric Gear System</span>
-                </div>
-
-                <!-- Project Header -->
-                <div class="mb-12">
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <span
-                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-orange-500/30 text-orange-400 bg-orange-500/10">Engineering</span>
-                        <div class="flex gap-2 text-gray-400 text-sm">
-                            <span>SolidWorks</span> • <span>FDM Printing</span> • <span>Mechanism Design</span>
-                        </div>
-                    </div>
-                    <h1 class="text-4xl md:text-6xl font-bold font-display text-white mb-6">Parametric Gear System</h1>
-                    <p class="text-xl text-gray-300 leading-relaxed">
-                        Print-in-place mechanical assembly with 0.2mm tolerance using additive manufacturing. A study in
-                        clearance and functional assembly directly from the build plate.
+        <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
+            <article class="space-y-12">
+                <section>
+                    <h2 class="section-label mb-4">The Objective</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px]">
+                        Designing for additive manufacturing (DFAM) requires accounting for phenomena that
+                        don't exist in subtractive machining: thermal expansion of deposited layers, resolution
+                        limits of FDM, and the risk of adjacent surfaces fusing during printing. A
+                        print-in-place mechanism must have gaps tight enough to hold form but wide enough
+                        that heat from deposition doesn't bond the moving parts together.
                     </p>
-                </div>
+                </section>
 
-                <!-- Main Image - Gradient placeholder as no image linked in card -->
-                <div
-                    class="w-full h-[400px] md:h-[500px] bg-gradient-to-br from-orange-900 to-amber-900 rounded-3xl overflow-hidden border border-white/10 mb-16 shadow-2xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-9xl text-white/10">settings_suggest</span>
-                </div>
-
-                <!-- Content Sections -->
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="md:col-span-2 space-y-12">
-                        <!-- Problem -->
-                        <section>
-                            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">psychology_alt</span> The Objective
-                            </h2>
-                            <p class="text-gray-400 leading-relaxed">
-                                Designing for additive manufacturing (DFAM) requires a deep understanding of printer
-                                capabilities and material behavior. The goal was to create a functioning gear train that
-                                could be printed as a single assembled unit ("print-in-place") without fusing moving
-                                parts together.
+                <section>
+                    <h2 class="section-label mb-4">Technical Details</h2>
+                    <div class="space-y-5 max-w-[680px]">
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">0.2 mm tolerance engineering</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                Gear tooth profiles were designed with
+                                <span class="font-mono text-accent-ink">0.2 mm</span> radial clearance on each
+                                face — enough to prevent PLA fusion at 210°C deposition temperature while still
+                                keeping the gears co-planar and meshed after cooling.
                             </p>
-                        </section>
-
-                        <!-- Solution -->
-                        <section>
-                            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">lightbulb</span> Technical Details
-                            </h2>
-                            <p class="text-gray-400 leading-relaxed mb-4">
-                                I engineered the gear tooth profiles with specific clearances to accommodate the thermal
-                                expansion of PLA filament and the resolution of FDM printing.
+                        </div>
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Interference detection before slicing</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                SolidWorks' interference detection was run on the full assembly before export.
+                                Any mesh overlap would fuse in print; the model was iterated until zero
+                                interference at the design tolerance, then confirmed in Cura's layer preview
+                                before printing.
                             </p>
-                            <ul class="space-y-3 text-gray-400">
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span><strong>0.2mm Tolerance:</strong> Precise gap engineering allowed the gears to
-                                        break free and rotate smoothly immediately after printing.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span><strong>Interference Detection:</strong> Rigorous virtual testing in
-                                        SolidWorks to ensure no mesh overlaps prior to slicing.</span>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-
-                    <!-- Sidebar Info -->
-                    <div class="glass-panel rounded-2xl p-6 h-fit sticky top-24">
-                        <h3
-                            class="text-sm font-bold text-white uppercase tracking-wider mb-6 pb-4 border-b border-white/10">
-                            Project Details</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-bold mb-1">Tools Used</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300">SolidWorks</span>
-                                    <span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-300">Cura</span>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-bold mb-1">Tech</p>
-                                <p class="text-sm text-white">FDM / PLA</p>
-                            </div>
+                        </div>
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Parametric tooth profiles</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                Tooth geometry is driven by module and pressure angle variables. Changing the
+                                module updates all gear profiles consistently — the print-in-place clearance
+                                scales with tooth size automatically.
+                            </p>
                         </div>
                     </div>
+                </section>
+            </article>
+
+            <aside class="card p-6">
+                <h2 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Specifications</h2>
+                <dl>
+                    <div class="spec-row">
+                        <dt>Status</dt>
+                        <dd>Archive</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>CAD</dt>
+                        <dd>SolidWorks</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Slicer</dt>
+                        <dd>Cura</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Material</dt>
+                        <dd>PLA (FDM)</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Clearance</dt>
+                        <dd>0.2 mm radial</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Method</dt>
+                        <dd>Print-in-place</dd>
+                    </div>
+                </dl>
+                <div class="flex flex-wrap gap-1.5 mt-5">
+                    <span class="tag">SolidWorks</span><span class="tag">FDM</span><span class="tag">DFAM</span><span class="tag">Mechanism Design</span>
                 </div>
+            </aside>
+        </div>
 
-            </div>
-        </main>
+        <hr class="divider my-14" />
+        <a href="../index.html#projects" class="text-sm font-mono text-dim hover:text-accent-ink transition-colors">← Back to all projects</a>
+    </main>
 
-        <footer class="bg-[#0A0A0A] py-12 px-4 border-t border-white/5">
-            <div class="max-w-[1200px] mx-auto text-center text-gray-500 text-sm">
-                <p>&copy; 2026 Qutaiba W. Mantfaji. All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="border-t border-line px-4 sm:px-6 py-8">
+        <div class="max-w-[1100px] mx-auto text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+        </div>
+    </footer>
 </body>
 
 </html>

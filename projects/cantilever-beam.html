@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cantilever Beam Instrumentation System — Qutaiba Mantfaji</title>
+    <meta name="description" content="A strain-gauge + accelerometer rig that turns a steel cantilever into a load monitor — recovering hanging mass to ~1.5 g and extracting the 5.83 Hz natural frequency via FFT." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <meta property="og:title" content="Cantilever Beam Instrumentation System — Qutaiba Mantfaji" />
+    <meta property="og:description" content="Strain gauge + MPU6050 + Arduino + Python FFT: a load-monitoring system on a steel cantilever beam." />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#fbf8f2" />
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/theme.css?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+                        body: ['DM Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-bg text-ink font-body">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="../index.html" class="font-heading font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">Qutaiba W. Mantfaji</a>
+            <nav class="flex items-center gap-6" aria-label="Main">
+                <a href="../index.html#projects" class="text-sm text-dim hover:text-accent-ink transition-colors">Projects</a>
+                <a href="../index.html#contact" class="text-sm text-dim hover:text-accent-ink transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 py-14">
+        <!-- Breadcrumb -->
+        <nav class="font-mono text-xs text-dim mb-10" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-accent-ink">Home</a>
+            <span aria-hidden="true"> / </span>
+            <a href="../categories/engineering.html" class="hover:text-accent-ink">Engineering</a>
+            <span aria-hidden="true"> / </span>
+            <span class="text-ink">Cantilever Beam</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="badge badge-local">Local</span>
+                <span class="cat-tag">Engineering</span>
+            </div>
+            <h1 class="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-5">Cantilever Beam Instrumentation System</h1>
+            <p class="text-dim text-lg max-w-[680px]">
+                A strain-gauge and accelerometer rig that turns a steel cantilever into a load monitor —
+                recovering the mass of a hanging load to within <span class="font-mono text-accent-ink">~1.5 g</span>,
+                and extracting the beam's natural frequency of
+                <span class="font-mono text-accent-ink">5.83 Hz</span> via FFT.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
+            <!-- Body -->
+            <article class="space-y-12">
+                <section>
+                    <h2 class="section-label mb-4">The Problem</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px]">
+                        Beam analysis is taught on paper — fixed parameters (area, moment of inertia, modulus,
+                        length) get plugged into equations to predict stress and deflection. But the loads a real
+                        structure sees are a <em>varying</em> quantity, and that gap is where unsafe designs hide.
+                        This rig closes the gap: a non-destructive monitor that reads what's happening inside a loaded
+                        cantilever in real time, from internal strain all the way out to the applied load.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">The Setup</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px] mb-5">
+                        A <span class="font-mono text-accent-ink">300 mm</span> stainless-steel ruler is clamped to a
+                        bench with <span class="font-mono text-accent-ink">30 mm</span> fixed, leaving a ~270 mm
+                        cantilever (25 mm wide, ~1 mm thick). Steel was chosen for its known elastic behaviour and a
+                        clean, calculable moment of inertia
+                        (<span class="font-mono text-accent-ink">I ≈ 2.15×10⁻¹² m⁴</span>,
+                        <span class="font-mono text-accent-ink">E = 200 GPa</span>).
+                    </p>
+                    <figure class="mb-6 max-w-[680px]">
+                        <div class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/beam-setup-photo.jpg" alt="The physical rig — a steel ruler clamped to a bench with the strain gauge wired up"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">The bench rig — clamped steel ruler, strain gauge, and sensor wiring.</figcaption>
+                    </figure>
+                    <div class="space-y-5 max-w-[680px]">
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Strain — single gauge + amplifier, near the fixed end</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                A gauge (factor 2) is super-glued to a sanded patch close to the clamp, oriented along
+                                the beam axis where the bending moment — and therefore the strain — is greatest. Its
+                                amplifier module is zeroed to a 2.5 V rest output, which the firmware subtracts so the
+                                strain reading is centred at zero.
+                            </p>
+                        </div>
+                        <div class="card p-5">
+                            <h3 class="font-heading font-bold mb-2">Vibration — MPU6050 at the free end, over I²C</h3>
+                            <p class="text-dim text-sm leading-relaxed">
+                                An MPU6050 accelerometer is taped to the free tip, where the dynamic amplitude is
+                                largest. The Arduino UNO polls its z-axis over I²C and streams time, acceleration, and
+                                raw strain over serial at <span class="font-mono text-accent-ink">115200 baud</span>,
+                                ~100 samples/second, into a CSV pipeline.
+                            </p>
+                        </div>
+                    </div>
+                    <figure class="mt-6 max-w-[680px]">
+                        <div class="rounded-md overflow-hidden border border-line bg-white">
+                            <img src="../assets/beam-wiring-diagram.png" alt="Full system wiring diagram — Arduino UNO, strain-gauge amplifier, and MPU6050 over I²C"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">Full system wiring — Arduino UNO → strain-gauge amplifier → gauge, with the MPU6050 (GY-521) on I²C.</figcaption>
+                    </figure>
+                    <figure class="mt-6 max-w-[680px]">
+                        <div class="rounded-md overflow-hidden border border-line bg-white">
+                            <img src="../assets/beam-block-diagram.jpg" alt="System block diagram — sensors to Arduino to static and dynamic pipelines to CSV output"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">Measurement architecture — a static pipeline (strain → force) and a dynamic one (vibration → frequency).</figcaption>
+                    </figure>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">From Strain to Mass</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px] mb-5">
+                        A Python script reads the serial stream live and walks the measurement down a physical
+                        pipeline — each step a textbook relation, chained end to end:
+                    </p>
+                    <div class="card p-5 max-w-[680px] mb-5">
+                        <p class="font-mono text-sm text-accent-ink leading-relaxed">
+                            ε = (raw − offset) / K&nbsp;&nbsp;→&nbsp;&nbsp;σ = E·ε&nbsp;&nbsp;→&nbsp;&nbsp;M = σ·I / c&nbsp;&nbsp;→&nbsp;&nbsp;F = M / L&nbsp;&nbsp;→&nbsp;&nbsp;m = F / g
+                        </p>
+                    </div>
+                    <p class="text-dim leading-relaxed max-w-[680px]">
+                        The one experimental unknown is <span class="font-mono text-accent-ink">K</span>, the gauge's
+                        sensitivity. It was found by hanging a known <span class="font-mono text-accent-ink">45 g</span>
+                        reference, computing the theoretical strain for that case, and tuning K until measured and
+                        theoretical matched — settling at <span class="font-mono text-accent-ink">K = 0.84</span>.
+                        After that, the rig reports strain, stress, bending moment, applied force, and mass for any
+                        load, live.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">Results</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px] mb-6">
+                        Validated as a scale against known masses up to ~105 g, the device tracks true mass almost
+                        one-to-one (slope 1.04, <span class="font-mono text-accent-ink">R² = 0.997</span>) with an
+                        <span class="font-mono text-accent-ink">RMSE of ~1.5 g</span>. The small constant offset is
+                        systematic — strain-gauge hysteresis — not random scatter.
+                    </p>
+                    <figure class="mb-8">
+                        <div class="rounded-md overflow-hidden border border-line bg-white">
+                            <img src="../assets/beam-mass-scale.png" alt="Mass scale test: measured vs true mass, R squared 0.9971"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">Measured vs. true mass — slope 1.04, R² = 0.9971.</figcaption>
+                    </figure>
+                    <p class="text-dim leading-relaxed max-w-[680px] mb-6">
+                        Tapping the free end excites the beam's first bending mode. Running an FFT on the
+                        acceleration ring-down gives a single dominant peak at
+                        <span class="font-mono text-accent-ink">5.83 Hz</span> — the measured natural frequency,
+                        a fingerprint of the beam's stiffness and mass.
+                    </p>
+                    <figure>
+                        <div class="rounded-md overflow-hidden border border-line bg-white">
+                            <img src="../assets/beam-fft-spectrum.png" alt="FFT spectrum of acceleration with a dominant peak at 5.83 Hz"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">FFT of the tip acceleration — dominant peak at 5.83 Hz.</figcaption>
+                    </figure>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">Simulation &amp; Honest Limits</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px]">
+                        The captured strain data also drives a VPython animation that reconstructs the beam's
+                        deflected shape from the elastic-curve equation (point load plus the beam's own distributed
+                        weight), so the model can be watched bending against the real readings. The main error source
+                        is honest to report: the math assumes a point load at the tip, so an object with a wide base
+                        acts as a distributed load and skews the estimate. Planned next steps — real-time deflection
+                        readout, damping-rate extraction, and a second gauge for thermal compensation.
+                    </p>
+                    <figure class="mt-6 max-w-[680px]">
+                        <div class="rounded-md overflow-hidden border border-line bg-black">
+                            <img src="../assets/beam-sim.png" alt="VPython simulation still — the cantilever beam deflecting under load"
+                                class="w-full h-auto object-contain" loading="lazy" />
+                        </div>
+                        <figcaption class="font-mono text-xs text-dim mt-2">VPython reconstruction of the deflected beam, driven by the measured strain.</figcaption>
+                    </figure>
+                </section>
+            </article>
+
+            <!-- Spec sidebar -->
+            <aside class="card p-6">
+                <h2 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Specifications</h2>
+                <dl>
+                    <div class="spec-row">
+                        <dt>Status</dt>
+                        <dd>Built — bench rig</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Context</dt>
+                        <dd>ENGR 313 Measurements Lab</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Team</dt>
+                        <dd>With Rozh Abdullah &amp; Yousif Robeil</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Specimen</dt>
+                        <dd>Stainless steel, ≈270×25×1 mm</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>E / I</dt>
+                        <dd>200 GPa / 2.15×10⁻¹² m⁴</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Strain</dt>
+                        <dd>1× gauge (GF 2) + amplifier</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Vibration</dt>
+                        <dd>MPU6050 (I²C, z-axis)</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Controller</dt>
+                        <dd>Arduino UNO @ 115200 baud</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Analysis</dt>
+                        <dd>Python — NumPy, FFT, VPython</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Mass accuracy</dt>
+                        <dd>R² 0.997, RMSE ≈1.5 g</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Natural freq</dt>
+                        <dd>5.83 Hz</dd>
+                    </div>
+                </dl>
+                <div class="flex flex-wrap gap-1.5 mt-5">
+                    <span class="tag">Arduino</span><span class="tag">Strain Gauge</span><span class="tag">MPU6050</span><span class="tag">I²C</span><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">FFT</span><span class="tag">VPython</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/17OSuJhKa-_KyumBtYjn-8fSTevtAwBHb?usp=sharing"
+                    target="_blank" rel="noopener"
+                    class="inline-block mt-5 text-sm font-mono text-accent-ink hover:underline">→ View report &amp; code</a>
+            </aside>
+        </div>
+
+        <hr class="divider my-14" />
+        <a href="../index.html#projects" class="text-sm font-mono text-dim hover:text-accent-ink transition-colors">← Back to all projects</a>
+    </main>
+
+    <footer class="border-t border-line px-4 sm:px-6 py-8">
+        <div class="max-w-[1100px] mx-auto text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+        </div>
+    </footer>
+</body>
+
+</html>

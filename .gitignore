@@ -8,3 +8,11 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Tooling / local-only — not part of the deployed portfolio
+.claude/
+
+# Separate projects & local backups — keep out of the portfolio deploy
+C2C-Delivery/
+C2C-Delivery.zip
+projects-master/

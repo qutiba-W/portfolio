@@ -1,1515 +1,484 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Qutaiba W. Mantfaji - Engineering Intelligence</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qutaiba Mantfaji — Mechanical Engineer & Builder</title>
+    <!-- SEO -->
+    <meta name="description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Qutaiba Mantfaji — Mechanical Engineer & Builder" />
+    <meta property="og:description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta property="og:image" content="assets/profile-red.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qutiba-w.github.io/portfolio" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Qutaiba Mantfaji — Mechanical Engineer & Builder" />
+    <meta name="twitter:description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta name="twitter:image" content="assets/profile-red.jpg" />
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#fbf8f2" />
+    <!-- Theme bootstrap: bright/light is default; dark is opt-in. Set before paint to avoid flash. -->
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/theme.css?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        /* Cyber-Physical Systems Theme */
-                        "sys-black": "#09090b",       /* Deep Background */
-                        "sys-surface": "#18181b",     /* Card Background */
-                        "sys-primary": "#DC2626",     /* Engineering Red */
-                        "sys-cyan": "#22d3ee",        /* Laser Blue (Hardware) */
-                        "sys-text": "#e4e4e7",        /* High Contrast Text */
-                        "sys-dim": "#a1a1aa",         /* Secondary Text */
-                        /* Legacy colors for compatibility */
-                        "primary": "#DC2626",
-                        "primary-dark": "#B91C1C",
-                        "primary-light": "#F87171",
-                        "primary-glow": "#EF4444",
-                        "background": "#F9FAFB",
-                        "background-dark": "#09090b",
-                        "surface": "#FFFFFF",
-                        "surface-dark": "#18181b",
-                        "surface-secondary": "#F3F4F6",
-                        "text-main": "#111827",
-                        "text-muted": "#4B5563",
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"],
-                        "mono": ["JetBrains Mono", "monospace"], /* For Skills/Tags */
+                        heading: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+                        body: ['DM Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #18181b 1px, transparent 1px), linear-gradient(to bottom, #18181b 1px, transparent 1px)",
-                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
-                    }
                 },
             },
         }
     </script>
-    <style>
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0A0A0A;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        html:not(.dark) ::-webkit-scrollbar-track {
-            background: #F9FAFB;
-        }
-
-        html:not(.dark) ::-webkit-scrollbar-thumb {
-            background: #D1D5DB;
-        }
-
-        html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-            background: #9CA3AF;
-        }
-
-        .glass-card {
-            background: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            /* Needed for pseudo-elements */
-        }
-
-        /* Tech Corners (Engineering Aesthetic) */
-        .glass-card::before,
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            transition: all 0.4s ease;
-            pointer-events: none;
-            opacity: 0;
-            /* Hidden by default, shown on hover/dark mode or always if desired */
-        }
-
-        /* Top Left & Top Right */
-        .glass-card::before {
-            top: -1px;
-            left: -1px;
-            border-top: 2px solid #DC2626;
-            border-left: 2px solid #DC2626;
-        }
-
-        .glass-card::after {
-            bottom: -1px;
-            right: -1px;
-            border-bottom: 2px solid #DC2626;
-            border-right: 2px solid #DC2626;
-        }
-
-        /* Show corners on hover */
-        .glass-card:hover::before,
-        .glass-card:hover::after {
-            opacity: 1;
-            width: 100%;
-            /* Expands to full border on hover */
-            height: 100%;
-        }
-
-        .dark .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: none;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .glass-card:hover {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-6px);
-            border-color: #DC2626;
-        }
-
-        .dark .glass-card:hover {
-            border-color: rgba(220, 38, 38, 0.5);
-            box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.3);
-        }
-
-        .project-card {
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-
-        /* Text Glow Effect */
-        .text-glow {
-            text-shadow: 0 0 30px rgba(16, 185, 129, 0.5), 0 0 60px rgba(5, 150, 105, 0.3);
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #DC2626 0%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .cert-card {
-            transition: all 0.3s ease;
-        }
-
-        /* Floating Filter Tabs */
-        .filter-tabs {
-            position: sticky;
-            top: 88px;
-            z-index: 40;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(229, 231, 235, 0.8);
-            border-radius: 9999px;
-            padding: 6px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .dark .filter-tabs {
-            background: rgba(10, 10, 10, 0.85);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .filter-tab {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #6B7280;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .filter-tab:hover {
-            color: #111827;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .dark .filter-tab {
-            color: #9CA3AF;
-        }
-
-        .dark .filter-tab:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .filter-tab.active {
-            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
-        }
-
-        .filter-tab.active:hover {
-            background: linear-gradient(135deg, #B91C1C 0%, #DC2626 100%);
-            color: #fff;
-        }
-
-        /* Project Card Filter Animations */
-        .project-card {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .project-card.hidden-filter {
-            opacity: 0;
-            transform: scale(0.95);
-            pointer-events: none;
-            position: absolute;
-            visibility: hidden;
-        }
-
-        .project-card.show-filter {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .cert-card:hover {
-            transform: translateY(-2px);
-            background: rgba(0, 0, 0, 0.02);
-        }
-
-        .dark .cert-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Marquee Animation */
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .animate-scroll {
-            animation: scroll 30s linear infinite;
-        }
-
-        .pause:hover {
-            animation-play-state: paused;
-        }
-
-        /* Hide Scrollbar */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-    <!-- Visual Effects CSS -->
-    <style>
-        /* Mechanical Name Style (CAD Dimension) */
-        .mech-dimension {
-            position: relative;
-            display: inline-block;
-            font-family: 'Space Grotesk', monospace;
-            /* Technical look */
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            padding: 0 10px;
-            color: #DC2626;
-            /* Primary */
-        }
-
-        /* Dimension Line */
-        .mech-dimension::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            /* Offset below text */
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: currentColor;
-            opacity: 0.6;
-        }
-
-        /* End Ticks (Vertical limits) */
-        .mech-dimension::before {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            /* Extends slightly below line */
-            left: 0;
-            width: 100%;
-            height: 7px;
-            /* Height of ticks */
-            border-left: 1px solid currentColor;
-            border-right: 1px solid currentColor;
-            opacity: 0.6;
-        }
-
-        /* 'SCALE' Annotation */
-        .mech-tag {
-            position: absolute;
-            top: -15px;
-            /* Above text */
-            right: 0;
-            font-size: 0.6rem;
-            font-weight: 400;
-            font-family: monospace;
-            opacity: 0.5;
-            color: currentColor;
-            letter-spacing: 0.1em;
-        }
-
-        /* Spotlight Effect */
-        #spotlight {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 50;
-            background: radial-gradient(600px circle at var(--x) var(--y), rgba(220, 38, 38, 0.15), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        /* Plotter Animation (SVG) */
-        .mech-svg {
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 15px;
-            pointer-events: none;
-            overflow: visible;
-        }
-
-        .mech-svg line {
-            stroke: currentColor;
-            stroke-width: 1.5;
-            vector-effect: non-scaling-stroke;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: draw 2s ease-out forwards 0.5s;
-            opacity: 0.8;
-        }
-
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        /* Typewriter Cursor Class */
-        .cursor-blink {
-            display: inline-block;
-            width: 3px;
-            height: 1.2em;
-            background-color: #DC2626;
-            /* Primary */
-            margin-left: 2px;
-            vertical-align: bottom;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered Delays for Children */
-        .reveal-delay-100 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-200 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-300 {
-            transition-delay: 0.3s;
-        }
-    </style>
 </head>
 
-<body
-    class="bg-background dark:bg-[#0A0A0A] text-text-main dark:text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
-    <!-- Card Overlay -->
-    <div id="card-overlay" class="card-overlay"></div>
+<body class="bg-bg text-ink font-body">
+    <a href="#projects" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] btn btn-primary">Skip to projects</a>
 
-    <!-- Mouse Spotlight (Hidden on touch devices via JS) -->
-    <div id="spotlight"></div>
-
-    <div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern bg-[size:40px_40px] opacity-[0.6] dark:opacity-0">
-    </div>
-    <!-- Top-Left Orb -->
-    <div
-        class="fixed top-0 left-0 sm:left-1/4 w-64 h-64 sm:w-[800px] sm:h-[800px] bg-primary/10 sm:bg-primary/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
-    </div>
-    <!-- Bottom-Right Orb -->
-    <div
-        class="fixed bottom-0 right-0 sm:right-1/4 w-64 h-64 sm:w-[600px] sm:h-[600px] bg-blue-500/10 sm:bg-blue-500/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none z-0">
-    </div>
-    <!-- Noise Texture -->
-    <div class="fixed inset-0 z-0 pointer-events-none bg-noise opacity-50 mix-blend-overlay block"></div>
-
-    <div class="relative z-10 flex flex-col min-h-screen">
-        <!-- Navbar -->
-        <header
-            class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-[#0A0A0A]/80 backdrop-blur-md">
-            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-20">
-                    <div class="flex items-center gap-2 group">
-                        <!-- Animated Gear Icon -->
-                        <svg class="w-8 h-8 text-primary animate-[spin_10s_linear_infinite] group-hover:animate-[spin_2s_linear_infinite]"
-                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
-                                fill="currentColor" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M19.3541 15.6888L21.3788 15.3514C21.8596 15.2713 22.1818 14.7797 22.0292 14.3069C21.8606 13.7844 21.6163 12.9238 21.6163 12C21.6163 11.0762 21.8606 10.2156 22.0292 9.69314C22.1818 9.22026 21.8596 8.72873 21.3788 8.64861L19.3541 8.31119C19.242 7.74906 19.0346 7.21855 18.751 6.72704L19.7891 5.01186C20.0355 4.60477 19.8665 4.07223 19.4533 3.86873C18.9967 3.64382 18.232 3.28448 17.432 3.07014C16.632 2.8558 15.8291 2.76662 15.341 2.75624C14.8992 2.74684 14.5085 2.99623 14.3204 3.40798L13.528 5.14207C13.0336 5.07409 12.5226 5.03906 12 5.03906C11.4774 5.03906 10.9664 5.07409 10.472 5.14207L9.67956 3.40798C9.49149 2.99623 9.10081 2.74684 8.65899 2.75624C8.17095 2.76662 7.368 2.8558 6.56801 3.07014C5.76802 3.28448 5.00327 3.64382 4.54674 3.86873C4.13348 4.07223 3.96451 4.60477 4.2109 5.01186L5.24903 6.72704C4.96542 7.21855 4.75797 7.74906 4.64593 8.31119L2.62121 8.64861C2.14039 8.72873 1.81816 9.22026 1.97082 9.69314C2.13941 10.2156 2.38372 11.0762 2.38372 12C2.38372 12.9238 2.13941 13.7844 1.97082 14.3069C1.81816 14.7797 2.14039 15.2713 2.62121 15.3514L4.64593 15.6888C4.75797 16.2509 4.96542 16.7814 5.24903 17.273L4.2109 19.0573C3.96451 19.4644 4.13348 19.9969 4.54674 20.2004C5.00327 20.4253 5.76802 20.7846 6.56801 20.999C7.368 21.2133 8.17095 21.3025 8.65899 21.3129C9.10081 21.3223 9.49149 21.0729 9.67956 20.6612L10.472 18.9271C10.9664 18.9951 11.4774 19.0301 12 19.0301C12.5226 19.0301 13.0336 18.9951 13.528 18.9271L14.3204 20.6612C14.5085 21.0729 14.8992 21.3223 15.341 21.3129C15.8291 21.3025 16.632 21.2133 17.432 20.999C18.232 20.7846 18.9967 20.4253 19.4533 20.2004C19.8665 19.9969 20.0355 19.4644 19.7891 19.0573L18.751 17.273C19.0346 16.7814 19.242 16.2509 19.3541 15.6888Z"
-                                fill="currentColor" />
-                        </svg>
-                        <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Qutaiba W. Mantfaji
-                        </h1>
-                    </div>
-                    <nav class="hidden md:flex items-center gap-8">
-                        <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-                            href="#work">Work</a>
-                        <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-                            href="#process">Process</a>
-                        <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-                            href="#certifications">Certifications</a>
-                        <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-                            href="#contact">Contact</a>
-                    </nav>
-                    <div class="flex items-center gap-4">
-                        <button id="theme-toggle"
-                            class="p-2 rounded-full border border-gray-200 dark:border-white/20 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
-                            <span class="material-symbols-outlined dark:hidden">light_mode</span>
-                            <span class="material-symbols-outlined hidden dark:block">dark_mode</span>
-                        </button>
-                        <a href="https://drive.google.com/file/d/1eOEJMOLhcq6eyjTCDoCTagktEe0ueXmd/view?usp=drive_link"
-                            target="_blank"
-                            class="flex items-center justify-center h-10 px-4 sm:px-6 rounded-full border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 text-sm font-bold">Resume</a>
-                        <a href="mailto:qutaibax2@gmail.com"
-                            class="hidden sm:flex items-center justify-center h-10 px-6 rounded-full bg-primary text-white hover:bg-primary-dark transition-all duration-300 text-sm font-bold">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="flex-grow">
-            <!-- Hero Section -->
-            <section class="relative min-h-[60vh] flex items-center justify-center pt-12 pb-10 px-4 overflow-hidden">
-                <!-- Ambient Glow Orbs -->
-                <div
-                    class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse">
-                </div>
-                <div
-                    class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-primary-light/15 rounded-full blur-[100px] pointer-events-none">
-                </div>
-                <div
-                    class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none">
-                </div>
-
-                <div class="max-w-[1200px] w-full mx-auto text-center relative z-10 reveal active">
-                    <!-- Google Cloud Badge -->
-                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/DRBZKMDOYKAO"
-                        target="_blank"
-                        class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 mb-8 hover:bg-amber-500/20 transition-colors backdrop-blur-md group">
-                        <span class="flex h-2 w-2 relative"><span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span
-                                class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span></span>
-                        <span class="text-xs sm:text-sm font-bold text-amber-500 tracking-wide uppercase">Google Cloud
-                            GenAI Leader</span>
-                        <span
-                            class="material-symbols-outlined text-amber-500 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </a>
-
-                    <!-- Profile Photo -->
-                    <div class="relative w-40 h-40 md:w-56 md:h-56 mx-auto mb-8 group">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary-dark rounded-full blur-md opacity-60 group-hover:opacity-80 transition-opacity animate-pulse">
-                        </div>
-                        <div
-                            class="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-2xl shadow-primary/30">
-                            <img src="assets/profile-red.jpg" alt="Qutaiba W. Mantfaji"
-                                class="w-full h-full object-cover object-top">
-                        </div>
-                    </div>
-
-                    <!-- Main Headline with Space Grotesk -->
-                    <h1
-                        class="font-display text-5xl sm:text-7xl md:text-9xl font-black leading-[0.9] tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-600 dark:from-white dark:to-white/50">
-                        ENGINEERING<br />INTELLIGENCE</h1>
-                    <div
-                        class="text-lg sm:text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto tracking-wide flex flex-col md:block gap-4 items-center">
-                        <div class="mech-dimension mb-4 md:mb-0 relative inline-block px-4">
-                            <span class="relative z-10">Qutaiba W. Mantfaji</span>
-                            <span class="mech-tag">SCALE 1:1</span>
-                            <!-- Animated SVG Dimension Line -->
-                            <svg class="mech-svg" viewBox="0 0 100 15" preserveAspectRatio="none">
-                                <!-- Horizontal Line -->
-                                <line x1="0" y1="10" x2="100" y2="10" />
-                                <!-- Left Tick -->
-                                <line x1="0" y1="2" x2="0" y2="18" />
-                                <!-- Right Tick -->
-                                <line x1="100" y1="2" x2="100" y2="18" />
-                            </svg>
-                        </div>
-                        <span class="hidden md:inline mx-2 text-primary/30">|</span>
-                        <span id="typewriter-text" class="text-primary font-medium"></span><span
-                            class="cursor-blink"></span>
-                    </div>
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap items-center justify-center gap-4">
-                        <a href="under_construction.html"
-                            class="flex items-center justify-center h-14 px-8 w-full sm:w-auto rounded-full bg-primary text-white font-bold text-lg hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/30 gap-2">
-                            <span class="material-symbols-outlined">settings</span>View Engineering Systems
-                        </a>
-                        <a href="#work"
-                            class="flex items-center justify-center h-14 px-8 w-full sm:w-auto rounded-full border-2 border-gray-200 dark:border-white/20 text-gray-900 dark:text-white font-bold text-lg hover:border-primary dark:hover:bg-white/10 hover:scale-105 transition-all duration-300 gap-2">
-                            <span class="material-symbols-outlined">psychology</span>See AI Projects
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <!-- About Section -->
-            <section class="py-12 md:py-16 bg-background dark:bg-[#0A0A0A] relative" id="about">
-                <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
-                    <div
-                        class="glass-card rounded-2xl p-8 md:p-10 border border-gray-200 dark:border-white/10 relative overflow-hidden reveal">
-                        <div
-                            class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 border-b border-gray-200 dark:border-white/10 pb-8">
-                            <div class="text-center">
-                                <h3 class="text-3xl font-black text-primary">9+</h3>
-                                <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Certifications</p>
-                            </div>
-                            <div class="text-center">
-                                <h3 class="text-3xl font-black text-primary">4+</h3>
-                                <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Projects</p>
-                            </div>
-                            <div class="text-center">
-                                <h3 class="text-3xl font-black text-primary">1</h3>
-                                <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Internship</p>
-                            </div>
-                            <div class="text-center">
-                                <h3 class="text-3xl font-black text-primary">5+</h3>
-                                <p class="text-gray-400 text-sm uppercase tracking-wider font-medium">Volunteering</p>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-12 items-start relative z-10">
-                            <div>
-                                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                                    Engineering The Gap Between <span class="text-primary">Hardware</span> & <span
-                                        class="text-primary">Code</span></h2>
-                                <div class="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
-                                    <p>I am a <strong class="text-gray-900 dark:text-white">Mechanical
-                                            Engineering</strong> undergraduate at <strong
-                                            class="text-gray-900 dark:text-white">AUIS</strong> specializing in
-                                        Mechatronics and System Architecture. In a market moving rapidly toward
-                                        digitization, I don't just design parts; I build systems.</p>
-                                    <p>My approach is defined by the <strong
-                                            class="text-gray-900 dark:text-white">"Architect Mindset"</strong>:
-                                        deconstructing complex mechanical problems and solving them through precise
-                                        engineering and advanced computational tools.</p>
-                                    <p>Currently, I am finalizing my degree while actively developing solutions in Rapid
-                                        Prototyping, Python Automation, and AI-Driven Design.</p>
-                                </div>
-                                <div class="bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl mb-8">
-                                    <h3 class="text-gray-900 dark:text-white font-bold text-lg mb-1">My Core Philosophy
-                                    </h3>
-                                    <p class="text-gray-600 dark:text-gray-300 italic">"Optimization is not an option;
-                                        it is the standard."</p>
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                            <span class="material-symbols-outlined text-primary">school</span>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">Education</p>
-                                            <p class="text-gray-900 dark:text-white font-bold">Mechanical Engineering @
-                                                AUIS</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                            <span class="material-symbols-outlined text-primary">location_on</span>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">Location</p>
-                                            <p class="text-gray-900 dark:text-white font-bold">Sulaymaniyah, Iraq</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                            <span class="material-symbols-outlined text-primary">translate</span>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">Languages</p>
-                                            <p class="text-gray-900 dark:text-white font-bold">Arabic (Native), English
-                                                (Fluent)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="relative space-y-6">
-                                <div class="glass-card p-6 rounded-xl border border-gray-200 dark:border-white/5">
-                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Work Experience
-                                    </h3>
-                                    <div class="space-y-6">
-                                        <div>
-                                            <div class="flex justify-between items-start">
-                                                <h4 class="text-gray-900 dark:text-white font-medium">Almustafa
-                                                    Institution for Training</h4>
-                                                <span
-                                                    class="text-xs text-primary border border-primary/30 px-2 py-0.5 rounded-full">Current</span>
-                                            </div>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">Human Resources (HR)</p>
-                                        </div>
-                                        <div class="pt-4 border-t border-gray-200 dark:border-white/10">
-                                            <div class="flex justify-between items-start">
-                                                <h4 class="text-gray-900 dark:text-white font-medium">Makers of Baghdad
-                                                </h4>
-                                                <span
-                                                    class="text-xs text-gray-500 border border-gray-200 dark:border-white/10 px-2 py-0.5 rounded-full">Internship</span>
-                                            </div>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">Product Designer (2023)
-                                            </p>
-                                            <p class="text-xs text-gray-500 mt-1">Industrial CNC Laser operation,
-                                                parametric
-                                                design, and rapid prototyping.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="glass-card p-6 rounded-xl border border-gray-200 dark:border-white/5">
-                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Volunteering &
-                                        Leadership</h3>
-                                    <div class="space-y-4">
-                                        <div class="flex gap-3 items-start"><span
-                                                class="material-symbols-outlined text-gray-500 text-lg mt-0.5">diversity_3</span>
-                                            <div>
-                                                <p class="text-gray-900 dark:text-white text-sm font-bold">MENA Learning
-                                                    & S.A.V.I</p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">STEM & Robotics
-                                                    Mentor.</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-3 items-start"><span
-                                                class="material-symbols-outlined text-gray-500 text-lg mt-0.5">event</span>
-                                            <div>
-                                                <p class="text-gray-900 dark:text-white text-sm font-bold">Baghdad Kite
-                                                    Carnival</p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">Organizer &
-                                                    Copywriter (2022).</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Stats/Experience Section -->
-            <section
-                class="py-16 border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#080808] relative overflow-hidden">
-                <div
-                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-primary/5 blur-[100px] pointer-events-none">
-                </div>
-                <div class="max-w-[800px] mx-auto px-4 relative z-10">
-                    <div class="grid grid-cols-2 gap-8 md:gap-12 text-center">
-                        <div class="p-4 group">
-                            <div
-                                class="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                                9+</div>
-                            <div
-                                class="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                                Certifications</div>
-                        </div>
-                        <div class="p-4 group">
-                            <div
-                                class="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                                4+</div>
-                            <div
-                                class="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                                Projects Developed</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Selected Works -->
-            <!-- Selected Works -->
-            <!-- Selected Works Section (Tabbed) -->
-            <!-- Selected Works Section (Gear Navigation) -->
-            <section
-                class="py-10 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-[600px] flex flex-col items-center justify-center relative"
-                id="work">
-
-                <!-- Advanced Rotating Gear Button -->
-                <a href="selection.html"
-                    class="group relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-
-                    <!-- Glow Behind -->
-                    <div
-                        class="absolute inset-0 bg-primary/20 rounded-full blur-[60px] group-hover:bg-primary/40 transition-all duration-500">
-                    </div>
-
-                    <!-- Outer Gear Ring (Counter-Clockwise) -->
-                    <svg class="absolute inset-0 w-full h-full text-gray-800 dark:text-gray-700 opacity-50 animate-[spin_20s_linear_infinite_reverse] group-hover:text-primary/30 transition-colors duration-500"
-                        viewBox="0 0 100 100">
-                        <path
-                            d="M50 0 L55 5 L60 0 L65 5 L70 0 L75 5 L80 0 L85 5 L90 0 L95 5 L100 0 L100 100 L0 100 L0 0 Z"
-                            fill="none" stroke="currentColor" stroke-width="0.5" />
-                        <!-- Simplified Gear Teeth Representation for visual effect -->
-                        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2" stroke-dasharray="8 4" />
-                    </svg>
-
-                    <!-- Middle Tech Ring (Clockwise) -->
-                    <svg class="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] text-gray-600 dark:text-gray-500 animate-[spin_10s_linear_infinite] group-hover:text-primary transition-colors duration-500"
-                        viewBox="0 0 100 100" fill="currentColor">
-                        <!-- Complex Gear Shape -->
-                        <path
-                            d="M50 20 L53 10 L56 20 A 30 30 0 0 1 80 44 L90 47 L80 50 A 30 30 0 0 1 56 80 L53 90 L50 80 A 30 30 0 0 1 20 56 L10 53 L20 50 A 30 30 0 0 1 44 20 Z M50 35 A 15 15 0 1 0 50 65 A 15 15 0 1 0 50 35 Z" />
-                    </svg>
-
-                    <!-- Inner Core (Pulse) -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div
-                            class="w-32 h-32 bg-gray-900 rounded-full flex items-center justify-center border-2 border-primary/50 group-hover:border-primary group-hover:scale-110 transition-all duration-300 shadow-[0_0_30px_rgba(220,38,38,0.3)] z-10">
-                            <span
-                                class="text-white font-display font-bold text-center leading-tight tracking-wider text-sm group-hover:text-primary transition-colors">
-                                ENTER<br>SYSTEM
-                            </span>
-                        </div>
-                    </div>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="font-heading font-700 font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">
+                    Qutaiba W. Mantfaji
                 </a>
-
-                <div class="text-center mt-12 reveal">
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Selected Works</h2>
+                <nav class="hidden md:flex items-center gap-7" aria-label="Main">
+                    <a class="text-sm text-dim hover:text-accent-ink transition-colors" href="#about">About</a>
+                    <a class="text-sm text-dim hover:text-accent-ink transition-colors" href="#projects">Projects</a>
+                    <a class="text-sm text-dim hover:text-accent-ink transition-colors" href="#skills">Skills</a>
+                    <a class="text-sm text-dim hover:text-accent-ink transition-colors" href="#contact">Contact</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme"
+                        class="p-2 rounded-[4px] border border-line text-dim hover:text-accent-ink hover:border-accent transition-colors">
+                        <!-- sun (shown in dark mode → switch to light) -->
+                        <svg id="icon-sun" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" />
+                        </svg>
+                        <!-- moon (shown in light mode → switch to dark) -->
+                        <svg id="icon-moon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                        </svg>
+                    </button>
+                    <a href="assets/resume_qutaiba.pdf" download
+                        class="btn btn-secondary !py-2 !px-4 text-sm">Download CV</a>
                 </div>
-            </section>
+            </div>
+        </div>
+    </header>
 
-            <!-- Tech Stack Marquee (Restored & Infinite) -->
-            <div class="py-10 bg-black border-y border-white/5 overflow-hidden relative group">
-                <!-- Fade Edges -->
-                <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
-                <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
+    <main>
+        <!-- Hero: the only centered section -->
+        <section class="hero-glow px-4 sm:px-6 pt-24 pb-20 md:pt-32 md:pb-28">
+            <div class="hero-rise max-w-[860px] mx-auto text-center">
+                <p class="section-label mb-6">Mechanical Engineering · Software · AI</p>
+                <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+                    I build things that work — mechanical systems, software, and <span class="gradient-text">whatever the problem needs.</span>
+                </h1>
+                <!-- Alt headlines:
+                     B: Engineering student. Builder of real things.
+                     C: Mechanical engineer who also ships software. -->
+                <p class="text-lg md:text-xl text-dim max-w-[640px] mx-auto mb-10">
+                    Mechanical Engineering student at AUIS. I instrument beams, design circuits, build web apps,
+                    and integrate AI — then document it properly.
+                </p>
+                <div class="flex items-center justify-center gap-4 flex-wrap">
+                    <a href="#projects" class="btn btn-primary">See My Projects</a>
+                    <a href="assets/resume_qutaiba.pdf" download class="btn btn-secondary">Download CV</a>
+                </div>
+            </div>
+        </section>
 
-                <div class="flex gap-16 animate-scroll w-max">
-                    <!-- Set 1 -->
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
-                    </div>
+        <hr class="divider max-w-[1100px] mx-auto" />
 
-                    <!-- Set 2 (Duplicate) -->
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
-                    </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
-                    </div>
+        <!-- About -->
+        <section id="about" class="px-4 sm:px-6 py-20">
+            <div class="max-w-[1100px] mx-auto grid md:grid-cols-[320px_1fr] gap-10 items-start">
+                <figure class="reveal max-w-[320px] mx-auto md:mx-0">
+                    <img src="assets/qutaiba-lab.jpg" alt="Qutaiba W. Mantfaji in the AUIS measurements lab"
+                        class="w-full rounded-md border border-line object-cover" loading="lazy" />
+                    <figcaption class="font-mono text-xs text-dim mt-2">In the measurements lab — AUIS.</figcaption>
+                </figure>
+                <div>
+                    <p class="section-label mb-2">About</p>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Two domains, one workshop.</h2>
+                    <p class="text-dim text-lg leading-relaxed max-w-[640px] mb-8">
+                        I'm Qutaiba — a Mechanical Engineering student at AUIS in Sulaymaniyah.
+                        I work across two domains: physical engineering systems (sensors, circuits, structures)
+                        and software (web apps, AI tools, data pipelines). I build things to finish them.
+                    </p>
+                    <dl class="max-w-[640px]">
+                        <div class="spec-row">
+                            <dt>Education</dt>
+                            <dd>BS Mechanical Engineering, AUIS — Feb 2024–present</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Internship</dt>
+                            <dd>Product Designer, Makers of Baghdad (2023) — CNC laser, parametric design</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Credentials</dt>
+                            <dd>
+                                <a href="https://www.coursera.org/account/accomplishments/professional-cert/DRBZKMDOYKAO" target="_blank" rel="noopener" class="hover:text-accent-ink underline decoration-line underline-offset-4">Google Cloud GenAI Leader</a> ·
+                                <a href="https://www.coursera.org/account/accomplishments/specialization/BOX7AQDKJIRY" target="_blank" rel="noopener" class="hover:text-accent-ink underline decoration-line underline-offset-4">ASU Rapid Prototyping</a> ·
+                                <a href="https://www.coursera.org/account/accomplishments/verify/6YX2303E75N6" target="_blank" rel="noopener" class="hover:text-accent-ink underline decoration-line underline-offset-4">IBM Prompt Engineering</a> ·
+                                IOSH Working Safely
+                            </dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Languages</dt>
+                            <dd>Arabic (native), English (fluent)</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Set 3 (Triple for safety on wide screens) -->
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Robotics</span>
+        <hr class="divider max-w-[1100px] mx-auto" />
+
+        <!-- Projects -->
+        <section id="projects" class="px-4 sm:px-6 py-20">
+            <div class="max-w-[1100px] mx-auto">
+                <div class="flex items-end justify-between gap-4 mb-3">
+                    <div>
+                        <p class="section-label mb-2">Projects</p>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold">Built, shipped, documented.</h2>
                     </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Generative AI</span>
+                    <a href="selection.html" class="hidden sm:inline-block text-sm font-mono text-dim hover:text-accent-ink transition-colors shrink-0">Browse case studies by domain →</a>
+                </div>
+                <p class="text-dim mb-10 max-w-[640px]">Status badges are honest: <span class="font-mono text-xs">Live</span> means deployed and clickable, <span class="font-mono text-xs">Local</span> means built but not hosted yet.</p>
+
+                <!-- Featured grid -->
+                <div class="grid md:grid-cols-2 gap-5 mb-14">
+
+                    <!-- Cantilever Beam -->
+                    <article class="card p-6 flex flex-col gap-4 reveal">
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="badge badge-local">Local</span>
+                            <span class="cat-tag">Engineering</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">Cantilever Beam Instrumentation System</h3>
+                        <p class="text-dim text-sm leading-relaxed flex-grow">
+                            Turns a steel cantilever into a load monitor — strain → applied mass to within
+                            ~1.5&nbsp;g — and extracts the beam's natural frequency
+                            (f<sub>n</sub> = 5.83&nbsp;Hz) via FFT.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">Arduino</span><span class="tag">Strain Gauge</span><span class="tag">MPU6050</span><span class="tag">I²C</span><span class="tag">FFT</span><span class="tag">Python</span>
+                        </div>
+                        <a href="projects/cantilever-beam.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
+                    </article>
+
+                    <!-- Sawtooth Wave Generator -->
+                    <article class="card p-6 flex flex-col gap-4 reveal">
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="badge badge-local">Local</span>
+                            <span class="cat-tag">Engineering</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">Sawtooth Wave Generator</h3>
+                        <p class="text-dim text-sm leading-relaxed flex-grow">
+                            Analog op-amp circuit that generates asymmetric sawtooth waveforms using a Schmitt
+                            trigger driving an integrator through a diode RC network. Built and tested on breadboard.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">Op-Amp</span><span class="tag">Schmitt Trigger</span><span class="tag">Analog Design</span><span class="tag">±12V</span>
+                        </div>
+                        <a href="projects/sawtooth-generator.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
+                    </article>
+
+                    <!-- NeuroForge -->
+                    <article class="card p-6 flex flex-col gap-4 reveal">
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="badge badge-live">Live</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">NeuroForge</h3>
+                        <p class="text-dim text-sm leading-relaxed flex-grow">
+                            Brain training PWA with six games and offline support — runs in the browser with
+                            no install required.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service Worker</span><span class="tag">Web Audio API</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
+                            <a href="projects/neuroforge.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
+                        </div>
+                    </article>
+
+                    <!-- C2C Club -->
+                    <article class="card p-6 flex flex-col gap-4 reveal">
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="badge badge-live">Live</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">C2C Club</h3>
+                        <p class="text-dim text-sm leading-relaxed flex-grow">
+                            Website for the Campus-to-Career Club — events calendar, RSVP system, success
+                            stories, and a full Arabic/English toggle. Built on Firebase, installable as a PWA.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
+                            <a href="projects/c2c-club.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- More builds -->
+                <h3 class="font-heading text-lg font-bold mb-5 text-dim">More builds</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+
+                    <article class="card p-5 flex flex-col gap-3 reveal">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="badge badge-local">Local</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                        <h4 class="font-heading font-bold">Life OS</h4>
+                        <p class="text-dim text-sm flex-grow">Gamified daily-habit dashboard — streaks, analytics, Firebase auth, and dark mode in a single build.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span>
+                        </div>
+                    </article>
+
+                    <article class="card p-5 flex flex-col gap-3 reveal">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="badge badge-progress">In Progress</span>
+                            <span class="cat-tag">AI</span>
+                        </div>
+                        <h4 class="font-heading font-bold">CV Builder v2</h4>
+                        <p class="text-dim text-sm flex-grow">Full-stack AI CV generator — React front end, Node/MongoDB back end, OpenAI content, PDF export via Puppeteer.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">OpenAI API</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim">In development — not yet deployed</span>
+                    </article>
+
+                    <article class="card p-5 flex flex-col gap-3 reveal">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="badge badge-live">Live</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                        <h4 class="font-heading font-bold">Portfolio Site</h4>
+                        <p class="text-dim text-sm flex-grow">This site. PWA-enabled, light/dark mode, 13 case studies, domain-based routing.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tag">HTML</span><span class="tag">Tailwind</span><span class="tag">Vanilla JS</span><span class="tag">PWA</span>
+                        </div>
+                        <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ GitHub</a>
+                    </article>
+                </div>
+
+                <!-- Design & CAD archive -->
+                <h3 class="font-heading text-lg font-bold mb-5 text-dim">Design &amp; CAD archive</h3>
+                <div class="card divide-y divide-line overflow-hidden">
+                    <a href="projects/parametric-auger.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">Parametric Auger</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/parametric-gear.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">Parametric Gear</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/m12-nut.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">M12 Nut</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/industrial-design.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">Industrial Design</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/product-design.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">Product Design</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/engineering-drawing.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">Engineering Drawing</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/ai-design-pipeline.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">AI Design Pipeline</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                    <a href="projects/hr-analytics.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="badge badge-archive">Archive</span>
+                            <span class="font-heading font-medium truncate">HR Analytics</span>
+                        </div>
+                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
+                    </a>
+                </div>
+                <a href="selection.html" class="sm:hidden inline-block mt-6 text-sm font-mono text-dim hover:text-accent-ink transition-colors">Browse case studies by domain →</a>
+            </div>
+        </section>
+
+        <hr class="divider max-w-[1100px] mx-auto" />
+
+        <!-- Skills -->
+        <section id="skills" class="px-4 sm:px-6 py-20">
+            <div class="max-w-[1100px] mx-auto">
+                <p class="section-label mb-2">Skills</p>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-10">What I work with.</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="card p-6 reveal">
+                        <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Mechanical Engineering</h3>
+                        <p class="text-dim leading-loose">
+                            Structural instrumentation · Analog circuit design · Sensor integration ·
+                            CNC laser fabrication · Rapid prototyping · 3D printing · CAD (SolidWorks, Fusion 360)
+                        </p>
                     </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">SolidWorks</span>
+                    <div class="card p-6 reveal">
+                        <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Software &amp; Web</h3>
+                        <p class="text-dim leading-loose">
+                            HTML/CSS/Tailwind · Vanilla JS · React · Next.js · Node.js ·
+                            FastAPI · MongoDB · PWA (service workers) · REST APIs
+                        </p>
                     </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">Python</span>
+                    <div class="card p-6 reveal">
+                        <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">AI &amp; Data</h3>
+                        <p class="text-dim leading-loose">
+                            OpenAI API · Google Gemini · Prompt engineering · Generative AI strategy ·
+                            MATLAB · Python · Arduino · Serial data pipelines · FFT analysis
+                        </p>
                     </div>
-                    <div class="flex items-center gap-4 group/item">
-                        <span
-                            class="material-symbols-outlined text-primary text-xl group-hover/item:animate-pulse">bolt</span>
-                        <span class="text-white font-bold tracking-widest uppercase font-display">3D Printing</span>
+                    <div class="card p-6 reveal">
+                        <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Tools &amp; Methods</h3>
+                        <p class="text-dim leading-loose">
+                            Git/GitHub · Arduino IDE · OSHA safety · Technical documentation ·
+                            Project management · LaTeX · Statistical analysis (Minitab/Excel)
+                        </p>
                     </div>
                 </div>
             </div>
+        </section>
 
+        <hr class="divider max-w-[1100px] mx-auto" />
 
-
-
-
-            <!-- Certifications -->
-            <section class="py-20 bg-background-light dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5"
-                id="certifications">
-                <div class="max-w-[1200px] mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <span class="text-primary font-bold tracking-widest uppercase text-sm">Validation</span>
-                        <h2 class="text-4xl font-bold mt-2 text-gray-900 dark:text-white">Certifications</h2>
-                    </div>
-                    <div class="space-y-4">
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/DRBZKMDOYKAO"
-                            target="_blank"
-                            class="cert-card glass-card rounded-2xl p-6 flex items-center gap-6 border-l-4 border-l-amber-500">
-                            <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 shrink-0">
-                                <img src="assets/logo-google-cloud.png" class="w-full h-full object-contain"
-                                    loading="lazy">
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Generative AI Leader</h3>
-                                <p class="text-gray-400 text-sm">Google Cloud Professional Certificate � Jan 2026</p>
-                                <p class="text-amber-500 text-xs font-bold mt-1 uppercase">Top Priority</p>
-                            </div>
-                            <span class="material-symbols-outlined text-gray-500">open_in_new</span>
-                        </a>
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/BOX7AQDKJIRY"
-                            target="_blank"
-                            class="cert-card glass-card rounded-2xl p-6 flex items-center gap-6 border-l-4 border-l-blue-600">
-                            <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 shrink-0">
-                                <img src="assets/logo-asu.png" class="w-full h-full object-contain" loading="lazy">
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Rapid Prototyping Using 3D
-                                    Printing</h3>
-                                <p class="text-gray-400 text-sm">Arizona State University Specialization</p>
-                            </div>
-                            <span class="material-symbols-outlined text-gray-500">open_in_new</span>
-                        </a>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <a href="https://www.coursera.org/account/accomplishments/verify/3M2KK5JRZ2E8"
-                                target="_blank" class="cert-card glass-card rounded-2xl p-4 flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 shrink-0">
-                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain" loading="lazy">
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-sm">GenAI: Introduction &
-                                        Apps</h4>
-                                    <p class="text-gray-500 text-xs">IBM</p>
-                                </div>
-                            </a>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/6YX2303E75N6"
-                                target="_blank" class="cert-card glass-card rounded-2xl p-4 flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 shrink-0">
-                                    <img src="assets/logo-ibm.png" class="w-full h-full object-contain" loading="lazy">
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-sm">GenAI: Prompt
-                                        Engineering</h4>
-                                    <p class="text-gray-500 text-xs">IBM</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="mt-12">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">badge</span>Other Credentials
-                            </h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div
-                                    class="glass-card p-4 rounded-xl border border-gray-200 dark:border-white/5 flex items-center gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shrink-0">
-                                        <img src="assets/logo-multisoft.png" class="w-8 h-8 object-contain"
-                                            loading="lazy">
-                                    </div>
-                                    <div>
-                                        <h4 class="text-gray-900 dark:text-white font-bold text-sm">Human Resources
-                                            Management</h4>
-                                        <p class="text-gray-400 text-xs">Multisoft</p>
-                                        <p class="text-xs text-gray-500 mt-1 font-mono">ID: 202505569</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="glass-card p-4 rounded-xl border border-gray-200 dark:border-white/5 flex items-center gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shrink-0">
-                                        <img src="assets/logo-iosh.png" class="w-8 h-8 object-contain" loading="lazy">
-                                    </div>
-                                    <div>
-                                        <h4 class="text-gray-900 dark:text-white font-bold text-sm">IOSH Working Safely
-                                        </h4>
-                                        <p class="text-gray-400 text-xs">Microteach</p>
-                                        <p class="text-xs text-gray-500 mt-1 font-mono">ID: 42295258-01-SDC7</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Contact -->
+        <section id="contact" class="px-4 sm:px-6 py-20">
+            <div class="max-w-[1100px] mx-auto">
+                <p class="section-label mb-2">Contact</p>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Let's work together.</h2>
+                <p class="text-dim text-lg max-w-[640px] mb-2">
+                    I'm available for internships, engineering projects, and freelance web work.
+                </p>
+                <p class="font-mono text-sm text-dim mb-8">Sulaymaniyah, Iraq · Open to remote.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="mailto:qutibax2@gmail.com" class="btn btn-primary">qutibax2@gmail.com</a>
+                    <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+                    <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
                 </div>
-            </section>
+            </div>
+        </section>
+    </main>
 
-            <!-- Process/Methodology Section -->
-            <section
-                class="py-20 bg-gradient-to-b from-background dark:from-[#0A0A0A] to-gray-50 dark:to-[#111] border-t border-gray-200 dark:border-white/5"
-                id="process">
-                <div class="max-w-[1000px] mx-auto px-4 sm:px-6">
-                    <div class="text-center mb-16">
-                        <span class="text-primary font-bold tracking-widest uppercase text-sm">Methodology</span>
-                        <h2 class="text-4xl font-display font-bold mt-2 text-gray-900 dark:text-white">From Concept to
-                            Reality</h2>
-                    </div>
-                    <div class="relative">
-                        <!-- Central Timeline Line (visible on all screens) -->
-                        <div
-                            class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent md:-translate-x-1/2">
-                        </div>
-                        <div class="space-y-12 relative z-10">
-                            <!-- Step 1: Discovery -->
-                            <div
-                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0">
-                                <div
-                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
-                                    <span class="material-symbols-outlined text-primary text-xl">search</span>
-                                </div>
-                                <div class="w-full md:w-1/2 md:text-right md:order-first">
-                                    <h3
-                                        class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                        01. Discovery</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 mt-2">Analyzing requirements and
-                                        constraints. Defining the physics of the problem space.</p>
-                                </div>
-                                <div class="w-full md:w-1/2 hidden md:block"></div>
-                            </div>
-                            <!-- Step 2: Simulation -->
-                            <div
-                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
-                                <div
-                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
-                                    <span class="material-symbols-outlined text-primary text-xl">deployed_code</span>
-                                </div>
-                                <div class="w-full md:w-1/2 hidden md:block md:order-first"></div>
-                                <div class="w-full md:w-1/2">
-                                    <h3
-                                        class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                        02. Simulation</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 mt-2">Generative design iteration using
-                                        FEA and AI agents to optimize topology.</p>
-                                </div>
-                            </div>
-                            <!-- Step 3: Fabrication -->
-                            <div
-                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
-                                <div
-                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
-                                    <span
-                                        class="material-symbols-outlined text-primary text-xl">precision_manufacturing</span>
-                                </div>
-                                <div class="w-full md:w-1/2 md:text-right md:order-first">
-                                    <h3
-                                        class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                        03. Fabrication</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 mt-2">Rapid prototyping via additive
-                                        manufacturing and CNC machining.</p>
-                                </div>
-                                <div class="w-full md:w-1/2 hidden md:block"></div>
-                            </div>
-                            <!-- Step 4: Deployment -->
-                            <div
-                                class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 group pl-16 md:pl-0 relative">
-                                <div
-                                    class="absolute left-0 md:relative md:left-auto w-12 h-12 rounded-full bg-gray-100 dark:bg-[#1A1A1A] border border-primary/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
-                                    <span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
-                                </div>
-                                <div class="w-full md:w-1/2 hidden md:block md:order-first"></div>
-                                <div class="w-full md:w-1/2">
-                                    <h3
-                                        class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                        04. Deployment</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 mt-2">Integration into real-world
-                                        systems, testing, and feedback loops.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <footer class="border-t border-line px-4 sm:px-6 py-8">
+        <div class="max-w-[1100px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+            <p class="font-mono text-xs">Built by hand. No template.</p>
+        </div>
+    </footer>
 
-            <!-- Partnerships & Testimonials Section -->
-            <section
-                class="py-10 bg-gray-50 dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5 overflow-hidden">
-                <div class="max-w-[1400px] mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <span class="text-primary font-bold tracking-widest uppercase text-sm">Collaborations</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mt-2 text-gray-900 dark:text-white">Trusted
-                            Partnerships</h2>
-                    </div>
-                    <div
-                        class="flex overflow-x-auto pb-8 gap-6 md:gap-8 hide-scrollbar snap-x snap-mandatory px-4 md:justify-center">
-                        <div
-                            class="snap-center shrink-0 w-[300px] md:w-[350px] glass-card p-8 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div
-                                    class="w-12 h-12 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                    <span class="material-symbols-outlined text-primary">school</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">AUIS University</h4>
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider">Mechanical
-                                        Engineering</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">"Pursuing a B.Sc. in
-                                Mechanical Engineering with a focus on Mechatronics and AI-driven systems design."</p>
-                        </div>
-                        <div
-                            class="snap-center shrink-0 w-[300px] md:w-[350px] glass-card p-8 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div
-                                    class="w-12 h-12 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                    <span class="material-symbols-outlined text-primary">factory</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Makers of Baghdad</h4>
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider">Industrial
-                                        Internship</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">"Hands-on experience in
-                                CNC laser fabrication, product design, and industrial manufacturing workflows."</p>
-                        </div>
-                        <div
-                            class="snap-center shrink-0 w-[300px] md:w-[350px] glass-card p-8 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div
-                                    class="w-12 h-12 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10">
-                                    <span class="material-symbols-outlined text-primary">cloud</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Google Cloud</h4>
-                                    <p class="text-xs text-primary font-bold uppercase tracking-wider">Certified AI
-                                        Leader</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">"Professional
-                                certification in Generative AI strategy, agents, and business transformation."</p>
-                        </div>
-                    </div>
-                    <div class="mt-16 overflow-hidden relative w-full group">
-                        <!-- Fade Edges -->
-                        <div
-                            class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F9FAFB] dark:from-[#0A0A0A] to-transparent z-10">
-                        </div>
-                        <div
-                            class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#F9FAFB] dark:from-[#0A0A0A] to-transparent z-10">
-                        </div>
-
-                        <!-- Marquee Container -->
-                        <div class="flex gap-16 animate-scroll w-max pause">
-                            <!-- Set 1 -->
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">psychology</span><span
-                                    class="text-lg font-bold">Generative AI</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">terminal</span><span
-                                    class="text-lg font-bold">Prompt Engineering</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">precision_manufacturing</span><span
-                                    class="text-lg font-bold">Rapid Prototyping</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">view_in_ar</span><span
-                                    class="text-lg font-bold">SolidWorks</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">architecture</span><span
-                                    class="text-lg font-bold">Fusion 360</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">functions</span><span
-                                    class="text-lg font-bold">MATLAB</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">print</span><span
-                                    class="text-lg font-bold">3D Printing</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">factory</span><span
-                                    class="text-lg font-bold">CNC Laser</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">safety_check</span><span
-                                    class="text-lg font-bold">Product Design</span>
-                            </div>
-
-                            <!-- Set 2 (Duplicate) -->
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">psychology</span><span
-                                    class="text-lg font-bold">Generative AI</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">terminal</span><span
-                                    class="text-lg font-bold">Prompt Engineering</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">precision_manufacturing</span><span
-                                    class="text-lg font-bold">Rapid Prototyping</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">view_in_ar</span><span
-                                    class="text-lg font-bold">SolidWorks</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">architecture</span><span
-                                    class="text-lg font-bold">Fusion 360</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">functions</span><span
-                                    class="text-lg font-bold">MATLAB</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">print</span><span
-                                    class="text-lg font-bold">3D Printing</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">factory</span><span
-                                    class="text-lg font-bold">CNC Laser</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors">
-                                <span class="material-symbols-outlined text-3xl">safety_check</span><span
-                                    class="text-lg font-bold">Product Design</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact -->
-            <footer
-                class="bg-background dark:bg-[#0A0A0A] pt-32 pb-12 px-4 border-t border-gray-200 dark:border-white/5 relative overflow-hidden"
-                id="contact">
-                <!-- Decorative Gradient Line -->
-                <div
-                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50">
-                </div>
-                <div class="max-w-[1200px] mx-auto text-center">
-                    <!-- Big Headline -->
-                    <h2
-                        class="font-display text-5xl md:text-7xl font-black mb-8 tracking-tighter text-gray-900 dark:text-white">
-                        READY TO BUILD<br /><span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">THE
-                            FUTURE?</span>
-                    </h2>
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-                        <a class="flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/30"
-                            href="mailto:qutaibax2@gmail.com">
-                            <span class="material-symbols-outlined">mail</span>
-                            Let's Talk
-                        </a>
-                        <a class="flex items-center gap-3 px-8 py-4 border-2 border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-full font-bold hover:border-primary hover:scale-105 transition-all duration-300"
-                            href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank">
-                            <span class="material-symbols-outlined">calendar_today</span>
-                            Connect on LinkedIn
-                        </a>
-                    </div>
-                    <!-- Hands-on Lab Work Photo -->
-                    <div class="mt-12 mb-16 reveal">
-                        <div
-                            class="glass-card p-2 rounded-2xl border border-gray-200 dark:border-white/5 overflow-hidden group shadow-lg max-w-2xl mx-auto">
-                            <div class="relative w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
-                                <img src="assets/lab-photo.jpg" alt="Engineering Lab Work"
-                                    class="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700 ease-out">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <p class="text-white font-bold text-base tracking-wide">Hands-on Engineering &
-                                        Research</p>
-                                    <p class="text-gray-300 text-sm mt-1">Applying fluid mechanics and thermodynamics in
-                                        the lab</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Secondary Info Card -->
-                    <div class="max-w-2xl mx-auto">
-                        <div class="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
-                            <div class="bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl text-left mb-8">
-                                <p class="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">I am open to
-                                    opportunities in <strong class="font-bold">Product Design</strong>, <strong
-                                        class="font-bold">Industrial Automation</strong>, and <strong
-                                        class="font-bold">AI
-                                        Integration</strong>. If you value precision and systems thinking, let's
-                                    connect.
-                                </p>
-                            </div>
-                            <!-- Contact Links -->
-                            <div class="grid md:grid-cols-2 gap-6 text-left">
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center shrink-0">
-                                        <span class="material-symbols-outlined text-primary">call</span>
-                                    </div>
-                                    <div>
-                                        <p
-                                            class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
-                                            Phone</p>
-                                        <p class="font-medium text-gray-900 dark:text-white">+964-776-152-2183</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center shrink-0">
-                                        <span class="material-symbols-outlined text-primary">location_on</span>
-                                    </div>
-                                    <div>
-                                        <p
-                                            class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
-                                            Location</p>
-                                        <p class="font-medium text-gray-900 dark:text-white">Sulaymaniyah, Iraq</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer Bottom -->
-                    <div
-                        class="flex flex-col md:flex-row items-center justify-between pt-12 mt-12 border-t border-gray-200 dark:border-white/10 text-gray-500 text-sm">
-                        <p>� 2026 Qutaiba W. Mantfaji. All rights reserved.</p>
-                        <div class="flex items-center gap-6 mt-4 md:mt-0">
-                            <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
-                                class="hover:text-primary transition-colors">LinkedIn</a>
-                            <a href="https://github.com/qutaiba-W" target="_blank"
-                                class="hover:text-primary transition-colors">GitHub</a>
-                            <a href="mailto:qutaibax2@gmail.com" class="hover:text-primary transition-colors">Email</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Social Media Marquee -->
-                <div class="w-full bg-black border-t border-white/5 overflow-hidden py-6 mt-12">
-                    <div class="flex gap-16 animate-[scroll_20s_linear_infinite] w-max hover:pause">
-                        <!-- Set 1 -->
-                        <a href="mailto:qutaibax2@gmail.com"
-                            class="flex items-center gap-3 text-gray-500 hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-xl">mail</span>
-                            <span class="font-bold tracking-widest uppercase text-sm">Email Me</span>
-                        </a>
-                        <a href="https://github.com/qutaiba-W" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-[#0077b5] transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">LinkedIn</span>
-                        </a>
-                        <div class="w-2 h-2 rounded-full bg-white/10"></div>
-                        <!-- Set 2 -->
-                        <a href="mailto:qutaibax2@gmail.com"
-                            class="flex items-center gap-3 text-gray-500 hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-xl">mail</span>
-                            <span class="font-bold tracking-widest uppercase text-sm">Email Me</span>
-                        </a>
-                        <a href="https://github.com/qutaiba-W" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-[#0077b5] transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">LinkedIn</span>
-                        </a>
-                        <div class="w-2 h-2 rounded-full bg-white/10"></div>
-                        <!-- Set 3 -->
-                        <a href="mailto:qutaibax2@gmail.com"
-                            class="flex items-center gap-3 text-gray-500 hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-xl">mail</span>
-                            <span class="font-bold tracking-widest uppercase text-sm">Email Me</span>
-                        </a>
-                        <a href="https://github.com/qutaiba-W" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank"
-                            class="flex items-center gap-3 text-gray-500 hover:text-[#0077b5] transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                            <span class="font-bold tracking-widest uppercase text-sm">LinkedIn</span>
-                        </a>
-                    </div>
-                </div>
-            </footer>
-        </main>
-    </div>
     <script>
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
+        // Theme toggle: light is default (no attribute), dark via data-theme="dark"
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            var sun = document.getElementById('icon-sun');
+            var moon = document.getElementById('icon-moon');
+            var meta = document.querySelector('meta[name="theme-color"]');
 
-        // Check for saved theme preference
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
-        } else {
-            htmlElement.classList.remove('dark');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.theme = 'dark';
+            function isDark() {
+                return document.documentElement.getAttribute('data-theme') === 'dark';
             }
-        });
-    </script>
-    <script>
-        // Force scroll to top on load
-        if (history.scrollRestoration) {
-            history.scrollRestoration = 'manual';
-        } else {
-            window.onbeforeunload = function () {
-                window.scrollTo(0, 0);
+            function syncIcons() {
+                var dark = isDark();
+                sun.classList.toggle('hidden', !dark);   // sun = "switch to light", shown in dark
+                moon.classList.toggle('hidden', dark);   // moon = "switch to dark", shown in light
+                if (meta) meta.setAttribute('content', dark ? '#0c0c0b' : '#fbf8f2');
             }
-        }
-        window.onload = function () {
-            setTimeout(function () {
-                window.scrollTo(0, 0);
-            }, 10);
-        };
-    </script>
-    <script>
-        // --- Visual Effects ---
+            syncIcons();
 
-        // 1. Typewriter Effect
-        const textToType = "Mechanical Systems Architect & AI Integrator";
-        const typewriterElement = document.getElementById('typewriter-text');
-        let charIndex = 0;
-
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                typewriterElement.innerHTML += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 50); // Typing speed
-            }
-        }
-
-        // Start typing after a short delay (after plotter animation starts)
-        setTimeout(typeWriter, 1000);
-
-        // 2. Parallax Grid Effect
-        document.addEventListener('mousemove', (e) => {
-            const grid = document.querySelector('.bg-grid-pattern');
-            if (grid) {
-                const x = (window.innerWidth - e.pageX * 2) / 100;
-                const y = (window.innerHeight - e.pageY * 2) / 100;
-                grid.style.transform = `translateX(${x}px) translateY(${y}px)`;
-            }
-        });
-
-        // 3. Spotlight Effect
-        // Only enable on non-touch devices to save performance and battery on mobile
-        const spotlight = document.getElementById('spotlight');
-        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                // Initial fade in
-                if (spotlight.style.opacity === '' || spotlight.style.opacity === '0') {
-                    spotlight.style.opacity = '1';
+            toggle.addEventListener('click', function () {
+                if (isDark()) {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
                 }
+                syncIcons();
+            });
+        })();
 
-                // Move the spotlight
-                spotlight.style.setProperty('--x', `${e.clientX}px`);
-                spotlight.style.setProperty('--y', `${e.clientY}px`);
+        // Scroll reveal (no-op for reduced motion via CSS)
+        (function () {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+        })();
+
+        // Service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('./sw.js').catch(function () { });
             });
         }
-
-        // 2. Scroll Reveal Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Optional: Stop observing once revealed
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 4. Tab Filtering Logic (Removed)
-
     </script>
 </body>
 
