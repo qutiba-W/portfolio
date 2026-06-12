@@ -123,10 +123,30 @@
 
                 <section>
                     <h2 class="section-label mb-4">Spec Sheet</h2>
-                    <div class="rounded-md overflow-hidden border border-line bg-white">
+                    <div id="aug-wrap" class="rounded-md overflow-hidden border border-line">
                         <img src="../assets/parametric-auger-drawing.png" alt="Parametric auger helix technical drawing"
                             class="w-full h-auto object-contain" loading="lazy" />
                     </div>
+                    <script>
+                        (function () {
+                            fetch('../assets/parametric-auger-drawing-interactive.svg')
+                                .then(function (r) { return r.text(); })
+                                .then(function (txt) {
+                                    var d = document.createElement('div');
+                                    d.innerHTML = txt;
+                                    var svgEl = d.querySelector('svg');
+                                    var wrap = document.getElementById('aug-wrap');
+                                    if (!svgEl || !wrap) return;
+                                    wrap.replaceWith(svgEl);
+                                    svgEl.querySelectorAll('script').forEach(function (old) {
+                                        var s = document.createElement('script');
+                                        s.textContent = old.textContent;
+                                        old.parentNode.replaceChild(s, old);
+                                    });
+                                })
+                                .catch(function () { });
+                        })();
+                    </script>
                 </section>
             </article>
 
