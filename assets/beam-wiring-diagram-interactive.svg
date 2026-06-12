@@ -1,0 +1,269 @@
+<svg id="beam-wd" viewBox="0 0 720 412" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-label="Interactive wiring diagram — cantilever beam instrumentation system"
+  style="display:block;width:100%;height:auto;font-family:'JetBrains Mono',monospace">
+
+<style>
+#beam-wd {
+  --wd-bg:  var(--color-surface,     #ffffff);
+  --wd-brd: var(--color-border,      #e7dec9);
+  --wd-ink: var(--color-text,        #211c14);
+  --wd-dim: var(--color-text-dim,    #645c4d);
+  --wd-mut: var(--color-muted,       #998f7b);
+  --wd-acc: var(--color-accent,      #f59e0b);
+  --wd-ai:  var(--color-accent-ink,  #b45309);
+  --wd-as:  var(--color-accent-soft, rgba(245,158,11,.13));
+}
+
+/* Component boxes */
+.wdr     { stroke-width:1.5; }
+.wdr-ard { fill:rgba(59,130,246,.07); stroke:#3b82f6; }
+.wdr-sa  { fill:var(--wd-bg);         stroke:var(--wd-brd); }
+.wdr-sg  { fill:rgba(249,115,22,.10); stroke:#f97316; }
+.wdr-mpu { fill:rgba(236,72,153,.09); stroke:#ec4899; }
+
+/* Text inside boxes */
+.wlbl  { fill:var(--wd-ink); font-size:11px; font-weight:600; text-anchor:middle; dominant-baseline:central; }
+.wsub  { fill:var(--wd-dim); font-size:9px;  text-anchor:middle; dominant-baseline:central; }
+.wpin  { fill:var(--wd-dim); font-size:8.5px; dominant-baseline:central; }
+.wpin-r{ fill:var(--wd-dim); font-size:8.5px; dominant-baseline:central; text-anchor:end; }
+
+/* Wires — color set inline, width/opacity controlled by CSS */
+.ww { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:2;
+      transition: stroke-width .15s ease, opacity .15s ease; }
+.ww-dash { stroke-dasharray: 7 4; }
+.ww.lit  { stroke-width:3.8; }
+.ww.dim  { opacity:.22; }
+
+/* Component group hover/focus/lit */
+.wng        { cursor:pointer; }
+.wng:focus  { outline:none; }
+.wng:hover  .wdr,
+.wng:focus  .wdr,
+.wng.lit    .wdr  { stroke:var(--wd-acc)!important; fill:var(--wd-as); }
+.wng:hover  .wlbl,
+.wng:focus  .wlbl,
+.wng.lit    .wlbl { fill:var(--wd-ai); }
+
+/* Build-up animation */
+@keyframes wd-rise { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none} }
+.wng         { animation:wd-rise .35s ease both; }
+#gard        { animation-delay:.1s; }
+#gsa         { animation-delay:.35s; }
+#gsg         { animation-delay:.55s; }
+#gmpu        { animation-delay:.75s; }
+.ww          { opacity:0; }  /* JS draws wires */
+@media(prefers-reduced-motion:reduce){
+  .wng,.ww { animation:none!important; opacity:1; }
+}
+
+/* Info panel */
+#wd-it { fill:var(--wd-ai);  font-size:10.5px; font-weight:600; dominant-baseline:central; }
+#wd-id { fill:var(--wd-dim); font-size:9.5px;  dominant-baseline:central; }
+
+/* Legend text */
+.wleg { fill:var(--wd-dim); font-size:9px; dominant-baseline:central; }
+</style>
+
+<defs>
+  <marker id="wd-dot" markerWidth="4" markerHeight="4" refX="2" refY="2">
+    <circle cx="2" cy="2" r="1.8" fill="inherit"/>
+  </marker>
+</defs>
+
+<!-- ── ARDUINO UNO ─────────────────────────────────────────── -->
+<g id="gard" class="wng" data-id="arduino" tabindex="0" role="button" aria-label="Arduino Uno microcontroller">
+  <rect class="wdr wdr-ard" x="8" y="22" width="145" height="268" rx="5"/>
+  <text class="wlbl" x="80" y="40" fill="#3b82f6">ARDUINO UNO</text>
+  <!-- pin labels (right-aligned, x=148) -->
+  <text class="wpin-r" x="148" y="75">5V</text>
+  <text class="wpin-r" x="148" y="95">3.3V</text>
+  <text class="wpin-r" x="148" y="115">GND</text>
+  <text class="wpin-r" x="148" y="148">A0</text>
+  <text class="wpin-r" x="148" y="168" opacity=".4">A1</text>
+  <text class="wpin-r" x="148" y="188" opacity=".4">A2</text>
+  <text class="wpin-r" x="148" y="208" opacity=".4">A3</text>
+  <text class="wpin-r" x="148" y="233">A4</text>
+  <text class="wpin-r" x="148" y="244" style="font-size:7px;fill:var(--wd-mut)">I2C SDA</text>
+  <text class="wpin-r" x="148" y="258">A5</text>
+  <text class="wpin-r" x="148" y="269" style="font-size:7px;fill:var(--wd-mut)">I2C SCL</text>
+</g>
+
+<!-- ── STRAIN GAUGE AMPLIFIER ─────────────────────────────── -->
+<g id="gsa" class="wng" data-id="strainamp" tabindex="0" role="button" aria-label="Strain Gauge Amplifier">
+  <rect class="wdr wdr-sa" x="240" y="30" width="175" height="106" rx="5"/>
+  <text class="wlbl" x="327" y="70">Strain Gauge</text>
+  <text class="wlbl" x="327" y="86">Amplifier</text>
+  <!-- left pin labels -->
+  <text class="wpin" x="246" y="58">VCC</text>
+  <text class="wpin" x="246" y="78">GND</text>
+  <text class="wpin" x="246" y="98">OUT</text>
+  <!-- right pin label -->
+  <text class="wpin" x="408" y="67" text-anchor="end">IN</text>
+</g>
+
+<!-- ── STRAIN GAUGE #1 ────────────────────────────────────── -->
+<g id="gsg" class="wng" data-id="straing" tabindex="0" role="button" aria-label="Strain Gauge number 1 bonded to top of beam">
+  <rect class="wdr wdr-sg" x="468" y="30" width="110" height="74" rx="5"/>
+  <!-- gauge symbol: hatched inner rect -->
+  <rect x="486" y="50" width="74" height="20" rx="2" fill="none" stroke="#f97316" stroke-width="1" opacity=".5"/>
+  <line x1="500" y1="50" x2="496" y2="70" stroke="#f97316" stroke-width=".8" opacity=".4"/>
+  <line x1="514" y1="50" x2="510" y2="70" stroke="#f97316" stroke-width=".8" opacity=".4"/>
+  <line x1="528" y1="50" x2="524" y2="70" stroke="#f97316" stroke-width=".8" opacity=".4"/>
+  <line x1="542" y1="50" x2="538" y2="70" stroke="#f97316" stroke-width=".8" opacity=".4"/>
+  <text class="wlbl" x="523" y="37" style="font-size:10px">Strain G #1</text>
+  <text class="wsub" x="523" y="84">(top of beam)</text>
+</g>
+
+<!-- ── MPU6050 (GY-521) ───────────────────────────────────── -->
+<g id="gmpu" class="wng" data-id="mpu" tabindex="0" role="button" aria-label="MPU6050 GY-521 accelerometer">
+  <rect class="wdr wdr-mpu" x="255" y="208" width="152" height="114" rx="5"/>
+  <text class="wlbl" x="331" y="222">MPU6050</text>
+  <text class="wsub" x="331" y="234">(GY-521)</text>
+  <!-- pin labels -->
+  <text class="wpin" x="262" y="248">VCC</text>
+  <text class="wpin" x="262" y="262">GND</text>
+  <text class="wpin" x="262" y="276">SDA</text>
+  <text class="wpin" x="262" y="290">SCL</text>
+  <text class="wpin" x="262" y="304" style="font-size:7.5px">AD0→GND</text>
+  <!-- AD0 internal pull-down (short line) -->
+  <line x1="255" y1="304" x2="268" y2="304" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="2 2" opacity=".5"/>
+</g>
+
+<!-- ── DIAGRAM TITLE ──────────────────────────────────────── -->
+<text x="360" y="13" text-anchor="middle" dominant-baseline="central"
+  style="font-size:12px;font-weight:700;font-family:'Space Grotesk',sans-serif;fill:var(--wd-ink)">Full System Wiring Diagram</text>
+
+<!-- ── WIRES ──────────────────────────────────────────────── -->
+<!-- 5V power — dashed dark red -->
+<path id="w-5v"      class="ww ww-dash" stroke="#b91c1c" d="M153,75  L208,75  L208,58  L240,58"/>
+<!-- 3.3V power — solid red -->
+<path id="w-33v"     class="ww"         stroke="#dc2626" d="M153,95  L218,95  L218,248 L255,248"/>
+<!-- GND → Strain Amp — solid blue -->
+<path id="w-gnd-sa"  class="ww"         stroke="#2563eb" d="M153,115 L200,115 L200,78  L240,78"/>
+<!-- GND → MPU6050 — solid blue (shares Arduino GND exit, branches at x≈202) -->
+<path id="w-gnd-mpu" class="ww"         stroke="#2563eb" d="M153,115 L205,115 L205,262 L255,262"/>
+<!-- Strain G → Strain Amp IN — solid amber-yellow -->
+<path id="w-sg-amp"  class="ww"         stroke="#d97706" d="M468,67  L415,67"/>
+<!-- Strain Amp OUT → Arduino A0 — solid amber-yellow -->
+<path id="w-sg-a0"   class="ww"         stroke="#d97706" d="M240,98  L186,98  L186,148 L153,148"/>
+<!-- I2C SDA — solid slate-dark -->
+<path id="w-sda"     class="ww"         stroke="#374151" d="M153,238 L224,238 L224,276 L255,276"/>
+<!-- I2C SCL — solid green -->
+<path id="w-scl"     class="ww"         stroke="#16a34a" d="M153,258 L229,258 L229,290 L255,290"/>
+
+<!-- pin junction dots (GND branch point) -->
+<circle cx="153" cy="115" r="3" fill="#2563eb" class="ww"/>
+
+<!-- ── LEGEND ─────────────────────────────────────────────── -->
+<g transform="translate(0,336)">
+  <!-- row 1 -->
+  <line x1="8"   y1="8" x2="40"  y2="8" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4"/>
+  <text class="wleg" x="44"  y="8">5V power</text>
+  <line x1="112" y1="8" x2="144" y2="8" stroke="#dc2626" stroke-width="2"/>
+  <text class="wleg" x="148" y="8">3.3V power</text>
+  <line x1="232" y1="8" x2="264" y2="8" stroke="#2563eb" stroke-width="2"/>
+  <text class="wleg" x="268" y="8">GND</text>
+  <!-- row 2 -->
+  <line x1="8"   y1="22" x2="40"  y2="22" stroke="#d97706" stroke-width="2"/>
+  <text class="wleg" x="44"  y="22">Strain Gauge Out</text>
+  <line x1="172" y1="22" x2="204" y2="22" stroke="#374151" stroke-width="2"/>
+  <text class="wleg" x="208" y="22">I2C SDA</text>
+  <line x1="272" y1="22" x2="304" y2="22" stroke="#16a34a" stroke-width="2"/>
+  <text class="wleg" x="308" y="22">I2C SCL</text>
+</g>
+
+<!-- ── INFO PANEL ─────────────────────────────────────────── -->
+<rect x="0" y="370" width="720" height="42" fill="var(--wd-bg)" stroke="var(--wd-brd)" stroke-width="1"/>
+<text id="wd-it" x="12" y="383"/>
+<text id="wd-id" x="12" y="399">Hover a component to see details</text>
+
+<script>//<![CDATA[
+(function () {
+  var svg = document.getElementById('beam-wd');
+  if (!svg) return;
+
+  var DESCS = {
+    arduino:  ['Arduino Uno', 'Microcontroller hub — reads A0 (strain amp output), drives I²C on A4/A5 to MPU6050, streams CSV at 115200 baud.'],
+    strainamp:['Strain Gauge Amplifier', 'Amplifies the mV-range bridge signal to 0–5 V for the Arduino ADC. Powered by 5 V; output wired to A0.'],
+    straing:  ['Strain Gauge #1', 'Foil resistive gauge bonded near the fixed end, top surface. Resistance changes with bending strain.'],
+    mpu:      ['MPU6050 (GY-521)', 'MEMS accelerometer taped at free tip. 3.3 V supply; SDA/SCL over I²C. AD0 pulled low → address 0x68.']
+  };
+
+  var LINKS = {
+    arduino:  ['w-5v','w-33v','w-gnd-sa','w-gnd-mpu','w-sg-a0','w-sda','w-scl'],
+    strainamp:['w-5v','w-gnd-sa','w-sg-amp','w-sg-a0'],
+    straing:  ['w-sg-amp'],
+    mpu:      ['w-33v','w-gnd-mpu','w-sda','w-scl']
+  };
+
+  var iT = svg.querySelector('#wd-it');
+  var iD = svg.querySelector('#wd-id');
+
+  function reset() {
+    svg.querySelectorAll('.wng.lit').forEach(function(n){ n.classList.remove('lit'); });
+    svg.querySelectorAll('.ww').forEach(function(w){ w.classList.remove('lit','dim'); });
+    if (iT) iT.textContent = '';
+    if (iD) iD.textContent = 'Hover a component to see details';
+  }
+
+  svg.querySelectorAll('.wng').forEach(function(node) {
+    var id = node.dataset.id;
+    function on() {
+      reset();
+      node.classList.add('lit');
+      var linked = LINKS[id] || [];
+      svg.querySelectorAll('.ww').forEach(function(w) {
+        if (linked.indexOf(w.id) !== -1) { w.classList.add('lit'); }
+        else if (w.id) { w.classList.add('dim'); }
+      });
+      var d = DESCS[id] || ['',''];
+      if (iT) iT.textContent = d[0];
+      if (iD) iD.textContent = d[1];
+    }
+    node.addEventListener('mouseenter', on);
+    node.addEventListener('focus',      on);
+    node.addEventListener('mouseleave', reset);
+    node.addEventListener('blur',       reset);
+    node.addEventListener('click', function(e){ e.stopPropagation(); on(); });
+  });
+  svg.addEventListener('click', reset);
+
+  // ── Draw-on signal-flow animation ──────────────────────────
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    svg.querySelectorAll('.ww').forEach(function(w){ w.style.opacity=1; });
+    return;
+  }
+
+  var FLOW = [
+    ['w-5v'],
+    ['w-gnd-sa','w-33v'],
+    ['w-gnd-mpu'],
+    ['w-sg-amp','w-sg-a0'],
+    ['w-sda','w-scl']
+  ];
+
+  var t = 1600;
+  FLOW.forEach(function(group) {
+    group.forEach(function(id) {
+      var el = svg.querySelector('#'+id);
+      if (!el) return;
+      setTimeout(function() {
+        var len = el.getTotalLength ? el.getTotalLength() : 80;
+        el.style.strokeDasharray  = len + (el.classList.contains('ww-dash') ? ',0' : '');
+        el.style.strokeDashoffset = len;
+        el.style.opacity = 1;
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            el.style.transition = 'stroke-dashoffset .45s cubic-bezier(.4,0,.2,1)';
+            el.style.strokeDashoffset = 0;
+          });
+        });
+      }, t);
+    });
+    t += 430;
+  });
+})();
+//]]></script>
+
+</svg>
+

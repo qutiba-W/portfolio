@@ -136,11 +136,33 @@
                         </div>
                     </div>
                     <figure class="mt-6 max-w-[680px]">
-                        <div class="rounded-md overflow-hidden border border-line bg-white">
-                            <img src="../assets/beam-wiring-diagram.png" alt="Full system wiring diagram — Arduino UNO, strain-gauge amplifier, and MPU6050 over I²C"
+                        <!-- interactive wiring diagram — fallback .png shows until SVG loads -->
+                        <div id="wd-wrap" class="rounded-md overflow-hidden border border-line">
+                            <img src="../assets/beam-wiring-diagram.png"
+                                alt="Full system wiring diagram — Arduino UNO, strain-gauge amplifier, and MPU6050 over I²C"
                                 class="w-full h-auto object-contain" loading="lazy" />
                         </div>
-                        <figcaption class="font-mono text-xs text-dim mt-2">Full system wiring — Arduino UNO → strain-gauge amplifier → gauge, with the MPU6050 (GY-521) on I²C.</figcaption>
+                        <script>
+                            (function () {
+                                fetch('../assets/beam-wiring-diagram-interactive.svg')
+                                    .then(function (r) { return r.text(); })
+                                    .then(function (txt) {
+                                        var d = document.createElement('div');
+                                        d.innerHTML = txt;
+                                        var svgEl = d.querySelector('svg');
+                                        var wrap = document.getElementById('wd-wrap');
+                                        if (!svgEl || !wrap) return;
+                                        wrap.replaceWith(svgEl);
+                                        svgEl.querySelectorAll('script').forEach(function (old) {
+                                            var s = document.createElement('script');
+                                            s.textContent = old.textContent;
+                                            old.parentNode.replaceChild(s, old);
+                                        });
+                                    })
+                                    .catch(function () { /* keep fallback img */ });
+                            })();
+                        </script>
+                        <figcaption class="font-mono text-xs text-dim mt-2">Full system wiring — Arduino UNO → strain-gauge amplifier → gauge, with the MPU6050 (GY-521) on I²C. Hover each component for details.</figcaption>
                     </figure>
                     <figure class="mt-6 max-w-[680px]">
                         <!-- interactive block diagram — fallback shows until SVG loads -->
