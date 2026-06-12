@@ -124,10 +124,30 @@
                         A Bell Crank designed for 90° motion transfer. Fabrication drawing generated directly
                         from the parametric model with GD&T annotations.
                     </p>
-                    <div class="rounded-md overflow-hidden border border-line bg-white">
+                    <div id="bc-wrap" class="rounded-md overflow-hidden border border-line">
                         <img src="../assets/bell-crank.png" alt="Bell Crank mechanism technical drawing with GD&T"
                             class="w-full h-auto object-contain" loading="lazy" />
                     </div>
+                    <script>
+                        (function () {
+                            fetch('../assets/bell-crank-interactive.svg')
+                                .then(function (r) { return r.text(); })
+                                .then(function (txt) {
+                                    var d = document.createElement('div');
+                                    d.innerHTML = txt;
+                                    var svgEl = d.querySelector('svg');
+                                    var wrap = document.getElementById('bc-wrap');
+                                    if (!svgEl || !wrap) return;
+                                    wrap.replaceWith(svgEl);
+                                    svgEl.querySelectorAll('script').forEach(function (old) {
+                                        var s = document.createElement('script');
+                                        s.textContent = old.textContent;
+                                        old.parentNode.replaceChild(s, old);
+                                    });
+                                })
+                                .catch(function () { /* keep fallback img */ });
+                        })();
+                    </script>
                 </section>
             </article>
 
