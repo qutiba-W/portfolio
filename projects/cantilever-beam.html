@@ -213,12 +213,50 @@
                         readout, damping-rate extraction, and a second gauge for thermal compensation.
                     </p>
                     <figure class="mt-6 max-w-[680px]">
-                        <div class="rounded-md overflow-hidden border border-line bg-black">
-                            <img src="../assets/beam-sim.png" alt="VPython simulation still — the cantilever beam deflecting under load"
-                                class="w-full h-auto object-contain" loading="lazy" />
+                        <div class="rounded-md overflow-hidden border border-line bg-black px-4 py-3">
+                            <svg id="beam-anim" viewBox="0 0 700 220" preserveAspectRatio="xMidYMid meet"
+                                class="w-full h-auto" role="img"
+                                aria-label="Animated cantilever beam vibrating in its first bending mode">
+                                <line x1="70" y1="110" x2="654" y2="110" stroke="#444" stroke-width="1" stroke-dasharray="3 7" />
+                                <rect x="30" y="58" width="40" height="104" rx="3" fill="#9aa0a6" />
+                                <rect x="28" y="58" width="6" height="104" rx="2" fill="#6b7075" />
+                                <path id="beam-path" fill="none" stroke="#ef4444" stroke-width="11"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle id="beam-tip" r="7" fill="#ef4444" />
+                            </svg>
                         </div>
-                        <figcaption class="font-mono text-xs text-dim mt-2">VPython reconstruction of the deflected beam, driven by the measured strain.</figcaption>
+                        <figcaption class="font-mono text-xs text-dim mt-2">Live reconstruction — the beam ringing down in its first bending mode after an impulse (the vibration the FFT reads as 5.83 Hz).</figcaption>
                     </figure>
+                    <script>
+                        (function () {
+                            var svg = document.getElementById('beam-anim');
+                            if (!svg) return;
+                            var path = svg.querySelector('#beam-path');
+                            var tip = svg.querySelector('#beam-tip');
+                            var x0 = 70, y0 = 110, L = 584, N = 48, A = 56;
+                            function shape(xn) { return (3 * xn * xn - xn * xn * xn) / 2; } // 1st-mode shape, =1 at tip
+                            function render(delta) {
+                                var d = 'M ' + x0 + ' ' + y0;
+                                for (var i = 1; i <= N; i++) {
+                                    var xn = i / N;
+                                    d += ' L ' + (x0 + xn * L).toFixed(1) + ' ' + (y0 + delta * shape(xn)).toFixed(1);
+                                }
+                                path.setAttribute('d', d);
+                                tip.setAttribute('cx', x0 + L);
+                                tip.setAttribute('cy', y0 + delta * shape(1));
+                            }
+                            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { render(A); return; }
+                            var t0 = null, cycle = 3200, fvis = 2.3, tau = 900;
+                            function frame(ts) {
+                                if (t0 === null) t0 = ts;
+                                var t = (ts - t0) % cycle;                 // ms since last "tap"
+                                var delta = A * Math.cos(2 * Math.PI * fvis * (t / 1000)) * Math.exp(-t / tau);
+                                render(delta);
+                                requestAnimationFrame(frame);
+                            }
+                            requestAnimationFrame(frame);
+                        })();
+                    </script>
                 </section>
             </article>
 
