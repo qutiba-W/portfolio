@@ -31,9 +31,9 @@
           transition: stroke-width .15s, opacity .15s; }
 #sc-fit.ready { opacity: 1; }
 #sc-fit:hover, #sc-fit.lit { stroke-width: 3; cursor: pointer; }
-/* data points — preserve near-black */
+/* data points — ink color, theme-aware so they stay visible in dark mode */
 .sc-pt-hit { fill: transparent; cursor: pointer; }
-.sc-pt-dot { fill: #1c1917; transition: fill .15s, r .15s; }
+.sc-pt-dot { fill: var(--sc-ink); transition: fill .15s, r .15s; }
 .sc-pt-grp { opacity: 0; }
 .sc-pt-grp.ready { opacity: 1; }
 .sc-pt-hit:hover ~ .sc-pt-dot,
@@ -132,7 +132,7 @@
 
 <!-- legend -->
 <g id="sc-legend">
-  <circle cx="434" cy="38" r="4.5" fill="#1c1917" opacity=".85"/>
+  <circle cx="434" cy="38" r="4.5" fill="var(--sc-ink)" opacity=".85"/>
   <text x="444" y="38" style="font-size:9px;fill:var(--sc-dim);dominant-baseline:central">Data point</text>
   <line x1="430" y1="54" x2="442" y2="54" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 3"/>
   <text x="447" y="54" style="font-size:9px;fill:var(--sc-dim);dominant-baseline:central">Best-fit line</text>

@@ -19,12 +19,13 @@
 .fft-axlbl{ fill: var(--fft-ink); font-size: 11px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
 .fft-title{ fill: var(--fft-ink); font-size: 12px; font-weight: 700; text-anchor: middle; dominant-baseline: central;
             font-family: 'Space Grotesk', sans-serif; }
-/* blue curve — preserve color */
+/* blue curve — preserve color; brighten in dark mode for contrast */
 #fft-curve { fill: none; stroke: #2563eb; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round;
              opacity: 0; }
+[data-theme="dark"] #fft-curve { stroke: #60a5fa; }
 #fft-curve.ready { opacity: 1; }
-/* dashed peak marker */
-#fft-mk { stroke: #1c1917; stroke-width: 1.2; stroke-dasharray: 6 4;
+/* dashed peak marker — ink color, theme-aware so it stays visible in dark mode */
+#fft-mk { stroke: var(--fft-ink); stroke-width: 1.2; stroke-dasharray: 6 4;
           fill: none; opacity: 0; transition: opacity .3s, stroke-width .15s; }
 #fft-mk.ready { opacity: .75; }
 #fft-mk.lit   { stroke-width: 2; opacity: 1; }
@@ -100,7 +101,7 @@
 
 <!-- ── PEAK ANNOTATION TEXT ─── -->
 <text id="fft-ann" x="155" y="62"
-  style="font-size:10px;font-weight:600;fill:#1c1917;dominant-baseline:central;opacity:0;transition:opacity .3s">5.83 Hz</text>
+  style="font-size:10px;font-weight:600;fill:var(--fft-ink);dominant-baseline:central;opacity:0;transition:opacity .3s">5.83 Hz</text>
 
 <!-- ── INTERACTIVE HOVER ZONES ─── -->
 <rect id="fft-z-left"  class="fft-zone" x="65"  y="20" width="65"  height="340" data-id="floor"/>
