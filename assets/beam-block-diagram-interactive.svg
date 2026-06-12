@@ -1,0 +1,245 @@
+<svg id="beam-bd" viewBox="0 0 700 492" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-label="Interactive system block diagram — cantilever beam instrumentation"
+  style="display:block;width:100%;height:auto;font-family:'JetBrains Mono',monospace">
+
+<style>
+/* Colour tokens — inherit from parent doc CSS vars when inlined, else use fallbacks */
+#beam-bd {
+  --bd-bg:    var(--color-surface,     #ffffff);
+  --bd-brd:   var(--color-border,      #e7dec9);
+  --bd-ink:   var(--color-text,        #211c14);
+  --bd-dim:   var(--color-text-dim,    #645c4d);
+  --bd-mut:   var(--color-muted,       #998f7b);
+  --bd-acc:   var(--color-accent,      #f59e0b);
+  --bd-ai:    var(--color-accent-ink,  #b45309);
+  --bd-as:    var(--color-accent-soft, rgba(245,158,11,.13));
+}
+
+/* Block rect */
+.bdr { fill:var(--bd-bg); stroke:var(--bd-brd); stroke-width:1.4; }
+/* Dashed params rect */
+.bdr-d { fill:var(--bd-bg); stroke:var(--bd-mut); stroke-width:1.2; stroke-dasharray:5 3.5; }
+/* Block title */
+.bdt { fill:var(--bd-ink); font-size:11.5px; font-weight:600; text-anchor:middle; dominant-baseline:central; }
+/* Block subtitle */
+.bds { fill:var(--bd-dim); font-size:9.5px;  text-anchor:middle; dominant-baseline:central; }
+/* Arrow (solid) */
+.bar { fill:none; stroke:var(--bd-brd); stroke-width:1.4; marker-end:url(#bd-ah); }
+/* Arrow (dashed) */
+.bdar{ fill:none; stroke:var(--bd-mut); stroke-width:1.2; stroke-dasharray:5 3.5; marker-end:url(#bd-dah); }
+
+/* Hover / focus / lit states on block groups */
+.bng        { cursor:pointer; }
+.bng:focus  { outline:none; }
+.bng:hover  .bdr,
+.bng:focus  .bdr,
+.bng.lit    .bdr  { stroke:var(--bd-acc); fill:var(--bd-as); }
+.bng:hover  .bdt,
+.bng:focus  .bdt,
+.bng.lit    .bdt  { fill:var(--bd-ai); }
+.bar.lit    { stroke:var(--bd-acc); }
+.bdar.lit   { stroke:var(--bd-acc); stroke-dasharray:5 3.5; }
+
+/* Build-up: blocks fade+rise in; arrows start hidden, drawn by JS */
+@keyframes bd-rise { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:none} }
+.bng          { animation: bd-rise .35s ease both; }
+#g-beam       { animation-delay:.15s; }
+#g-strain,
+#g-accel      { animation-delay:.45s; }
+#g-params     { animation-delay:.75s; }
+#g-arduino    { animation-delay:1.0s; }
+#g-static,
+#g-dynamic    { animation-delay:1.3s; }
+#g-csv        { animation-delay:1.6s; }
+.bar,.bdar    { opacity:0; }  /* JS reveals these */
+
+@media(prefers-reduced-motion:reduce){
+  .bng,.bar,.bdar { animation:none!important; opacity:1; }
+}
+
+/* Info-panel text */
+#bd-it { fill:var(--bd-ai);  font-size:10.5px; font-weight:600; dominant-baseline:central; }
+#bd-id { fill:var(--bd-dim); font-size:9.5px;  dominant-baseline:central; }
+</style>
+
+<defs>
+  <!-- Normal arrowhead -->
+  <marker id="bd-ah"  markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L7,3 L0,6 Z" fill="var(--bd-brd)"/>
+  </marker>
+  <!-- Dashed arrowhead -->
+  <marker id="bd-dah" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L7,3 L0,6 Z" fill="var(--bd-mut)"/>
+  </marker>
+  <!-- Lit (amber) arrowhead -->
+  <marker id="bd-lah" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L7,3 L0,6 Z" fill="#f59e0b"/>
+  </marker>
+</defs>
+
+<!-- ── BLOCKS ─────────────────────────────────────────────── -->
+
+<g id="g-beam" class="bng" data-id="beam" tabindex="0" role="button" aria-label="Cantilever Beam — Stainless Steel Ruler">
+  <rect class="bdr" x="190" y="20" width="320" height="46" rx="6"/>
+  <text class="bdt" x="350" y="35">Cantilever Beam</text>
+  <text class="bds" x="350" y="51">Stainless Steel Ruler</text>
+</g>
+
+<g id="g-strain" class="bng" data-id="strain" tabindex="0" role="button" aria-label="Strain Gauge and Amplifier on Analog Pin A0">
+  <rect class="bdr" x="24" y="118" width="260" height="46" rx="6"/>
+  <text class="bdt" x="154" y="133">Strain Gauge + Amplifier</text>
+  <text class="bds" x="154" y="149">Analog Pin A0</text>
+</g>
+
+<g id="g-accel" class="bng" data-id="accel" tabindex="0" role="button" aria-label="MPU6050 Accelerometer on I2C Pins A4 and A5">
+  <rect class="bdr" x="416" y="118" width="260" height="46" rx="6"/>
+  <text class="bdt" x="546" y="133">MPU6050 Accelerometer</text>
+  <text class="bds" x="546" y="149">I²C Pins A4 / A5</text>
+</g>
+
+<g id="g-params" class="bng" data-id="params" tabindex="0" role="button" aria-label="Fixed beam parameters b h L E I c">
+  <rect class="bdr-d" x="10" y="208" width="120" height="52" rx="4"/>
+  <text class="bdt" x="70" y="225">Fixed Params</text>
+  <text class="bds" x="70" y="243">b, h, L, E, I, c</text>
+</g>
+
+<g id="g-arduino" class="bng" data-id="arduino" tabindex="0" role="button" aria-label="Arduino Uno — Data Acquisition and Computation">
+  <rect class="bdr" x="150" y="210" width="400" height="46" rx="6"/>
+  <text class="bdt" x="350" y="225">Arduino Uno</text>
+  <text class="bds" x="350" y="241">Data Acquisition &amp; Computation</text>
+</g>
+
+<g id="g-static" class="bng" data-id="static" tabindex="0" role="button" aria-label="Static Pipeline: strain to stress to bending moment to force">
+  <rect class="bdr" x="24" y="306" width="272" height="46" rx="6"/>
+  <text class="bdt" x="160" y="321">Static Pipeline</text>
+  <text class="bds" x="160" y="337">ε → σ → M → F</text>
+</g>
+
+<g id="g-dynamic" class="bng" data-id="dynamic" tabindex="0" role="button" aria-label="Dynamic Pipeline: acceleration to AC component to frequency in Hz">
+  <rect class="bdr" x="404" y="306" width="272" height="46" rx="6"/>
+  <text class="bdt" x="540" y="321">Dynamic Pipeline</text>
+  <text class="bds" x="540" y="337">az → az_ac → f (Hz)</text>
+</g>
+
+<g id="g-csv" class="bng" data-id="csv" tabindex="0" role="button" aria-label="CSV Output via Serial Monitor">
+  <rect class="bdr" x="193" y="398" width="314" height="46" rx="6"/>
+  <text class="bdt" x="350" y="413">CSV Output</text>
+  <text class="bds" x="350" y="429">Serial Monitor</text>
+</g>
+
+<!-- ── ARROWS ─────────────────────────────────────────────── -->
+
+<path id="a-bs"   class="bar"  d="M350,66 L350,91 L154,91 L154,118"/>
+<path id="a-ba"   class="bar"  d="M350,66 L350,91 L546,91 L546,118"/>
+<path id="a-sard" class="bar"  d="M154,164 L154,210"/>
+<path id="a-aard" class="bar"  d="M546,164 L546,210"/>
+<path id="a-pard" class="bdar" d="M130,234 L150,234"/>
+<path id="a-ast"  class="bar"  d="M250,256 L250,282 L160,282 L160,306"/>
+<path id="a-ady"  class="bar"  d="M450,256 L450,282 L540,282 L540,306"/>
+<path id="a-stc"  class="bar"  d="M160,352 L160,384 L290,384 L290,398"/>
+<path id="a-dyc"  class="bar"  d="M540,352 L540,384 L410,384 L410,398"/>
+
+<!-- ── INFO PANEL ──────────────────────────────────────────── -->
+<rect x="0" y="452" width="700" height="40" rx="0"
+  fill="var(--bd-bg)" stroke="var(--bd-brd)" stroke-width="1"/>
+<text id="bd-it" x="12" y="466"/>
+<text id="bd-id" x="12" y="482">Hover a block to see details</text>
+
+<script>//<![CDATA[
+(function () {
+  var svg = document.getElementById('beam-bd');
+  if (!svg) return;
+
+  var DESCS = {
+    beam:    ['Cantilever Beam',           '300 mm steel ruler, 270 mm free, 25 mm wide, ~1 mm thick. E = 200 GPa, I ≈ 2.15×10⁻¹² m⁴.'],
+    strain:  ['Strain Gauge + Amplifier',  'Foil gauge near fixed end; amp: 0–5 V centred at 2.5 V rest. ADC-read on A0 at ~100 Hz.'],
+    accel:   ['MPU6050 Accelerometer',     'GY-521 at free tip. Z-axis over I²C captures vibration ring-down for FFT analysis.'],
+    params:  ['Fixed Parameters',          'Beam constants hardcoded in firmware: b (width), h (thickness), L (length), E, I, c.'],
+    arduino: ['Arduino Uno — DAQ',         'Polls sensors, subtracts strain offset, streams time + strain + acceleration at 115200 baud.'],
+    static:  ['Static Pipeline',           'ε→σ (Hooke\'s law) →M (bending moment) →F (tip force) →m. RMSE ≈ 1.5 g, R² = 0.997.'],
+    dynamic: ['Dynamic Pipeline',          'Remove DC from az, run FFT on ring-down, read dominant peak → natural frequency 5.83 Hz.'],
+    csv:     ['CSV Output',                'Serial stream logged to CSV; post-processed in Python for calibration and FFT plots.']
+  };
+
+  var LINKS = {
+    beam:    ['a-bs','a-ba'],
+    strain:  ['a-bs','a-sard'],
+    accel:   ['a-ba','a-aard'],
+    params:  ['a-pard'],
+    arduino: ['a-sard','a-aard','a-pard','a-ast','a-ady'],
+    static:  ['a-ast','a-stc'],
+    dynamic: ['a-ady','a-dyc'],
+    csv:     ['a-stc','a-dyc']
+  };
+
+  var iT = svg.querySelector('#bd-it');
+  var iD = svg.querySelector('#bd-id');
+
+  function reset() {
+    svg.querySelectorAll('.bng.lit').forEach(function (n) { n.classList.remove('lit'); });
+    svg.querySelectorAll('.bar.lit,.bdar.lit').forEach(function (a) {
+      a.classList.remove('lit');
+      a.setAttribute('marker-end', a.classList.contains('bdar') ? 'url(#bd-dah)' : 'url(#bd-ah)');
+    });
+    if (iT) iT.textContent = '';
+    if (iD) iD.textContent = 'Hover a block to see details';
+  }
+
+  svg.querySelectorAll('.bng').forEach(function (node) {
+    var id = node.dataset.id;
+    function on() {
+      reset();
+      node.classList.add('lit');
+      (LINKS[id] || []).forEach(function (aid) {
+        var a = svg.querySelector('#' + aid);
+        if (a) { a.classList.add('lit'); a.setAttribute('marker-end','url(#bd-lah)'); }
+      });
+      var d = DESCS[id] || ['',''];
+      if (iT) iT.textContent = d[0];
+      if (iD) iD.textContent = d[1];
+    }
+    node.addEventListener('mouseenter', on);
+    node.addEventListener('focus',      on);
+    node.addEventListener('mouseleave', reset);
+    node.addEventListener('blur',       reset);
+    node.addEventListener('click', function (e) { e.stopPropagation(); on(); });
+  });
+  svg.addEventListener('click', reset);
+
+  // ── Signal-flow draw-on animation ──────────────────────────
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    svg.querySelectorAll('.bar,.bdar').forEach(function (a) { a.style.opacity = 1; });
+    return;
+  }
+
+  var FLOW = [
+    ['a-bs','a-ba'],
+    ['a-sard','a-aard','a-pard'],
+    ['a-ast','a-ady'],
+    ['a-stc','a-dyc']
+  ];
+
+  var t = 2000;
+  FLOW.forEach(function (group) {
+    group.forEach(function (id) {
+      var el = svg.querySelector('#' + id);
+      if (!el) return;
+      setTimeout(function () {
+        var len = el.getTotalLength ? el.getTotalLength() : 100;
+        el.style.strokeDasharray  = len;
+        el.style.strokeDashoffset = len;
+        el.style.opacity = 1;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            el.style.transition = 'stroke-dashoffset 0.45s cubic-bezier(.4,0,.2,1)';
+            el.style.strokeDashoffset = 0;
+          });
+        });
+      }, t);
+    });
+    t += 480;
+  });
+})();
+//]]></script>
+
+</svg>
