@@ -225,12 +225,32 @@
                         systematic — strain-gauge hysteresis — not random scatter.
                     </p>
                     <figure class="mb-8">
-                        <div class="rounded-md overflow-hidden border border-line bg-white">
+                        <div id="ms-wrap" class="rounded-md overflow-hidden border border-line">
                             <img src="../assets/beam-mass-scale.png" alt="Mass scale test: measured vs true mass, R squared 0.9971"
                                 class="w-full h-auto object-contain" loading="lazy" />
                         </div>
                         <figcaption class="font-mono text-xs text-dim mt-2">Measured vs. true mass — slope 1.04, R² = 0.9971.</figcaption>
                     </figure>
+                    <script>
+                        (function () {
+                            fetch('../assets/beam-mass-scale-interactive.svg')
+                                .then(function (r) { return r.text(); })
+                                .then(function (txt) {
+                                    var d = document.createElement('div');
+                                    d.innerHTML = txt;
+                                    var svgEl = d.querySelector('svg');
+                                    var wrap = document.getElementById('ms-wrap');
+                                    if (!svgEl || !wrap) return;
+                                    wrap.replaceWith(svgEl);
+                                    svgEl.querySelectorAll('script').forEach(function (old) {
+                                        var s = document.createElement('script');
+                                        s.textContent = old.textContent;
+                                        old.parentNode.replaceChild(s, old);
+                                    });
+                                })
+                                .catch(function () { /* keep fallback img */ });
+                        })();
+                    </script>
                     <p class="text-dim leading-relaxed max-w-[680px] mb-6">
                         Tapping the free end excites the beam's first bending mode. Running an FFT on the
                         acceleration ring-down gives a single dominant peak at

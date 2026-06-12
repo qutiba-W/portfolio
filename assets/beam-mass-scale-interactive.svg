@@ -1,0 +1,228 @@
+<svg id="mass-sc" viewBox="0 0 620 440" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-label="Interactive scatter plot: measured vs true mass with best-fit line"
+  style="display:block;width:100%;height:auto;font-family:'JetBrains Mono',monospace">
+
+<style>
+#mass-sc {
+  --sc-bg:   var(--color-surface,    #ffffff);
+  --sc-brd:  var(--color-border,     #e7dec9);
+  --sc-ink:  var(--color-text,       #211c14);
+  --sc-dim:  var(--color-text-dim,   #645c4d);
+  --sc-mut:  var(--color-muted,      #998f7b);
+  --sc-acc:  var(--color-accent,     #f59e0b);
+  --sc-ai:   var(--color-accent-ink, #b45309);
+  --sc-as:   var(--color-accent-soft,rgba(245,158,11,.15));
+  --sc-grid: var(--color-border,     #e7dec9);
+}
+/* chart background */
+#sc-plot { fill: var(--sc-bg); stroke: var(--sc-brd); stroke-width: 1; }
+/* grid lines */
+.sc-g { stroke: var(--sc-grid); stroke-width: .7; fill: none; }
+/* axis lines */
+.sc-ax { stroke: var(--sc-ink); stroke-width: 1.2; fill: none; }
+/* axis labels & ticks */
+.sc-tl { fill: var(--sc-dim); font-size: 9.5px; text-anchor: middle; dominant-baseline: central; }
+.sc-yl { fill: var(--sc-dim); font-size: 9.5px; text-anchor: end;    dominant-baseline: central; }
+.sc-axlbl { fill: var(--sc-ink); font-size: 11px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+.sc-title  { fill: var(--sc-ink); font-size: 12px; font-weight: 700; text-anchor: middle; dominant-baseline: central;
+             font-family: 'Space Grotesk', sans-serif; }
+/* fit line — preserve dashed red */
+#sc-fit { fill: none; stroke: #ef4444; stroke-width: 1.8; stroke-dasharray: 8 5; opacity: 0;
+          transition: stroke-width .15s, opacity .15s; }
+#sc-fit.ready { opacity: 1; }
+#sc-fit:hover, #sc-fit.lit { stroke-width: 3; cursor: pointer; }
+/* data points — preserve near-black */
+.sc-pt-hit { fill: transparent; cursor: pointer; }
+.sc-pt-dot { fill: #1c1917; transition: fill .15s, r .15s; }
+.sc-pt-grp { opacity: 0; }
+.sc-pt-grp.ready { opacity: 1; }
+.sc-pt-hit:hover ~ .sc-pt-dot,
+.sc-pt-grp.lit .sc-pt-dot { fill: var(--sc-acc); }
+/* info panel */
+#sc-it { fill: var(--sc-ai);  font-size: 10.5px; font-weight: 600; dominant-baseline: central; }
+#sc-id { fill: var(--sc-dim); font-size: 9.5px;  dominant-baseline: central; }
+/* build-up */
+@keyframes sc-rise { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none} }
+#sc-axes, #sc-gridlines, #sc-legend { animation: sc-rise .4s ease both; }
+#sc-axes     { animation-delay: .1s; }
+#sc-gridlines{ animation-delay: .2s; }
+#sc-legend   { animation-delay: 1.9s; }
+@media(prefers-reduced-motion:reduce){
+  #sc-axes,#sc-gridlines,#sc-legend { animation: none; opacity: 1; }
+  .sc-pt-grp, #sc-fit { opacity: 1 !important; }
+}
+</style>
+
+<!-- chart background -->
+<rect id="sc-plot" x="65" y="20" width="515" height="340" rx="3"/>
+
+<!-- gridlines -->
+<g id="sc-gridlines">
+  <line class="sc-g" x1="155" y1="20" x2="155" y2="360"/>
+  <line class="sc-g" x1="244" y1="20" x2="244" y2="360"/>
+  <line class="sc-g" x1="334" y1="20" x2="334" y2="360"/>
+  <line class="sc-g" x1="423" y1="20" x2="423" y2="360"/>
+  <line class="sc-g" x1="513" y1="20" x2="513" y2="360"/>
+  <line class="sc-g" x1="65" y1="301" x2="580" y2="301"/>
+  <line class="sc-g" x1="65" y1="242" x2="580" y2="242"/>
+  <line class="sc-g" x1="65" y1="183" x2="580" y2="183"/>
+  <line class="sc-g" x1="65" y1="124" x2="580" y2="124"/>
+  <line class="sc-g" x1="65" y1="65"  x2="580" y2="65"/>
+</g>
+
+<!-- axes + ticks + labels -->
+<g id="sc-axes">
+  <line class="sc-ax" x1="65" y1="360" x2="580" y2="360"/>
+  <line class="sc-ax" x1="65" y1="20"  x2="65"  y2="360"/>
+  <!-- x tick labels -->
+  <text class="sc-tl" x="65"  y="374">0</text>
+  <text class="sc-tl" x="155" y="374">20</text>
+  <text class="sc-tl" x="244" y="374">40</text>
+  <text class="sc-tl" x="334" y="374">60</text>
+  <text class="sc-tl" x="423" y="374">80</text>
+  <text class="sc-tl" x="513" y="374">100</text>
+  <!-- y tick labels -->
+  <text class="sc-yl" x="59" y="360">0</text>
+  <text class="sc-yl" x="59" y="301">20</text>
+  <text class="sc-yl" x="59" y="242">40</text>
+  <text class="sc-yl" x="59" y="183">60</text>
+  <text class="sc-yl" x="59" y="124">80</text>
+  <text class="sc-yl" x="59" y="65">100</text>
+  <!-- axis titles -->
+  <text class="sc-axlbl" x="322" y="397">True Mass (g)</text>
+  <text class="sc-axlbl" x="15" y="190" transform="rotate(-90 15 190)">Measured Mass (g)</text>
+  <!-- chart title -->
+  <text class="sc-title" x="322" y="10">Mass Scale Test</text>
+  <!-- annotation -->
+  <text x="295" y="155" style="font-size:9px;font-family:'JetBrains Mono',monospace;fill:var(--sc-dim)">y = −2.03 + 1.04·True_Mass</text>
+  <text x="295" y="168" style="font-size:9px;font-family:'JetBrains Mono',monospace;fill:var(--sc-dim)">R² = 0.9971</text>
+</g>
+
+<!-- best-fit line (dashed red — preserved from original) -->
+<path id="sc-fit" d="M74,360 L569,20"/>
+<!-- wider invisible hover target for the fit line -->
+<path id="sc-fit-hit" d="M74,360 L569,20" fill="none" stroke="transparent" stroke-width="12"
+  style="cursor:pointer" aria-label="Best-fit line"/>
+
+<!-- data points — each is a group with hit circle + visible dot -->
+<g class="sc-pt-grp" id="pt-0" data-title="True: 10 g → Measured: 13 g" data-desc="Residual: +4.6 g — slightly over-reads; lightest calibration point.">
+  <circle class="sc-pt-hit" cx="110" cy="322" r="10"/>
+  <circle class="sc-pt-dot" cx="110" cy="322" r="4.5"/>
+</g>
+<g class="sc-pt-grp" id="pt-1" data-title="True: 25 g → Measured: 22 g" data-desc="Residual: −2.0 g — slight under-read; within ±1σ of RMSE.">
+  <circle class="sc-pt-hit" cx="177" cy="295" r="10"/>
+  <circle class="sc-pt-dot" cx="177" cy="295" r="4.5"/>
+</g>
+<g class="sc-pt-grp" id="pt-2" data-title="True: 33 g → Measured: 32 g" data-desc="Residual: −0.3 g — nearly on the fit line.">
+  <circle class="sc-pt-hit" cx="213" cy="265" r="10"/>
+  <circle class="sc-pt-dot" cx="213" cy="265" r="4.5"/>
+</g>
+<g class="sc-pt-grp" id="pt-3" data-title="True: 57 g → Measured: 57 g" data-desc="Residual: −0.2 g — closest to the fit. Reference mass near the K calibration point.">
+  <circle class="sc-pt-hit" cx="320" cy="192" r="10"/>
+  <circle class="sc-pt-dot" cx="320" cy="192" r="4.5"/>
+</g>
+<g class="sc-pt-grp" id="pt-4" data-title="True: 90 g → Measured: 89 g" data-desc="Residual: −2.6 g — slight under-read; largest deviation in the set.">
+  <circle class="sc-pt-hit" cx="468" cy="97" r="10"/>
+  <circle class="sc-pt-dot" cx="468" cy="97" r="4.5"/>
+</g>
+<g class="sc-pt-grp" id="pt-5" data-title="True: 105 g → Measured: 107 g" data-desc="Residual: −0.2 g — heaviest test mass; confirms linearity near sensor limit.">
+  <circle class="sc-pt-hit" cx="535" cy="44" r="10"/>
+  <circle class="sc-pt-dot" cx="535" cy="44" r="4.5"/>
+</g>
+
+<!-- legend -->
+<g id="sc-legend">
+  <circle cx="434" cy="38" r="4.5" fill="#1c1917" opacity=".85"/>
+  <text x="444" y="38" style="font-size:9px;fill:var(--sc-dim);dominant-baseline:central">Data point</text>
+  <line x1="430" y1="54" x2="442" y2="54" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <text x="447" y="54" style="font-size:9px;fill:var(--sc-dim);dominant-baseline:central">Best-fit line</text>
+</g>
+
+<!-- info panel -->
+<rect x="0" y="408" width="620" height="32" rx="0"
+  fill="var(--sc-bg)" stroke="var(--sc-brd)" stroke-width="1"/>
+<text id="sc-it" x="10" y="420"/>
+<text id="sc-id" x="10" y="432">Hover a data point or fit line to see details</text>
+
+<script>//<![CDATA[
+(function () {
+  var svg = document.getElementById('mass-sc');
+  if (!svg) return;
+
+  var iT = svg.querySelector('#sc-it');
+  var iD = svg.querySelector('#sc-id');
+
+  function reset() {
+    svg.querySelectorAll('.sc-pt-grp.lit').forEach(function(g){ g.classList.remove('lit'); });
+    svg.querySelector('#sc-fit').classList.remove('lit');
+    if (iT) iT.textContent = '';
+    if (iD) iD.textContent = 'Hover a data point or fit line to see details';
+  }
+
+  function info(t, d) {
+    if (iT) iT.textContent = t;
+    if (iD) iD.textContent = d;
+  }
+
+  // Data-point groups
+  svg.querySelectorAll('.sc-pt-grp').forEach(function(grp) {
+    var t = grp.dataset.title || '';
+    var d = grp.dataset.desc  || '';
+    function on() { reset(); grp.classList.add('lit'); info(t, d); }
+    grp.addEventListener('mouseenter', on);
+    grp.addEventListener('click',      on);
+    grp.addEventListener('mouseleave', reset);
+  });
+
+  // Fit line hit target
+  var fitHit = svg.querySelector('#sc-fit-hit');
+  var fitLine = svg.querySelector('#sc-fit');
+  if (fitHit && fitLine) {
+    function fitOn() {
+      reset();
+      fitLine.classList.add('lit');
+      info('Best-fit Line', 'y = −2.03 + 1.04·True_Mass  |  R² = 0.9971  |  RMSE ≈ 1.5 g  (n = 6 masses)');
+    }
+    fitHit.addEventListener('mouseenter', fitOn);
+    fitHit.addEventListener('click',      fitOn);
+    fitHit.addEventListener('mouseleave', reset);
+  }
+
+  svg.addEventListener('click', function(e){
+    if (!e.target.closest('.sc-pt-grp') && e.target !== fitHit) reset();
+  });
+
+  // ── Build-up: fit line draws on, then data points appear ──
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    if (fitLine) fitLine.classList.add('ready');
+    svg.querySelectorAll('.sc-pt-grp').forEach(function(g){ g.classList.add('ready'); });
+    return;
+  }
+
+  // Fit line: stroke-dashoffset draw-on at t=800ms
+  setTimeout(function() {
+    if (!fitLine) return;
+    var len = fitLine.getTotalLength ? fitLine.getTotalLength() : 620;
+    fitLine.style.strokeDasharray  = len;
+    fitLine.style.strokeDashoffset = len;
+    fitLine.classList.add('ready');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        fitLine.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(.4,0,.2,1), opacity .15s';
+        fitLine.style.strokeDashoffset = 0;
+      });
+    });
+  }, 800);
+
+  // Data points: staggered reveal starting at t=1500ms
+  var pts = svg.querySelectorAll('.sc-pt-grp');
+  pts.forEach(function(g, i) {
+    setTimeout(function(){
+      g.style.transition = 'opacity .25s ease';
+      g.classList.add('ready');
+    }, 1500 + i * 150);
+  });
+})();
+//]]></script>
+
+</svg>
