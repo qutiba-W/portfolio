@@ -1,0 +1,142 @@
+<svg id="ed-sv" viewBox="0 0 1025 836" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-label="Interactive multi-view bearing mount plate engineering drawing"
+  style="display:block;width:100%;height:auto">
+
+<style>
+#ed-sv {
+  --e-acc: var(--color-accent,      #f59e0b);
+  --e-ai:  var(--color-accent-ink,  #b45309);
+  --e-as:  var(--color-accent-soft, rgba(245,158,11,.15));
+  --e-bg:  var(--color-surface,     #ffffff);
+  --e-brd: var(--color-border,      #e7dec9);
+  --e-dim: var(--color-text-dim,    #645c4d);
+}
+[data-theme="dark"] #ed-img { filter: invert(0.88) hue-rotate(180deg); }
+.e-ring { fill: none; stroke: var(--e-acc); stroke-width: 2.5; opacity: 0; cursor: pointer;
+          transition: opacity .2s, stroke-width .15s; }
+.e-ring.ready { opacity: .6; }
+.e-ring.lit   { opacity: 1; stroke-width: 4; }
+.e-hit  { fill: transparent; cursor: pointer; }
+.e-fill { fill: transparent; pointer-events: none; transition: fill .15s; }
+.e-feat:hover .e-fill { fill: var(--e-as); }
+#ed-panel { fill: var(--e-bg); stroke: var(--e-brd); stroke-width: 1; }
+#ed-it { fill: var(--e-ai);  font-size: 11px;  font-weight: 600; dominant-baseline: central;
+         font-family: 'JetBrains Mono', monospace; }
+#ed-id { fill: var(--e-dim); font-size: 9.5px; dominant-baseline: central;
+         font-family: 'JetBrains Mono', monospace; }
+@keyframes e-ping {
+  0%   { opacity: 0;  stroke-width: 10; }
+  50%  { opacity: .9; stroke-width: 3; }
+  100% { opacity: .6; stroke-width: 2.5; }
+}
+.e-ring.ready { animation: e-ping .6s ease both; }
+#er1.ready { animation-delay: .3s;  }
+#er2.ready { animation-delay: .8s;  }
+#er3.ready { animation-delay: 1.3s; }
+#er4.ready { animation-delay: 1.8s; }
+#er5.ready { animation-delay: 2.3s; }
+@media(prefers-reduced-motion:reduce) {
+  .e-ring { opacity: .6; }
+  .e-ring.ready { animation: none; }
+}
+</style>
+
+<image id="ed-img" href="../assets/engineering-drawing.png"
+  x="0" y="0" width="1025" height="768" preserveAspectRatio="xMidYMid meet"/>
+
+<!-- 1. Top View (upper-left, largest view) -->
+<g id="eg1" class="e-feat" data-id="topview">
+  <rect class="e-hit"  x="18"  y="12"  width="530" height="370" rx="5"/>
+  <rect class="e-fill" x="18"  y="12"  width="530" height="370" rx="5"/>
+  <rect id="er1" class="e-ring" x="18" y="12" width="530" height="370" rx="5"/>
+</g>
+
+<!-- 2. Front View (lower-left) -->
+<g id="eg2" class="e-feat" data-id="frontview">
+  <rect class="e-hit"  x="18"  y="400" width="290" height="310" rx="5"/>
+  <rect class="e-fill" x="18"  y="400" width="290" height="310" rx="5"/>
+  <rect id="er2" class="e-ring" x="18" y="400" width="290" height="310" rx="5"/>
+</g>
+
+<!-- 3. Right Side View (lower-centre) -->
+<g id="eg3" class="e-feat" data-id="sideview">
+  <rect class="e-hit"  x="320" y="400" width="200" height="310" rx="5"/>
+  <rect class="e-fill" x="320" y="400" width="200" height="310" rx="5"/>
+  <rect id="er3" class="e-ring" x="320" y="400" width="200" height="310" rx="5"/>
+</g>
+
+<!-- 4. Section A-A (lower-right of main area) -->
+<g id="eg4" class="e-feat" data-id="section">
+  <rect class="e-hit"  x="530" y="400" width="220" height="340" rx="5"/>
+  <rect class="e-fill" x="530" y="400" width="220" height="340" rx="5"/>
+  <rect id="er4" class="e-ring" x="530" y="400" width="220" height="340" rx="5"/>
+</g>
+
+<!-- 5. Notes + title block (right column) -->
+<g id="eg5" class="e-feat" data-id="notes">
+  <rect class="e-hit"  x="760" y="12"  width="248" height="756" rx="5"/>
+  <rect class="e-fill" x="760" y="12"  width="248" height="756" rx="5"/>
+  <rect id="er5" class="e-ring" x="760" y="12" width="248" height="756" rx="5"/>
+</g>
+
+<!-- Info panel -->
+<rect id="ed-panel" x="0" y="775" width="1025" height="61" rx="0"/>
+<text id="ed-it" x="12" y="793"/>
+<text id="ed-id" x="12" y="812">Hover the highlighted views to explore the bearing mount plate drawing</text>
+
+<script>//<![CDATA[
+(function () {
+  var svg = document.getElementById('ed-sv');
+  if (!svg) return;
+  var iT = svg.querySelector('#ed-it');
+  var iD = svg.querySelector('#ed-id');
+
+  var DESCS = {
+    topview:   ['Top View — Bearing Mount Plate',
+                'Plan view: square plate with chamfered corners, central bore, four mounting holes. Scale 2:1. All outer geometry and hole-pattern layout visible here.'],
+    frontview: ['Front View — Plate Elevation',
+                'Front elevation shows plate thickness, boss profile around bore, and mounting hole depths. Material: ASTM Grade 6 Steel.'],
+    sideview:  ['Right Side View',
+                'Side elevation confirms boss height and mounting hole alignment with plate body. Used to verify overall assembly clearances.'],
+    section:   ['Section A-A — Bore Cross-Section',
+                'Cut through plate centre reveals bore geometry: internal shoulder for bearing seating, bore diameter, and clearance fit specification.'],
+    notes:     ['Drawing Notes & Title Block',
+                'Notes: all dims in mm; ASTM Grade 6 Steel; sharp edges chamfered; anti-corrosion coating on all exposed surfaces. ENGR 220 — AUAD Midterm 2.']
+  };
+
+  function reset() {
+    svg.querySelectorAll('.e-ring.lit').forEach(function (r) { r.classList.remove('lit'); });
+    if (iT) iT.textContent = '';
+    if (iD) iD.textContent = 'Hover the highlighted views to explore the bearing mount plate drawing';
+  }
+
+  svg.querySelectorAll('.e-feat').forEach(function (g) {
+    var id   = g.dataset.id;
+    var ring = g.querySelector('.e-ring');
+    function on() {
+      reset();
+      if (ring) ring.classList.add('lit');
+      var d = DESCS[id] || ['', ''];
+      if (iT) iT.textContent = d[0];
+      if (iD) iD.textContent = d[1];
+    }
+    g.addEventListener('mouseenter', on);
+    g.addEventListener('click',      on);
+    g.addEventListener('mouseleave', reset);
+  });
+
+  svg.addEventListener('click', function (e) {
+    if (!e.target.closest('.e-feat')) reset();
+  });
+
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    svg.querySelectorAll('.e-ring').forEach(function (r) { r.classList.add('ready'); });
+    return;
+  }
+  svg.querySelectorAll('.e-ring').forEach(function (r, i) {
+    setTimeout(function () { r.classList.add('ready'); }, 400 + i * 500);
+  });
+})();
+//]]></script>
+
+</svg>
