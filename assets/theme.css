@@ -45,9 +45,15 @@
 
     --shadow-card:  0 1px 2px rgba(28, 18, 16, 0.04), 0 6px 16px -10px rgba(28, 18, 16, 0.10);
 
-    --font-heading: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-body:    'IBM Plex Sans', system-ui, sans-serif;
-    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+    /* Display is an industrial grotesk, body is a paper serif. The usual move
+       is the reverse; it is inverted here because the thing that separates
+       this work from other student work is that it gets written up, and a
+       body face out of published papers says that before a word is read. */
+    --font-heading: 'Archivo', system-ui, sans-serif;
+    --font-body:    'Newsreader', Georgia, serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+    --wdth-display: 112;   /* Archivo optical width for headlines */
 }
 
 [data-theme="dark"] {
@@ -88,8 +94,22 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-variation-settings: 'wdth' var(--wdth-display);
+    letter-spacing: -0.015em;
+}
+
+/* Headlines run wider and heavier than the sub-heads — the width axis, not
+   just the weight axis, is what makes Archivo read as a faceplate. */
+h1 {
+    font-variation-settings: 'wdth' 118;
+    letter-spacing: -0.03em;
 }
 
 ::selection {
@@ -157,6 +177,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
     border: 1px solid;
+    white-space: nowrap;
 }
 
 .badge::before {
@@ -285,6 +306,97 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
+/* ---- Project rows: the reading column ----
+   Every project leads with what was actually measured on it. Where nothing
+   was measured the row says so instead of borrowing a number from somewhere
+   else — the blank ones are what make the filled ones worth believing. */
+
+.project-list {
+    border-top: 1px solid var(--color-border);
+}
+
+.project-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem 2.25rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+    .project-row {
+        grid-template-columns: 11rem 1fr 7.5rem;
+        align-items: start;
+        padding: 2rem 0;
+    }
+}
+
+/* A crimson rule sweeps the row on hover, like a cursor crossing a chart. */
+.project-row::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.project-row:hover::after,
+.project-row:focus-within::after {
+    width: 100%;
+}
+
+.reading-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-accent-ink);
+}
+
+.reading-method {
+    display: block;
+    margin-top: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+}
+
+/* Nothing measured: recedes to body-text colour, never below it. The state
+   has to stay legible — it is a claim about the work, not a placeholder. */
+.reading-none .reading-value {
+    color: var(--color-text-dim);
+    font-weight: 400;
+}
+
+.project-name {
+    font-family: var(--font-heading);
+    font-variation-settings: 'wdth' 106;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+.project-row a.project-name-link {
+    color: inherit;
+}
+
+.project-row:hover .project-name,
+.project-row:focus-within .project-name {
+    color: var(--color-accent-ink);
+}
+
 /* ---- Hero ----
    The band reproduces the wall in profile-red.jpg: light falls from the upper
    left and drops off to the lower right, same as the photograph. The portrait
@@ -380,4 +492,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+
+    .project-row::after { transition: none; }
 }

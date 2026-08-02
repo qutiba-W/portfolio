@@ -32,8 +32,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=6" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400..600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/theme.css?v=7" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -49,9 +49,9 @@
                         'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        heading: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-                        body: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-                        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
+                        heading: ['Archivo', 'system-ui', 'sans-serif'],
+                        body: ['Newsreader', 'Georgia', 'serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
                     },
                 },
             },
@@ -104,19 +104,22 @@
             </div>
             <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
                 <div class="hero-copy md:max-w-[54%] py-14 md:py-28">
-                    <p class="section-label mb-6">Mechanical Engineering · Software · AI</p>
-                    <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
-                        I build things that work — mechanical systems, software, and whatever the problem needs.
+                    <!-- No eyebrow here on purpose. "Mechanical Engineering · Software · AI"
+                         was a tag list that said nothing the headline and the line under it
+                         don't already say. -->
+                    <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] mb-6">
+                        I build the thing, then measure whether it works.
                     </h1>
                     <!-- Alt headlines:
+                         A (previous): I build things that work — mechanical systems, software, and whatever the problem needs.
                          B: Engineering student. Builder of real things.
                          C: Mechanical engineer who also ships software. -->
-                    <p class="text-lg md:text-xl max-w-[560px] mb-10" style="color: var(--hero-ink-dim)">
-                        Mechanical Engineering student at AUIS. I instrument beams, design circuits, build web apps,
-                        and integrate AI — then document it properly.
+                    <p class="text-lg md:text-xl max-w-[520px] mb-10" style="color: var(--hero-ink-dim)">
+                        Mechanical Engineering student at AUIS. I instrument beams, design circuits, and ship
+                        web apps — then write down what the thing actually did.
                     </p>
                     <div class="flex items-center gap-4 flex-wrap">
-                        <a href="#projects" class="btn btn-primary">See My Projects</a>
+                        <a href="#projects" class="btn btn-primary">See the readings</a>
                         <a href="assets/resume_qutaiba.pdf" download class="btn btn-secondary">Download CV</a>
                     </div>
                 </div>
@@ -172,145 +175,202 @@
                 <div class="flex items-end justify-between gap-4 mb-3">
                     <div>
                         <p class="section-label mb-2">Projects</p>
-                        <h2 class="font-heading text-3xl md:text-4xl font-bold">Built, shipped, documented.</h2>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold">Built, measured, written up.</h2>
                     </div>
                     <a href="selection.html" class="hidden sm:inline-block text-sm font-mono text-dim hover:text-accent-ink transition-colors shrink-0">Browse case studies by domain →</a>
                 </div>
-                <p class="text-dim mb-10 max-w-[640px]">Status badges are honest: <span class="font-mono text-xs">Live</span> means deployed and clickable, <span class="font-mono text-xs">Local</span> means built but not hosted yet.</p>
+                <p class="text-dim mb-12 max-w-[660px]">
+                    Each project leads with what was actually measured on it. Five carry a number.
+                    Three do not, and say so &mdash; nothing on this page borrows a figure from somewhere else.
+                    The same rule governs the status: <span class="font-mono text-xs">Live</span> means
+                    deployed and clickable, <span class="font-mono text-xs">Local</span> means built but not hosted.
+                </p>
 
-                <!-- Featured grid -->
-                <div class="grid md:grid-cols-2 gap-5 mb-14">
+                <div class="project-list mb-14">
 
-                    <!-- Cantilever Beam -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
+                    <article class="project-row">
+                        <div>
+                            <span class="reading-value">5.83 Hz</span>
+                            <span class="reading-method">Natural frequency</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">
+                                <a href="projects/cantilever-beam.html" class="project-name-link">Cantilever Beam Instrumentation System</a>
+                            </h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Turns a steel cantilever into a load monitor &mdash; strain resolves applied mass to
+                                within ~1.5&nbsp;g &mdash; and recovers the beam&rsquo;s own natural frequency from
+                                the vibration spectrum.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">Arduino</span><span class="tag">Strain Gauge</span><span class="tag">MPU6050</span><span class="tag">I&sup2;C</span><span class="tag">FFT</span>
+                            </div>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
                             <span class="badge badge-local">Local</span>
                             <span class="cat-tag">Engineering</span>
                         </div>
-                        <h3 class="font-heading text-xl font-bold">Cantilever Beam Instrumentation System</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Turns a steel cantilever into a load monitor — strain → applied mass to within
-                            ~1.5&nbsp;g — and extracts the beam's natural frequency
-                            (f<sub>n</sub> = 5.83&nbsp;Hz) via FFT.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Arduino</span><span class="tag">Strain Gauge</span><span class="tag">MPU6050</span><span class="tag">I²C</span><span class="tag">FFT</span><span class="tag">Python</span>
-                        </div>
-                        <a href="projects/cantilever-beam.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
                     </article>
 
-                    <!-- Sawtooth Wave Generator -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
+                    <article class="project-row">
+                        <div>
+                            <span class="reading-value">&plusmn;12 V</span>
+                            <span class="reading-method">Supply rails</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">
+                                <a href="projects/sawtooth-generator.html" class="project-name-link">Sawtooth Wave Generator</a>
+                            </h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Analog op-amp circuit producing asymmetric sawtooth waveforms &mdash; a Schmitt trigger
+                                driving an integrator through a diode RC network. Built and tested on breadboard.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">Op-Amp</span><span class="tag">Schmitt Trigger</span><span class="tag">Analog Design</span>
+                            </div>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
                             <span class="badge badge-local">Local</span>
                             <span class="cat-tag">Engineering</span>
                         </div>
-                        <h3 class="font-heading text-xl font-bold">Sawtooth Wave Generator</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Analog op-amp circuit that generates asymmetric sawtooth waveforms using a Schmitt
-                            trigger driving an integrator through a diode RC network. Built and tested on breadboard.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Op-Amp</span><span class="tag">Schmitt Trigger</span><span class="tag">Analog Design</span><span class="tag">±12V</span>
-                        </div>
-                        <a href="projects/sawtooth-generator.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
                     </article>
 
-                    <!-- NeuroForge -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-live">Live</span>
-                            <span class="cat-tag">Web</span>
+                    <article class="project-row">
+                        <div>
+                            <span class="reading-value">80%</span>
+                            <span class="reading-method">Pressure threshold</span>
                         </div>
-                        <h3 class="font-heading text-xl font-bold">NeuroForge</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Brain training PWA with six games and offline support — runs in the browser with
-                            no install required.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service Worker</span><span class="tag">Web Audio API</span>
+                        <div>
+                            <h3 class="project-name mb-2">
+                                <a href="projects/tire-safety-lecture.html" class="project-name-link">Vehicle Safety Inspection Lecture</a>
+                            </h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Session for the Bridgestone interns at Al-Jawadeen &mdash; reading a tire&rsquo;s danger
+                                signs before touching it. Below 80% of rated pressure, treat it as flat and never
+                                inflate it on the vehicle.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">Safety Training</span><span class="tag">Tire Inspection</span><span class="tag">Public Speaking</span>
+                            </div>
                         </div>
-                        <div class="flex gap-5">
-                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
-                            <a href="projects/neuroforge.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
-                        </div>
-                    </article>
-
-                    <!-- C2C Club -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-live">Live</span>
-                            <span class="cat-tag">Web</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold">C2C Club</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Website for the Campus-to-Career Club — events calendar, RSVP system, success
-                            stories, and a full Arabic/English toggle. Built on Firebase, installable as a PWA.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span>
-                        </div>
-                        <div class="flex gap-5">
-                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
-                            <a href="projects/c2c-club.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- More builds -->
-                <h3 class="font-heading text-lg font-bold mb-5 text-dim">More work</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
+                        <div class="flex md:flex-col md:items-end gap-2">
                             <span class="badge badge-archive">Delivered</span>
                             <span class="cat-tag">Safety Training</span>
                         </div>
-                        <h4 class="font-heading font-bold">Vehicle Safety Inspection Lecture</h4>
-                        <p class="text-dim text-sm flex-grow">Session for the Bridgestone interns at Al-Jawadeen — reading a tire's danger signs before touching it. Slides designed and delivered in Arabic.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Safety Training</span><span class="tag">Tire Inspection</span><span class="tag">Public Speaking</span>
-                        </div>
-                        <a href="projects/tire-safety-lecture.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
                     </article>
 
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-local">Local</span>
-                            <span class="cat-tag">Web</span>
+                    <article class="project-row">
+                        <div>
+                            <span class="reading-value">6 games</span>
+                            <span class="reading-method">Shipped, offline</span>
                         </div>
-                        <h4 class="font-heading font-bold">Life OS</h4>
-                        <p class="text-dim text-sm flex-grow">Gamified daily-habit dashboard — streaks, analytics, Firebase auth, and dark mode in a single build.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span>
+                        <div>
+                            <h3 class="project-name mb-2">
+                                <a href="projects/neuroforge.html" class="project-name-link">NeuroForge</a>
+                            </h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Brain-training PWA with six games and offline support &mdash; runs in the browser with
+                                nothing to install.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service Worker</span><span class="tag">Web Audio API</span>
+                            </div>
+                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener" class="inline-block mt-3 text-sm font-mono text-accent-ink hover:underline">&rarr; Open the live site</a>
                         </div>
-                    </article>
-
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-progress">In Progress</span>
-                            <span class="cat-tag">AI</span>
-                        </div>
-                        <h4 class="font-heading font-bold">CV Builder v2</h4>
-                        <p class="text-dim text-sm flex-grow">Full-stack AI CV generator — React front end, Node/MongoDB back end, OpenAI content, PDF export via Puppeteer.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">OpenAI API</span>
-                        </div>
-                        <span class="text-sm font-mono text-dim">In development — not yet deployed</span>
-                    </article>
-
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
+                        <div class="flex md:flex-col md:items-end gap-2">
                             <span class="badge badge-live">Live</span>
                             <span class="cat-tag">Web</span>
                         </div>
-                        <h4 class="font-heading font-bold">Portfolio Site</h4>
-                        <p class="text-dim text-sm flex-grow">This site. PWA-enabled, light/dark mode, 9 case studies, domain-based routing.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML</span><span class="tag">Tailwind</span><span class="tag">Vanilla JS</span><span class="tag">PWA</span>
-                        </div>
-                        <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ GitHub</a>
                     </article>
+
+                    <article class="project-row">
+                        <div>
+                            <span class="reading-value">10 studies</span>
+                            <span class="reading-method">Written up here</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">Portfolio Site</h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                This site. Ten case studies, light and dark themes, installable as a PWA, and a
+                                palette sampled from the portrait above.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">HTML</span><span class="tag">Tailwind</span><span class="tag">Vanilla JS</span><span class="tag">PWA</span>
+                            </div>
+                            <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="inline-block mt-3 text-sm font-mono text-accent-ink hover:underline">&rarr; Source on GitHub</a>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
+                            <span class="badge badge-live">Live</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                    </article>
+
+                    <article class="project-row reading-none">
+                        <div>
+                            <span class="reading-value">&mdash;</span>
+                            <span class="reading-method">Shipped, not measured</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">
+                                <a href="projects/c2c-club.html" class="project-name-link">C2C Club</a>
+                            </h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Website for the Campus-to-Career Club &mdash; events calendar, RSVP, success stories,
+                                and a full Arabic/English toggle. Firebase back end, installable as a PWA.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span>
+                            </div>
+                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener" class="inline-block mt-3 text-sm font-mono text-accent-ink hover:underline">&rarr; Open the live site</a>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
+                            <span class="badge badge-live">Live</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                    </article>
+
+                    <article class="project-row reading-none">
+                        <div>
+                            <span class="reading-value">&mdash;</span>
+                            <span class="reading-method">Built, not measured</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">Life OS</h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Gamified daily-habit dashboard &mdash; streaks, analytics, Firebase auth, and dark
+                                mode in a single build.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">HTML/JS</span><span class="tag">Firebase</span>
+                            </div>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
+                            <span class="badge badge-local">Local</span>
+                            <span class="cat-tag">Web</span>
+                        </div>
+                    </article>
+
+                    <article class="project-row reading-none">
+                        <div>
+                            <span class="reading-value">&mdash;</span>
+                            <span class="reading-method">In development</span>
+                        </div>
+                        <div>
+                            <h3 class="project-name mb-2">CV Builder v2</h3>
+                            <p class="text-dim mb-3 max-w-[620px]">
+                                Full-stack AI CV generator &mdash; React front end, Node and MongoDB behind it,
+                                OpenAI for the content, PDF export through Puppeteer. Not deployed yet.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">OpenAI API</span>
+                            </div>
+                        </div>
+                        <div class="flex md:flex-col md:items-end gap-2">
+                            <span class="badge badge-progress">In Progress</span>
+                            <span class="cat-tag">AI</span>
+                        </div>
+                    </article>
+
                 </div>
 
                 <!-- Design & CAD archive -->

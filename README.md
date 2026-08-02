@@ -7,7 +7,8 @@ Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools bu
 ## Design system
 
 - **Colors** — sampled from `assets/profile-red.jpg`, the portrait against the crimson wall. Crimson `#9d0104` is the accent (it is 68% of that image); warm paper `#fdf5ec` and warm near-black `#120a09` are the two backgrounds; green survives only on Live badges, because status has to stay scannable and nothing in the photo can carry that without reading as the accent. Defined as CSS custom properties in `assets/theme.css` (`:root` = light, `[data-theme="dark"]` = dark). Every text pair clears WCAG AA.
-- **Typography** — IBM Plex Sans (headings and body), IBM Plex Mono (specs, tags, labels).
+- **Typography** — Archivo for display, run wide on its width axis so headlines read like a machine faceplate; Newsreader (a serif) for body; JetBrains Mono for readings, tags and labels. The serif is in the *body*, not the display — the inversion of the usual pairing, because what separates this work from other student work is that it gets written up, and a paper face says that before a word is read.
+- **The reading column** — every project on the home page leads with what was actually measured on it: `5.83 Hz`, `±12 V`, `80%`. Projects with no measurement show `—` and say `not measured` rather than borrowing a figure from somewhere else. The blank ones are what make the filled ones worth believing. Rows are ordered readings-first, so the blanks cluster at the bottom where that fact is itself informative.
 - **Layout** — left-aligned, grid-based cards, borders over shadows, 4px/8px corner radii only.
 - **Hero** — a full-bleed band reproducing the wall from `profile-red.jpg`, with the portrait masked into it so the photo has no visible edge. Fixed in both themes: a photograph does not have a dark mode.
 - **Status badges** — Live (deployed and clickable), Local (built, not hosted), In Progress, Archive.
