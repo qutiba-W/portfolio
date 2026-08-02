@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=10" />
+    <link rel="stylesheet" href="assets/theme.css?v=11" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -63,10 +63,8 @@
     <a href="#projects" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] btn btn-primary">Skip to projects</a>
 
     <!-- Navbar -->
-    <!-- Fixed, not sticky: a sticky header takes 64px of flow and the photo
-         would start below it instead of running under it. -->
-    <header class="site-header fixed top-0 left-0 right-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm"
-        id="site-header" data-over-hero="true">
+    <header class="site-header sticky top-0 z-50 w-full border-b border-line backdrop-blur-sm"
+        id="site-header">
         <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="font-heading font-700 font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">
@@ -99,7 +97,7 @@
     </header>
 
     <main>
-        <!-- Hero: full-bleed crimson band; the portrait's own wall is the background -->
+        <!-- Hero: photo left, copy right. A full-bleed photo has to crop badly -->
         <section class="hero">
             <div class="hero-figure">
                 <!-- From the 6192x4128 original. Three widths so a phone does not
@@ -108,23 +106,29 @@
                     srcset="assets/profile-red@900.jpg 900w,
                             assets/profile-red.jpg 1600w,
                             assets/profile-red@2560.jpg 2560w"
-                    sizes="100vw"
+                    sizes="(min-width: 900px) 46vw, 100vw"
                     alt="Qutaiba W. Mantfaji" class="hero-photo"
                     width="1600" height="1067" fetchpriority="high" />
             </div>
-            <!-- Deliberately short: the copy has to clear his face, and a tall
-                 block would sit across it however the photo is cropped. The
-                 eyebrow and the full description both live in About, one screen
-                 down, so nothing is lost. -->
-            <div class="hero-copy max-w-[1100px] mx-auto px-4 sm:px-6 pb-10 md:pb-14">
-                <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6 max-w-[760px]">
+            <div class="hero-copy">
+                <p class="section-label mb-5">Mechanical Engineering · Software · AI</p>
+                <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.06] tracking-tight mb-5">
                     I build things that work.
                 </h1>
                 <!-- Alt headlines:
-                     A (previous, too tall for this hero): I build things that work — mechanical systems, software, and whatever the problem needs.
+                     A: I build things that work — mechanical systems, software, and whatever the problem needs.
                      B: Engineering student. Builder of real things.
                      C: Mechanical engineer who also ships software. -->
-                <div class="flex items-center gap-4 flex-wrap mb-9">
+                <p class="text-lg text-dim max-w-[440px] mb-7">
+                    Mechanical Engineering student at AUIS. I instrument beams, design circuits, and ship
+                    web apps — then document them properly.
+                </p>
+                <div class="hero-facts mb-8">
+                    <span>AUIS · Sulaymaniyah</span>
+                    <span>Arabic · English</span>
+                    <span>Open to internships</span>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap mb-8">
                     <a href="#projects" class="btn btn-primary">See My Projects</a>
                     <a href="assets/resume_qutaiba.pdf" download class="btn btn-secondary">Download CV</a>
                 </div>
@@ -456,22 +460,6 @@
                 }
                 syncIcons();
             });
-        })();
-
-        // Header: transparent while the hero photo is behind it, solid after.
-        (function () {
-            var header = document.getElementById('site-header');
-            var hero = document.querySelector('.hero');
-            if (!header || !hero) return;
-
-            function sync() {
-                // Switch once the hero has scrolled up past the header's own height.
-                var past = hero.getBoundingClientRect().bottom <= header.offsetHeight;
-                header.setAttribute('data-over-hero', past ? 'false' : 'true');
-            }
-            sync();
-            addEventListener('scroll', sync, { passive: true });
-            addEventListener('resize', sync);
         })();
 
         // Service worker

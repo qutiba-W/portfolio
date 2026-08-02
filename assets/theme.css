@@ -292,43 +292,30 @@ h1, h2, h3, h4, h5, h6 {
    image and the wall on the page are the same surface. Fixed in both themes;
    a photograph does not have a dark mode. */
 
+/* ---- Hero: split ----
+   A full-bleed photo has to crop: the file is 3:2 and any full screen is
+   wider than that, so the frame eats his head or his chin. Giving the photo
+   its own column lets it crop toward portrait, which is the shape it wants,
+   and the words get their own space instead of sitting on his face. */
+
 .hero {
     position: relative;
-    /* Just under a full screen, so the next section peeks and it is obvious
-       there is more below. */
     min-height: 88dvh;
-    display: flex;
-    align-items: flex-end;       /* copy sits at the bottom, face stays clear */
-    background: var(--hero-bg);
-    color: var(--hero-ink);
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;   /* stacked on small screens */
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+@media (min-width: 900px) {
+    .hero { grid-template-columns: 46% 1fr; }
 }
 
 .hero-figure {
-    position: absolute;
-    inset: 0;
-}
-
-/* Crimson scrim, tinted rather than black so it stays the same wall.
-   Confined to the bottom ~40% — the earlier version still had 0.42 opacity at
-   mid-height, which on a wide screen lands squarely on his face and dims him.
-   Only the strip the words actually sit on needs darkening. */
-.hero-figure::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-                rgba(66, 1, 3, 0.94) 0%,
-                rgba(84, 1, 3, 0.78) 12%,
-                rgba(120, 2, 4, 0.34) 26%,
-                rgba(150, 2, 4, 0.10) 42%,
-                rgba(157, 1, 4, 0.00) 62%);
-}
-
-.hero-copy {
     position: relative;
-    z-index: 1;
-    width: 100%;
+    min-height: 330px;
+    background: var(--hero-bg);
+    overflow: hidden;
 }
 
 .hero-photo {
@@ -336,8 +323,34 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Face high in the frame so the copy at the bottom sits on wall, not on him. */
-    object-position: 50% 14%;
+    /* Keeps him in frame as the column narrows — he sits right of centre in
+       the original, with wall to his left. */
+    object-position: 56% 34%;
+}
+
+.hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+@media (min-width: 900px) {
+    .hero-copy { padding: 3rem 3.5rem 3rem 3.5rem; }
+}
+
+@media (min-width: 1280px) {
+    .hero-copy { padding-right: 5rem; padding-left: 5rem; }
+}
+
+.hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-dim);
 }
 
 /* The header is fixed, so anchored sections would land under it. */
@@ -354,11 +367,11 @@ section[id] {
     font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--hero-ink-dim);
+    color: var(--color-text-dim);
     transition: color 0.18s ease;
 }
 
-.hero-cue:hover { color: var(--hero-ink); }
+.hero-cue:hover { color: var(--color-accent-ink); }
 
 .hero-cue svg { animation: cue-nudge 2.4s ease-in-out infinite; }
 
@@ -367,78 +380,18 @@ section[id] {
     50%      { transform: translateY(3px); }
 }
 
-/* ---- Header over the hero ----
-   Transparent while the photo is behind it, solid once the page scrolls
-   past. Without this a cream bar cuts across the top of the portrait. */
-
-/* The `bg-bg/95` utility in the markup produces nothing: Tailwind cannot apply
+/* ---- Header ----
+   The `bg-bg/95` utility in the markup produces nothing: Tailwind cannot apply
    an opacity modifier to a bare CSS variable, so the header had no background
-   at all. It went unnoticed while the header was sticky and sat above the
-   content instead of over it. Set here instead. */
+   at all. It went unnoticed while the header sat above the content rather than
+   over it. Set here instead. */
 .site-header {
     background-color: var(--color-bg);
-    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-.site-header[data-over-hero="true"] {
-    background-color: transparent;
-    border-color: transparent;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-.site-header[data-over-hero="true"] a,
-.site-header[data-over-hero="true"] button {
-    color: var(--hero-ink);
-}
-
-.site-header[data-over-hero="true"] .btn-secondary {
-    border-color: rgba(255, 222, 189, 0.45);
-}
-
-.site-header[data-over-hero="true"] .btn-secondary:hover {
-    border-color: var(--hero-ink);
-    background: rgba(255, 222, 189, 0.12);
-}
-
-.site-header[data-over-hero="true"] :focus-visible {
-    outline-color: var(--hero-ink);
-}
-
-.hero .section-label {
-    color: var(--hero-ink-dim);
-}
-
-.hero .section-label::before {
-    background: var(--hero-ink);
-}
-
-.hero .btn-primary {
-    background: var(--hero-ink);
-    color: var(--hero-bg);
-    border-color: var(--hero-ink);
-}
-
-.hero .btn-primary:hover {
-    background: #ffffff;
-    border-color: #ffffff;
-}
-
-.hero .btn-secondary {
-    color: var(--hero-ink);
-    border-color: rgba(255, 222, 189, 0.45);
-    background: transparent;
-}
-
-.hero .btn-secondary:hover {
-    border-color: var(--hero-ink);
-    background: rgba(255, 222, 189, 0.12);
-    color: var(--hero-ink);
-}
-
-.hero :focus-visible {
-    outline-color: var(--hero-ink);
-}
+/* The cream-ink overrides that used to live here are gone: the copy sits on
+   paper now, not on the photo, so it uses the ordinary page colours. Leaving
+   them in made the eyebrow and the secondary button cream-on-cream. */
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
