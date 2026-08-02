@@ -1,44 +1,35 @@
 /* ==========================================================================
-   Qutaiba W. Mantfaji — Portfolio Design System
-   Bright warm light is the DEFAULT theme (no attribute).
-   Dark mode is opt-in via [data-theme="dark"].
-   Amber is the primary accent. Emerald appears ONLY on Live/Deployed badges.
+   Portfolio design tokens.
+   Light is the default theme; dark is opt-in via [data-theme="dark"].
+   Ochre is the primary accent. Green appears only on Live/Deployed badges.
    ========================================================================== */
 
 :root {
-    /* Surfaces — warm, bright, inviting */
-    --color-bg:           #fbf8f2;   /* warm bright cream */
-    --color-bg-2:         #f4eee1;   /* deeper warm tone for gradients / alt bands */
-    --color-surface:      #ffffff;   /* cards pop against the cream */
-    --color-surface-2:    #fffaf0;   /* warm-tinted surface */
-    --color-border:       #e7dec9;   /* warm light border */
-    --color-text:         #211c14;   /* warm near-black */
-    --color-text-dim:     #645c4d;   /* warm gray — passes 4.5:1 on bg */
+    /* Surfaces */
+    --color-bg:           #fbf8f2;   /* warm cream */
+    --color-bg-2:         #f4eee1;
+    --color-surface:      #ffffff;
+    --color-surface-2:    #fffaf0;
+    --color-border:       #e7dec9;
+    --color-text:         #211c14;
+    --color-text-dim:     #645c4d;   /* passes 4.5:1 on bg */
     --color-muted:        #998f7b;   /* labels, dividers, decorative only */
 
     /* Accents */
-    --color-accent:       #f59e0b;   /* amber */
-    --color-accent-ink:   #b45309;   /* darker amber, readable as text on light bg */
-    --color-accent-soft:  rgba(245, 158, 11, 0.12);  /* tint for badge/label backgrounds */
-    --color-accent-2:     #10b981;   /* emerald — Live/Deployed badges ONLY */
-    --color-accent-2-ink: #047857;
-    --color-accent-2-soft:rgba(16, 185, 129, 0.10);
-    --color-accent-3:     #64748b;   /* slate — In Progress states */
-    --color-accent-3-ink: #475569;
+    --color-accent:       #d9822b;   /* ochre */
+    --color-accent-ink:   #9a4f16;   /* readable as text on light bg */
+    --color-accent-soft:  rgba(217, 130, 43, 0.12);
+    --color-accent-2:     #3f8f6b;   /* green — Live/Deployed badges only */
+    --color-accent-2-ink: #2a6b4d;
+    --color-accent-2-soft:rgba(63, 143, 107, 0.10);
+    --color-accent-3:     #8a8175;   /* warm gray — In Progress states */
+    --color-accent-3-ink: #5f5952;
 
-    /* Warm gradients & glows — the source of "color in a good way" */
-    --grad-accent:  linear-gradient(135deg, #f59e0b 0%, #f97316 55%, #fb7185 110%);
-    --grad-hero:
-        radial-gradient(60% 55% at 50% -5%, rgba(245, 158, 11, 0.18), transparent 70%),
-        radial-gradient(45% 45% at 88% 8%, rgba(251, 113, 133, 0.10), transparent 70%),
-        radial-gradient(40% 40% at 8% 12%, rgba(16, 185, 129, 0.07), transparent 70%);
-    --glow-accent:  0 14px 34px -14px rgba(245, 158, 11, 0.45);
     --shadow-card:  0 1px 2px rgba(33, 28, 20, 0.04), 0 6px 16px -10px rgba(33, 28, 20, 0.10);
-    --shadow-card-hover: 0 14px 30px -14px rgba(245, 158, 11, 0.40), 0 6px 16px -10px rgba(33, 28, 20, 0.12);
 
-    --font-heading: 'Space Grotesk', 'DM Sans', sans-serif;
-    --font-body:    'DM Sans', 'Inter', sans-serif;
-    --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+    --font-heading: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 }
 
 [data-theme="dark"] {
@@ -51,22 +42,16 @@
     --color-text-dim:     #a3a094;
     --color-muted:        #6b6b65;
 
-    --color-accent:       #f59e0b;
-    --color-accent-ink:   #fbbf24;
-    --color-accent-soft:  rgba(245, 158, 11, 0.14);
-    --color-accent-2:     #10b981;
-    --color-accent-2-ink: #34d399;
-    --color-accent-2-soft:rgba(16, 185, 129, 0.14);
-    --color-accent-3:     #94a3b8;
-    --color-accent-3-ink: #94a3b8;
+    --color-accent:       #d9822b;
+    --color-accent-ink:   #e8a24d;
+    --color-accent-soft:  rgba(217, 130, 43, 0.14);
+    --color-accent-2:     #3f8f6b;
+    --color-accent-2-ink: #5fb391;
+    --color-accent-2-soft:rgba(63, 143, 107, 0.14);
+    --color-accent-3:     #9a948c;
+    --color-accent-3-ink: #9a948c;
 
-    --grad-hero:
-        radial-gradient(60% 55% at 50% -5%, rgba(245, 158, 11, 0.16), transparent 70%),
-        radial-gradient(45% 45% at 88% 8%, rgba(251, 113, 133, 0.08), transparent 70%),
-        radial-gradient(40% 40% at 8% 12%, rgba(16, 185, 129, 0.06), transparent 70%);
-    --glow-accent:  0 14px 34px -14px rgba(245, 158, 11, 0.35);
     --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.30);
-    --shadow-card-hover: 0 16px 34px -16px rgba(245, 158, 11, 0.30), 0 6px 16px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* ---- Base ---- */
@@ -103,39 +88,20 @@ h1, h2, h3, h4, h5, h6 {
     outline-offset: 2px;
 }
 
-/* Gradient text helper (amber → coral) */
-.gradient-text {
-    background: var(--grad-accent);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* ---- Hero glow ---- */
-.hero-glow {
-    position: relative;
-    background-image: var(--grad-hero);
-    background-repeat: no-repeat;
-}
-
 /* ---- Components ---- */
 
-/* Card: border + soft shadow, lifts and glows on hover */
+/* Card: border + soft shadow, border warms on hover */
 .card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 12px;
     box-shadow: var(--shadow-card);
-    transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
-    will-change: transform;
+    transition: border-color 0.18s ease;
 }
 
 .card:hover,
 .card:focus-within {
     border-color: var(--color-accent);
-    box-shadow: var(--shadow-card-hover);
-    transform: translateY(-4px);
 }
 
 /* Mono tag for tech specs / skills */
@@ -187,11 +153,6 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-accent-2-soft);
 }
 
-/* Live dot gently pulses — it's the "this is online right now" signal */
-.badge-live::before {
-    animation: pulse-dot 2s ease-in-out infinite;
-}
-
 .badge-local {
     color: var(--color-accent-ink);
     border-color: var(--color-accent);
@@ -228,22 +189,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
-                box-shadow 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
 .btn-primary {
     background: var(--color-accent);
     color: #2a1a04;
     border: 1px solid var(--color-accent);
-    box-shadow: var(--glow-accent);
 }
 
 .btn-primary:hover {
-    background: #ea8a06;
-    border-color: #ea8a06;
-    transform: translateY(-2px);
-    box-shadow: 0 18px 38px -14px rgba(245, 158, 11, 0.6);
+    background: #c26f1f;
+    border-color: #c26f1f;
 }
 
 .btn-secondary {
@@ -256,10 +213,9 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--color-accent);
     color: var(--color-accent-ink);
     background: var(--color-accent-soft);
-    transform: translateY(-2px);
 }
 
-/* Section label: mono, uppercase, amber, with a small gradient lead bar */
+/* Section label: mono, uppercase, accent, with a small lead bar */
 .section-label {
     display: inline-flex;
     align-items: center;
@@ -277,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 1.6rem;
     height: 2px;
     border-radius: 2px;
-    background: var(--grad-accent);
+    background: var(--color-accent);
 }
 
 /* Center the lead bar nicely when the label itself is centered */
@@ -309,44 +265,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
-/* ---- Motion ---- */
-
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1;   transform: scale(1); }
-    50%      { opacity: 0.4; transform: scale(0.8); }
-}
-
-@keyframes fade-up {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: none; }
-}
-
-/* Hero entrance — staggered fade-up on load */
-.hero-rise > * {
-    animation: fade-up 0.6s ease both;
-}
-.hero-rise > *:nth-child(1) { animation-delay: 0.02s; }
-.hero-rise > *:nth-child(2) { animation-delay: 0.10s; }
-.hero-rise > *:nth-child(3) { animation-delay: 0.18s; }
-.hero-rise > *:nth-child(4) { animation-delay: 0.26s; }
-
-/* Subtle scroll reveal — disabled for reduced-motion users */
-.reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .hero-rise > * { animation: none; }
-    .badge-live::before { animation: none; }
-    .card { transition: border-color 0.2s ease; }
-    .card:hover, .card:focus-within { transform: none; }
 }

@@ -32,8 +32,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=4" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/theme.css?v=5" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -49,9 +49,9 @@
                         'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        heading: ['Space Grotesk', 'DM Sans', 'sans-serif'],
-                        body: ['DM Sans', 'Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                        heading: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        body: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
                     },
                 },
             },
@@ -97,11 +97,11 @@
 
     <main>
         <!-- Hero: the only centered section -->
-        <section class="hero-glow px-4 sm:px-6 pt-24 pb-20 md:pt-32 md:pb-28">
-            <div class="hero-rise max-w-[860px] mx-auto text-center">
+        <section class="px-4 sm:px-6 pt-24 pb-20 md:pt-32 md:pb-28">
+            <div class="max-w-[860px] mx-auto text-center">
                 <p class="section-label mb-6">Mechanical Engineering · Software · AI</p>
                 <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
-                    I build things that work — mechanical systems, software, and <span class="gradient-text">whatever the problem needs.</span>
+                    I build things that work — mechanical systems, software, and whatever the problem needs.
                 </h1>
                 <!-- Alt headlines:
                      B: Engineering student. Builder of real things.
@@ -117,12 +117,10 @@
             </div>
         </section>
 
-        <hr class="divider max-w-[1100px] mx-auto" />
-
         <!-- About -->
         <section id="about" class="px-4 sm:px-6 py-20">
             <div class="max-w-[1100px] mx-auto grid md:grid-cols-[320px_1fr] gap-10 items-start">
-                <figure class="reveal max-w-[320px] mx-auto md:mx-0">
+                <figure class="max-w-[320px] mx-auto md:mx-0">
                     <img src="assets/qutaiba-lab.jpg" alt="Qutaiba W. Mantfaji in the AUIS measurements lab"
                         class="w-full rounded-md border border-line object-cover" loading="lazy" />
                     <figcaption class="font-mono text-xs text-dim mt-2">In the measurements lab — AUIS.</figcaption>
@@ -162,10 +160,8 @@
             </div>
         </section>
 
-        <hr class="divider max-w-[1100px] mx-auto" />
-
         <!-- Projects -->
-        <section id="projects" class="px-4 sm:px-6 py-20">
+        <section id="projects" class="px-4 sm:px-6 py-28">
             <div class="max-w-[1100px] mx-auto">
                 <div class="flex items-end justify-between gap-4 mb-3">
                     <div>
@@ -180,7 +176,7 @@
                 <div class="grid md:grid-cols-2 gap-5 mb-14">
 
                     <!-- Cantilever Beam -->
-                    <article class="card p-6 flex flex-col gap-4 reveal">
+                    <article class="card p-6 flex flex-col gap-4">
                         <div class="flex items-center justify-between gap-3">
                             <span class="badge badge-local">Local</span>
                             <span class="cat-tag">Engineering</span>
@@ -198,7 +194,7 @@
                     </article>
 
                     <!-- Sawtooth Wave Generator -->
-                    <article class="card p-6 flex flex-col gap-4 reveal">
+                    <article class="card p-6 flex flex-col gap-4">
                         <div class="flex items-center justify-between gap-3">
                             <span class="badge badge-local">Local</span>
                             <span class="cat-tag">Engineering</span>
@@ -215,7 +211,7 @@
                     </article>
 
                     <!-- NeuroForge -->
-                    <article class="card p-6 flex flex-col gap-4 reveal">
+                    <article class="card p-6 flex flex-col gap-4">
                         <div class="flex items-center justify-between gap-3">
                             <span class="badge badge-live">Live</span>
                             <span class="cat-tag">Web</span>
@@ -235,7 +231,7 @@
                     </article>
 
                     <!-- C2C Club -->
-                    <article class="card p-6 flex flex-col gap-4 reveal">
+                    <article class="card p-6 flex flex-col gap-4">
                         <div class="flex items-center justify-between gap-3">
                             <span class="badge badge-live">Live</span>
                             <span class="cat-tag">Web</span>
@@ -259,7 +255,7 @@
                 <h3 class="font-heading text-lg font-bold mb-5 text-dim">More builds</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
 
-                    <article class="card p-5 flex flex-col gap-3 reveal">
+                    <article class="card p-5 flex flex-col gap-3">
                         <div class="flex items-center justify-between gap-2">
                             <span class="badge badge-local">Local</span>
                             <span class="cat-tag">Web</span>
@@ -271,7 +267,7 @@
                         </div>
                     </article>
 
-                    <article class="card p-5 flex flex-col gap-3 reveal">
+                    <article class="card p-5 flex flex-col gap-3">
                         <div class="flex items-center justify-between gap-2">
                             <span class="badge badge-progress">In Progress</span>
                             <span class="cat-tag">AI</span>
@@ -284,7 +280,7 @@
                         <span class="text-sm font-mono text-dim">In development — not yet deployed</span>
                     </article>
 
-                    <article class="card p-5 flex flex-col gap-3 reveal">
+                    <article class="card p-5 flex flex-col gap-3">
                         <div class="flex items-center justify-between gap-2">
                             <span class="badge badge-live">Live</span>
                             <span class="cat-tag">Web</span>
@@ -334,36 +330,34 @@
             </div>
         </section>
 
-        <hr class="divider max-w-[1100px] mx-auto" />
-
         <!-- Skills -->
-        <section id="skills" class="px-4 sm:px-6 py-20">
+        <section id="skills" class="px-4 sm:px-6 py-16">
             <div class="max-w-[1100px] mx-auto">
                 <p class="section-label mb-2">Skills</p>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold mb-10">What I work with.</h2>
                 <div class="grid md:grid-cols-2 gap-5">
-                    <div class="card p-6 reveal">
+                    <div class="card p-6">
                         <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Mechanical Engineering</h3>
                         <p class="text-dim leading-loose">
                             Structural instrumentation · Analog circuit design · Sensor integration ·
                             CNC laser fabrication · Rapid prototyping · 3D printing · CAD (SolidWorks, Fusion 360)
                         </p>
                     </div>
-                    <div class="card p-6 reveal">
+                    <div class="card p-6">
                         <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Software &amp; Web</h3>
                         <p class="text-dim leading-loose">
                             HTML/CSS/Tailwind · Vanilla JS · React · Next.js · Node.js ·
                             FastAPI · MongoDB · PWA (service workers) · REST APIs
                         </p>
                     </div>
-                    <div class="card p-6 reveal">
+                    <div class="card p-6">
                         <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">AI &amp; Data</h3>
                         <p class="text-dim leading-loose">
                             OpenAI API · Google Gemini · Prompt engineering · Generative AI strategy ·
                             MATLAB · Python · Arduino · Serial data pipelines · FFT analysis
                         </p>
                     </div>
-                    <div class="card p-6 reveal">
+                    <div class="card p-6">
                         <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Tools &amp; Methods</h3>
                         <p class="text-dim leading-loose">
                             Git/GitHub · Arduino IDE · OSHA safety · Technical documentation ·
@@ -374,10 +368,8 @@
             </div>
         </section>
 
-        <hr class="divider max-w-[1100px] mx-auto" />
-
         <!-- Contact -->
-        <section id="contact" class="px-4 sm:px-6 py-20">
+        <section id="contact" class="px-4 sm:px-6 py-16">
             <div class="max-w-[1100px] mx-auto">
                 <p class="section-label mb-2">Contact</p>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Let's work together.</h2>
@@ -430,19 +422,6 @@
                 }
                 syncIcons();
             });
-        })();
-
-        // Scroll reveal (no-op for reduced motion via CSS)
-        (function () {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
         })();
 
         // Service worker

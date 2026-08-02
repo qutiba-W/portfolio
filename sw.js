@@ -1,13 +1,13 @@
-const CACHE_NAME = 'qutaiba-portfolio-v4';
+const CACHE_NAME = 'qutaiba-portfolio-v5';
 const ASSETS = [
     './index.html',
     './selection.html',
     './manifest.json',
-    './assets/theme.css?v=4',
+    './assets/theme.css?v=5',
     './assets/profile-red.jpg',
     './assets/profile-pic.png',
     'https://cdn.tailwindcss.com',
-    'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap'
+    'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap'
 ];
 
 self.addEventListener('install', (e) => {
