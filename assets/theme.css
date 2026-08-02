@@ -300,7 +300,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero {
     position: relative;
-    min-height: 88dvh;
+    /* Capped, not a bare vh: on a short laptop screen 88dvh is proportionate,
+       but on a tall monitor it stretches into hundreds of extra pixels of
+       empty space around the vertically-centred copy. 760px is roughly what
+       the content needs; it never grows past 88% of the viewport either. */
+    min-height: clamp(560px, 88dvh, 760px);
     display: grid;
     grid-template-columns: 1fr;   /* stacked on small screens */
     background: var(--color-bg);
@@ -311,11 +315,25 @@ h1, h2, h3, h4, h5, h6 {
     .hero { grid-template-columns: 46% 1fr; }
 }
 
+/* Stacked (below 900px): height is an explicit clamp, not left to resolve on
+   its own. `height: 100%` on the photo against a parent with only
+   min-height is ambiguous — the used height depends on the browser's
+   fallback behaviour, which is why this swung between roughly 500 and
+   570px across ordinary phone widths with no controlling logic. Sizing the
+   box directly removes the ambiguity and scales predictably instead. */
 .hero-figure {
     position: relative;
-    min-height: 330px;
+    height: clamp(260px, 58vw, 420px);
     background: var(--hero-bg);
     overflow: hidden;
+}
+
+@media (min-width: 900px) {
+    /* The clamp only matters stacked. In the grid, align-items: stretch
+       (the default) already sizes this column to the row height. */
+    .hero-figure {
+        height: auto;
+    }
 }
 
 .hero-photo {
@@ -332,6 +350,10 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 640px;   /* every other section on the page caps at ~1100px
+                           total; uncapped, this column stretched past 1600px
+                           on a wide monitor while the rest of the page did
+                           not — the mismatch read as inconsistent scale. */
     padding: 2.5rem 1.5rem 3rem;
 }
 

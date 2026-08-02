@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Solutions for Individuals — Qutaiba Mantfaji</title>
+    <meta name="description" content="Custom AI agents built for one specific task, a few ready-made starting points to adapt, or hourly help if you're building your own. No packages you don't need." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <meta property="og:title" content="AI Agent Solutions for Individuals — Qutaiba Mantfaji" />
+    <meta property="og:description" content="Custom AI agents built for one specific task, a few ready-made starting points to adapt, or hourly help if you're building your own." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#fdf5ec" />
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/theme.css?v=12" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
+                    },
+                    fontFamily: {
+                        heading: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        body: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-bg text-ink font-body">
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-heading font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">Qutaiba W. Mantfaji</a>
+            <nav class="flex items-center gap-6" aria-label="Main">
+                <a href="index.html#projects" class="text-sm text-dim hover:text-accent-ink transition-colors">Projects</a>
+                <a href="agents.html" class="text-sm text-accent-ink" aria-current="page">Agents</a>
+                <a href="index.html#contact" class="text-sm text-dim hover:text-accent-ink transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-[1100px] mx-auto px-4 sm:px-6 py-16">
+
+        <!-- Intro -->
+        <div class="max-w-[720px] mb-16">
+            <p class="section-label mb-4">AI Agent Solutions</p>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.08] mb-5">
+                An agent that does the one task you keep doing by hand.
+            </h1>
+            <!-- Alt headlines:
+                 B: I build AI agents for people, not companies.
+                 C: Automate the task you dread, not your whole life. -->
+            <p class="text-dim text-lg leading-relaxed mb-8">
+                Not a subscription, not a template. You tell me the task, I build the agent
+                around it, and you see exactly what it does before it touches anything of yours.
+            </p>
+            <a href="mailto:qutibax2@gmail.com?subject=Agent%20inquiry&body=Here's%20the%20task%20I%20want%20to%20automate%3A%0A%0A"
+                class="btn btn-primary">Tell Me What You Want Automated</a>
+        </div>
+
+        <!-- Three ways to work together -->
+        <section class="mb-16">
+            <p class="section-label mb-2">How This Works</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold mb-8">Three ways to work together.</h2>
+            <div class="grid md:grid-cols-3 gap-5">
+
+                <div class="card p-6 flex flex-col gap-3">
+                    <span class="font-mono text-xs text-dim">01</span>
+                    <h3 class="font-heading text-lg font-bold">A custom agent, scoped to one task</h3>
+                    <p class="text-dim text-sm leading-relaxed flex-grow">
+                        You describe the task you want off your plate. I scope it, build it, and hand
+                        it over with plain instructions — not a black box you have to trust blindly.
+                    </p>
+                </div>
+
+                <div class="card p-6 flex flex-col gap-3">
+                    <span class="font-mono text-xs text-dim">02</span>
+                    <h3 class="font-heading text-lg font-bold">Start from something I've already built</h3>
+                    <p class="text-dim text-sm leading-relaxed flex-grow">
+                        Agent types I've built before — inbox triage, research digests, first-draft
+                        writing — adapted to your case instead of built from zero. Faster to ship,
+                        still yours to keep.
+                    </p>
+                </div>
+
+                <div class="card p-6 flex flex-col gap-3">
+                    <span class="font-mono text-xs text-dim">03</span>
+                    <h3 class="font-heading text-lg font-bold">Stuck building your own?</h3>
+                    <p class="text-dim text-sm leading-relaxed flex-grow">
+                        If you're already building something and it's not working, I'll sit with you
+                        and fix it — paid by the hour, no minimum commitment.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Objections -->
+        <section class="mb-16">
+            <p class="section-label mb-2">Before You Ask</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold mb-8">The questions everyone has.</h2>
+            <div class="grid md:grid-cols-3 gap-5">
+
+                <div class="card p-6">
+                    <h3 class="font-heading font-bold mb-2">What if I don't know exactly what I want automated?</h3>
+                    <p class="text-dim text-sm leading-relaxed">
+                        Normal — most people don't start with a clear spec. We talk it through first.
+                        You don't pay to figure that out.
+                    </p>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="font-heading font-bold mb-2">Do you need access to my accounts or data?</h3>
+                    <p class="text-dim text-sm leading-relaxed">
+                        Only what the agent needs to do its job, and you see exactly what that is
+                        before I touch anything live.
+                    </p>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="font-heading font-bold mb-2">How much does this cost?</h3>
+                    <p class="text-dim text-sm leading-relaxed">
+                        Depends on scope — nothing is fixed-price. Tell me the task and I'll give
+                        you a straight answer, not a package you don't need.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Proof -->
+        <section class="mb-16">
+            <p class="section-label mb-2">Background</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold mb-5">Why this isn't a first attempt.</h2>
+            <p class="text-dim leading-relaxed max-w-[680px] mb-5">
+                I've already built a multi-agent LLM pipeline that turns vague client requirements
+                into structured engineering specs — see the
+                <a href="projects/ai-design-pipeline.html" class="text-accent-ink underline decoration-line underline-offset-4 hover:no-underline">case study</a>.
+                That is the same skill this offer runs on: reading what someone actually needs and
+                wiring an agent to do it reliably.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+                <a href="https://www.coursera.org/account/accomplishments/professional-cert/DRBZKMDOYKAO" target="_blank" rel="noopener" class="tag">Google Cloud GenAI Leader</a>
+                <a href="https://www.coursera.org/account/accomplishments/verify/6YX2303E75N6" target="_blank" rel="noopener" class="tag">IBM Prompt Engineering</a>
+                <span class="tag">OpenAI API</span><span class="tag">Google Gemini</span><span class="tag">Python</span>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="border-t border-line pt-12">
+            <p class="section-label mb-2">Get Started</p>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold mb-3">Ready to hand off a task?</h2>
+            <p class="text-dim text-lg max-w-[560px] mb-7">
+                Send me the task. I'll tell you straight whether an agent is the right fix for it.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="mailto:qutibax2@gmail.com?subject=Agent%20inquiry&body=Here's%20the%20task%20I%20want%20to%20automate%3A%0A%0A"
+                    class="btn btn-primary">Tell Me What You Want Automated</a>
+                <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank" rel="noopener" class="btn btn-secondary">Message on LinkedIn</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-line px-4 sm:px-6 py-8 mt-16">
+        <div class="max-w-[1100px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+            <p class="font-mono text-xs">Built by hand. No template.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
