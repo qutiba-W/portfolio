@@ -6,9 +6,10 @@ Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools bu
 
 ## Design system
 
-- **Colors** — warm near-black background (`#0c0c0b`), amber accent (`#f59e0b`), emerald reserved for Live badges, slate for In Progress. Defined as CSS custom properties in `assets/theme.css` (`:root` = dark, `[data-theme="light"]` = light).
-- **Typography** — Space Grotesk (headings), DM Sans (body), JetBrains Mono (specs, tags, labels).
+- **Colors** — sampled from `assets/profile-red.jpg`, the portrait against the crimson wall. Crimson `#9d0104` is the accent (it is 68% of that image); warm paper `#fdf5ec` and warm near-black `#120a09` are the two backgrounds; green survives only on Live badges, because status has to stay scannable and nothing in the photo can carry that without reading as the accent. Defined as CSS custom properties in `assets/theme.css` (`:root` = light, `[data-theme="dark"]` = dark). Every text pair clears WCAG AA.
+- **Typography** — IBM Plex Sans (headings and body), IBM Plex Mono (specs, tags, labels).
 - **Layout** — left-aligned, grid-based cards, borders over shadows, 4px/8px corner radii only.
+- **Hero** — a full-bleed band reproducing the wall from `profile-red.jpg`, with the portrait masked into it so the photo has no visible edge. Fixed in both themes: a photograph does not have a dark mode.
 - **Status badges** — Live (deployed and clickable), Local (built, not hosted), In Progress, Archive.
 
 ## Features

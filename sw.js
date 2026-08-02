@@ -1,9 +1,9 @@
-const CACHE_NAME = 'qutaiba-portfolio-v5';
+const CACHE_NAME = 'qutaiba-portfolio-v6';
 const ASSETS = [
     './index.html',
     './selection.html',
     './manifest.json',
-    './assets/theme.css?v=5',
+    './assets/theme.css?v=6',
     './assets/profile-red.jpg',
     './assets/profile-pic.png',
     'https://cdn.tailwindcss.com',
