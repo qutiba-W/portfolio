@@ -45,15 +45,9 @@
 
     --shadow-card:  0 1px 2px rgba(28, 18, 16, 0.04), 0 6px 16px -10px rgba(28, 18, 16, 0.10);
 
-    /* Display is an industrial grotesk, body is a paper serif. The usual move
-       is the reverse; it is inverted here because the thing that separates
-       this work from other student work is that it gets written up, and a
-       body face out of published papers says that before a word is read. */
-    --font-heading: 'Archivo', system-ui, sans-serif;
-    --font-body:    'Newsreader', Georgia, serif;
-    --font-mono:    'JetBrains Mono', ui-monospace, monospace;
-
-    --wdth-display: 112;   /* Archivo optical width for headlines */
+    --font-heading: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 }
 
 [data-theme="dark"] {
@@ -94,22 +88,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-body {
-    font-size: 1.0625rem;
-    line-height: 1.65;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-variation-settings: 'wdth' var(--wdth-display);
-    letter-spacing: -0.015em;
-}
-
-/* Headlines run wider and heavier than the sub-heads — the width axis, not
-   just the weight axis, is what makes Archivo read as a faceplate. */
-h1 {
-    font-variation-settings: 'wdth' 118;
-    letter-spacing: -0.03em;
 }
 
 ::selection {
@@ -177,7 +157,6 @@ h1 {
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
     border: 1px solid;
-    white-space: nowrap;
 }
 
 .badge::before {
@@ -306,320 +285,161 @@ h1 {
     text-align: right;
 }
 
-/* ---- Readings ----
-   Every project leads with what was actually measured on it. Where nothing
-   was measured it says so instead of borrowing a number from somewhere
-   else — the blank ones are what make the filled ones worth believing. */
+/* ---- Hero ----
+   The band reproduces the wall in profile-red.jpg: light falls from the upper
+   left and drops off to the lower right, same as the photograph. The portrait
+   is then masked into that band so its left edge has no seam — the wall in the
+   image and the wall on the page are the same surface. Fixed in both themes;
+   a photograph does not have a dark mode. */
 
-.reading-value {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 1.45rem;
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-accent-ink);
-}
-
-.reading-method {
-    display: block;
-    margin-top: 0.45rem;
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    line-height: 1.4;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--color-text-dim);
-}
-
-.reading-none .reading-value {
-    color: var(--color-text-dim);
-    font-weight: 400;
-}
-
-/* ---- Dashboard shell ----
-   The landing page is one screen. On desktop the document itself never
-   scrolls; any panel that outgrows its box scrolls inside that box, so
-   nothing is ever clipped — "no scrolling" must not become "hidden".
-   Below 1024px it falls back to ordinary document flow, because a phone
-   cannot honestly fit this and pretending otherwise costs legibility. */
-
-.shell {
-    display: flex;
-    flex-direction: column;
-}
-
-@media (min-width: 1024px) {
-    .shell {
-        display: grid;
-        grid-template-columns: minmax(290px, 26%) 1fr;
-        height: 100dvh;
-        overflow: hidden;
-    }
-}
-
-/* ---- Identity card (left) ----
-   Same wall as before, but the portrait is now the panel itself: it fades
-   downward into the crimson so the copy at the bottom sits on flat colour
-   and stays legible without a box behind it. */
-
-.idcard {
+.hero {
     position: relative;
-    overflow: hidden;
+    /* Just under a full screen, so the next section peeks and it is obvious
+       there is more below. */
+    min-height: 88dvh;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 400px;   /* below this the copy rides up over the face */
-    background: radial-gradient(120% 90% at 22% 0%,
-                #bb1a1c 0%,
-                var(--hero-bg) 44%,
-                var(--hero-bg-deep) 100%);
+    align-items: flex-end;       /* copy sits at the bottom, face stays clear */
+    background: var(--hero-bg);
     color: var(--hero-ink);
+    overflow: hidden;
 }
 
-.idcard-photo {
+.hero-figure {
     position: absolute;
     inset: 0;
+}
+
+/* Crimson scrim, tinted rather than black so it stays the same wall.
+   Confined to the bottom ~40% — the earlier version still had 0.42 opacity at
+   mid-height, which on a wide screen lands squarely on his face and dims him.
+   Only the strip the words actually sit on needs darkening. */
+.hero-figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+                rgba(66, 1, 3, 0.94) 0%,
+                rgba(84, 1, 3, 0.78) 12%,
+                rgba(120, 2, 4, 0.34) 26%,
+                rgba(150, 2, 4, 0.10) 42%,
+                rgba(157, 1, 4, 0.00) 62%);
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.hero-photo {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 26%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 86%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 86%);
+    /* Face high in the frame so the copy at the bottom sits on wall, not on him. */
+    object-position: 50% 14%;
 }
 
-.idcard-body {
-    position: relative;
-    z-index: 1;
-    padding: 1.5rem 1.5rem 1.6rem;
+/* The header is fixed, so anchored sections would land under it. */
+section[id] {
+    scroll-margin-top: 4.5rem;
 }
 
-.idcard :focus-visible { outline-color: var(--hero-ink); }
+/* Scroll cue — there is a whole page under this and nothing else says so. */
+.hero-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--hero-ink-dim);
+    transition: color 0.18s ease;
+}
 
-.idcard .btn-primary {
+.hero-cue:hover { color: var(--hero-ink); }
+
+.hero-cue svg { animation: cue-nudge 2.4s ease-in-out infinite; }
+
+@keyframes cue-nudge {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(3px); }
+}
+
+/* ---- Header over the hero ----
+   Transparent while the photo is behind it, solid once the page scrolls
+   past. Without this a cream bar cuts across the top of the portrait. */
+
+/* The `bg-bg/95` utility in the markup produces nothing: Tailwind cannot apply
+   an opacity modifier to a bare CSS variable, so the header had no background
+   at all. It went unnoticed while the header was sticky and sat above the
+   content instead of over it. Set here instead. */
+.site-header {
+    background-color: var(--color-bg);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.site-header[data-over-hero="true"] {
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.site-header[data-over-hero="true"] a,
+.site-header[data-over-hero="true"] button {
+    color: var(--hero-ink);
+}
+
+.site-header[data-over-hero="true"] .btn-secondary {
+    border-color: rgba(255, 222, 189, 0.45);
+}
+
+.site-header[data-over-hero="true"] .btn-secondary:hover {
+    border-color: var(--hero-ink);
+    background: rgba(255, 222, 189, 0.12);
+}
+
+.site-header[data-over-hero="true"] :focus-visible {
+    outline-color: var(--hero-ink);
+}
+
+.hero .section-label {
+    color: var(--hero-ink-dim);
+}
+
+.hero .section-label::before {
+    background: var(--hero-ink);
+}
+
+.hero .btn-primary {
     background: var(--hero-ink);
     color: var(--hero-bg);
     border-color: var(--hero-ink);
 }
 
-.idcard .btn-primary:hover { background: #fff; border-color: #fff; }
+.hero .btn-primary:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+}
 
-.idcard .btn-secondary {
+.hero .btn-secondary {
     color: var(--hero-ink);
     border-color: rgba(255, 222, 189, 0.45);
     background: transparent;
 }
 
-.idcard .btn-secondary:hover {
+.hero .btn-secondary:hover {
     border-color: var(--hero-ink);
     background: rgba(255, 222, 189, 0.12);
     color: var(--hero-ink);
 }
 
-/* ---- Main column (right) ---- */
-
-.main-col {
-    position: relative;      /* the detail view is absolutely placed against this */
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    padding: 1.1rem;
-    min-height: 0;
-}
-
-@media (min-width: 1024px) {
-    .main-col {
-        overflow: hidden;
-        justify-content: center;   /* panels sit centred rather than stretched */
-    }
-}
-
-.panelbox {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    background: var(--color-surface);
-}
-
-.panelbox-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.7rem 0.95rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.panelbox-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;      /* claim the panel's height so the grid inside can fill it */
-    min-height: 0;
-    overflow: auto;
-    padding: 0.95rem;
-}
-
-.panel-title {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 500;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--color-accent-ink);
-}
-
-/* ---- Project tiles ----
-   Reading and name only. Everything else lives in the detail view, which
-   opens over this panel instead of pushing the page taller. */
-
-.tile-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.6rem;
-}
-
-@media (min-width: 1024px) {
-    /* Sized to their content, not stretched to fill the viewport. There is
-       not enough in a tile to justify 250px of height, and stretching them
-       just moves the empty space inside the tile where it looks worse. */
-    .tile-grid { grid-auto-rows: minmax(8.5rem, auto); }
-}
-
-@media (min-width: 640px)  { .tile-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1280px) { .tile-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-
-.tile {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.45rem;
-    width: 100%;
-    padding: 0.8rem 0.85rem 0.9rem;
-    text-align: left;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background: var(--color-surface-2);
-    color: inherit;
-    cursor: pointer;
-    transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
-}
-
-.tile:hover,
-.tile:focus-visible {
-    border-color: var(--color-accent);
-    background: var(--color-surface);
-    transform: translateY(-2px);
-}
-
-.tile .reading-value { font-size: clamp(1.2rem, 2.4vh, 1.85rem); }
-.tile .reading-method { margin-top: 0.15rem; font-size: 0.58rem; }
-
-.tile-foot { display: block; }
-
-.tile-name {
-    display: block;
-    margin-top: 0.55rem;
-    font-family: var(--font-heading);
-    font-variation-settings: 'wdth' 104;
-    font-weight: 700;
-    font-size: 0.85rem;
-    line-height: 1.25;
-    letter-spacing: -0.005em;
-}
-
-/* Reading leads, status sits at the foot. Ordered in CSS rather than markup
-   so the status still reads first to a screen reader, where "Live" before
-   the number is the more useful sequence. */
-.tile-foot   { order: 1; }
-.tile-status { order: 2; margin-top: auto; }
-
-.tile-status {
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-dim);
-}
-
-.tile-status[data-status="live"]     { color: var(--color-accent-2-ink); }
-.tile-status[data-status="progress"] { color: var(--color-accent-3-ink); }
-
-/* ---- Detail view ----
-   Covers the tile panel in place. The page height never changes, so
-   opening a project cannot introduce a scrollbar. */
-
-.detail {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    display: none;
-    flex-direction: column;
-    background: var(--color-bg);
-}
-
-.detail[data-open="true"] { display: flex; }
-
-@media (max-width: 1023px) {
-    /* No panel to cover down here, so it takes the whole viewport. */
-    .detail { position: fixed; }
-}
-
-.detail-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.8rem 1.1rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.detail-body {
-    min-height: 0;
-    overflow: auto;
-    padding: 1.2rem 1.1rem 1.6rem;
-}
-
-.detail-body > * {
-    max-width: 44rem;   /* a readable measure; the panel is far wider than one */
-}
-
-/* Where a live widget drops in later — an FFT plot for the cantilever, the
-   sawtooth trace, a pressure check. Empty until then, and hidden while empty
-   so it costs nothing. */
-.detail-demo:empty { display: none; }
-
-.detail-demo {
-    margin: 1rem 0 0;
-    padding: 1rem;
-    border: 1px dashed var(--color-border);
-    border-radius: 8px;
-}
-
-/* ---- Compact info panels ---- */
-
-.minipanels {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
-}
-
-@media (min-width: 768px) {
-    .minipanels { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-.chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
+.hero :focus-visible {
+    outline-color: var(--hero-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-
-    .tile { transition: none; }
-    .tile:hover, .tile:focus-visible { transform: none; }
 }
