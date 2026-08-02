@@ -306,48 +306,10 @@ h1 {
     text-align: right;
 }
 
-/* ---- Project rows: the reading column ----
+/* ---- Readings ----
    Every project leads with what was actually measured on it. Where nothing
-   was measured the row says so instead of borrowing a number from somewhere
+   was measured it says so instead of borrowing a number from somewhere
    else — the blank ones are what make the filled ones worth believing. */
-
-.project-list {
-    border-top: 1px solid var(--color-border);
-}
-
-.project-row {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem 2.25rem;
-    padding: 1.6rem 0;
-    border-bottom: 1px solid var(--color-border);
-}
-
-@media (min-width: 768px) {
-    .project-row {
-        grid-template-columns: 11rem 1fr 7.5rem;
-        align-items: start;
-        padding: 2rem 0;
-    }
-}
-
-/* A crimson rule sweeps the row on hover, like a cursor crossing a chart. */
-.project-row::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    transition: width 0.3s ease;
-}
-
-.project-row:hover::after,
-.project-row:focus-within::after {
-    width: 100%;
-}
 
 .reading-value {
     display: block;
@@ -365,133 +327,299 @@ h1 {
     margin-top: 0.45rem;
     font-family: var(--font-mono);
     font-size: 0.66rem;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--color-text-dim);
 }
 
-/* Nothing measured: recedes to body-text colour, never below it. The state
-   has to stay legible — it is a claim about the work, not a placeholder. */
 .reading-none .reading-value {
     color: var(--color-text-dim);
     font-weight: 400;
 }
 
-.project-name {
-    font-family: var(--font-heading);
-    font-variation-settings: 'wdth' 106;
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
+/* ---- Dashboard shell ----
+   The landing page is one screen. On desktop the document itself never
+   scrolls; any panel that outgrows its box scrolls inside that box, so
+   nothing is ever clipped — "no scrolling" must not become "hidden".
+   Below 1024px it falls back to ordinary document flow, because a phone
+   cannot honestly fit this and pretending otherwise costs legibility. */
+
+.shell {
+    display: flex;
+    flex-direction: column;
 }
 
-.project-row a.project-name-link {
-    color: inherit;
+@media (min-width: 1024px) {
+    .shell {
+        display: grid;
+        grid-template-columns: minmax(290px, 26%) 1fr;
+        height: 100dvh;
+        overflow: hidden;
+    }
 }
 
-.project-row:hover .project-name,
-.project-row:focus-within .project-name {
-    color: var(--color-accent-ink);
-}
+/* ---- Identity card (left) ----
+   Same wall as before, but the portrait is now the panel itself: it fades
+   downward into the crimson so the copy at the bottom sits on flat colour
+   and stays legible without a box behind it. */
 
-/* ---- Hero ----
-   The band reproduces the wall in profile-red.jpg: light falls from the upper
-   left and drops off to the lower right, same as the photograph. The portrait
-   is then masked into that band so its left edge has no seam — the wall in the
-   image and the wall on the page are the same surface. Fixed in both themes;
-   a photograph does not have a dark mode. */
-
-.hero {
+.idcard {
     position: relative;
-    background: radial-gradient(125% 100% at 18% 2%,
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 400px;   /* below this the copy rides up over the face */
+    background: radial-gradient(120% 90% at 22% 0%,
                 #bb1a1c 0%,
-                var(--hero-bg) 46%,
+                var(--hero-bg) 44%,
                 var(--hero-bg-deep) 100%);
     color: var(--hero-ink);
-    overflow: hidden;
 }
 
-/* Mobile: the photo sits in flow above the copy. */
-.hero-figure {
-    position: relative;
-    height: 300px;
-}
-
-.hero-copy {
-    position: relative;
-    z-index: 1;
-}
-
-.hero-photo {
-    display: block;
+.idcard-photo {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 42%;
-    /* Stacked, so both horizontal edges meet the band and both must dissolve. */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 76%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 76%, transparent 100%);
+    object-position: 50% 26%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 86%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 86%);
 }
 
-@media (min-width: 768px) {
-    /* Pinned to the band's own right edge, not the 1100px container's — a
-       hard stop mid-viewport would read as a crop. Only the left edge is
-       left to hide; the other three run off the band. */
-    .hero-figure {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 52%;
-        height: auto;
-    }
-
-    .hero-photo {
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 36%);
-        mask-image: linear-gradient(to right, transparent 0%, #000 36%);
-    }
+.idcard-body {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem 1.5rem 1.6rem;
 }
 
-.hero .section-label {
-    color: var(--hero-ink-dim);
-}
+.idcard :focus-visible { outline-color: var(--hero-ink); }
 
-.hero .section-label::before {
-    background: var(--hero-ink);
-}
-
-.hero .btn-primary {
+.idcard .btn-primary {
     background: var(--hero-ink);
     color: var(--hero-bg);
     border-color: var(--hero-ink);
 }
 
-.hero .btn-primary:hover {
-    background: #ffffff;
-    border-color: #ffffff;
-}
+.idcard .btn-primary:hover { background: #fff; border-color: #fff; }
 
-.hero .btn-secondary {
+.idcard .btn-secondary {
     color: var(--hero-ink);
     border-color: rgba(255, 222, 189, 0.45);
     background: transparent;
 }
 
-.hero .btn-secondary:hover {
+.idcard .btn-secondary:hover {
     border-color: var(--hero-ink);
     background: rgba(255, 222, 189, 0.12);
     color: var(--hero-ink);
 }
 
-.hero :focus-visible {
-    outline-color: var(--hero-ink);
+/* ---- Main column (right) ---- */
+
+.main-col {
+    position: relative;      /* the detail view is absolutely placed against this */
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.1rem;
+    min-height: 0;
+}
+
+@media (min-width: 1024px) {
+    .main-col {
+        overflow: hidden;
+        justify-content: center;   /* panels sit centred rather than stretched */
+    }
+}
+
+.panelbox {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+}
+
+.panelbox-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0.95rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.panelbox-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;      /* claim the panel's height so the grid inside can fill it */
+    min-height: 0;
+    overflow: auto;
+    padding: 0.95rem;
+}
+
+.panel-title {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-accent-ink);
+}
+
+/* ---- Project tiles ----
+   Reading and name only. Everything else lives in the detail view, which
+   opens over this panel instead of pushing the page taller. */
+
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+@media (min-width: 1024px) {
+    /* Sized to their content, not stretched to fill the viewport. There is
+       not enough in a tile to justify 250px of height, and stretching them
+       just moves the empty space inside the tile where it looks worse. */
+    .tile-grid { grid-auto-rows: minmax(8.5rem, auto); }
+}
+
+@media (min-width: 640px)  { .tile-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .tile-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    width: 100%;
+    padding: 0.8rem 0.85rem 0.9rem;
+    text-align: left;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface-2);
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+}
+
+.tile:hover,
+.tile:focus-visible {
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+    transform: translateY(-2px);
+}
+
+.tile .reading-value { font-size: clamp(1.2rem, 2.4vh, 1.85rem); }
+.tile .reading-method { margin-top: 0.15rem; font-size: 0.58rem; }
+
+.tile-foot { display: block; }
+
+.tile-name {
+    display: block;
+    margin-top: 0.55rem;
+    font-family: var(--font-heading);
+    font-variation-settings: 'wdth' 104;
+    font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+}
+
+/* Reading leads, status sits at the foot. Ordered in CSS rather than markup
+   so the status still reads first to a screen reader, where "Live" before
+   the number is the more useful sequence. */
+.tile-foot   { order: 1; }
+.tile-status { order: 2; margin-top: auto; }
+
+.tile-status {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+}
+
+.tile-status[data-status="live"]     { color: var(--color-accent-2-ink); }
+.tile-status[data-status="progress"] { color: var(--color-accent-3-ink); }
+
+/* ---- Detail view ----
+   Covers the tile panel in place. The page height never changes, so
+   opening a project cannot introduce a scrollbar. */
+
+.detail {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    background: var(--color-bg);
+}
+
+.detail[data-open="true"] { display: flex; }
+
+@media (max-width: 1023px) {
+    /* No panel to cover down here, so it takes the whole viewport. */
+    .detail { position: fixed; }
+}
+
+.detail-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.detail-body {
+    min-height: 0;
+    overflow: auto;
+    padding: 1.2rem 1.1rem 1.6rem;
+}
+
+.detail-body > * {
+    max-width: 44rem;   /* a readable measure; the panel is far wider than one */
+}
+
+/* Where a live widget drops in later — an FFT plot for the cantilever, the
+   sawtooth trace, a pressure check. Empty until then, and hidden while empty
+   so it costs nothing. */
+.detail-demo:empty { display: none; }
+
+.detail-demo {
+    margin: 1rem 0 0;
+    padding: 1rem;
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+}
+
+/* ---- Compact info panels ---- */
+
+.minipanels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .minipanels { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
 
-    .project-row::after { transition: none; }
+    .tile { transition: none; }
+    .tile:hover, .tile:focus-visible { transform: none; }
 }
