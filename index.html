@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=13" />
+    <link rel="stylesheet" href="assets/theme.css?v=14" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -412,18 +412,25 @@
 
         <!-- Contact -->
         <section id="contact" class="px-4 sm:px-6 py-16">
-            <div class="max-w-[1100px] mx-auto">
-                <p class="section-label mb-2">Contact</p>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Let's work together.</h2>
-                <p class="text-dim text-lg max-w-[640px] mb-2">
-                    I'm available for internships, engineering projects, and freelance web work.
-                </p>
-                <p class="font-mono text-sm text-dim mb-8">Sulaymaniyah, Iraq · Open to remote.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="mailto:qutibax2@gmail.com" class="btn btn-primary">qutibax2@gmail.com</a>
-                    <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
-                    <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+            <div class="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_auto] gap-6 items-end">
+                <div>
+                    <p class="section-label mb-2">Contact</p>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Let's work together.</h2>
+                    <p class="text-dim text-lg max-w-[640px] mb-2">
+                        I'm available for internships, engineering projects, and freelance web work.
+                    </p>
+                    <p class="font-mono text-sm text-dim mb-8">Sulaymaniyah, Iraq · Open to remote.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="mailto:qutibax2@gmail.com" class="btn btn-primary">qutibax2@gmail.com</a>
+                        <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+                        <a href="https://www.linkedin.com/in/qutaiba-w-mantfaji-47351b229/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+                    </div>
                 </div>
+                <!-- Decorative only — the text beside it already carries the CTA,
+                     so this needs no alt text a screen reader would announce. -->
+                <img src="assets/mascot.png" alt="" aria-hidden="true"
+                    class="mascot hidden sm:block w-[150px] md:w-[190px] h-auto justify-self-center md:justify-self-end"
+                    width="543" height="1115" loading="lazy" />
             </div>
         </section>
     </main>

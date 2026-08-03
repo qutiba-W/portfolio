@@ -415,6 +415,20 @@ section[id] {
    paper now, not on the photo, so it uses the ordinary page colours. Leaving
    them in made the eyebrow and the secondary button cream-on-cream. */
 
+/* Idle bob for the pixel-art mascot. This is one static frame, not a sprite
+   sheet, so an honest "moving part" is a gentle idle motion on the whole
+   figure rather than pretending to be a walk cycle it doesn't have frames for. */
+@keyframes mascot-idle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-8px) rotate(-1.2deg); }
+}
+
+.mascot {
+    animation: mascot-idle 3.2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+
+    .mascot { animation: none; }
 }
