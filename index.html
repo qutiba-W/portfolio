@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qutaiba Mantfaji — Mechanical Engineer & Builder</title>
     <!-- SEO -->
-    <meta name="description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta name="description" content="Portfolio of Qutaiba Mantfaji, a Mechanical Engineering student at AUIS — strain-gauge rigs, circuits, and AI web apps, each with a measured result." />
     <meta name="author" content="Qutaiba W. Mantfaji" />
     <!-- Open Graph -->
     <meta property="og:title" content="Qutaiba Mantfaji — Mechanical Engineer & Builder" />
-    <meta property="og:description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta property="og:description" content="Portfolio of Qutaiba Mantfaji, a Mechanical Engineering student at AUIS — strain-gauge rigs, circuits, and AI web apps, each with a measured result." />
     <meta property="og:image" content="assets/profile-red.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://qutiba-w.github.io/portfolio" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Qutaiba Mantfaji — Mechanical Engineer & Builder" />
-    <meta name="twitter:description" content="Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond." />
+    <meta name="twitter:description" content="Portfolio of Qutaiba Mantfaji, a Mechanical Engineering student at AUIS — strain-gauge rigs, circuits, and AI web apps, each with a measured result." />
     <meta name="twitter:image" content="assets/profile-red.jpg" />
     <!-- PWA -->
     <link rel="manifest" href="manifest.json" />
@@ -32,8 +32,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=14" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/theme.css?v=19" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -49,14 +49,15 @@
                         'accent-ink': 'var(--color-accent-ink)',
                     },
                     fontFamily: {
-                        heading: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-                        body: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+                        heading: ['Open Sans', 'system-ui', 'sans-serif'],
+                        body: ['Open Sans', 'system-ui', 'sans-serif'],
                         mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
                     },
                 },
             },
         }
     </script>
+    <script src="assets/motion.js?v=19" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -375,8 +376,16 @@
         <!-- Skills -->
         <section id="skills" class="px-4 sm:px-6 py-16">
             <div class="max-w-[1100px] mx-auto">
-                <p class="section-label mb-2">Skills</p>
-                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-10">What I work with.</h2>
+                <div class="flex items-end justify-between gap-6 mb-10">
+                    <div>
+                        <p class="section-label mb-2">Skills</p>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold">What I work with.</h2>
+                    </div>
+                    <img src="assets/pose-about.png"
+                        alt="Pixel-art illustration of Qutaiba leaning over a workbench, tinkering with a small electronics rig"
+                        class="hidden sm:block w-[110px] md:w-[140px] h-auto flex-shrink-0" width="786" height="1172"
+                        loading="lazy" />
+                </div>
                 <div class="grid md:grid-cols-2 gap-5">
                     <div class="card p-6">
                         <h3 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Mechanical Engineering</h3>
@@ -428,9 +437,9 @@
                 </div>
                 <!-- Decorative only — the text beside it already carries the CTA,
                      so this needs no alt text a screen reader would announce. -->
-                <img src="assets/mascot.png" alt="" aria-hidden="true"
+                <img src="assets/pose-contact.png" alt="" aria-hidden="true"
                     class="mascot hidden sm:block w-[150px] md:w-[190px] h-auto justify-self-center md:justify-self-end"
-                    width="543" height="1115" loading="lazy" />
+                    width="621" height="1199" loading="lazy" />
             </div>
         </section>
     </main>

@@ -44,9 +44,10 @@
     --hero-ink-dim:       rgba(255, 222, 189, 0.72);
 
     --shadow-card:  0 1px 2px rgba(28, 18, 16, 0.04), 0 6px 16px -10px rgba(28, 18, 16, 0.10);
+    --shadow-card-hover: 0 1px 2px rgba(28, 18, 16, 0.04), 0 16px 32px -12px rgba(157, 1, 4, 0.20);
 
-    --font-heading: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-body:    'IBM Plex Sans', system-ui, sans-serif;
+    --font-heading: 'Open Sans', system-ui, sans-serif;
+    --font-body:    'Open Sans', system-ui, sans-serif;
     --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 }
 
@@ -72,6 +73,7 @@
     --color-accent-3-ink: #9a8a82;
 
     --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.40);
+    --shadow-card-hover: 0 1px 2px rgba(0, 0, 0, 0.40), 0 16px 32px -12px rgba(224, 70, 58, 0.28);
 }
 
 /* ---- Base ---- */
@@ -116,12 +118,14 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--color-border);
     border-radius: 12px;
     box-shadow: var(--shadow-card);
-    transition: border-color 0.18s ease;
+    transition: border-color 0.18s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .card:hover,
 .card:focus-within {
     border-color: var(--color-accent);
+    transform: translateY(-4px) rotate(-0.3deg);
+    box-shadow: var(--shadow-card-hover);
 }
 
 /* Mono tag for tech specs / skills */
@@ -254,6 +258,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 2px;
     border-radius: 2px;
     background: var(--color-accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.5s ease 0.1s;
+}
+
+.section-label.is-visible::before {
+    transform: scaleX(1);
 }
 
 /* Center the lead bar nicely when the label itself is centered */
@@ -427,8 +438,23 @@ section[id] {
     animation: mascot-idle 3.2s ease-in-out infinite;
 }
 
+/* Scroll-reveal: motion.js adds .reveal to headings/cards/labels on load
+   (so a JS failure just leaves everything visible, never stuck at
+   opacity:0), then flips .is-visible on first intersection. */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
 
     .mascot { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
 }
