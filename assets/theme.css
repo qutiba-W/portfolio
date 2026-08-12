@@ -449,7 +449,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-copy {
-    max-width: 1400px;   /* matches the site container everywhere else — see
+    max-width: 1100px;   /* matches the site container everywhere else — see
                             index.html's header/projects/skills/contact */
     margin: 0 auto;
     display: flex;
@@ -476,15 +476,15 @@ h1, h2, h3, h4, h5, h6 {
    slack to collect in; any extra width becomes gap, not empty canvas. */
 @media (min-width: 900px) {
     .hero-copy { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 3rem; }
-    .hero-main { flex: 0 1 560px; }
+    .hero-main { flex: 0 1 520px; }
 }
 
 .hero-snapshot {
-    flex: 0 1 320px;   /* shrink:1, not 0 — a rigid 320px card plus a 560px
+    flex: 0 1 280px;   /* shrink:1, not 0 — a rigid 280px card plus a 520px
                           text column doesn't fit in a narrow 900px row, and
                           this is exactly the breakpoint where both first
                           share space. */
-    min-width: 240px;
+    min-width: 220px;
     padding: 1.5rem 1.75rem;
 }
 
@@ -523,7 +523,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 900px) {
-    .split { grid-template-columns: 46% 1fr; }
+    .split { grid-template-columns: 44% 1fr; }
 }
 
 .split-copy {
