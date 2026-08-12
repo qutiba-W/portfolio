@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Websites, built with AI — Qutaiba Mantfaji</title>
+    <meta name="description" content="Three shipped web apps and the AI-assisted process behind them — what the model was good for, where it wasted my time, and what I had to write myself." />
+    <meta name="author" content="Qutaiba W. Mantfaji" />
+    <meta property="og:title" content="Websites, built with AI — Qutaiba Mantfaji" />
+    <meta property="og:description" content="Three shipped web apps and the AI-assisted process behind them — what the model was good for, where it wasted my time, and what I had to write myself." />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#fdf5ec" />
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/theme.css?v=29" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--color-bg)',
+                        surface: 'var(--color-surface)',
+                        line: 'var(--color-border)',
+                        ink: 'var(--color-text)',
+                        dim: 'var(--color-text-dim)',
+                        accent: 'var(--color-accent)',
+                        'accent-ink': 'var(--color-accent-ink)',
+                    },
+                    fontFamily: {
+                        heading: ['Open Sans', 'system-ui', 'sans-serif'],
+                        body: ['Open Sans', 'system-ui', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <script src="../assets/motion.js?v=29" defer></script>
+</head>
+
+<body class="bg-bg text-ink font-body">
+    <header class="sticky top-0 z-50 w-full border-b border-line bg-bg/95 backdrop-blur-sm">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="../index.html" class="font-heading font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">Qutaiba W. Mantfaji</a>
+            <nav class="flex items-center gap-6" aria-label="Main">
+                <a href="../index.html#projects" class="text-sm text-dim hover:text-accent-ink transition-colors">Projects</a>
+                <a href="../index.html#contact" class="text-sm text-dim hover:text-accent-ink transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-14">
+        <nav class="font-mono text-xs text-dim mb-10" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-accent-ink">Home</a>
+            <span aria-hidden="true"> / </span>
+            <span class="text-ink">Websites</span>
+        </nav>
+
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-5">
+                <span class="badge badge-live">3 live</span>
+                <span class="cat-tag">Web</span>
+            </div>
+            <h1 class="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-5">Websites, built with AI</h1>
+            <p class="text-dim text-lg max-w-[680px]">
+                Three web apps, all deployed and all still running. This page is not about what they
+                do — it is about how they got built, and what a language model was actually worth
+                along the way.
+            </p>
+        </div>
+
+        <!-- ================================================================
+             DRAFT SECTION — the method.
+             Everything below this marker needs Qutaiba's own words. Nothing
+             in the repository records how the AI was used, and inventing it
+             would put claims on the page that cannot be backed up.
+             Replace each draft block with the real answer, then delete the
+             dashed wrapper and this comment.
+             ================================================================ -->
+
+        <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
+            <article class="space-y-12">
+
+                <section>
+                    <h2 class="section-label mb-4">Where the AI actually helped</h2>
+                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
+                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
+                        <p class="text-dim text-sm leading-relaxed">
+                            Which parts did the model genuinely speed up? Be specific and small:
+                            a Firestore security rule, the RTL toggle, a service worker you did not
+                            want to write by hand. One concrete example beats a paragraph of
+                            "it accelerated development".
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">Where it wasted my time</h2>
+                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
+                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
+                        <p class="text-dim text-sm leading-relaxed">
+                            This is the section that makes the page worth reading — most people only
+                            write the first one. What did it get confidently wrong? What did you ship
+                            and have to tear out? How long did you spend debugging code you did not
+                            write?
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-label mb-4">What I had to write myself</h2>
+                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
+                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
+                        <p class="text-dim text-sm leading-relaxed">
+                            The line where the model stopped being useful. Naming it is what separates
+                            someone who uses AI from someone who is used by it.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ============================================================
+                     END OF DRAFT SECTION. Everything below is real, verified
+                     content pulled from the three original case studies.
+                     ============================================================ -->
+
+                <section>
+                    <h2 class="section-label mb-4">The three builds</h2>
+                    <p class="text-dim leading-relaxed max-w-[680px] mb-6">
+                        Each of these is deployed and clickable. Together they are the evidence
+                        behind everything above.
+                    </p>
+                    <div class="space-y-5 max-w-[680px]">
+
+                        <div class="card p-5">
+                            <div class="flex items-start justify-between gap-4 mb-2">
+                                <h3 class="font-heading font-bold">NeuroForge</h3>
+                                <span class="badge badge-live shrink-0">Live</span>
+                            </div>
+                            <p class="text-dim text-sm leading-relaxed mb-3">
+                                Brain training PWA with six cognitive game modes and offline support —
+                                runs in the browser with no install. Vanilla JS, no framework. Sound cues
+                                are generated programmatically through the Web Audio API rather than
+                                shipped as audio files, and a service worker caches the whole app for
+                                offline play.
+                            </p>
+                            <p class="mb-3"><span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service worker</span><span class="tag">Web Audio API</span></p>
+                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener"
+                                class="text-sm font-mono text-accent-ink hover:underline">→ neuroforge-brain.web.app</a>
+                        </div>
+
+                        <div class="card p-5">
+                            <div class="flex items-start justify-between gap-4 mb-2">
+                                <h3 class="font-heading font-bold">C2C Club</h3>
+                                <span class="badge badge-live shrink-0">Live</span>
+                            </div>
+                            <p class="text-dim text-sm leading-relaxed mb-3">
+                                Website for the Campus to Career Club at AUIS — events, an RSVP system,
+                                success stories, and a full Arabic/English toggle with RTL. Behind it sits
+                                a Firestore-backed CMS so non-technical admins can manage every piece of
+                                content without touching code.
+                            </p>
+                            <p class="mb-3"><span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span></p>
+                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener"
+                                class="text-sm font-mono text-accent-ink hover:underline">→ c2c-auib.web.app</a>
+                        </div>
+
+                        <div class="card p-5">
+                            <div class="flex items-start justify-between gap-4 mb-2">
+                                <h3 class="font-heading font-bold">Habit Forest</h3>
+                                <span class="badge badge-live shrink-0">Live</span>
+                            </div>
+                            <p class="text-dim text-sm leading-relaxed mb-3">
+                                Gamified habit tracker in Next.js 14 and TypeScript. Completing habits
+                                awards XP and grows a virtual forest; miss a streak and it stops growing.
+                                A study timer, mood and sleep logging, and a social leaderboard sit on
+                                Firebase Auth and real-time Firestore sync.
+                            </p>
+                            <p class="mb-3"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Firebase</span><span class="tag">Firestore</span></p>
+                            <a href="https://gamified-life-os.web.app" target="_blank" rel="noopener"
+                                class="text-sm font-mono text-accent-ink hover:underline">→ gamified-life-os.web.app</a>
+                        </div>
+
+                    </div>
+                </section>
+            </article>
+
+            <aside class="card p-6">
+                <h2 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Across all three</h2>
+                <dl>
+                    <div class="spec-row">
+                        <dt>Status</dt>
+                        <dd>3 of 3 deployed</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Frameworks</dt>
+                        <dd>Next.js, and none</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Backend</dt>
+                        <dd>Firebase Auth + Firestore</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Offline</dt>
+                        <dd>Service worker (2 of 3)</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Languages</dt>
+                        <dd>Arabic + English (C2C)</dd>
+                    </div>
+                    <div class="spec-row">
+                        <dt>Hosting</dt>
+                        <dd>Firebase Hosting</dd>
+                    </div>
+                </dl>
+                <div class="mt-5">
+                    <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Vanilla JS</span><span class="tag">Firebase</span><span class="tag">PWA</span>
+                </div>
+            </aside>
+        </div>
+
+        <hr class="divider my-14" />
+        <a href="../index.html#projects" class="text-sm font-mono text-dim hover:text-accent-ink transition-colors">← Back to all projects</a>
+    </main>
+
+    <footer class="border-t border-line px-4 sm:px-6 py-8">
+        <div class="max-w-[1400px] mx-auto text-sm text-dim">
+            <p>© 2026 Qutaiba W. Mantfaji</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -21,22 +21,6 @@
         });
     }
 
-    var heroFigure = document.querySelector('.hero-figure');
-    var heroPhoto = document.querySelector('.hero-photo');
-    if (heroFigure && heroPhoto && !reduceMotion) {
-        var ticking = false;
-        var updateParallax = function () {
-            var rect = heroFigure.getBoundingClientRect();
-            var progress = Math.min(Math.max(-rect.top / (rect.height || 1), 0), 1);
-            heroPhoto.style.transform = 'translateY(' + (progress * 24) + 'px) scale(1.06)';
-            ticking = false;
-        };
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }, { passive: true });
-        updateParallax();
-    }
+    // The hero-photo parallax is gone with the hero photograph. The workshop
+    // banner animates itself in CSS, which needs no scroll listener at all.
 })();

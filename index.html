@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=19" />
+    <link rel="stylesheet" href="assets/theme.css?v=29" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -57,7 +57,7 @@
             },
         }
     </script>
-    <script src="assets/motion.js?v=19" defer></script>
+    <script src="assets/motion.js?v=29" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -66,7 +66,7 @@
     <!-- Navbar -->
     <header class="site-header sticky top-0 z-50 w-full border-b border-line backdrop-blur-sm"
         id="site-header">
-        <div class="max-w-[1100px] mx-auto px-4 sm:px-6">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="font-heading font-700 font-bold tracking-tight text-ink hover:text-accent-ink transition-colors">
                     Qutaiba W. Mantfaji
@@ -98,58 +98,82 @@
     </header>
 
     <main>
-        <!-- Hero: photo left, copy right. A full-bleed photo has to crop badly -->
+        <!-- Workshop banner: the opening image. Two stacked layers — the scene,
+             and a mask of its screen pixels blended back over it and flickered.
+             Both are eager-loaded so they start their pan on the same frame and
+             never drift out of register. -->
+        <div class="workshop">
+            <img src="assets/workshop-scene.webp"
+                alt="Pixel-art workshop: Qutaiba at his bench soldering a circuit board, with parts bins, a pegboard of hand tools, an oscilloscope, a bank of code and CAD monitors, a 3D printer and a CNC mill around him."
+                width="2010" height="416" fetchpriority="high" />
+            <img class="ws-glow" src="assets/workshop-glow.webp" alt="" aria-hidden="true"
+                width="2010" height="416" fetchpriority="high" />
+        </div>
+
+        <!-- Hero: a full-width band of the wall colour under the banner.
+             hero-main and hero-snapshot sit side by side on wide screens — the
+             snapshot card is real content (the same facts that used to be a
+             thin mono line) pulled over to balance the text block, not
+             decoration invented to fill space. -->
         <section class="hero">
-            <div class="hero-figure">
-                <!-- From the 6192x4128 original. Three widths so a phone does not
-                     pull the desktop file; the browser picks by viewport. -->
-                <img src="assets/profile-red.jpg"
-                    srcset="assets/profile-red@900.jpg 900w,
-                            assets/profile-red.jpg 1600w,
-                            assets/profile-red@2560.jpg 2560w"
-                    sizes="(min-width: 900px) 46vw, 100vw"
-                    alt="Qutaiba W. Mantfaji" class="hero-photo"
-                    width="1600" height="1067" fetchpriority="high" />
-            </div>
             <div class="hero-copy">
-                <p class="section-label mb-5">Mechanical Engineering · Software · AI</p>
-                <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.06] tracking-tight mb-5">
-                    I build things that work.
-                </h1>
-                <!-- Alt headlines:
-                     A: I build things that work — mechanical systems, software, and whatever the problem needs.
-                     B: Engineering student. Builder of real things.
-                     C: Mechanical engineer who also ships software. -->
-                <p class="text-lg text-dim max-w-[440px] mb-7">
-                    Mechanical Engineering student at AUIS. I instrument beams, design circuits, and ship
-                    web apps — then document them properly.
-                </p>
-                <div class="hero-facts mb-8">
-                    <span>AUIS · Sulaymaniyah</span>
-                    <span>Arabic · English</span>
-                    <span>Open to internships</span>
+                <div class="hero-main">
+                    <p class="section-label mb-5">Mechanical Engineering · Software · AI</p>
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.06] tracking-tight mb-5">
+                        I build things that work.
+                    </h1>
+                    <!-- Alt headlines:
+                         A: I build things that work — mechanical systems, software, and whatever the problem needs.
+                         B: Engineering student. Builder of real things.
+                         C: Mechanical engineer who also ships software. -->
+                    <p class="hero-role mb-7">Mechanical engineer &amp; builder</p>
+                    <p class="text-lg text-dim max-w-[440px] mb-7">
+                        Mechanical Engineering student at AUIS. I instrument beams, design circuits, and ship
+                        web apps — then document them properly.
+                    </p>
+                    <div class="flex items-center gap-3 flex-wrap mb-8">
+                        <a href="#projects" class="btn btn-primary">See My Projects</a>
+                        <a href="assets/resume_qutaiba.pdf" download class="btn btn-secondary">Download CV</a>
+                    </div>
+                    <a href="#about" class="hero-cue">
+                        Scroll
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 5v14M19 12l-7 7-7-7" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="flex items-center gap-3 flex-wrap mb-8">
-                    <a href="#projects" class="btn btn-primary">See My Projects</a>
-                    <a href="assets/resume_qutaiba.pdf" download class="btn btn-secondary">Download CV</a>
-                </div>
-                <a href="#about" class="hero-cue">
-                    Scroll
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M12 5v14M19 12l-7 7-7-7" />
-                    </svg>
-                </a>
+                <aside class="card hero-snapshot">
+                    <p class="font-mono text-xs font-medium tracking-widest uppercase text-accent-ink mb-4">Snapshot</p>
+                    <dl>
+                        <div class="spec-row">
+                            <dt>Base</dt>
+                            <dd>AUIS · Sulaymaniyah</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Languages</dt>
+                            <dd>Arabic · English</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Status</dt>
+                            <dd>Open to internships</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Shipped</dt>
+                            <dd>4 projects · 3 live</dd>
+                        </div>
+                    </dl>
+                </aside>
             </div>
         </section>
 
         <!-- About -->
-        <!-- Text leads on the left, photo anchors the right. Mirrors the hero
-             (photo-left/text-right) so the two sections read as a deliberate
-             rhythm going down the page rather than the same layout twice. -->
-        <section id="about" class="px-4 sm:px-6 py-16">
-            <div class="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_280px] gap-8 md:gap-10 items-start">
-                <div>
+        <!-- Full-bleed split on the hero's own column geometry: the copy sits
+             hard left, on the same vertical line as the hero headline above it.
+             The right column is a slot — the lab photo is holding it until the
+             replacement content arrives. -->
+        <section id="about" class="split">
+                <div class="split-copy">
                     <p class="section-label mb-2">About</p>
                     <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Two domains, one workshop.</h2>
                     <!-- The "I'm Qutaiba, a Mechanical Engineering student at AUIS" opener that
@@ -181,201 +205,116 @@
                         </div>
                     </dl>
                 </div>
-                <figure class="max-w-[280px] mx-auto md:mx-0 md:ml-auto">
-                    <img src="assets/qutaiba-lab.jpg" alt="Qutaiba W. Mantfaji in the AUIS measurements lab"
-                        class="w-full rounded-md border border-line object-cover" loading="lazy"
-                        width="1050" height="1400" />
-                    <figcaption class="font-mono text-xs text-dim mt-2">In the measurements lab — AUIS.</figcaption>
-                </figure>
-            </div>
+                <!-- Portrait removed at Qutaiba's request — a replacement is coming
+                     later. .split's align-items: start means this empty column
+                     costs nothing: the row height now follows split-copy alone. -->
         </section>
 
         <!-- Projects -->
         <section id="projects" class="px-4 sm:px-6 py-16">
-            <div class="max-w-[1100px] mx-auto">
-                <div class="flex items-end justify-between gap-4 mb-3">
-                    <div>
-                        <p class="section-label mb-2">Projects</p>
-                        <h2 class="font-heading text-3xl md:text-4xl font-bold">Built, shipped, documented.</h2>
-                    </div>
-                    <a href="selection.html" class="hidden sm:inline-block text-sm font-mono text-dim hover:text-accent-ink transition-colors shrink-0">Browse case studies by domain →</a>
+            <div class="max-w-[1400px] mx-auto">
+                <div class="mb-3">
+                    <p class="section-label mb-2">Projects</p>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold">Built, shipped, documented.</h2>
                 </div>
-                <p class="text-dim mb-10 max-w-[640px]">Status badges are honest: <span class="font-mono text-xs">Live</span> means deployed and clickable, <span class="font-mono text-xs">Local</span> means built but not hosted yet.</p>
+                <p class="text-dim mb-10 max-w-[640px]">Four pieces of work I will stand behind. A
+                    <span class="font-mono text-xs">Live</span> tag means it is deployed and you can click it
+                    right now.</p>
 
-                <!-- Featured grid -->
-                <div class="grid md:grid-cols-2 gap-5 mb-14">
+                <!-- The domain filter is gone with the long tail it was built for: four
+                     cards across two categories made the chips a control that sorted
+                     nothing. -->
+
+
+                <!-- One grid. data-cat drives the filter above. -->
+                <div id="project-grid" class="grid sm:grid-cols-2 gap-5">
 
                     <!-- Cantilever Beam -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-local">Local</span>
-                            <span class="cat-tag">Engineering</span>
+                    <article class="card pcard flex flex-col overflow-hidden">
+                        <div class="pcard-media">
+                            <img src="assets/beam-setup-photo.jpg"
+                                alt="The cantilever beam rig on the bench — steel beam clamped at one end, strain gauge wired to an Arduino"
+                                width="455" height="607" loading="lazy" />
                         </div>
-                        <h3 class="font-heading text-xl font-bold">Cantilever Beam Instrumentation System</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Turns a steel cantilever into a load monitor — strain → applied mass to within
-                            ~1.5&nbsp;g — and extracts the beam's natural frequency
-                            (f<sub>n</sub> = 5.83&nbsp;Hz) via FFT.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Arduino</span><span class="tag">Strain Gauge</span><span class="tag">MPU6050</span><span class="tag">I²C</span><span class="tag">FFT</span><span class="tag">Python</span>
-                        </div>
-                        <a href="projects/cantilever-beam.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
-                    </article>
-
-                    <!-- Sawtooth Wave Generator -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-local">Local</span>
-                            <span class="cat-tag">Engineering</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold">Sawtooth Wave Generator</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Analog op-amp circuit that generates asymmetric sawtooth waveforms using a Schmitt
-                            trigger driving an integrator through a diode RC network. Built and tested on breadboard.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Op-Amp</span><span class="tag">Schmitt Trigger</span><span class="tag">Analog Design</span><span class="tag">±12V</span>
-                        </div>
-                        <a href="projects/sawtooth-generator.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
-                    </article>
-
-                    <!-- NeuroForge -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-live">Live</span>
-                            <span class="cat-tag">Web</span>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold">NeuroForge</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Brain training PWA with six games and offline support — runs in the browser with
-                            no install required.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service Worker</span><span class="tag">Web Audio API</span>
-                        </div>
-                        <div class="flex gap-5">
-                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
-                            <a href="projects/neuroforge.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
+                        <div class="p-5 flex flex-col gap-2.5 flex-grow">
+                            <p class="cat-tag">Engineering</p>
+                            <h3 class="font-heading text-lg font-bold leading-snug">Cantilever Beam Instrumentation System</h3>
+                            <p class="text-dim text-sm leading-relaxed flex-grow">
+                                Turns a steel cantilever into a load monitor — strain &rarr; applied mass to within
+                                ~1.5&nbsp;g — and extracts the beam's natural frequency
+                                (f<sub>n</sub> = 5.83&nbsp;Hz) via FFT.
+                            </p>
+                            <p><span class="tag">Arduino</span><span class="tag">Strain gauge</span><span class="tag">FFT</span><span class="tag">Python</span></p>
+                            <a href="projects/cantilever-beam.html" class="text-sm font-mono text-accent-ink hover:underline mt-1">&rarr; Case study</a>
                         </div>
                     </article>
 
-                    <!-- C2C Club -->
-                    <article class="card p-6 flex flex-col gap-4">
-                        <div class="flex items-center justify-between gap-3">
-                            <span class="badge badge-live">Live</span>
-                            <span class="cat-tag">Web</span>
+                    <!-- Websites — NeuroForge, C2C Club and Habit Forest now live on one page
+                         whose subject is the AI-assisted process, not the three apps. -->
+                    <article class="card pcard flex flex-col overflow-hidden">
+                        <div class="pcard-media">
+                            <span class="badge badge-live badge-float">3 live</span>
+                            <img src="assets/c2c-hero.png"
+                                alt="The C2C Club homepage — one of three deployed web apps"
+                                width="2561" height="1238" loading="lazy" />
                         </div>
-                        <h3 class="font-heading text-xl font-bold">C2C Club</h3>
-                        <p class="text-dim text-sm leading-relaxed flex-grow">
-                            Website for the Campus-to-Career Club — events calendar, RSVP system, success
-                            stories, and a full Arabic/English toggle. Built on Firebase, installable as a PWA.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span>
-                        </div>
-                        <div class="flex gap-5">
-                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ Live Site</a>
-                            <a href="projects/c2c-club.html" class="text-sm font-mono text-dim hover:text-accent-ink hover:underline">→ Case Study</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- More builds -->
-                <h3 class="font-heading text-lg font-bold mb-5 text-dim">More work</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-archive">Delivered</span>
-                            <span class="cat-tag">Safety Training</span>
-                        </div>
-                        <h4 class="font-heading font-bold">Vehicle Safety Inspection Lecture</h4>
-                        <p class="text-dim text-sm flex-grow">Session for the Bridgestone interns at Al-Jawadeen — reading a tire's danger signs before touching it. Slides designed and delivered in Arabic.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">Safety Training</span><span class="tag">Tire Inspection</span><span class="tag">Public Speaking</span>
-                        </div>
-                        <a href="projects/tire-safety-lecture.html" class="text-sm font-mono text-accent-ink hover:underline">→ View Case Study</a>
-                    </article>
-
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-local">Local</span>
-                            <span class="cat-tag">Web</span>
-                        </div>
-                        <h4 class="font-heading font-bold">Life OS</h4>
-                        <p class="text-dim text-sm flex-grow">Gamified daily-habit dashboard — streaks, analytics, Firebase auth, and dark mode in a single build.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML/JS</span><span class="tag">Firebase</span>
+                        <div class="p-5 flex flex-col gap-2.5 flex-grow">
+                            <p class="cat-tag">Web</p>
+                            <h3 class="font-heading text-lg font-bold leading-snug">Websites, built with AI</h3>
+                            <p class="text-dim text-sm leading-relaxed flex-grow">
+                                Three deployed web apps — NeuroForge, C2C Club and Habit Forest — and an
+                                honest account of what a language model was actually worth in building
+                                them: where it helped, where it cost me time, and what I had to write myself.
+                            </p>
+                            <p><span class="tag">Next.js</span><span class="tag">Firebase</span><span class="tag">PWA</span></p>
+                            <a href="projects/websites.html" class="text-sm font-mono text-accent-ink hover:underline mt-1">&rarr; Read the write-up</a>
                         </div>
                     </article>
 
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-progress">In Progress</span>
-                            <span class="cat-tag">AI</span>
+                    <!-- Sawtooth Wave Generator — no photograph exists, so the pixel art stands in -->
+                    <article class="card pcard flex flex-col overflow-hidden">
+                        <div class="pcard-media is-figure">
+                            <img src="assets/pose-engineering.png" alt="" aria-hidden="true"
+                                width="896" height="1193" loading="lazy" />
                         </div>
-                        <h4 class="font-heading font-bold">CV Builder v2</h4>
-                        <p class="text-dim text-sm flex-grow">Full-stack AI CV generator — React front end, Node/MongoDB back end, OpenAI content, PDF export via Puppeteer.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">OpenAI API</span>
+                        <div class="p-5 flex flex-col gap-2.5 flex-grow">
+                            <p class="cat-tag">Engineering</p>
+                            <h3 class="font-heading text-lg font-bold leading-snug">Sawtooth Wave Generator</h3>
+                            <p class="text-dim text-sm leading-relaxed flex-grow">
+                                Analog op-amp circuit generating asymmetric sawtooth waveforms — a Schmitt
+                                trigger driving an integrator through a diode RC network. Built and tested on breadboard.
+                            </p>
+                            <p><span class="tag">Op-amp</span><span class="tag">Schmitt trigger</span><span class="tag">&plusmn;12V</span></p>
+                            <a href="projects/sawtooth-generator.html" class="text-sm font-mono text-accent-ink hover:underline mt-1">&rarr; Case study</a>
                         </div>
-                        <span class="text-sm font-mono text-dim">In development — not yet deployed</span>
                     </article>
 
-                    <article class="card p-5 flex flex-col gap-3">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="badge badge-live">Live</span>
-                            <span class="cat-tag">Web</span>
+                    <!-- Vehicle Safety Inspection Lecture -->
+                    <article class="card pcard flex flex-col overflow-hidden">
+                        <div class="pcard-media">
+                            <img src="assets/lecture-bridgestone-1.jpg"
+                                alt="Qutaiba delivering the tire safety session to Bridgestone interns"
+                                width="1200" height="1600" loading="lazy" />
                         </div>
-                        <h4 class="font-heading font-bold">Portfolio Site</h4>
-                        <p class="text-dim text-sm flex-grow">This site. PWA-enabled, light/dark mode, 9 case studies, domain-based routing.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="tag">HTML</span><span class="tag">Tailwind</span><span class="tag">Vanilla JS</span><span class="tag">PWA</span>
+                        <div class="p-5 flex flex-col gap-2.5 flex-grow">
+                            <p class="cat-tag">Engineering &middot; Delivered</p>
+                            <h3 class="font-heading text-lg font-bold leading-snug">Vehicle Safety Inspection Lecture</h3>
+                            <p class="text-dim text-sm leading-relaxed flex-grow">
+                                Session for the Bridgestone interns at Al-Jawadeen — reading a tire's danger
+                                signs before touching it. Slides designed and delivered in Arabic.
+                            </p>
+                            <p><span class="tag">Safety training</span><span class="tag">Tire inspection</span></p>
+                            <a href="projects/tire-safety-lecture.html" class="text-sm font-mono text-accent-ink hover:underline mt-1">&rarr; Case study</a>
                         </div>
-                        <a href="https://github.com/qutiba-W" target="_blank" rel="noopener" class="text-sm font-mono text-accent-ink hover:underline">→ GitHub</a>
                     </article>
                 </div>
 
-                <!-- Design & CAD archive -->
-                <h3 class="font-heading text-lg font-bold mb-5 text-dim">Design &amp; CAD archive</h3>
-                <div class="card divide-y divide-line overflow-hidden">
-                    <a href="projects/product-design.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="badge badge-archive">Archive</span>
-                            <span class="font-heading font-medium truncate">Product Design</span>
-                        </div>
-                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
-                    </a>
-                    <a href="projects/engineering-drawing.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="badge badge-archive">Archive</span>
-                            <span class="font-heading font-medium truncate">Engineering Drawing</span>
-                        </div>
-                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
-                    </a>
-                    <a href="projects/ai-design-pipeline.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="badge badge-archive">Archive</span>
-                            <span class="font-heading font-medium truncate">AI Design Pipeline</span>
-                        </div>
-                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
-                    </a>
-                    <a href="projects/hr-analytics.html" class="flex items-center justify-between gap-4 p-4 hover:bg-bg/50 transition-colors group">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="badge badge-archive">Archive</span>
-                            <span class="font-heading font-medium truncate">HR Analytics</span>
-                        </div>
-                        <span class="text-sm font-mono text-dim group-hover:text-accent-ink shrink-0">Case Study →</span>
-                    </a>
-                </div>
-                <a href="selection.html" class="sm:hidden inline-block mt-6 text-sm font-mono text-dim hover:text-accent-ink transition-colors">Browse case studies by domain →</a>
             </div>
         </section>
 
         <!-- Skills -->
         <section id="skills" class="px-4 sm:px-6 py-16">
-            <div class="max-w-[1100px] mx-auto">
+            <div class="max-w-[1400px] mx-auto">
                 <div class="flex items-end justify-between gap-6 mb-10">
                     <div>
                         <p class="section-label mb-2">Skills</p>
@@ -421,7 +360,7 @@
 
         <!-- Contact -->
         <section id="contact" class="px-4 sm:px-6 py-16">
-            <div class="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_auto] gap-6 items-end">
+            <div class="max-w-[1400px] mx-auto grid md:grid-cols-[1fr_auto] gap-6 items-end">
                 <div>
                     <p class="section-label mb-2">Contact</p>
                     <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Let's work together.</h2>
@@ -445,7 +384,7 @@
     </main>
 
     <footer class="border-t border-line px-4 sm:px-6 py-8">
-        <div class="max-w-[1100px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-dim">
+        <div class="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm text-dim">
             <p>© 2026 Qutaiba W. Mantfaji</p>
             <p class="font-mono text-xs">Built by hand. No template.</p>
         </div>

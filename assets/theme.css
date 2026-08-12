@@ -128,33 +128,39 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-card-hover);
 }
 
-/* Mono tag for tech specs / skills */
+/* Mono tag for tech specs / skills.
+   No border, no fill. Six bordered boxes in a row out-shouted the project
+   title they were describing; a spec list is small print, not a control. */
+/* --color-muted is reserved for decoration (see the palette note at the top).
+   A tech spec is content someone reads, so this stays on text-dim, which is
+   the ratio that was measured against both backgrounds. */
 .tag {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    line-height: 1;
-    padding: 0.3rem 0.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
+    line-height: 1.5;
     color: var(--color-text-dim);
-    background: var(--color-surface-2);
     white-space: nowrap;
-    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
 
-.tag:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent-ink);
-    background: var(--color-accent-soft);
+/* Separator lives in CSS so the markup stays a plain list of tags */
+.tag + .tag::before {
+    content: '·';
+    margin: 0 0.45rem 0 0.1rem;
+    color: var(--color-muted);
 }
 
-/* Status badges */
+/* Status badge.
+   Only Live survives as a badge: it is the one status that means "you can
+   click this right now". Local / In progress / Archive are facts, not
+   signals, and they read as plain text on the meta line instead. Crimson is
+   never a status — it used to make "not deployed" the loudest thing on the
+   card. */
 .badge {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -177,30 +183,141 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-accent-2-soft);
 }
 
-.badge-local {
-    color: var(--color-accent-ink);
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-}
-
-.badge-progress {
-    color: var(--color-accent-3-ink);
-    border-color: var(--color-accent-3);
-}
-
+/* Local / In progress / Archive / Delivered still appear on the case-study
+   and category pages, where a lone status needs some shape to sit in. They
+   share one quiet outline: a fact about the work, never a warning. Crimson
+   used to make "not deployed yet" the loudest mark on the page. */
+.badge-local,
+.badge-progress,
 .badge-archive {
     color: var(--color-text-dim);
     border-color: var(--color-border);
+    background: var(--color-surface-2);
 }
 
-/* Category tag (Engineering / Web / AI / Design) */
+/* Floating over a card's image band — needs its own ground to stay legible
+   against whatever the screenshot happens to be behind it. */
+.badge-float {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    z-index: 1;
+    background: var(--color-surface);
+    border-color: var(--color-surface);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+/* Meta line: category, and status when it is not Live */
 .cat-tag {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-text-dim);
 }
+
+/* ---- Project grid ----
+   One grid, filtered by chips. The old three tiers (featured / "More work" /
+   "Design & CAD archive") ranked his own work down the page, so the last
+   third read as an apology. Category is a filter, not a demotion. */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.filter-chip {
+    position: relative;
+    bottom: -1px;                       /* sits on the bar's own rule */
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    padding: 0 0 0.7rem;
+    border-bottom: 2px solid transparent;
+    background: none;
+    transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.filter-chip:hover { color: var(--color-accent-ink); }
+
+/* A phone has no hover to hint that these are pressable, so the touch target
+   has to be honest: 44px tall including the padding above the label. Tighter
+   gaps keep all five on one row at 360px instead of wrapping to two. */
+@media (max-width: 640px) {
+    .filter-bar { gap: 0.25rem 1.1rem; }
+    .filter-chip { padding-top: 0.9rem; }
+    /* The per-category counts are the first thing to go: they push the five
+       chips onto a second row, and a wrapped bar makes the active underline
+       read as a stray rule rather than a selection. */
+    .filter-count { display: none; }
+}
+
+.filter-chip[aria-pressed="true"] {
+    color: var(--color-accent-ink);
+    border-bottom-color: var(--color-accent);
+}
+
+.filter-count {
+    font-size: 0.68rem;
+    color: var(--color-muted);
+    margin-left: 0.35rem;
+}
+
+/* Image band. Fixed height + cover, never a square crop: these assets range
+   from a 2.7:1 screenshot to a 3:4 lab photo, and squaring them would throw
+   away the half of the frame that carries the meaning. */
+.pcard-media {
+    position: relative;
+    height: 170px;
+    background: var(--color-bg-2);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+/* Two columns instead of three makes each card roughly 530px wide, where a
+   170px band reads as a thin strip rather than an image. */
+@media (min-width: 640px) {
+    .pcard-media { height: 230px; }
+}
+
+.pcard-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.45s ease;
+}
+
+.card:hover .pcard-media img { transform: scale(1.045); }
+
+/* Three projects have no photograph. Rather than a grey placeholder — which
+   reads as broken in a grid — they get his own pixel art on the wall colour,
+   so the gap looks deliberate. */
+.pcard-media.is-figure {
+    background: var(--hero-bg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom-color: var(--hero-bg);
+}
+
+.pcard-media.is-figure img {
+    width: auto;
+    height: 90%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.card:hover .pcard-media.is-figure img { transform: translateY(-4px) scale(1.02); }
+
+/* Hidden by the filter. Also opts the card out of the reveal transition so a
+   re-shown card appears immediately rather than fading in from nothing. */
+.pcard[hidden] { display: none; }
 
 /* Buttons */
 .btn {
@@ -309,71 +426,214 @@ h1, h2, h3, h4, h5, h6 {
    its own column lets it crop toward portrait, which is the shape it wants,
    and the words get their own space instead of sitting on his face. */
 
+/* The hero no longer holds a photograph — the workshop banner above it is the
+   opening image now, so this is a single full-width band of the wall colour
+   carrying the name and the pitch. */
+/* Contained like every other section on the page (About, Projects) — not
+   full-bleed. It used to be one half of a two-column split with the hero
+   photo balancing the other side; once the photo moved out to the About slot
+   and the workshop banner became the opening image, the crimson panel lost
+   its counterweight and was just a solid wall of colour stretching across
+   the whole viewport with nothing else in it. Page background instead, same
+   as the sections above and below it. */
 .hero {
-    position: relative;
-    /* Capped, not a bare vh: on a short laptop screen 88dvh is proportionate,
-       but on a tall monitor it stretches into hundreds of extra pixels of
-       empty space around the vertically-centred copy. 760px is roughly what
-       the content needs; it never grows past 88% of the viewport either. */
-    min-height: clamp(560px, 88dvh, 760px);
+    padding: 3rem 1.5rem 3.5rem;
+}
+
+@media (min-width: 900px) {
+    .hero { padding: 4rem 3.5rem 4.5rem; }
+}
+
+@media (min-width: 1280px) {
+    .hero { padding-left: 5rem; padding-right: 5rem; }
+}
+
+.hero-copy {
+    max-width: 1400px;   /* matches the site container everywhere else — see
+                            index.html's header/projects/skills/contact */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.hero-main {
+    display: flex;
+    flex-direction: column;
+    max-width: 560px;
+}
+
+/* At 560px of text in a wide row, the rest was reading as dead canvas — the
+   single biggest empty patch on the page. The snapshot card
+   (real facts pulled off the old thin mono line, not invented filler) sits
+   beside the text instead of stacking under it once there is room for a
+   second column. */
+/* space-between, not a fixed gap: when the container widened to match the
+   rest of the site (1100px -> 1400px), a snapshot card that stopped growing
+   at its own max-width left a dead strip trailing after it — the same bug
+   this composition exists to avoid, just relocated to the end of the row.
+   Pinning the card to the row's own right edge means there is no "after" for
+   slack to collect in; any extra width becomes gap, not empty canvas. */
+@media (min-width: 900px) {
+    .hero-copy { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 3rem; }
+    .hero-main { flex: 0 1 560px; }
+}
+
+.hero-snapshot {
+    flex: 0 1 320px;   /* shrink:1, not 0 — a rigid 320px card plus a 560px
+                          text column doesn't fit in a narrow 900px row, and
+                          this is exactly the breakpoint where both first
+                          share space. */
+    min-width: 240px;
+    padding: 1.5rem 1.75rem;
+}
+
+.hero-snapshot dl { margin: 0; }
+.hero-snapshot .spec-row:last-child { border-bottom: 0; }
+
+/* The role bar — a solid slab of the opposite colour under the name. The one
+   element borrowed wholesale from the reference layout, in his palette
+   rather than its yellow. */
+.hero-role {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 0.6rem 1.2rem;
+    background: var(--hero-ink);
+    color: var(--hero-bg);
+}
+
+/* ---- Split section ----
+   Same column geometry as the hero, so the copy in both starts on exactly the
+   same vertical line down the left edge of the page. Full-bleed on purpose:
+   the 1100px centred container put this text a third of the way across a wide
+   monitor, which read as floating rather than placed. */
+
+.split {
     display: grid;
     grid-template-columns: 1fr;   /* stacked on small screens */
-    background: var(--color-bg);
-    color: var(--color-text);
+    /* Grid's default stretch made the short row (the portrait, 227px) match
+       the tall one (the text column with its education/credentials list,
+       546px) — the photo ended up floating in ~320px of dead space it never
+       needed. Row height now follows the tallest column's own content. */
+    align-items: start;
 }
 
 @media (min-width: 900px) {
-    .hero { grid-template-columns: 46% 1fr; }
+    .split { grid-template-columns: 46% 1fr; }
 }
 
-/* Stacked (below 900px): height is an explicit clamp, not left to resolve on
-   its own. `height: 100%` on the photo against a parent with only
-   min-height is ambiguous — the used height depends on the browser's
-   fallback behaviour, which is why this swung between roughly 500 and
-   570px across ordinary phone widths with no controlling logic. Sizing the
-   box directly removes the ambiguity and scales predictably instead. */
-.hero-figure {
+.split-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .split-copy { padding: 4.5rem 3.5rem; }
+}
+
+@media (min-width: 1280px) {
+    .split-copy { padding-left: 5rem; padding-right: 4rem; }
+}
+
+/* Matches .hero-copy > * — keeps the measure readable instead of letting the
+   text run the full width of a 46% column on a 2560px display. */
+.split-copy > * { max-width: 560px; }
+
+/* The right-hand column. */
+.split-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem 3rem;
+}
+
+@media (min-width: 900px) {
+    .split-slot { padding: 4.5rem 3.5rem 4.5rem 0; justify-content: flex-start; }
+}
+
+/* ---- Workshop banner ----
+   The first thing on the page. The art is 4.83:1 — wider than any viewport —
+   so the banner is a window onto it and the image drifts sideways underneath:
+   a slow camera pan down the bench. The aspect ratio becomes the animation
+   instead of a problem to crop around.
+
+   Two layers, pixel-identical in size and position: the scene, and a mask of
+   just the screen pixels blended back on top. Flickering the mask's opacity
+   makes the monitors read as running hardware without touching anything else
+   in the frame. The mask is generated from the scene itself, so it can never
+   drift out of register with it. */
+.workshop {
     position: relative;
-    height: clamp(260px, 58vw, 420px);
-    background: var(--hero-bg);
+    width: 100%;
+    height: clamp(230px, 30vw, 440px);
     overflow: hidden;
+    isolation: isolate;    /* keeps the screen blend inside the banner */
+    background: #16202a;   /* the scene's own dark wall, so the frame never
+                              flashes page-cream before the image decodes */
 }
 
-@media (min-width: 900px) {
-    /* The clamp only matters stacked. In the grid, align-items: stretch
-       (the default) already sizes this column to the row height. */
-    .hero-figure {
-        height: auto;
-    }
-}
-
-.hero-photo {
+.workshop img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Keeps him in frame as the column narrows — he sits right of centre in
-       the original, with wall to his left. */
-    object-position: 56% 34%;
+    image-rendering: pixelated;
+    animation: workshop-pan 36s ease-in-out infinite alternate;
 }
 
-.hero-copy {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 640px;   /* every other section on the page caps at ~1100px
-                           total; uncapped, this column stretched past 1600px
-                           on a wide monitor while the rest of the page did
-                           not — the mismatch read as inconsistent scale. */
-    padding: 2.5rem 1.5rem 3rem;
+/* object-position interpolates, so this pans the visible window from the
+   shelves at the left end of the bench to the CNC at the right. Both layers
+   carry the identical declaration and start on the same frame, so they pan
+   locked together. */
+@keyframes workshop-pan {
+    from { object-position: 0% 50%; }
+    to   { object-position: 100% 50%; }
 }
 
-@media (min-width: 900px) {
-    .hero-copy { padding: 3rem 3.5rem 3rem 3.5rem; }
+/* Screens only. `screen` blending adds light, so opacity 0 is the untouched
+   scene and higher values push the monitors brighter.
+   Selector is `.workshop .ws-glow`, not `.ws-glow`: it has to outrank
+   `.workshop img` above, which would otherwise replace this whole animation
+   shorthand with the pan alone and drop the flicker on the floor. */
+.workshop .ws-glow {
+    mix-blend-mode: screen;
+    animation:
+        workshop-pan 36s ease-in-out infinite alternate,
+        screen-flicker 4.6s steps(1, end) infinite;
 }
 
-@media (min-width: 1280px) {
-    .hero-copy { padding-right: 5rem; padding-left: 5rem; }
+/* Deliberately irregular — an even pulse reads as a breathing lamp, uneven
+   steps read as a refresh rate. */
+@keyframes screen-flicker {
+    0%   { opacity: 0.10; }
+    7%   { opacity: 0.40; }
+    9%   { opacity: 0.14; }
+    23%  { opacity: 0.30; }
+    25%  { opacity: 0.48; }
+    27%  { opacity: 0.16; }
+    41%  { opacity: 0.34; }
+    55%  { opacity: 0.12; }
+    58%  { opacity: 0.44; }
+    70%  { opacity: 0.22; }
+    83%  { opacity: 0.38; }
+    86%  { opacity: 0.14; }
+    100% { opacity: 0.10; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .workshop img {
+        animation: none;
+        object-position: 50% 50%;
+    }
+    .workshop .ws-glow { animation: none; opacity: 0.22; }
 }
 
 .hero-facts {
