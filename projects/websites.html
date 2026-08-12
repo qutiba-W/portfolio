@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Websites, built with AI — Qutaiba Mantfaji</title>
-    <meta name="description" content="Three shipped web apps and the AI-assisted process behind them — what the model was good for, where it wasted my time, and what I had to write myself." />
+    <meta name="description" content="Case study coming soon — three shipped web apps built with AI assistance." />
     <meta name="author" content="Qutaiba W. Mantfaji" />
     <meta property="og:title" content="Websites, built with AI — Qutaiba Mantfaji" />
-    <meta property="og:description" content="Three shipped web apps and the AI-assisted process behind them — what the model was good for, where it wasted my time, and what I had to write myself." />
+    <meta property="og:description" content="Case study coming soon — three shipped web apps built with AI assistance." />
     <meta property="og:type" content="article" />
     <meta name="theme-color" content="#fdf5ec" />
     <script>
@@ -46,6 +46,33 @@
         }
     </script>
     <script src="../assets/motion.js?v=29" defer></script>
+
+    <style>
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50%       { transform: scale(1.12); opacity: 0.15; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        @keyframes blink-bar {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+        .gear-ring     { animation: spin-slow 12s linear infinite; }
+        .gear-ring-rev { animation: spin-slow 9s linear infinite reverse; }
+        .pulse-ring    { animation: pulse-ring 2.4s ease-in-out infinite; }
+        .float-icon    { animation: float 3.5s ease-in-out infinite; }
+        .cursor-bar    { animation: blink-bar 1s step-end infinite; }
+        .progress-fill {
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-ink, #c87941));
+            animation: progress-grow 2.5s cubic-bezier(.4,0,.2,1) forwards;
+            width: 0;
+        }
+        @keyframes progress-grow { to { width: 38%; } }
+    </style>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -66,166 +93,86 @@
             <span class="text-ink">Websites</span>
         </nav>
 
-        <div class="mb-12">
-            <div class="flex items-center gap-3 mb-5">
-                <span class="badge badge-live">3 live</span>
-                <span class="cat-tag">Web</span>
-            </div>
-            <h1 class="font-heading text-3xl md:text-5xl font-bold tracking-tight mb-5">Websites, built with AI</h1>
-            <p class="text-dim text-lg max-w-[680px]">
-                Three web apps, all deployed and all still running. This page is not about what they
-                do — it is about how they got built, and what a language model was actually worth
-                along the way.
-            </p>
-        </div>
+        <div class="flex flex-col items-center justify-center text-center py-16 sm:py-24 select-none">
 
-        <!-- ================================================================
-             DRAFT SECTION — the method.
-             Everything below this marker needs Qutaiba's own words. Nothing
-             in the repository records how the AI was used, and inventing it
-             would put claims on the page that cannot be backed up.
-             Replace each draft block with the real answer, then delete the
-             dashed wrapper and this comment.
-             ================================================================ -->
-
-        <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
-            <article class="space-y-12">
-
-                <section>
-                    <h2 class="section-label mb-4">Where the AI actually helped</h2>
-                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
-                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
-                        <p class="text-dim text-sm leading-relaxed">
-                            Which parts did the model genuinely speed up? Be specific and small:
-                            a Firestore security rule, the RTL toggle, a service worker you did not
-                            want to write by hand. One concrete example beats a paragraph of
-                            "it accelerated development".
-                        </p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 class="section-label mb-4">Where it wasted my time</h2>
-                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
-                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
-                        <p class="text-dim text-sm leading-relaxed">
-                            This is the section that makes the page worth reading — most people only
-                            write the first one. What did it get confidently wrong? What did you ship
-                            and have to tear out? How long did you spend debugging code you did not
-                            write?
-                        </p>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 class="section-label mb-4">What I had to write myself</h2>
-                    <div class="border-2 border-dashed border-accent rounded-md p-5 max-w-[680px]">
-                        <p class="font-mono text-xs uppercase tracking-widest text-accent-ink mb-3">Draft — needs your words</p>
-                        <p class="text-dim text-sm leading-relaxed">
-                            The line where the model stopped being useful. Naming it is what separates
-                            someone who uses AI from someone who is used by it.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- ============================================================
-                     END OF DRAFT SECTION. Everything below is real, verified
-                     content pulled from the three original case studies.
-                     ============================================================ -->
-
-                <section>
-                    <h2 class="section-label mb-4">The three builds</h2>
-                    <p class="text-dim leading-relaxed max-w-[680px] mb-6">
-                        Each of these is deployed and clickable. Together they are the evidence
-                        behind everything above.
-                    </p>
-                    <div class="space-y-5 max-w-[680px]">
-
-                        <div class="card p-5">
-                            <div class="flex items-start justify-between gap-4 mb-2">
-                                <h3 class="font-heading font-bold">NeuroForge</h3>
-                                <span class="badge badge-live shrink-0">Live</span>
-                            </div>
-                            <p class="text-dim text-sm leading-relaxed mb-3">
-                                Brain training PWA with six cognitive game modes and offline support —
-                                runs in the browser with no install. Vanilla JS, no framework. Sound cues
-                                are generated programmatically through the Web Audio API rather than
-                                shipped as audio files, and a service worker caches the whole app for
-                                offline play.
-                            </p>
-                            <p class="mb-3"><span class="tag">Vanilla JS</span><span class="tag">PWA</span><span class="tag">Service worker</span><span class="tag">Web Audio API</span></p>
-                            <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener"
-                                class="text-sm font-mono text-accent-ink hover:underline">→ neuroforge-brain.web.app</a>
-                        </div>
-
-                        <div class="card p-5">
-                            <div class="flex items-start justify-between gap-4 mb-2">
-                                <h3 class="font-heading font-bold">C2C Club</h3>
-                                <span class="badge badge-live shrink-0">Live</span>
-                            </div>
-                            <p class="text-dim text-sm leading-relaxed mb-3">
-                                Website for the Campus to Career Club at AUIS — events, an RSVP system,
-                                success stories, and a full Arabic/English toggle with RTL. Behind it sits
-                                a Firestore-backed CMS so non-technical admins can manage every piece of
-                                content without touching code.
-                            </p>
-                            <p class="mb-3"><span class="tag">HTML/JS</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">PWA</span></p>
-                            <a href="https://c2c-auib.web.app" target="_blank" rel="noopener"
-                                class="text-sm font-mono text-accent-ink hover:underline">→ c2c-auib.web.app</a>
-                        </div>
-
-                        <div class="card p-5">
-                            <div class="flex items-start justify-between gap-4 mb-2">
-                                <h3 class="font-heading font-bold">Habit Forest</h3>
-                                <span class="badge badge-live shrink-0">Live</span>
-                            </div>
-                            <p class="text-dim text-sm leading-relaxed mb-3">
-                                Gamified habit tracker in Next.js 14 and TypeScript. Completing habits
-                                awards XP and grows a virtual forest; miss a streak and it stops growing.
-                                A study timer, mood and sleep logging, and a social leaderboard sit on
-                                Firebase Auth and real-time Firestore sync.
-                            </p>
-                            <p class="mb-3"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Firebase</span><span class="tag">Firestore</span></p>
-                            <a href="https://gamified-life-os.web.app" target="_blank" rel="noopener"
-                                class="text-sm font-mono text-accent-ink hover:underline">→ gamified-life-os.web.app</a>
-                        </div>
-
-                    </div>
-                </section>
-            </article>
-
-            <aside class="card p-6">
-                <h2 class="font-mono text-sm font-medium tracking-widest uppercase text-accent-ink mb-4">Across all three</h2>
-                <dl>
-                    <div class="spec-row">
-                        <dt>Status</dt>
-                        <dd>3 of 3 deployed</dd>
-                    </div>
-                    <div class="spec-row">
-                        <dt>Frameworks</dt>
-                        <dd>Next.js, and none</dd>
-                    </div>
-                    <div class="spec-row">
-                        <dt>Backend</dt>
-                        <dd>Firebase Auth + Firestore</dd>
-                    </div>
-                    <div class="spec-row">
-                        <dt>Offline</dt>
-                        <dd>Service worker (2 of 3)</dd>
-                    </div>
-                    <div class="spec-row">
-                        <dt>Languages</dt>
-                        <dd>Arabic + English (C2C)</dd>
-                    </div>
-                    <div class="spec-row">
-                        <dt>Hosting</dt>
-                        <dd>Firebase Hosting</dd>
-                    </div>
-                </dl>
-                <div class="mt-5">
-                    <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Vanilla JS</span><span class="tag">Firebase</span><span class="tag">PWA</span>
+            <!-- Animated gear icon -->
+            <div class="relative w-36 h-36 mb-10 float-icon">
+                <div class="pulse-ring absolute inset-0 rounded-full border-2 border-accent opacity-40"></div>
+                <svg class="gear-ring absolute inset-0 w-full h-full" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                    <path fill="var(--color-accent)" opacity="0.18"
+                        d="M60 8a4 4 0 0 1 4 4v6.3a38 38 0 0 1 9.6 4l4.5-4.5a4 4 0 0 1 5.6 5.6l-4.5 4.5A38 38 0 0 1 83.7 38H90a4 4 0 0 1 0 8h-6.3a38 38 0 0 1-4 9.6l4.5 4.5a4 4 0 0 1-5.6 5.6l-4.5-4.5A38 38 0 0 1 66 65.7V72a4 4 0 0 1-8 0v-6.3a38 38 0 0 1-9.6-4l-4.5 4.5a4 4 0 0 1-5.6-5.6l4.5-4.5A38 38 0 0 1 38.3 46H32a4 4 0 0 1 0-8h6.3a38 38 0 0 1 4-9.6l-4.5-4.5a4 4 0 0 1 5.6-5.6l4.5 4.5A38 38 0 0 1 54 18.3V12a4 4 0 0 1 4-4z"/>
+                </svg>
+                <svg class="gear-ring-rev absolute inset-0 w-full h-full" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                    <circle cx="60" cy="60" r="26" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.5"/>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
                 </div>
-            </aside>
+            </div>
+
+            <!-- Heading -->
+            <div class="mb-3">
+                <span class="font-mono text-xs uppercase tracking-widest text-accent-ink opacity-70">Work in progress</span>
+            </div>
+            <h1 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+                Under Construction
+            </h1>
+            <p class="text-dim text-base sm:text-lg max-w-[520px] leading-relaxed mb-10">
+                This case study is being written up. The three sites are live —
+                the story of how AI helped (and hurt) building them is coming soon.
+            </p>
+
+            <!-- Fake terminal -->
+            <div class="w-full max-w-[480px] rounded-xl border border-line bg-surface text-left mb-10 overflow-hidden shadow-sm">
+                <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
+                    <span class="w-3 h-3 rounded-full bg-red-400 opacity-80"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400 opacity-80"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400 opacity-80"></span>
+                    <span class="ml-3 font-mono text-xs text-dim">case-study.md</span>
+                </div>
+                <div class="px-5 py-4 font-mono text-xs sm:text-sm text-dim leading-7 space-y-1">
+                    <p><span class="text-accent-ink">##</span> Where the AI helped</p>
+                    <p class="opacity-40">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░</p>
+                    <p><span class="text-accent-ink">##</span> Where it wasted my time</p>
+                    <p class="opacity-40">▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░░░░░</p>
+                    <p><span class="text-accent-ink">##</span> What I had to write myself</p>
+                    <p>
+                        <span class="opacity-30">▓▒░</span>
+                        <span class="cursor-bar ml-0.5 inline-block w-2 h-4 align-middle bg-accent-ink opacity-70"></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="w-full max-w-[480px] mb-8">
+                <div class="flex justify-between font-mono text-xs text-dim mb-2">
+                    <span>Writing progress</span>
+                    <span>38%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-surface border border-line overflow-hidden">
+                    <div class="progress-fill h-full rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Live project links -->
+            <p class="font-mono text-xs text-dim mb-5">Meanwhile, the three projects are already live:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="https://neuroforge-brain.web.app" target="_blank" rel="noopener"
+                    class="text-sm font-mono text-accent-ink hover:underline border border-line rounded-lg px-4 py-2 hover:bg-surface transition-colors">
+                    NeuroForge ↗
+                </a>
+                <a href="https://c2c-auib.web.app" target="_blank" rel="noopener"
+                    class="text-sm font-mono text-accent-ink hover:underline border border-line rounded-lg px-4 py-2 hover:bg-surface transition-colors">
+                    C2C Club ↗
+                </a>
+                <a href="https://gamified-life-os.web.app" target="_blank" rel="noopener"
+                    class="text-sm font-mono text-accent-ink hover:underline border border-line rounded-lg px-4 py-2 hover:bg-surface transition-colors">
+                    Habit Forest ↗
+                </a>
+            </div>
         </div>
 
         <hr class="divider my-14" />
