@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=30" />
+    <link rel="stylesheet" href="assets/theme.css?v=31" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -57,7 +57,7 @@
             },
         }
     </script>
-    <script src="assets/motion.js?v=30" defer></script>
+    <script src="assets/motion.js?v=31" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -111,10 +111,10 @@
         </div>
 
         <!-- Hero: a full-width band of the wall colour under the banner.
-             hero-main and hero-snapshot sit side by side on wide screens — the
-             snapshot card is real content (the same facts that used to be a
-             thin mono line) pulled over to balance the text block, not
-             decoration invented to fill space. -->
+             hero-main and hero-scene sit side by side on wide screens. The
+             snapshot card that used to hold the right column moved down to
+             About, where the facts sit with the rest of the biography instead
+             of competing with the headline. -->
         <section class="hero">
             <div class="hero-copy">
                 <div class="hero-main">
@@ -143,27 +143,109 @@
                         </svg>
                     </a>
                 </div>
-                <aside class="card hero-snapshot">
-                    <p class="font-mono text-xs font-medium tracking-widest uppercase text-accent-ink mb-4">Snapshot</p>
-                    <dl>
-                        <div class="spec-row">
-                            <dt>Base</dt>
-                            <dd>AUIS · Sulaymaniyah</dd>
-                        </div>
-                        <div class="spec-row">
-                            <dt>Languages</dt>
-                            <dd>Arabic · English</dd>
-                        </div>
-                        <div class="spec-row">
-                            <dt>Status</dt>
-                            <dd>Open to internships</dd>
-                        </div>
-                        <div class="spec-row">
-                            <dt>Shipped</dt>
-                            <dd>4 projects · 3 live</dd>
-                        </div>
-                    </dl>
-                </aside>
+                <!-- Pixel bench scene. Drawn inline rather than shipped as an
+                     image file for two reasons: the colours are page tokens, so
+                     it flips with the theme, and every moving part is CSS on
+                     integer pixel coordinates, so it stays crisp at any size
+                     instead of resampling. One 96x74 unit = one pixel. -->
+                <div class="hero-scene">
+                    <svg class="bench-scene" viewBox="0 0 96 74" shape-rendering="crispEdges"
+                        role="img" aria-label="Pixel-art bench scene: an oscilloscope tracing a live waveform, its status lights blinking, beside a steaming mug of coffee.">
+                        <defs>
+                            <clipPath id="bs-screen-clip">
+                                <rect x="9" y="11" width="38" height="32" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Bench -->
+                        <rect class="bs-bench" x="0" y="62" width="96" height="6" />
+                        <rect class="bs-bench-edge" x="0" y="68" width="96" height="3" />
+
+                        <!-- Scope case and feet -->
+                        <g class="bs-case">
+                            <rect x="4" y="6" width="58" height="54" />
+                            <rect x="9" y="60" width="6" height="2" />
+                            <rect x="51" y="60" width="6" height="2" />
+                        </g>
+                        <rect class="bs-case-hi" x="4" y="6" width="58" height="2" />
+                        <rect class="bs-case-lo" x="4" y="58" width="58" height="2" />
+                        <!-- A raised bezel, not a recessed one: a dark frame around a
+                             dark screen merges into a single blob at this scale. -->
+                        <rect class="bs-bezel" x="7" y="9" width="42" height="36" />
+
+                        <!-- Screen -->
+                        <rect class="bs-screen" x="9" y="11" width="38" height="32" />
+                        <g clip-path="url(#bs-screen-clip)">
+                            <g class="bs-grid">
+                                <rect x="17" y="11" width="1" height="32" />
+                                <rect x="25" y="11" width="1" height="32" />
+                                <rect x="33" y="11" width="1" height="32" />
+                                <rect x="41" y="11" width="1" height="32" />
+                                <rect x="9" y="19" width="38" height="1" />
+                                <rect x="9" y="27" width="38" height="1" />
+                                <rect x="9" y="35" width="38" height="1" />
+                            </g>
+                            <!-- Three identical 24-wide tiles of a stepped sine.
+                                 The sweep translates by exactly one tile, so the
+                                 loop point is invisible. -->
+                            <g class="bs-sweep">
+                                <path class="bs-trace-glow" d="M9 27 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3" />
+                                <path class="bs-trace" d="M9 27 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3 h2 v-3 h2 v-2 h2 v-1 h2 v1 h2 v2 h2 v3 h2 v3 h2 v2 h2 v1 h2 v-1 h2 v-2 h2 v-3" />
+                            </g>
+                        </g>
+
+                        <!-- Control column: two knobs, three status lights, vents -->
+                        <g class="bs-knob">
+                            <rect x="54" y="14" width="2" height="1" />
+                            <rect x="53" y="15" width="4" height="1" />
+                            <rect x="52" y="16" width="6" height="2" />
+                            <rect x="53" y="18" width="4" height="1" />
+                            <rect x="54" y="19" width="2" height="1" />
+                            <rect x="54" y="24" width="2" height="1" />
+                            <rect x="53" y="25" width="4" height="1" />
+                            <rect x="52" y="26" width="6" height="2" />
+                            <rect x="53" y="28" width="4" height="1" />
+                            <rect x="54" y="29" width="2" height="1" />
+                        </g>
+                        <g class="bs-knob-mark">
+                            <rect x="54" y="15" width="1" height="2" />
+                            <rect x="56" y="26" width="2" height="1" />
+                        </g>
+
+                        <rect class="bs-led-a" x="51" y="34" width="2" height="2" />
+                        <rect class="bs-led-b" x="54" y="34" width="2" height="2" />
+                        <rect class="bs-led-c" x="57" y="34" width="2" height="2" />
+
+                        <g class="bs-vent">
+                            <rect x="51" y="40" width="8" height="1" />
+                            <rect x="51" y="42" width="8" height="1" />
+                            <rect x="51" y="44" width="8" height="1" />
+                            <rect x="51" y="46" width="8" height="1" />
+                        </g>
+
+                        <!-- Lower panel: a BNC jack and a couple of label blocks -->
+                        <rect class="bs-case-lo" x="9" y="48" width="8" height="8" />
+                        <rect class="bs-screen" x="11" y="50" width="4" height="4" />
+                        <rect class="bs-case-hi" x="12" y="51" width="2" height="2" />
+                        <rect class="bs-label-a" x="21" y="50" width="12" height="2" />
+                        <rect class="bs-label-b" x="21" y="54" width="8" height="2" />
+
+                        <!-- Mug -->
+                        <g class="bs-mug">
+                            <rect x="70" y="48" width="14" height="14" />
+                            <rect x="84" y="51" width="4" height="2" />
+                            <rect x="86" y="53" width="2" height="4" />
+                            <rect x="84" y="57" width="4" height="2" />
+                        </g>
+                        <rect class="bs-mug-rim" x="70" y="48" width="14" height="2" />
+                        <rect class="bs-coffee" x="72" y="49" width="10" height="1" />
+
+                        <!-- Steam -->
+                        <rect class="bs-wisp bs-wisp-1" x="72" y="44" width="2" height="2" />
+                        <rect class="bs-wisp bs-wisp-2" x="76" y="44" width="2" height="2" />
+                        <rect class="bs-wisp bs-wisp-3" x="80" y="44" width="2" height="2" />
+                    </svg>
+                </div>
             </div>
         </section>
 
@@ -205,9 +287,33 @@
                         </div>
                     </dl>
                 </div>
-                <!-- Portrait removed at Qutaiba's request — a replacement is coming
-                     later. .split's align-items: start means this empty column
-                     costs nothing: the row height now follows split-copy alone. -->
+                <!-- The right column, empty since the portrait came out, now
+                     holds the snapshot card that used to sit in the hero. The
+                     facts read better here, next to the education and
+                     credentials rows they belong with. -->
+                <div class="split-slot">
+                    <aside class="card snapshot">
+                        <p class="font-mono text-xs font-medium tracking-widest uppercase text-accent-ink mb-4">Snapshot</p>
+                        <dl>
+                            <div class="spec-row">
+                                <dt>Base</dt>
+                                <dd>AUIS · Sulaymaniyah</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Languages</dt>
+                                <dd>Arabic · English</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Status</dt>
+                                <dd>Open to internships</dd>
+                            </div>
+                            <div class="spec-row">
+                                <dt>Shipped</dt>
+                                <dd>4 projects · 3 live</dd>
+                            </div>
+                        </dl>
+                    </aside>
+                </div>
         </section>
 
         <!-- Projects -->
