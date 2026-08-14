@@ -3,7 +3,7 @@
     "short_name": "Qutaiba",
     "start_url": "index.html",
     "display": "standalone",
-    "background_color": "#fdf5ec",
+    "background_color": "#120a09",
     "theme_color": "#9d0104",
     "description": "Portfolio of Qutaiba Mantfaji — engineering systems, web apps, and AI tools built at AUIS and beyond.",
     "icons": [

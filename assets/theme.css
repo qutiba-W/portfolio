@@ -1,108 +1,78 @@
 /* ==========================================================================
    Portfolio design tokens.
-   Light is the default theme; dark is opt-in via [data-theme="dark"].
+   Dark is the only theme. There used to be a light palette in :root with dark
+   opted in via [data-theme="dark"], plus a toggle in the header and a
+   localStorage bootstrap on every page; all of it is gone. What is left is the
+   former dark palette, promoted to :root and no longer conditional.
 
    Every colour below is sampled from assets/profile-red.jpg — the portrait
    against the crimson wall. Measured share of that image:
-     #9d0104  67.9%  crimson wall        -> primary accent
-     #ffdebd   8.9%  lit skin / shirt    -> light surfaces, hero ink
-     #db371f   6.5%  hot edge of wall    -> dark-mode accent
+     #9d0104  67.9%  crimson wall        -> the hero band, exact
+     #db371f   6.5%  hot edge of wall    -> primary accent
+     #ffdebd   8.9%  lit skin / shirt    -> hero ink, scope trace
      #c77a88   6.1%  wall falloff        -> muted
-     #040200   5.5%  hair                -> text, dark surfaces
-     #682d33   4.0%  wall shadow         -> dark-mode borders
+     #040200   5.5%  hair                -> page background
+     #682d33   4.0%  wall shadow         -> borders
    Green survives only on Live badges: status has to stay scannable, and
    nothing in the photo can carry that job without reading as the accent.
    ========================================================================== */
 
 :root {
-    /* Surfaces — warm paper pulled from the #ffdebd highlight */
-    --color-bg:           #fdf5ec;
-    --color-bg-2:         #f7ebdd;
-    --color-surface:      #ffffff;
-    --color-surface-2:    #fffaf4;
-    --color-border:       #ecd9c8;
-    --color-text:         #1c1210;   /* hair, warmed */
-    --color-text-dim:     #6b544e;   /* 6.5:1 on bg */
-    --color-muted:        #a08a80;   /* labels, dividers, decorative only */
-
-    /* Accents */
-    --color-accent:       #9d0104;   /* the wall, exact */
-    --color-accent-ink:   #9d0104;   /* 8.0:1 on bg — reads as text unchanged */
-    --color-accent-soft:  rgba(157, 1, 4, 0.10);
-    --color-accent-on:    #fdf5ec;   /* text sitting on a filled accent — 8.0:1 */
-    --color-accent-hover: #7d0103;
-    --color-accent-2:     #3d7a5a;   /* green — Live/Deployed badges only */
-    --color-accent-2-ink: #2f6b4e;
-    --color-accent-2-soft:rgba(61, 122, 90, 0.10);
-    --color-accent-3:     #8a7770;   /* warm gray — In Progress states */
-    --color-accent-3-ink: #5f4f4a;
-
-    /* Hero — a photographic surface, identical in both themes */
-    --hero-bg:            #9d0104;
-    --hero-bg-deep:       #6d0103;
-    --hero-ink:           #ffdebd;
-    --hero-ink-dim:       rgba(255, 222, 189, 0.72);
-
-    /* Bench scene — the pixel oscilloscope in the hero. The case and bench are
-       props and shift with the theme; the screen and its trace do not, because
-       a powered instrument looks the same in a bright room as a dark one. */
-    /* The case sits a step above pure dark on purpose: the vents and the BNC
-       jack are drawn in --scene-case-lo, and at near-black both values collapse
-       into each other and the detail disappears. This spread keeps ~10 points
-       of CIE L* between case, its highlight, and its shadow. */
-    --scene-case:         #33221c;
-    --scene-case-hi:      #4a322c;
-    --scene-case-lo:      #150d0a;
-    --scene-bench:        #d9bfa6;
-    --scene-bench-lo:     #b99b81;
-    --scene-trace:        #ffdebd;
-    --scene-steam:        #a08a80;
-
-    --shadow-card:  0 1px 2px rgba(28, 18, 16, 0.04), 0 6px 16px -10px rgba(28, 18, 16, 0.10);
-    --shadow-card-hover: 0 1px 2px rgba(28, 18, 16, 0.04), 0 16px 32px -12px rgba(157, 1, 4, 0.20);
-
-    --font-heading: 'Open Sans', system-ui, sans-serif;
-    --font-body:    'Open Sans', system-ui, sans-serif;
-    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
-}
-
-[data-theme="dark"] {
-    --color-bg:           #120a09;   /* hair, pulled toward the wall */
+    /* Surfaces — the hair colour, pulled toward the wall */
+    --color-bg:           #120a09;
     --color-bg-2:         #1c100e;
     --color-surface:      #1c100e;
     --color-surface-2:    #241512;
     --color-border:       #3a211e;   /* wall shadow */
     --color-text:         #f6e6d8;
     --color-text-dim:     #b09a8d;   /* 7.3:1 on bg */
-    --color-muted:        #7a655c;
+    --color-muted:        #7a655c;   /* labels, dividers, decorative only */
 
-    --color-accent:       #e0463a;   /* the wall's hot edge — crimson is too dark here */
+    /* Accents — the wall's hot edge, not the wall itself: #9d0104 is too dark
+       to read as ink against a #120a09 page. */
+    --color-accent:       #e0463a;
     --color-accent-ink:   #f2705f;   /* 6.8:1 on bg */
     --color-accent-soft:  rgba(224, 70, 58, 0.14);
     --color-accent-on:    #1c0806;   /* the accent is light here, so its ink flips — 4.7:1 */
     --color-accent-hover: #e85a4c;
-    --color-accent-2:     #4f9e77;
+    --color-accent-2:     #4f9e77;   /* green — Live/Deployed badges only */
     --color-accent-2-ink: #6fbd95;
     --color-accent-2-soft:rgba(79, 158, 119, 0.14);
-    --color-accent-3:     #9a8a82;
+    --color-accent-3:     #9a8a82;   /* warm gray — In Progress states */
     --color-accent-3-ink: #9a8a82;
 
-    --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.40);
-    --shadow-card-hover: 0 1px 2px rgba(0, 0, 0, 0.40), 0 16px 32px -12px rgba(224, 70, 58, 0.28);
+    /* Hero — a photographic surface, and the one place the wall keeps its
+       exact crimson: it is a filled band, not text on a page. */
+    --hero-bg:            #9d0104;
+    --hero-bg-deep:       #6d0103;
+    --hero-ink:           #ffdebd;
+    --hero-ink-dim:       rgba(255, 222, 189, 0.72);
 
-    /* Inverted from light: here the bench is the *lit* surface and the case is
-       darker than it, because on a #120a09 page every prop has to climb away
-       from the background rather than sink into it. The first attempt made
-       case and bench the same value and the scope dissolved into the bench it
-       was standing on. Measured luminance ratios now: bench:page 2.4,
-       case:page 1.7, case:bench 1.5 — each edge is its own step. */
+    /* Bench scene — the pixel oscilloscope in the hero. The bench is the *lit*
+       surface and the case is darker than it, because on a #120a09 page every
+       prop has to climb away from the background rather than sink into it. An
+       earlier pass gave case and bench the same lightness and the scope
+       dissolved into the bench it was standing on. Measured luminance ratios:
+       bench:page 2.4, case:page 1.7, case:bench 1.5 — each edge its own step. */
     --scene-case:         #4a332b;
     --scene-case-hi:      #6b4c40;
     --scene-case-lo:      #241713;
     --scene-bench:        #6d4737;
     --scene-bench-lo:     #4a2e24;
+    --scene-trace:        #ffdebd;
     --scene-steam:        #7a655c;
+
+    --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.40);
+    --shadow-card-hover: 0 1px 2px rgba(0, 0, 0, 0.40), 0 16px 32px -12px rgba(224, 70, 58, 0.28);
+
+    --font-heading: 'Open Sans', system-ui, sans-serif;
+    --font-body:    'Open Sans', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 }
+
+/* Tells the browser to paint form controls, scrollbars and the like dark, and
+   stops a flash of white before the first paint. */
+:root { color-scheme: dark; }
 
 /* ---- Base ---- */
 

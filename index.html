@@ -21,19 +21,11 @@
     <meta name="twitter:image" content="assets/profile-red.jpg" />
     <!-- PWA -->
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#fdf5ec" />
-    <!-- Theme bootstrap: bright/light is default; dark is opt-in. Set before paint to avoid flash. -->
-    <script>
-        (function () {
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        })();
-    </script>
+    <meta name="theme-color" content="#120a09" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=31" />
+    <link rel="stylesheet" href="assets/theme.css?v=32" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -57,7 +49,7 @@
             },
         }
     </script>
-    <script src="assets/motion.js?v=31" defer></script>
+    <script src="assets/motion.js?v=32" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -78,18 +70,6 @@
                     <a class="text-sm text-dim hover:text-accent-ink transition-colors" href="#contact">Contact</a>
                 </nav>
                 <div class="flex items-center gap-3">
-                    <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme"
-                        class="p-2 rounded-[4px] border border-line text-dim hover:text-accent-ink hover:border-accent transition-colors">
-                        <!-- sun (shown in dark mode → switch to light) -->
-                        <svg id="icon-sun" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="4" />
-                            <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" />
-                        </svg>
-                        <!-- moon (shown in light mode → switch to dark) -->
-                        <svg id="icon-moon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-                        </svg>
-                    </button>
                     <a href="assets/resume_qutaiba.pdf" download
                         class="btn btn-secondary !py-2 !px-4 text-sm">Download CV</a>
                 </div>
@@ -144,10 +124,10 @@
                     </a>
                 </div>
                 <!-- Pixel bench scene. Drawn inline rather than shipped as an
-                     image file for two reasons: the colours are page tokens, so
-                     it flips with the theme, and every moving part is CSS on
-                     integer pixel coordinates, so it stays crisp at any size
-                     instead of resampling. One 96x74 unit = one pixel. -->
+                     image file so the colours stay page tokens and every moving
+                     part is CSS on integer pixel coordinates, which keeps it
+                     crisp at any size instead of resampling. One 96x74 unit =
+                     one pixel. -->
                 <div class="hero-scene">
                     <svg class="bench-scene" viewBox="0 0 96 74" shape-rendering="crispEdges"
                         role="img" aria-label="Pixel-art bench scene: an oscilloscope tracing a live waveform, its status lights blinking, beside a steaming mug of coffee.">
@@ -497,36 +477,6 @@
     </footer>
 
     <script>
-        // Theme toggle: light is default (no attribute), dark via data-theme="dark"
-        (function () {
-            var toggle = document.getElementById('theme-toggle');
-            var sun = document.getElementById('icon-sun');
-            var moon = document.getElementById('icon-moon');
-            var meta = document.querySelector('meta[name="theme-color"]');
-
-            function isDark() {
-                return document.documentElement.getAttribute('data-theme') === 'dark';
-            }
-            function syncIcons() {
-                var dark = isDark();
-                sun.classList.toggle('hidden', !dark);   // sun = "switch to light", shown in dark
-                moon.classList.toggle('hidden', dark);   // moon = "switch to dark", shown in light
-                if (meta) meta.setAttribute('content', dark ? '#120a09' : '#fdf5ec');
-            }
-            syncIcons();
-
-            toggle.addEventListener('click', function () {
-                if (isDark()) {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-                syncIcons();
-            });
-        })();
-
         // Service worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
