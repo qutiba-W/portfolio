@@ -565,6 +565,99 @@ h1, h2, h3, h4, h5, h6 {
     100% { transform: translateY(-16px); opacity: 0; }
 }
 
+/* ---- Animated poses ----
+   The pose-*.png files are AI renders in a pixel *style*, not real pixel art
+   (pose-contact.png alone has 49,000 unique colours), so they cannot be cut
+   into sprite frames or recoloured. What they can do is come apart: each pose
+   is split into a base layer and a limb layer along a line through the joint,
+   and the limb is pivoted on that joint. The pixels are the original artwork
+   throughout -- recombined at rest the layers are the source file.
+
+   Angles are held as discrete steps rather than tweened. A continuous rotation
+   resamples the image on every frame, which crawls on art this hard-edged;
+   holding four positions reads as animation drawn on twos. */
+
+.pose-anim {
+    position: relative;
+    display: block;
+    width: 100%;
+    /* Was w-[150px] md:w-[190px] on the single <img>; the wrapper carries it
+       now. Shown on phones too — the old markup was `hidden sm:block`, so the
+       one animated figure on the page was invisible on exactly the devices
+       most people use. */
+    max-width: 150px;
+}
+
+@media (min-width: 768px) {
+    .pose-anim { max-width: 190px; }
+}
+
+.pose-anim img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* The limb layer is the full source canvas with everything but the limb erased,
+   so it needs no offset of its own -- it lines up by construction. */
+.pose-anim .pa-arm {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+}
+
+/* ---- Contact: the wave ----
+   Pivot is the shoulder joint at (130, 385) in the 621x1199 source. Past about
+   8 degrees a notch opens at the armpit where the cut crosses the sleeve. */
+.pose-wave .pa-arm {
+    transform-origin: 20.93% 32.11%;
+    animation: pose-wave 0.96s steps(1, end) infinite;
+}
+
+@keyframes pose-wave {
+    0%   { transform: rotate(-7deg); }
+    25%  { transform: rotate(0deg); }
+    50%  { transform: rotate(7deg); }
+    75%  { transform: rotate(0deg); }
+}
+
+/* ---- Skills: the bench, lit ----
+   This pose has no pivot to animate: both hands rest on the breadboard holding
+   a module and wires, so swinging a limb would tear them off what they are
+   touching. Instead the circuit switches on. Each dot sits over a component
+   that is already painted into the artwork -- the module's three status LEDs
+   and three board parts -- and lights it with `screen`, which can only
+   brighten what is underneath. No pixel is covered or replaced.
+
+   Sizes are a share of the container's width, so the glows track the image
+   through all three of its breakpoints without a second set of numbers. */
+.pose-bench { max-width: 84px; }
+
+@media (min-width: 640px) { .pose-bench { max-width: 110px; } }
+@media (min-width: 768px) { .pose-bench { max-width: 140px; } }
+
+.pa-led {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 11.7%;              /* = the 92px glow diameter on a 786px source */
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--c) 0%, rgba(0, 0, 0, 0) 66%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    animation: pa-led var(--dur) steps(1, end) infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+/* Never fully dark: a powered board's LEDs sit at a dim idle rather than
+   vanishing, and blinking to zero reads as a rendering glitch at this size. */
+@keyframes pa-led {
+    0%,   38%  { opacity: 0.95; }
+    39%,  100% { opacity: 0.12; }
+}
+
 /* ---- Snapshot card ----
    Lived in the hero until the bench scene took that column; it sits in About's
    right-hand slot now, beside the education and credentials rows. */
@@ -645,15 +738,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ---- Workshop banner ----
    The first thing on the page. The art is 4.83:1 — wider than any viewport —
-   so the banner is a window onto it and the image drifts sideways underneath:
-   a slow camera pan down the bench. The aspect ratio becomes the animation
-   instead of a problem to crop around.
+   so the banner is a fixed window onto the middle of it. It used to pan slowly
+   sideways; that is gone, and the frame now holds still on the bench.
 
-   Two layers, pixel-identical in size and position: the scene, and a mask of
-   just the screen pixels blended back on top. Flickering the mask's opacity
-   makes the monitors read as running hardware without touching anything else
-   in the frame. The mask is generated from the scene itself, so it can never
-   drift out of register with it. */
+   Five layers, pixel-identical in size and position: the scene, and masks of
+   its screens, its indicator lamps, the soldering iron's tip and the smoke off
+   it, each blended back on top and given its own rhythm. Every mask is
+   generated from the scene's own coordinates, so none can drift out of
+   register with it. The light moves; the camera does not. */
 .workshop {
     position: relative;
     width: 100%;
@@ -672,28 +764,72 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     object-fit: cover;
     image-rendering: pixelated;
-    animation: workshop-pan 36s ease-in-out infinite alternate;
-}
-
-/* object-position interpolates, so this pans the visible window from the
-   shelves at the left end of the bench to the CNC at the right. Both layers
-   carry the identical declaration and start on the same frame, so they pan
-   locked together. */
-@keyframes workshop-pan {
-    from { object-position: 0% 50%; }
-    to   { object-position: 100% 50%; }
+    /* Held at the centre, which lands the crop on him at the bench with the
+       parts bins to one side and the printer to the other. The far shelves and
+       the CNC fall outside the frame now — that is the cost of not panning. */
+    object-position: 50% 50%;
 }
 
 /* Screens only. `screen` blending adds light, so opacity 0 is the untouched
    scene and higher values push the monitors brighter.
-   Selector is `.workshop .ws-glow`, not `.ws-glow`: it has to outrank
-   `.workshop img` above, which would otherwise replace this whole animation
-   shorthand with the pan alone and drop the flicker on the floor. */
+   Kept as `.workshop .ws-glow` rather than `.ws-glow` so it stays scoped to
+   the banner. */
 .workshop .ws-glow {
     mix-blend-mode: screen;
-    animation:
-        workshop-pan 36s ease-in-out infinite alternate,
-        screen-flicker 4.6s steps(1, end) infinite;
+    animation: screen-flicker 4.6s steps(1, end) infinite;
+}
+
+/* The rest of the shop, switched on. Same full-canvas trick as .ws-glow: the
+   mask is the scene's own geometry, so each glow sits on its target under any
+   crop the viewport happens to impose.
+   Each layer carries the identical pan declaration so it tracks the scene, and
+   its own second animation on top. Every spot sits over hardware already
+   painted into the art: the station's LEDs, the multimeter, the printer's panel
+   and buttons, the CNC readout, and the soldering iron's tip. */
+.workshop .ws-hot,
+.workshop .ws-iron,
+.workshop .ws-smoke {
+    mix-blend-mode: screen;
+}
+
+/* Indicator lamps are steady hardware, so this only breathes. */
+.workshop .ws-hot {
+    animation: hot-breathe 5.2s ease-in-out infinite;
+}
+
+@keyframes hot-breathe {
+    0%, 100% { opacity: 0.72; }
+    50%      { opacity: 0.95; }
+}
+
+/* The iron is the one thing in the frame that is genuinely hot, so it gets the
+   most restless curve — irregular, on its own period, never settling. */
+.workshop .ws-iron {
+    animation: iron-heat 2.9s steps(1, end) infinite;
+}
+
+@keyframes iron-heat {
+    0%   { opacity: 0.95; }
+    18%  { opacity: 0.62; }
+    31%  { opacity: 1.00; }
+    47%  { opacity: 0.70; }
+    58%  { opacity: 0.92; }
+    76%  { opacity: 0.55; }
+    88%  { opacity: 0.88; }
+}
+
+/* Smoke is the only layer that moves relative to the scene. translateY is a
+   percentage of the banner's own height, not a pixel count, so the drift
+   scales with the frame instead of creeping at 230px and crawling at 440px. */
+.workshop .ws-smoke {
+    animation: smoke-rise 4.4s linear infinite;
+}
+
+@keyframes smoke-rise {
+    0%   { opacity: 0;    transform: translateY(1%); }
+    22%  { opacity: 0.55; }
+    70%  { opacity: 0.26; }
+    100% { opacity: 0;    transform: translateY(-7%); }
 }
 
 /* Deliberately irregular — an even pulse reads as a breathing lamp, uneven
@@ -808,4 +944,17 @@ section[id] {
        screen, the lights stay lit, the steam holds one frame. */
     .bs-sweep, .bs-led-a, .bs-led-b, .bs-led-c, .bs-wisp { animation: none; }
     .bs-wisp { opacity: 0.4; }
+
+    /* Limbs rest at the neutral angle -- the pose the source file was
+       drawn in. The board stays powered, just not blinking. */
+    .pose-anim .pa-arm { animation: none; transform: none; }
+    .pa-led { animation: none; opacity: 0.6; }
+
+    /* The banner holds still for everyone now, so only its lights need
+       stopping. The smoke goes too: smoke that does not drift is a smudge. */
+    .workshop img { animation: none; }
+    .workshop .ws-glow  { opacity: 0.28; }
+    .workshop .ws-hot   { opacity: 0.85; }
+    .workshop .ws-iron  { opacity: 0.90; }
+    .workshop .ws-smoke { opacity: 0; transform: none; }
 }

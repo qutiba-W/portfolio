@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=32" />
+    <link rel="stylesheet" href="assets/theme.css?v=36" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -49,7 +49,7 @@
             },
         }
     </script>
-    <script src="assets/motion.js?v=32" defer></script>
+    <script src="assets/motion.js?v=36" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -78,15 +78,24 @@
     </header>
 
     <main>
-        <!-- Workshop banner: the opening image. Two stacked layers — the scene,
-             and a mask of its screen pixels blended back over it and flickered.
-             Both are eager-loaded so they start their pan on the same frame and
-             never drift out of register. -->
+        <!-- Workshop banner: the opening image. Five stacked layers — the scene,
+             then masks of its screens, its indicator lamps, the soldering iron's
+             tip, and the smoke coming off it, each blended back over the scene
+             and given its own rhythm. The frame itself no longer moves. -->
         <div class="workshop">
             <img src="assets/workshop-scene.webp"
                 alt="Pixel-art workshop: Qutaiba at his bench soldering a circuit board, with parts bins, a pegboard of hand tools, an oscilloscope, a bank of code and CAD monitors, a 3D printer and a CNC mill around him."
                 width="2010" height="416" fetchpriority="high" />
             <img class="ws-glow" src="assets/workshop-glow.webp" alt="" aria-hidden="true"
+                width="2010" height="416" fetchpriority="high" />
+            <!-- Three more masks on the same principle: full-canvas, drawn on the
+                 scene's own coordinates, so each glow sits on its target under
+                 whatever crop the viewport imposes. Between them, ~4KB. -->
+            <img class="ws-hot" src="assets/workshop-hot.webp" alt="" aria-hidden="true"
+                width="2010" height="416" fetchpriority="high" />
+            <img class="ws-iron" src="assets/workshop-iron.webp" alt="" aria-hidden="true"
+                width="2010" height="416" fetchpriority="high" />
+            <img class="ws-smoke" src="assets/workshop-smoke.webp" alt="" aria-hidden="true"
                 width="2010" height="416" fetchpriority="high" />
         </div>
 
@@ -406,10 +415,23 @@
                         <p class="section-label mb-2">Skills</p>
                         <h2 class="font-heading text-3xl md:text-4xl font-bold">What I work with.</h2>
                     </div>
-                    <img src="assets/pose-about.png"
-                        alt="Pixel-art illustration of Qutaiba leaning over a workbench, tinkering with a small electronics rig"
-                        class="hidden sm:block w-[110px] md:w-[140px] h-auto flex-shrink-0" width="786" height="1172"
-                        loading="lazy" />
+                    <!-- Was `hidden sm:block`, i.e. absent on every phone. Shown
+                         at all widths now, just smaller on the narrow end.
+                         The dots are positioned over components already painted
+                         into the artwork — the module's three status LEDs, and
+                         a green, amber and blue part on the board — and lit
+                         with `screen`, so the PNG itself is untouched. -->
+                    <div class="pose-anim pose-bench flex-shrink-0">
+                        <img class="pa-base" src="assets/pose-about.png"
+                            alt="Pixel-art illustration of Qutaiba leaning over a workbench, tinkering with a small electronics rig"
+                            width="786" height="1172" loading="lazy" />
+                        <span class="pa-led" style="--x:27.10%; --y:39.85%; --c:#5fe07a; --dur:0.90s"></span>
+                        <span class="pa-led" style="--x:27.35%; --y:41.21%; --c:#f05a50; --dur:1.40s; --delay:0.25s"></span>
+                        <span class="pa-led" style="--x:27.99%; --y:42.06%; --c:#5a96ff; --dur:2.10s; --delay:0.60s"></span>
+                        <span class="pa-led" style="--x:37.79%; --y:52.22%; --c:#ffc83c; --dur:1.10s; --delay:0.15s"></span>
+                        <span class="pa-led" style="--x:39.44%; --y:53.07%; --c:#6eeb82; --dur:1.60s; --delay:0.45s"></span>
+                        <span class="pa-led" style="--x:43.26%; --y:53.16%; --c:#5f9bff; --dur:2.60s; --delay:0.80s"></span>
+                    </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-5">
                     <div class="card p-6">
@@ -461,10 +483,18 @@
                     </div>
                 </div>
                 <!-- Decorative only — the text beside it already carries the CTA,
-                     so this needs no alt text a screen reader would announce. -->
-                <img src="assets/pose-contact.png" alt="" aria-hidden="true"
-                    class="mascot hidden sm:block w-[150px] md:w-[190px] h-auto justify-self-center md:justify-self-end"
-                    width="621" height="1199" loading="lazy" />
+                     so this needs no alt text a screen reader would announce.
+                     This is pose-contact.png itself, split into two layers along
+                     a diagonal through the shoulder: the body, and the raised
+                     arm. The arm pivots on the shoulder joint, so the waving is
+                     the original artwork moving, not a redraw. Recombined at 0
+                     degrees it is pixel-for-pixel the source image. -->
+                <div class="pose-anim pose-wave justify-self-center md:justify-self-end">
+                    <img class="pa-base" src="assets/pose-contact-body.png" alt="" aria-hidden="true"
+                        width="621" height="1199" loading="lazy" />
+                    <img class="pa-arm" src="assets/pose-contact-arm.png" alt="" aria-hidden="true"
+                        width="621" height="1199" loading="lazy" />
+                </div>
             </div>
         </section>
     </main>
