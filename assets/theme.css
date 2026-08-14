@@ -313,6 +313,41 @@ h1, h2, h3, h4, h5, h6 {
 
 .card:hover .pcard-media.is-figure img { transform: translateY(-4px) scale(1.02); }
 
+/* The glint layer has to sit exactly on the figure, which .is-figure places by
+   flex (centred, bottom-aligned) — so it is absolutely positioned and given the
+   same 90% height and auto width, which reproduces that box for an image of
+   identical intrinsic size.
+
+   Centred with left/right/margin-auto rather than translateX(-50%): the card's
+   hover rule above sets `transform` on every img in here, which would overwrite
+   a centring transform and throw the glint half its own width to the right on
+   hover. Left alone, both layers take the hover transform equally and stay in
+   register. */
+.pcard-media.is-figure .fig-glint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    height: 90%;
+    width: auto;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    image-rendering: auto;   /* a soft gradient, unlike the art it sits on */
+    animation: fig-glint 3.4s ease-in-out infinite;
+}
+
+/* Uneven on purpose — a metronome reads as a pulsing lamp, this reads as light
+   catching a nut that is being turned. */
+@keyframes fig-glint {
+    0%,  100% { opacity: 0.18; }
+    18%       { opacity: 0.85; }
+    30%       { opacity: 0.35; }
+    46%       { opacity: 1.00; }
+    62%       { opacity: 0.30; }
+    78%       { opacity: 0.62; }
+}
+
 /* Hidden by the filter. Also opts the card out of the reveal transition so a
    re-shown card appears immediately rather than fading in from nothing. */
 .pcard[hidden] { display: none; }
@@ -949,6 +984,7 @@ section[id] {
        drawn in. The board stays powered, just not blinking. */
     .pose-anim .pa-arm { animation: none; transform: none; }
     .pa-led { animation: none; opacity: 0.6; }
+    .fig-glint { animation: none; opacity: 0.55; }
 
     /* The banner holds still for everyone now, so only its lights need
        stopping. The smoke goes too: smoke that does not drift is a smudge. */

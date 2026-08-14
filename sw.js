@@ -3,7 +3,7 @@
    precached theme.css?v=29 while index.html was already requesting ?v=30, so
    the cached copy never matched a real request and sat in storage doing
    nothing. Bump this alone, and keep it equal to the ?v= in index.html. */
-const VERSION = '36';
+const VERSION = '37';
 
 const CACHE_NAME = `qutaiba-portfolio-v${VERSION}`;
 const ASSETS = [

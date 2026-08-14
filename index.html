@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/theme.css?v=36" />
+    <link rel="stylesheet" href="assets/theme.css?v=37" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -49,7 +49,7 @@
             },
         }
     </script>
-    <script src="assets/motion.js?v=36" defer></script>
+    <script src="assets/motion.js?v=37" defer></script>
 </head>
 
 <body class="bg-bg text-ink font-body">
@@ -368,9 +368,16 @@
 
                     <!-- Sawtooth Wave Generator — no photograph exists, so the pixel art stands in -->
                     <article class="card pcard flex flex-col overflow-hidden">
+                        <!-- No pivot to animate here: both hands are committed to
+                             the wrench and it is seated on the bolt, so swinging
+                             anything would slide the jaw off the nut. The metal
+                             catches the light instead — a specular highlight on
+                             the nut and a dimmer one further down the beam. -->
                         <div class="pcard-media is-figure">
                             <img src="assets/pose-engineering.png" alt="" aria-hidden="true"
                                 width="896" height="1193" loading="lazy" />
+                            <img class="fig-glint" src="assets/pose-engineering-glow.png" alt=""
+                                aria-hidden="true" width="896" height="1193" loading="lazy" />
                         </div>
                         <div class="p-5 flex flex-col gap-2.5 flex-grow">
                             <p class="cat-tag">Engineering</p>
