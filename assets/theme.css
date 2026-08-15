@@ -600,6 +600,132 @@ h1, h2, h3, h4, h5, h6 {
     100% { transform: translateY(-16px); opacity: 0; }
 }
 
+/* ---- Experience scenes: the lamp and the tire ----
+   Stacked in the section's right column, both drawn on a 96x74 grid with their
+   ground line at the same y, so the two read as one shelf seen twice rather
+   than two unrelated illustrations. */
+
+.exp-art {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    /* 320, not 300: the lamp frames are 160 wide, so this is the largest size
+       where one source pixel lands on exactly two device pixels. At 300 the
+       browser has to stretch some pixels and not others, and pixel art with
+       uneven pixels is the one flaw the whole style is judged on. */
+    max-width: 320px;
+}
+
+/* ---- Lamp frames (Aladdin) ----
+   Three PNG stills of one drawing, stacked and swapped. They are 160x120 --
+   the grid the art was actually drawn on, recovered from the renders -- and
+   `pixelated` is what lets a 160px-wide file fill a 300px column without the
+   browser smoothing the pixels it was drawn in.
+
+   The stack is base-in-flow plus two absolute overlays, so the container gets
+   its height from frame 1 and no aspect ratio has to be hard-coded here. */
+
+.lamp-frames {
+    position: relative;
+    width: 100%;
+}
+
+.lamp-frames img {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.lamp-frames img + img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+/* Held, never crossfaded: a dissolve between two pixel frames invents colours
+   that are in neither of them. Frame 1 carries most of the loop; 2 is a breath
+   and a lean of the flame, 3 is a blink and the flame guttering. */
+.lf-2 { animation: lf-2 5.4s steps(1, end) infinite; }
+.lf-3 { animation: lf-3 5.4s steps(1, end) infinite; }
+
+@keyframes lf-2 {
+    0%, 32%   { opacity: 0; }
+    33%, 44%  { opacity: 1; }
+    45%, 100% { opacity: 0; }
+}
+
+@keyframes lf-3 {
+    0%, 80%   { opacity: 0; }
+    81%, 90%  { opacity: 1; }
+    91%, 100% { opacity: 0; }
+}
+
+/* ---- Tire scene (Experience) ----
+   Same rules as the bench scene: one viewBox unit = one pixel, every rect on an
+   integer coordinate, colours are page tokens. The wheel does not rotate — a
+   rotated raster of hard edges resamples into mush — so rolling is carried by a
+   highlight travelling clockwise around the eight tread blocks instead. */
+
+.tire-scene {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+}
+
+.tr-road     { fill: var(--scene-bench); }
+.tr-road-lo  { fill: var(--scene-bench-lo); }
+.tr-rubber   { fill: #1a1210; }
+.tr-sidewall { fill: #2a1c18; }
+.tr-rim      { fill: var(--scene-case-hi); }
+.tr-rim-lo   { fill: var(--scene-case); }
+.tr-hub      { fill: var(--color-accent); }
+.tr-case     { fill: var(--scene-case); }
+.tr-case-hi  { fill: var(--scene-case-hi); }
+.tr-screen   { fill: #0d0806; }
+.tr-label    { fill: var(--color-accent); }
+
+.tr-tread {
+    fill: var(--scene-case-hi);
+    opacity: 0.22;
+    animation: tr-roll 1.6s steps(1, end) infinite;
+}
+
+/* Delays run clockwise from the 3 o'clock block, so the lit block travels the
+   way the wheel would if it were moving to the right. */
+.tr-tread-2 { animation-delay: 0.2s; }
+.tr-tread-3 { animation-delay: 0.4s; }
+.tr-tread-4 { animation-delay: 0.6s; }
+.tr-tread-5 { animation-delay: 0.8s; }
+.tr-tread-6 { animation-delay: 1.0s; }
+.tr-tread-7 { animation-delay: 1.2s; }
+.tr-tread-8 { animation-delay: 1.4s; }
+
+@keyframes tr-roll {
+    0%, 12%   { opacity: 1; }
+    13%, 100% { opacity: 0.22; }
+}
+
+/* Depth gauge beside the wheel: five bars filling bottom-up, then resetting in
+   the same order. Cream, not green — green is the Live badge's alone. */
+.tr-seg {
+    fill: var(--scene-trace);
+    opacity: 0.16;
+    animation: tr-fill 2.4s steps(1, end) infinite;
+}
+
+.tr-seg-2 { animation-delay: 0.3s; }
+.tr-seg-3 { animation-delay: 0.6s; }
+.tr-seg-4 { animation-delay: 0.9s; }
+.tr-seg-5 { animation-delay: 1.2s; }
+
+@keyframes tr-fill {
+    0%        { opacity: 0.16; }
+    18%, 100% { opacity: 1; }
+}
+
 /* ---- Animated poses ----
    The pose-*.png files are AI renders in a pixel *style*, not real pixel art
    (pose-contact.png alone has 49,000 unique colours), so they cannot be cut
@@ -979,6 +1105,15 @@ section[id] {
        screen, the lights stay lit, the steam holds one frame. */
     .bs-sweep, .bs-led-a, .bs-led-b, .bs-led-c, .bs-wisp { animation: none; }
     .bs-wisp { opacity: 0.4; }
+
+    /* Wheel at rest with its tread readable, gauge holding a full reading. */
+    .tr-tread { animation: none; opacity: 0.55; }
+    .tr-seg   { animation: none; opacity: 1; }
+
+    /* The lamp stays lit, on frame A, with the smoke gone: smoke that does not
+       drift is a smudge -- same call as the soldering iron in the banner. */
+    /* The lamp holds on frame 1 -- lit, eyes open, smoke standing still. */
+    .lf-2, .lf-3 { animation: none; opacity: 0; }
 
     /* Limbs rest at the neutral angle -- the pose the source file was
        drawn in. The board stays powered, just not blinking. */
